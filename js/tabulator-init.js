@@ -1,5 +1,5 @@
 // =============================================
-// TABULATOR TABLES WITH CLICKABLE AMAZON "URL" LINKS
+// FULL TABLE WITH CLICKABLE AMAZON LINKS + ALL COLUMNS
 // =============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       pagination: "local",
       paginationSize: 25,
       paginationSizeSelector: [10, 25, 50, 100],
+      autoColumns: true,                    // Shows ALL columns from your Sheet
       columns: [
         {
           title: "Product",
@@ -31,10 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             target: "_blank"
           },
           widthGrow: 3
-        },
-        // Add any other columns you want here (copy the pattern)
-        // {title: "Price", field: "Price"},
-        // {title: "Category", field: "Category"},
+        }
       ],
       initialSort: [{column: productNameColumn, dir: "asc"}]
     });
@@ -48,6 +46,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       pagination: "local",
       paginationSize: 25,
       paginationSizeSelector: [10, 25, 50, 100],
+      autoColumns: true,                    // Shows ALL columns
       columns: [
         {
           title: "Product",
@@ -59,8 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             target: "_blank"
           },
           widthGrow: 3
-        },
-        // Add other columns here too if you want
+        }
       ],
       initialSort: [{column: "Date", dir: "desc"}]   // newest first using your "Date" column
     });
