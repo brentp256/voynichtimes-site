@@ -5,11 +5,10 @@
 document.addEventListener('DOMContentLoaded', async () => {
   console.log("🚀 Tabulator ready - Amazon links enabled");
 
-  // ==================== CHANGE THESE TWO LINES ====================
-  const productsCSV = "YOUR_PRODUCTS_CSV_URL_HERE";   // ← We will replace this after Cloudflare deployment
-  const productNameColumn = "Product";                // ← CHANGE THIS to your exact column header
-  // Examples: "Product Name" or "Item" or "Name" or "Product Title"
-  // ================================================================
+  // ==================== YOUR REAL DATA ====================
+  const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
+  const productNameColumn = "Product";
+  // =======================================================
 
   const data = await loadCSV(productsCSV);
 
@@ -34,7 +33,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           widthGrow: 3
         },
         // Add any other columns you want here (copy the pattern)
-        // {title: "Release Date", field: "Release Date", sorter: "date"},
         // {title: "Price", field: "Price"},
         // {title: "Category", field: "Category"},
       ],
@@ -64,7 +62,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         },
         // Add other columns here too if you want
       ],
-      initialSort: [{column: "Release Date", dir: "desc"}]   // newest first — change "Release Date" to your exact date column if different
+      initialSort: [{column: "Date", dir: "desc"}]   // newest first using your "Date" column
     });
   }
 });
