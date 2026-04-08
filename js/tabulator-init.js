@@ -20,8 +20,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       pagination: "local",
       paginationSize: 25,
       paginationSizeSelector: [10, 25, 50, 100],
-      autoColumns: true,                    // Shows ALL columns from your Sheet
       columns: [
+        { title: "Company", field: "!Company" },
+        { title: "Series", field: "Series" },
         {
           title: "Product",
           field: productNameColumn,
@@ -32,7 +33,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             target: "_blank"
           },
           widthGrow: 3
-        }
+        },
+        { title: "Category", field: "Category" },
+        { title: "Prd#", field: "Prd#" },
+        { title: "Date", field: "Date" },
+        { title: "Notes", field: "Notes" },
+        { title: "URL", field: "URL", visible: false }   // hidden - we use it for links only
       ],
       initialSort: [{column: productNameColumn, dir: "asc"}]
     });
@@ -46,8 +52,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       pagination: "local",
       paginationSize: 25,
       paginationSizeSelector: [10, 25, 50, 100],
-      autoColumns: true,                    // Shows ALL columns
       columns: [
+        { title: "Company", field: "!Company" },
+        { title: "Series", field: "Series" },
         {
           title: "Product",
           field: productNameColumn,
@@ -58,9 +65,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             target: "_blank"
           },
           widthGrow: 3
-        }
+        },
+        { title: "Category", field: "Category" },
+        { title: "Prd#", field: "Prd#" },
+        { title: "Date", field: "Date" },
+        { title: "Notes", field: "Notes" },
+        { title: "URL", field: "URL", visible: false }
       ],
-      initialSort: [{column: "Date", dir: "desc"}]   // newest first using your "Date" column
+      initialSort: [{column: "Date", dir: "desc"}]   // newest first
     });
   }
 });
