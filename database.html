@@ -7,7 +7,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://unpkg.com/tabulator-tables@6.3.0/dist/css/tabulator.min.css" rel="stylesheet">
   <script src="https://unpkg.com/tabulator-tables@6.3.0/dist/js/tabulator.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <style>
     body { background-color: #111827; color: #e5e7eb; }
   </style>
@@ -29,42 +28,26 @@
     <div id="product-table" class="bg-gray-800 p-4 rounded-xl"></div>
   </div>
 
-  <script src="js/data.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
-      const productNameColumn = "Product";
-
-      const data = await loadCSV(productsCSV);
-
-      const dateSorter = function(a, b) {
-        const parseDate = (val) => {
-          if (!val) return 0;
-          const parts = String(val).split('/');
-          if (parts.length === 3) {
-            return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
-          }
-          return new Date(val).getTime();
-        };
-        return parseDate(a) - parseDate(b);
-      };
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log("🚀 Minimal test script running");
 
       new Tabulator("#product-table", {
-        data: data,
+        data: [
+          { Company: "Test Row 1", Product: "This is a test row", Date: "4/9/2026", Notes: "If you see this row, Tabulator is working" },
+          { Company: "Test Row 2", Product: "Second test row", Date: "4/8/2026", Notes: "Debug mode active" }
+        ],
         layout: "fitDataTable",
         pagination: "local",
-        paginationSize: 100,
-        paginationSizeSelector: [25, 50, 100, 250],
-        variableHeight: true,
+        paginationSize: 10,
         columns: [
-          { title: "Company", field: "!Company", headerFilter: true, formatter: "textarea", widthGrow: 1 },
-          { title: "Series", field: "Series", headerFilter: true, formatter: "textarea", widthGrow: 1 },
-          {
-            title: "Product",
-            field: productNameColumn,
-            formatter: function(cell) {
-              const value = cell.getValue();
-              const rowData = cell.getRow().getData();
-              const url = rowData["URL"];
-              if (url) {
-                return `<a href="${url}" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 underline hover:no-underline cursor-pointer
+          { title: "Company", field: "Company" },
+          { title: "Product", field: "Product" },
+          { title: "Date", field: "Date" },
+          { title: "Notes", field: "Notes" }
+        ]
+      });
+    });
+  </script>
+</body>
+</html>
