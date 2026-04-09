@@ -5,66 +5,93 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Voynich Times</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://unpkg.com/tabulator-tables@6.3.0/dist/css/tabulator.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/tabulator-tables@6.3.0/dist/js/tabulator.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <style>
-    body { background-color: #0f172a; color: #f1e8d9; }
-    .art-nouveau {
-      font-family: 'Georgia', serif;
-      background: linear-gradient(180deg, #1e2937, #334155);
-      border: 6px solid #d4a017;
-      box-shadow: 0 20px 40px rgba(212, 160, 23, 0.3);
-      background-image: 
-        radial-gradient(circle at 25% 25%, rgba(212,160,23,0.15) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(212,160,23,0.15) 0%, transparent 50%);
+    body { background-color: #111827; color: #e5e7eb; }
+    .central-image {
+      max-width: 620px;
+      border: 6px solid #334155;
+      border-radius: 20px;
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
     }
-    .gold-text { color: #f1e8d9; text-shadow: 0 2px 4px rgba(0,0,0,0.6); }
+    .news-pepper {
+      transition: all 0.3s ease;
+    }
+    .news-pepper:hover {
+      transform: scale(1.05) translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2);
+    }
   </style>
 </head>
-<body class="bg-slate-950 text-amber-100 min-h-screen">
-  <nav class="bg-slate-900 p-4 sticky top-0 shadow-xl border-b border-amber-900">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <h1 class="text-3xl font-serif tracking-widest text-amber-300">VOYNICH TIMES</h1>
-      <div class="space-x-8 text-lg">
-        <a href="index.html" class="hover:text-amber-300 transition">Home</a>
-        <a href="news.html" class="hover:text-amber-300 transition">News</a>
-        <a href="database.html" class="hover:text-amber-300 transition">Full Database</a>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+  <nav class="bg-gray-800 p-4 sticky top-0 shadow">
+    <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Voynich Times</h1>
+      <div class="space-x-6">
+        <a href="index.html" class="hover:text-white">Home</a>
+        <a href="news.html" class="hover:text-white">News</a>
+        <a href="database.html" class="hover:text-white">Full Database</a>
       </div>
     </div>
   </nav>
 
-  <div class="max-w-4xl mx-auto p-8">
-    <!-- 1930s Art Nouveau Welcome -->
-    <div class="art-nouveau rounded-3xl p-12 mb-12 text-center">
-      <h1 class="text-6xl font-serif mb-4 tracking-widest gold-text">The Voynich Times</h1>
-      <h2 class="text-3xl font-serif italic mb-10 text-amber-300">A Cabinet of Enigmas &amp; Curious Puzzles</h2>
-      
-      <p class="text-2xl leading-relaxed max-w-2xl mx-auto">
-        My dear fellow investigator,<br><br>
-        You have stumbled upon a most singular archive — a living collection of mysteries, 
-        mechanical wonders, and intellectual challenges that have baffled even the keenest minds of our age.
+  <div class="max-w-screen-2xl mx-auto p-8">
+    <!-- Welcome text -->
+    <div class="text-center mb-12">
+      <p class="text-emerald-300 font-serif text-2xl tracking-widest mb-2">CABINET OF CURIOSITIES</p>
+      <h1 class="text-5xl font-bold leading-tight max-w-2xl mx-auto">
+        Strange &amp; wondrous things from the shadowed corners of the world
+      </h1>
+      <p class="mt-6 text-gray-400 max-w-md mx-auto">
+        Where forgotten mysteries meet modern marvels
       </p>
-      
-      <p class="mt-10 text-xl italic max-w-2xl mx-auto">
-        Here lie puzzle boxes that whisper secrets, subscription enigmas that test the intellect, 
-        and strange artifacts whose true purpose remains tantalizingly hidden. Each piece is a locked door 
-        waiting for the right key… or the right detective.
-      </p>
-
-      <!-- Patreon button -->
-      <a href="https://patreon.com/Brentp256" 
-         target="_blank" 
-         class="inline-block mt-12 px-12 py-6 bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 font-serif text-2xl rounded-2xl shadow-2xl transition-all hover:scale-105 border-2 border-amber-300">
-        Support the Investigation • Join the Patron Circle
-      </a>
-      
-      <p class="text-sm text-amber-400 mt-6 font-light">Every contribution keeps the lamps lit and the ciphers flowing</p>
     </div>
 
-    <p class="text-center text-amber-300/70 italic">Use the menu above to peruse the full collection of curiosities and unsolved puzzles.</p>
+    <!-- Central image + peppered news -->
+    <div class="flex justify-center items-center gap-12 flex-wrap">
+      <!-- Central Voynich-Art Nouveau image -->
+      <div class="relative">
+        <img src="https://i.imgur.com/0k2vL9P.jpg" 
+             alt="Voynich-inspired Art Nouveau illustration"
+             class="central-image">
+      </div>
+
+      <!-- Peppered recent news -->
+      <div id="news-pepper" class="max-w-xs space-y-6"></div>
+    </div>
+
+    <!-- Patreon -->
+    <div class="text-center mt-16">
+      <a href="https://patreon.com/Brentp256" target="_blank"
+         class="inline-flex items-center gap-3 bg-emerald-700 hover:bg-emerald-600 px-8 py-4 rounded-2xl text-lg font-medium transition-colors">
+        <span>Support the Cabinet</span>
+        <span class="text-2xl">❤️</span>
+      </a>
+    </div>
   </div>
 
   <script src="js/data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
+      const data = await loadCSV(newsCSV);
+
+      // Take the 4 most recent items
+      const recent = data.sort((a, b) => new Date(b.Date) - new Date(a.Date)).slice(0, 4);
+
+      const container = document.getElementById('news-pepper');
+      recent.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'news-pepper bg-gray-800/70 backdrop-blur-sm border border-gray-600 p-4 rounded-2xl text-sm';
+        div.innerHTML = `
+          <a href="${item.URL}" target="_blank" rel="noopener"
+             class="block hover:text-emerald-300 transition-colors">
+            ${item.Title}
+          </a>
+        `;
+        container.appendChild(div);
+      });
+    });
+  </script>
 </body>
 </html>
