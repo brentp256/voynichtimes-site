@@ -29,7 +29,7 @@
     
     <!-- VERSION BANNER -->
     <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium mb-8 rounded-xl">
-      v0423b — News with Excerpts
+      v0423c — News with Excerpts
     </div>
 
     <div id="news-container" class="space-y-8"></div>
@@ -38,10 +38,9 @@
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423b — News feed with Excerpts");
+      console.log("🚀 v0423c — News feed with Excerpts loaded");
 
-      // ←←← PASTE YOUR ACTUAL NEWS CSV URL HERE ↓↓↓
-      const newsCSV = "https://docs.google.com/spreadsheets/d/e/YOUR_NEWS_CSV_URL_HERE/pub?gid=0&single=true&output=csv";
+      const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
 
       const data = await loadCSV(newsCSV);
 
