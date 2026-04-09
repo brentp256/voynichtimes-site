@@ -31,7 +31,6 @@
 
   <script src="js/data.js"></script>
   <script>
-    // Inline Tabulator code - tight columns + full wrapping + reliable date sort
     document.addEventListener('DOMContentLoaded', async () => {
       const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
       const productNameColumn = "Product";
@@ -82,7 +81,7 @@
             field: "Notes", 
             headerFilter: true,
             formatter: "textarea",
-            widthGrow: 1.2
+            widthGrow: 0.8          // much tighter Notes column
           },
           { title: "URL", field: "URL", visible: false }
         ],
