@@ -29,7 +29,7 @@
     
     <!-- VERSION BANNER -->
     <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium mb-8 rounded-xl">
-      v0423g — News with auto-summaries + category tags + read links
+      v0423h — News with summaries + category tags + read links
     </div>
 
     <div id="news-container" class="space-y-8"></div>
@@ -38,7 +38,7 @@
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423g — Polished news feed");
+      console.log("🚀 v0423h — News feed with summaries");
 
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
       const summarizerUrl = "https://shvoynich-news-summarizer.brentp256.workers.dev";
@@ -54,20 +54,22 @@
         const title = item.Title || 'Untitled';
         const url = item.URL || '#';
 
-        // Auto-detect excerpt/summary
+        // Get summary from Worker
         let excerpt = '';
-        const possibleFields = ['Excerpt', 'excerpt', 'Summary', 'summary', 'Description', 'description', 'Body', 'body'];
-        for (let field of possibleFields) {
-          if (item[field] && item[field].trim() !== '') {
-            excerpt = item[field].trim();
-            break;
+        try {
+          const res = await fetch(`${summarizerUrl}?url=${encodeURIComponent(url)}`);
+          const json = await res.json();
+          if (json.excerpt && !json.excerpt.includes("No summary found") && !json.excerpt.includes("Could not load")) {
+            excerpt = json.excerpt;
           }
+        } catch (e) {
+          // leave blank if Worker fails
         }
 
         // Auto-detect category
         let category = '';
-        const possibleCatFields = ['Category', 'category', 'Type', 'type', 'Tag', 'tag'];
-        for (let field of possibleCatFields) {
+        const catFields = ['Category', 'category', 'Type', 'type', 'Tag', 'tag'];
+        for (let field of catFields) {
           if (item[field] && item[field].trim() !== '') {
             category = item[field].trim();
             break;
