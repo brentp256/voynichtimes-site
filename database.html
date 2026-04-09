@@ -29,7 +29,7 @@
     
     <!-- VERSION BANNER -->
     <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium mb-6 rounded-xl">
-      v0422d — Notes width: 240px
+      v0422e — Notes width: 260px
     </div>
 
     <div id="product-table" class="bg-gray-800 p-4 rounded-xl"></div>
@@ -38,7 +38,7 @@
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0422d — Notes width: 240px");
+      console.log("🚀 v0422e — Notes width: 260px");
 
       const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
       const productNameColumn = "Product";
@@ -89,7 +89,7 @@
             field: "Notes", 
             headerFilter: true,
             formatter: "textarea",
-            width: 240,      // widened to reach the end of the green banner
+            width: 260,      // widened to reach the end of the green banner
             minWidth: 120
           },
           { title: "URL", field: "URL", visible: false }
