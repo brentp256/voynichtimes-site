@@ -12,6 +12,12 @@
     body { background-color: #111827; color: #e5e7eb; }
     .card { transition: all 0.3s; }
     .card:hover { transform: scale(1.05); }
+    .old-paper {
+      font-family: 'Georgia', serif;
+      background: linear-gradient(180deg, #f5f0e8, #e8d9c0);
+      color: #3f2a1e;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen">
@@ -22,13 +28,40 @@
         <a href="index.html" class="hover:text-white">Home</a>
         <a href="news.html" class="hover:text-white">News</a>
         <a href="database.html" class="hover:text-white">Full Database</a>
-            </div>
+      </div>
     </div>
   </nav>
 
-  <div class="max-w-6xl mx-auto p-8">
-    <h2 class="text-4xl font-bold mb-8">Welcome to the Cabinet of Curiosities</h2>
-    <p class="text-xl">This is your new live-updating site. Everything pulls from Google Sheets.</p>
+  <div class="max-w-4xl mx-auto p-8">
+    <!-- Mysterious Welcome -->
+    <div class="old-paper rounded-2xl p-10 mb-12 text-center border border-amber-900">
+      <h1 class="text-5xl font-serif mb-6 tracking-widest">The Voynich Times</h1>
+      <h2 class="text-3xl font-serif italic mb-8">Cabinet of Curiosities</h2>
+      
+      <p class="text-xl leading-relaxed max-w-2xl mx-auto">
+        Esteemed seeker of the strange and wondrous,<br>
+        Welcome to a living repository of the rare, the enigmatic, and the utterly extraordinary.<br><br>
+        Within these digital halls lie relics of forgotten eras, peculiar artifacts of the modern age, 
+        and curiosities that defy easy explanation. Some have traveled from distant shores; others 
+        have only just emerged from the shadows.
+      </p>
+      
+      <p class="mt-8 text-lg italic">
+        Browse the ever-growing collection. Peruse the latest dispatches from the Wunderkammer. 
+        Discover what strange treasures await your gaze.
+      </p>
+
+      <!-- Patreon button -->
+      <a href="https://patreon.com/Brentp256" 
+         target="_blank" 
+         class="inline-block mt-10 px-8 py-4 bg-amber-900 hover:bg-amber-800 text-white font-serif text-lg rounded-xl shadow-lg transition-all hover:scale-105">
+        Support the Mission • Become a Patron
+      </a>
+      
+      <p class="text-sm text-amber-900 mt-4">Every contribution helps unearth even more wonders</p>
+    </div>
+
+    <p class="text-center text-gray-400">Navigate using the menu above to explore the full collection.</p>
   </div>
 
   <script src="js/data.js"></script>
