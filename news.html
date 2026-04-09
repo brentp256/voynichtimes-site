@@ -29,7 +29,7 @@
     
     <!-- VERSION BANNER -->
     <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium mb-8 rounded-xl">
-      v0423g — Auto-generated summaries via Worker
+      v0423g — News with auto-summaries + category tags + read links
     </div>
 
     <div id="news-container" class="space-y-8"></div>
@@ -38,7 +38,7 @@
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423g — Auto-generated summaries via Worker");
+      console.log("🚀 v0423g — Polished news feed");
 
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
       const summarizerUrl = "https://shvoynich-news-summarizer.brentp256.workers.dev";
@@ -49,18 +49,29 @@
       // Sort newest first
       data.sort((a, b) => new Date(b.Date) - new Date(a.Date));
 
-      for (const item of data) {
+      data.forEach(item => {
         const date = item.Date || '';
         const title = item.Title || 'Untitled';
         const url = item.URL || '#';
 
-        let excerpt = "Loading summary...";
-        try {
-          const res = await fetch(`${summarizerUrl}?url=${encodeURIComponent(url)}`);
-          const json = await res.json();
-          excerpt = json.excerpt || "No summary available.";
-        } catch (e) {
-          excerpt = "Could not load summary.";
+        // Auto-detect excerpt/summary
+        let excerpt = '';
+        const possibleFields = ['Excerpt', 'excerpt', 'Summary', 'summary', 'Description', 'description', 'Body', 'body'];
+        for (let field of possibleFields) {
+          if (item[field] && item[field].trim() !== '') {
+            excerpt = item[field].trim();
+            break;
+          }
+        }
+
+        // Auto-detect category
+        let category = '';
+        const possibleCatFields = ['Category', 'category', 'Type', 'type', 'Tag', 'tag'];
+        for (let field of possibleCatFields) {
+          if (item[field] && item[field].trim() !== '') {
+            category = item[field].trim();
+            break;
+          }
         }
 
         const div = document.createElement('div');
@@ -73,12 +84,20 @@
                  class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors">
                 ${title}
               </a>
-              <p class="text-gray-400 mt-3 text-base leading-relaxed">${excerpt}</p>
+              ${excerpt ? `<p class="text-gray-400 mt-4 text-base leading-relaxed">${excerpt}</p>` : ''}
+              
+              <div class="mt-6 flex items-center justify-between">
+                ${category ? `<span class="px-3 py-1 text-xs font-medium bg-gray-700 text-emerald-300 rounded-full">${category}</span>` : ''}
+                <a href="${url}" target="_blank" rel="noopener"
+                   class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-1">
+                  Read full article →
+                </a>
+              </div>
             </div>
           </div>
         `;
         container.appendChild(div);
-      }
+      });
 
       if (data.length === 0) {
         container.innerHTML = `<p class="text-gray-400 text-center py-12">No news items yet.</p>`;
