@@ -27,9 +27,9 @@
   <div class="max-w-screen-2xl mx-auto p-6">
     <h2 class="text-4xl font-bold mb-8">Full Product Database</h2>
     
-    <!-- VERSION BANNER - change the number each time we update -->
+    <!-- VERSION BANNER -->
     <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium mb-6 rounded-xl">
-      v0422c — Notes width: 180px
+      v0422d — Notes width: 240px
     </div>
 
     <div id="product-table" class="bg-gray-800 p-4 rounded-xl"></div>
@@ -38,7 +38,7 @@
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0422c — Notes width: 180px");
+      console.log("🚀 v0422d — Notes width: 240px");
 
       const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
       const productNameColumn = "Product";
@@ -89,7 +89,7 @@
             field: "Notes", 
             headerFilter: true,
             formatter: "textarea",
-            width: 180,      // ← This is the width we're testing now
+            width: 240,      // widened to reach the end of the green banner
             minWidth: 120
           },
           { title: "URL", field: "URL", visible: false }
