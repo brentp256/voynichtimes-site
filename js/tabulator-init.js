@@ -1,5 +1,5 @@
 // =============================================
-// CLEAN TABLE - DATE SORTING FIXED + FILTERS
+// FINAL CLEAN TABLE - DATE SORTING FIXED
 // =============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const data = await loadCSV(productsCSV);
 
-  // ==================== FULL DATABASE PAGE ====================
+  // ==================== FULL DATABASE PAGE (no Prd#, with filters) ====================
   if (document.getElementById('product-table')) {
     new Tabulator("#product-table", {
       data: data,
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           headerFilter: true
         },
         { title: "Category", field: "Category", headerFilter: true },
-        { title: "Date", field: "Date", sorter: "date", headerFilter: true },
+        { title: "Date", field: "Date", sorter: "date", sorterParams: { format: "MM/DD/YYYY" }, headerFilter: true },
         { title: "Notes", field: "Notes", headerFilter: true },
         { title: "URL", field: "URL", visible: false }
       ],
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           headerFilter: true
         },
         { title: "Category", field: "Category", headerFilter: true },
-        { title: "Date", field: "Date", sorter: "date", headerFilter: true },
+        { title: "Date", field: "Date", sorter: "date", sorterParams: { format: "MM/DD/YYYY" }, headerFilter: true },
         { title: "Notes", field: "Notes", headerFilter: true },
         { title: "URL", field: "URL", visible: false }
       ],
