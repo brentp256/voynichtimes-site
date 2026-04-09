@@ -10,7 +10,27 @@
     body { background-color: #111827; color: #e5e7eb; }
     .news-item { transition: all 0.2s ease; }
     .news-item:hover { background-color: #1f2937; transform: translateX(4px); }
-    .article-image { width: 120px; height: 80px; object-fit: cover; border-radius: 8px; }
+    .article-image {
+      width: 145px;      /* a little bigger */
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #334155;   /* tiny elegant border */
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    }
+    .placeholder {
+      width: 145px;
+      height: 100px;
+      background: linear-gradient(135deg, #1e2937, #334155);
+      border-radius: 10px;
+      border: 2px solid #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      font-size: 28px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen">
@@ -29,7 +49,7 @@
     <h2 class="text-4xl font-bold mb-8">News / Wunderkammer</h2>
     
     <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium mb-8 rounded-xl">
-      v0423k — News with auto-images + summaries
+      v0423l — Bigger images + nicer placeholder + tiny border
     </div>
 
     <div id="news-container" class="space-y-8"></div>
@@ -38,7 +58,7 @@
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423k — News with images + summaries");
+      console.log("🚀 v0423l — News with bigger images, nicer placeholder, tiny border");
 
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
       const summarizerUrl = "https://shvoynich-news-summarizer.brentp256.workers.dev";
@@ -46,15 +66,13 @@
       const data = await loadCSV(newsCSV);
       const container = document.getElementById('news-container');
 
-      // Sort newest first
       data.sort((a, b) => new Date(b.Date) - new Date(a.Date));
 
-      for (const item of data) {
+      data.forEach(item => {
         const date = item.Date || '';
         const title = item.Title || 'Untitled';
         const url = item.URL || '#';
 
-        // Get summary + image from Worker
         let excerpt = '';
         let image = '';
         try {
@@ -64,33 +82,22 @@
             excerpt = json.excerpt;
           }
           if (json.image) image = json.image;
-        } catch (e) {
-          // leave blank
-        }
-
-        // Auto-detect category
-        let category = '';
-        const catFields = ['Category', 'category', 'Type', 'type'];
-        for (let field of catFields) {
-          if (item[field] && item[field].trim() !== '') {
-            category = item[field].trim();
-            break;
-          }
-        }
+        } catch (e) {}
 
         const div = document.createElement('div');
         div.className = 'news-item bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500 flex gap-6';
         div.innerHTML = `
-          ${image ? `<img src="${image}" class="article-image shrink-0" alt="">` : '<div class="w-[120px] h-[80px] bg-gray-700 rounded-xl shrink-0"></div>'}
+          ${image 
+            ? `<img src="${image}" class="article-image" alt="">` 
+            : `<div class="placeholder">📜</div>`}
           <div class="flex-1">
             <a href="${url}" target="_blank" rel="noopener"
                class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors">
               ${title}
             </a>
-            ${excerpt ? `<p class="text-gray-400 mt-3 text-base leading-relaxed">${excerpt}</p>` : ''}
+            ${excerpt ? `<p class="text-gray-400 mt-4 text-base leading-relaxed">${excerpt}</p>` : ''}
             
             <div class="mt-6 flex items-center justify-between">
-              ${category ? `<span class="px-3 py-1 text-xs font-medium bg-gray-700 text-emerald-300 rounded-full">${category}</span>` : ''}
               <a href="${url}" target="_blank" rel="noopener"
                  class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-1">
                 Read full article →
@@ -99,11 +106,7 @@
           </div>
         `;
         container.appendChild(div);
-      }
-
-      if (data.length === 0) {
-        container.innerHTML = `<p class="text-gray-400 text-center py-12">No news items yet.</p>`;
-      }
+      });
     });
   </script>
 </body>
