@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             return value;
           },
-          widthGrow: 2,                  // skinnier Product
+          widthGrow: 1.5,                // skinnier Product
           headerFilter: true
         },
         { title: "Category", field: "Category", headerFilter: true, formatter: "textarea", widthGrow: 1 },
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           field: "Notes", 
           headerFilter: true,
           formatter: "textarea",
-          widthGrow: 2                   // tight Notes
+          widthGrow: 1.5                  // tighter Notes
         },
         { title: "URL", field: "URL", visible: false }
       ],
