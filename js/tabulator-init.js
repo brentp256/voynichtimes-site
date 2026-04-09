@@ -1,9 +1,9 @@
 // =============================================
-// CLEAN TABLE - NO PRD# ON FULL DATABASE + LIVE FILTERS
+// CLEAN TABLE - DATE SORTING FIXED + FILTERS
 // =============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log("🚀 Tabulator ready - Amazon links + filters enabled");
+  console.log("🚀 Tabulator ready - Amazon links + filters + proper date sorting");
 
   // ==================== YOUR REAL DATA ====================
   const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const data = await loadCSV(productsCSV);
 
-  // ==================== FULL DATABASE PAGE (no Prd#, with filters) ====================
+  // ==================== FULL DATABASE PAGE ====================
   if (document.getElementById('product-table')) {
     new Tabulator("#product-table", {
       data: data,
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           headerFilter: true
         },
         { title: "Category", field: "Category", headerFilter: true },
-        { title: "Date", field: "Date", headerFilter: true },
+        { title: "Date", field: "Date", sorter: "date", headerFilter: true },
         { title: "Notes", field: "Notes", headerFilter: true },
         { title: "URL", field: "URL", visible: false }
       ],
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // ==================== RECENT & UPCOMING PAGE (keeps Prd#, with filters) ====================
+  // ==================== RECENT & UPCOMING PAGE ====================
   if (document.getElementById('releases-table')) {
     new Tabulator("#releases-table", {
       data: data,
@@ -74,12 +74,11 @@ document.addEventListener('DOMContentLoaded', async () => {
           headerFilter: true
         },
         { title: "Category", field: "Category", headerFilter: true },
-        { title: "Prd#", field: "Prd#" },
-        { title: "Date", field: "Date", headerFilter: true },
+        { title: "Date", field: "Date", sorter: "date", headerFilter: true },
         { title: "Notes", field: "Notes", headerFilter: true },
         { title: "URL", field: "URL", visible: false }
       ],
-      initialSort: [{column: "Date", dir: "desc"}]
+      initialSort: [{column: "Date", dir: "desc"}]   // newest first - now sorts correctly
     });
   }
 });
