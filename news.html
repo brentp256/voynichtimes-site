@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Voynich Times - News</title>
+  <title>The Voynich Times - News</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <style>
@@ -36,7 +36,7 @@
 <body class="bg-gray-900 text-gray-100 min-h-screen">
   <nav class="bg-gray-800 p-4 sticky top-0 shadow">
     <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Voynich Times</h1>
+      <h1 class="text-2xl font-bold">The Voynich Times</h1>
       <div class="space-x-6">
         <a href="index.html" class="hover:text-white">Home</a>
         <a href="news.html" class="hover:text-white">News</a>
@@ -48,23 +48,24 @@
   <div class="max-w-screen-2xl mx-auto p-6">
     <h2 class="text-4xl font-bold mb-8">News / Wunderkammer</h2>
     
-    <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium mb-8 rounded-xl">
-      v0423o — Final safe version with images
-    </div>
-
     <div id="news-container" class="space-y-8"></div>
 
     <!-- DISCLAIMER -->
     <div class="mt-16 text-center text-xs text-gray-500 max-w-md mx-auto">
       All links lead to their original sources. 
-      Amazon links are affiliate links that help support Voynich Times at no extra cost to you.
+      Amazon links are affiliate links that help support The Voynich Times at no extra cost to you.
     </div>
+  </div>
+
+  <!-- Tiny version indicator -->
+  <div class="fixed bottom-4 right-4 text-[10px] text-gray-600 bg-gray-900/70 px-2 py-px rounded">
+    v0423o
   </div>
 
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423o — Safe final news page");
+      console.log("🚀 v0423o — Final polished news page");
 
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
       const summarizerUrl = "https://shvoynich-news-summarizer.brentp256.workers.dev";
@@ -72,10 +73,9 @@
       const data = await loadCSV(newsCSV);
       const container = document.getElementById('news-container');
 
-      // Sort newest first
       data.sort((a, b) => new Date(b.Date) - new Date(a.Date));
 
-      for (const item of data) {
+      data.forEach(item => {
         const date = item.Date || '';
         const title = item.Title || 'Untitled';
         const url = item.URL || '#';
@@ -116,7 +116,7 @@
           </div>
         `;
         container.appendChild(div);
-      }
+      });
     });
   </script>
 </body>
