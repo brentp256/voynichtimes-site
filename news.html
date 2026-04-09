@@ -29,7 +29,7 @@
     
     <!-- VERSION BANNER -->
     <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium mb-8 rounded-xl">
-      v0423c — News with Excerpts
+      v0423d — News with auto-detected Excerpts
     </div>
 
     <div id="news-container" class="space-y-8"></div>
@@ -38,11 +38,14 @@
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423c — News feed with Excerpts loaded");
+      console.log("🚀 v0423d — News feed with auto-detected excerpts");
 
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
 
       const data = await loadCSV(newsCSV);
+
+      // Log the actual column headers so we can debug
+      console.log("📋 Available columns in your News sheet:", Object.keys(data[0] || {}));
 
       const container = document.getElementById('news-container');
 
@@ -52,8 +55,17 @@
       data.forEach(item => {
         const date = item.Date || '';
         const title = item.Title || 'Untitled';
-        const excerpt = item.Excerpt || '';
         const url = item.URL || '#';
+
+        // Auto-detect excerpt column (tries several common names)
+        let excerpt = '';
+        const possibleExcerptFields = ['Excerpt', 'excerpt', 'Summary', 'summary', 'Description', 'description', 'Body', 'body', 'Text', 'text'];
+        for (let field of possibleExcerptFields) {
+          if (item[field] && item[field].trim() !== '') {
+            excerpt = item[field];
+            break;
+          }
+        }
 
         const div = document.createElement('div');
         div.className = 'news-item bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500';
