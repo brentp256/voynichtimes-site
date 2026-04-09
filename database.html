@@ -29,8 +29,7 @@
     
     <!-- OBVIOUS TEST BANNER -->
     <div class="bg-yellow-400 text-black text-center py-3 font-bold text-lg mb-6 rounded-xl">
-      TINY NOTES TEST MODE — widthGrow: 0.1<br>
-      If you see this banner, the latest code is LIVE
+      TINY NOTES TEST MODE — fixed width: 130
     </div>
 
     <div id="product-table" class="bg-gray-800 p-4 rounded-xl"></div>
@@ -39,7 +38,7 @@
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 TINY NOTES TEST MODE - widthGrow: 0.1");
+      console.log("🚀 TINY NOTES TEST MODE - fixed width 130");
 
       const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
       const productNameColumn = "Product";
@@ -90,7 +89,8 @@
             field: "Notes", 
             headerFilter: true,
             formatter: "textarea",
-            widthGrow: 0.1          // SUPER TINY TEST
+            width: 130,      // FIXED PIXEL WIDTH — TINY TEST
+            minWidth: 100
           },
           { title: "URL", field: "URL", visible: false }
         ],
