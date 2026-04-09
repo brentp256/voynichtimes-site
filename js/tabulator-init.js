@@ -1,9 +1,9 @@
 // =============================================
-// TIGHT COLUMNS + FULL WRAPPING + RELIABLE DATE SORT
+// TIGHTEST COLUMNS + FULL WRAPPING + RELIABLE DATE SORT
 // =============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log("🚀 Tabulator ready - tight columns + full wrapping");
+  console.log("🚀 Tabulator ready - tightest columns + full wrapping");
 
   const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
   const productNameColumn = "Product";
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             return value;
           },
-          widthGrow: 2,                  // skinnier Product
+          widthGrow: 2,
           headerFilter: true
         },
         { title: "Category", field: "Category", headerFilter: true, formatter: "textarea", widthGrow: 1 },
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           field: "Notes", 
           headerFilter: true,
           formatter: "textarea",
-          widthGrow: 2                   // tight Notes
+          widthGrow: 2
         },
         { title: "URL", field: "URL", visible: false }
       ],
