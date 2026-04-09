@@ -29,46 +29,44 @@
     
     <!-- VERSION BANNER -->
     <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium mb-8 rounded-xl">
-      v0423a — News feed (Drudge-style + Voynich flair)
+      v0423b — News with Excerpts
     </div>
 
-    <div id="news-container" class="space-y-6"></div>
+    <div id="news-container" class="space-y-8"></div>
   </div>
 
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423a — News feed loaded");
+      console.log("🚀 v0423b — News feed with Excerpts");
 
-      // ←←← REPLACE THIS WITH YOUR ACTUAL NEWS CSV URL ↓↓↓
-      const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
+      // ←←← PASTE YOUR ACTUAL NEWS CSV URL HERE ↓↓↓
+      const newsCSV = "https://docs.google.com/spreadsheets/d/e/YOUR_NEWS_CSV_URL_HERE/pub?gid=0&single=true&output=csv";
 
       const data = await loadCSV(newsCSV);
 
       const container = document.getElementById('news-container');
 
       // Sort newest first
-      data.sort((a, b) => {
-        const dateA = new Date(a.Date);
-        const dateB = new Date(b.Date);
-        return dateB - dateA;
-      });
+      data.sort((a, b) => new Date(b.Date) - new Date(a.Date));
 
       data.forEach(item => {
         const date = item.Date || '';
         const title = item.Title || 'Untitled';
+        const excerpt = item.Excerpt || '';
         const url = item.URL || '#';
 
         const div = document.createElement('div');
-        div.className = 'news-item bg-gray-800 p-5 rounded-xl border border-gray-700 hover:border-emerald-500';
+        div.className = 'news-item bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500';
         div.innerHTML = `
-          <div class="flex gap-6 items-start">
+          <div class="flex gap-6">
             <div class="text-emerald-400 font-mono text-sm pt-1 w-28 shrink-0">${date}</div>
             <div class="flex-1">
               <a href="${url}" target="_blank" rel="noopener"
-                 class="block text-xl font-semibold leading-tight hover:text-emerald-300 transition-colors">
+                 class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors">
                 ${title}
               </a>
+              ${excerpt ? `<p class="text-gray-400 mt-3 text-base leading-relaxed">${excerpt}</p>` : ''}
             </div>
           </div>
         `;
