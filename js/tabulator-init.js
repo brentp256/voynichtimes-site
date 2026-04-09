@@ -3,7 +3,7 @@
 // =============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log("🚀 Tabulator ready - text wrap everywhere + reliable date sort");
+  console.log("🚀 Tabulator ready - wrapping everywhere + reliable date sort");
 
   const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
   const productNameColumn = "Product";
@@ -26,11 +26,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (document.getElementById('product-table')) {
     new Tabulator("#product-table", {
       data: data,
-      layout: "fitData",                    // uses full width without forcing scroll
+      layout: "fitDataTable",           // best for wrapping without horizontal scroll
       pagination: "local",
       paginationSize: 100,
       paginationSizeSelector: [25, 50, 100, 250],
-      variableHeight: true,                 // rows expand when text wraps
+      variableHeight: true,             // rows expand when text wraps
       columns: [
         { title: "Company", field: "!Company", headerFilter: true, formatter: "textarea", widthGrow: 1 },
         { title: "Series", field: "Series", headerFilter: true, formatter: "textarea", widthGrow: 1 },
@@ -56,11 +56,11 @@ document.addEventListener('DOMContentLoaded', async () => {
           field: "Notes", 
           headerFilter: true,
           formatter: "textarea",
-          widthGrow: 3
+          widthGrow: 4
         },
         { title: "URL", field: "URL", visible: false }
       ],
-      initialSort: [{column: "Date", dir: "desc"}]   // starts with newest/upcoming
+      initialSort: [{column: "Date", dir: "desc"}]
     });
   }
 });
