@@ -1,36 +1,23 @@
 // =============================================
-// TIGHTER TABLE - TEXT WRAP IN ALL COLUMNS + RELIABLE DATE SORT
+// TIGHTER TABLE - NOTES COLUMN SMALLER + WRAPPING EVERYWHERE
 // =============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log("🚀 Tabulator ready - wrapping everywhere + reliable date sort");
+  console.log("🚀 Tabulator ready - Notes column ~1/3 smaller");
 
   const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
   const productNameColumn = "Product";
 
   const data = await loadCSV(productsCSV);
 
-  // Robust date sorter for MM/DD/YYYY
-  const dateSorter = function(a, b) {
-    const parseDate = (val) => {
-      if (!val) return 0;
-      const parts = String(val).split('/');
-      if (parts.length === 3) {
-        return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
-      }
-      return new Date(val).getTime();
-    };
-    return parseDate(a) - parseDate(b);
-  };
-
   if (document.getElementById('product-table')) {
     new Tabulator("#product-table", {
       data: data,
-      layout: "fitDataTable",           // best for wrapping without horizontal scroll
+      layout: "fitDataTable",
       pagination: "local",
       paginationSize: 100,
       paginationSizeSelector: [25, 50, 100, 250],
-      variableHeight: true,             // rows expand when text wraps
+      variableHeight: true,
       columns: [
         { title: "Company", field: "!Company", headerFilter: true, formatter: "textarea", widthGrow: 1 },
         { title: "Series", field: "Series", headerFilter: true, formatter: "textarea", widthGrow: 1 },
@@ -50,13 +37,13 @@ document.addEventListener('DOMContentLoaded', async () => {
           headerFilter: true
         },
         { title: "Category", field: "Category", headerFilter: true, formatter: "textarea", widthGrow: 1 },
-        { title: "Date", field: "Date", sorter: dateSorter, headerFilter: true, widthGrow: 1 },
+        { title: "Date", field: "Date", sorter: "date", sorterParams: { format: "MM/DD/YYYY" }, headerFilter: true, widthGrow: 1 },
         { 
           title: "Notes", 
           field: "Notes", 
           headerFilter: true,
           formatter: "textarea",
-          widthGrow: 4
+          widthGrow: 3          // ← reduced by about a third (was 4)
         },
         { title: "URL", field: "URL", visible: false }
       ],
