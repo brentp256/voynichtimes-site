@@ -1,27 +1,14 @@
 // =============================================
-// CLEAN TABLE - CUSTOM DATE SORTER + TIGHT COLUMNS + FULL WRAPPING
+// TIGHTEST COLUMNS - PRODUCT & NOTES SKINNIER + FULL WRAPPING
 // =============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log("🚀 Tabulator ready - custom date sorter + tight columns");
+  console.log("🚀 Tabulator ready - tightest columns");
 
   const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
   const productNameColumn = "Product";
 
   const data = await loadCSV(productsCSV);
-
-  // Custom date sorter for MM/DD/YYYY (no luxon needed)
-  const dateSorter = function(a, b) {
-    const parseDate = (val) => {
-      if (!val) return 0;
-      const parts = String(val).split('/');
-      if (parts.length === 3) {
-        return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
-      }
-      return new Date(val).getTime();
-    };
-    return parseDate(a) - parseDate(b);
-  };
 
   if (document.getElementById('product-table')) {
     new Tabulator("#product-table", {
@@ -46,17 +33,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             return value;
           },
-          widthGrow: 1.2,                // skinnier Product
+          widthGrow: 1,                  // skinnier Product
           headerFilter: true
         },
         { title: "Category", field: "Category", headerFilter: true, formatter: "textarea", widthGrow: 1 },
-        { title: "Date", field: "Date", sorter: dateSorter, headerFilter: true, widthGrow: 1 },
+        { title: "Date", field: "Date", sorter: "date", sorterParams: { format: "MM/DD/YYYY" }, headerFilter: true, widthGrow: 1 },
         { 
           title: "Notes", 
           field: "Notes", 
           headerFilter: true,
           formatter: "textarea",
-          widthGrow: 1.2                 // tighter Notes
+          widthGrow: 1                   // much tighter Notes
         },
         { title: "URL", field: "URL", visible: false }
       ],
