@@ -29,7 +29,7 @@
     
     <!-- VERSION BANNER -->
     <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium mb-8 rounded-xl">
-      v0423e — Auto-generated summaries via Worker
+      v0423f — Auto-generated summaries via Worker
     </div>
 
     <div id="news-container" class="space-y-8"></div>
@@ -38,7 +38,7 @@
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423e — Auto-generated news summaries");
+      console.log("🚀 v0423f — Auto-generated news summaries");
 
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
       const summarizerUrl = "https://shvoynich-news-summarizer.brentp256.workers.dev";
@@ -54,7 +54,7 @@
         const title = item.Title || 'Untitled';
         const url = item.URL || '#';
 
-        // Call our Worker to get the summary automatically
+        // Call the Worker with the article URL
         let excerpt = "Loading summary...";
         try {
           const res = await fetch(`${summarizerUrl}?url=${encodeURIComponent(url)}`);
