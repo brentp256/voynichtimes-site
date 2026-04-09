@@ -1,9 +1,9 @@
 // =============================================
-// TIGHTER TABLE - NOTES COLUMN SMALLER + WRAPPING EVERYWHERE
+// TIGHTER TABLE - PRODUCT SKINNIER + NOTES TIGHT + WRAPPING EVERYWHERE
 // =============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log("🚀 Tabulator ready - Notes column ~1/3 smaller");
+  console.log("🚀 Tabulator ready - Product skinnier + tight Notes + full wrapping");
 
   const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
   const productNameColumn = "Product";
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             return value;
           },
-          widthGrow: 3,
+          widthGrow: 2,          // ← skinnier Product column
           headerFilter: true
         },
         { title: "Category", field: "Category", headerFilter: true, formatter: "textarea", widthGrow: 1 },
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           field: "Notes", 
           headerFilter: true,
           formatter: "textarea",
-          widthGrow: 3          // ← reduced by about a third (was 4)
+          widthGrow: 2           // ← tight Notes column
         },
         { title: "URL", field: "URL", visible: false }
       ],
