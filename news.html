@@ -10,27 +10,6 @@
     body { background-color: #111827; color: #e5e7eb; }
     .news-item { transition: all 0.2s ease; }
     .news-item:hover { background-color: #1f2937; transform: translateX(4px); }
-    .article-image {
-      width: 145px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 10px;
-      border: 2px solid #334155;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    }
-    .placeholder {
-      width: 145px;
-      height: 100px;
-      background: linear-gradient(135deg, #1e2937, #334155);
-      border-radius: 10px;
-      border: 2px solid #334155;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #64748b;
-      font-size: 32px;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    }
   </style>
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen">
@@ -48,7 +27,7 @@
   <div class="max-w-screen-2xl mx-auto p-6">
     <h2 class="text-4xl font-bold mb-8">News</h2>
     
-    <div id="news-container" class="space-y-8"></div>
+    <div id="news-container" class="space-y-6"></div>
 
     <!-- DISCLAIMER -->
     <div class="mt-16 text-center text-xs text-gray-500 max-w-md mx-auto">
@@ -59,20 +38,20 @@
 
   <!-- Tiny version indicator -->
   <div class="fixed bottom-4 right-4 text-[10px] text-gray-600 bg-gray-900/70 px-2 py-px rounded">
-    v0423p
+    v0423q
   </div>
 
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423p — Stable News page");
+      console.log("🚀 v0423q — Minimal stable news page");
 
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
-      const summarizerUrl = "https://shvoynich-news-summarizer.brentp256.workers.dev";
 
       const data = await loadCSV(newsCSV);
       const container = document.getElementById('news-container');
 
+      // Sort newest first
       data.sort((a, b) => new Date(b.Date) - new Date(a.Date));
 
       data.forEach(item => {
@@ -80,33 +59,15 @@
         const title = item.Title || 'Untitled';
         const url = item.URL || '#';
 
-        let excerpt = '';
-        let image = '';
-        try {
-          const res = await fetch(`${summarizerUrl}?url=${encodeURIComponent(url)}`);
-          const json = await res.json();
-          if (json.excerpt && !json.excerpt.includes("No summary") && !json.excerpt.includes("Could not load")) {
-            excerpt = json.excerpt;
-          }
-          if (json.image) image = json.image;
-        } catch (e) {}
-
         const div = document.createElement('div');
         div.className = 'news-item bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500 flex gap-6';
         div.innerHTML = `
-          ${image 
-            ? `<img src="${image}" class="article-image" alt="">` 
-            : `<div class="placeholder">📜</div>`}
+          <div class="text-emerald-400 font-mono text-sm pt-1 w-28 shrink-0">${date}</div>
           <div class="flex-1">
-            <div class="flex justify-between items-start">
-              <a href="${url}" target="_blank" rel="noopener"
-                 class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors flex-1">
-                ${title}
-              </a>
-              <div class="text-emerald-400 font-mono text-sm ml-6 shrink-0">${date}</div>
-            </div>
-            ${excerpt ? `<p class="text-gray-400 mt-4 text-base leading-relaxed">${excerpt}</p>` : ''}
-            
+            <a href="${url}" target="_blank" rel="noopener"
+               class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors">
+              ${title}
+            </a>
             <div class="mt-6 flex justify-end">
               <a href="${url}" target="_blank" rel="noopener"
                  class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-1">
