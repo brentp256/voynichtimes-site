@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Voynich Times</title>
+  <title>The Voynich Times</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <style>
     body { background-color: #111827; color: #e5e7eb; }
     .central-image {
       max-width: 620px;
-      border: 6px solid #334155;
-      border-radius: 20px;
-      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+      border: 8px solid #334155;
+      border-radius: 24px;
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);
     }
     .news-pepper {
       transition: all 0.3s ease;
@@ -26,7 +26,7 @@
 <body class="bg-gray-900 text-gray-100 min-h-screen">
   <nav class="bg-gray-800 p-4 sticky top-0 shadow">
     <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Voynich Times</h1>
+      <h1 class="text-2xl font-bold">The Voynich Times</h1>
       <div class="space-x-6">
         <a href="index.html" class="hover:text-white">Home</a>
         <a href="news.html" class="hover:text-white">News</a>
@@ -35,37 +35,33 @@
     </div>
   </nav>
 
-  <div class="max-w-screen-2xl mx-auto p-8">
-    <!-- Welcome text -->
-    <div class="text-center mb-12">
-      <p class="text-emerald-300 font-serif text-2xl tracking-widest mb-2">CABINET OF CURIOSITIES</p>
-      <h1 class="text-5xl font-bold leading-tight max-w-2xl mx-auto">
-        Strange &amp; wondrous things from the shadowed corners of the world
-      </h1>
-      <p class="mt-6 text-gray-400 max-w-md mx-auto">
-        Where forgotten mysteries meet modern marvels
-      </p>
-    </div>
+  <div class="max-w-screen-2xl mx-auto p-8 text-center">
+    <!-- Tagline -->
+    <p class="text-emerald-300 font-serif text-3xl tracking-widest mb-2">CABINET OF CURIOSITIES</p>
+    <h1 class="text-6xl font-bold leading-none mb-4">The Voynich Times</h1>
+    <p class="text-2xl text-gray-300 max-w-xl mx-auto">
+      Bringing mysterious puzzly news to you!
+    </p>
 
     <!-- Central image + peppered news -->
-    <div class="flex justify-center items-center gap-12 flex-wrap">
+    <div class="flex justify-center items-start gap-16 mt-16 flex-wrap">
       <!-- Central Voynich-Art Nouveau image -->
-      <div class="relative">
-        <img src="https://i.imgur.com/0k2vL9P.jpg" 
+      <div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Voynich_manuscript_%2810%29.jpg/800px-Voynich_manuscript_%2810%29.jpg" 
              alt="Voynich-inspired Art Nouveau illustration"
              class="central-image">
       </div>
 
       <!-- Peppered recent news -->
-      <div id="news-pepper" class="max-w-xs space-y-6"></div>
+      <div id="news-pepper" class="max-w-xs space-y-5 text-left"></div>
     </div>
 
     <!-- Patreon -->
-    <div class="text-center mt-16">
+    <div class="mt-20">
       <a href="https://patreon.com/Brentp256" target="_blank"
-         class="inline-flex items-center gap-3 bg-emerald-700 hover:bg-emerald-600 px-8 py-4 rounded-2xl text-lg font-medium transition-colors">
-        <span>Support the Cabinet</span>
-        <span class="text-2xl">❤️</span>
+         class="inline-flex items-center gap-3 bg-emerald-700 hover:bg-emerald-600 px-10 py-5 rounded-3xl text-xl font-medium transition-colors">
+        Support the Cabinet 
+        <span class="text-3xl">❤️</span>
       </a>
     </div>
   </div>
@@ -76,16 +72,14 @@
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
       const data = await loadCSV(newsCSV);
 
-      // Take the 4 most recent items
-      const recent = data.sort((a, b) => new Date(b.Date) - new Date(a.Date)).slice(0, 4);
+      const recent = data.sort((a, b) => new Date(b.Date) - new Date(a.Date)).slice(0, 5);
 
       const container = document.getElementById('news-pepper');
       recent.forEach(item => {
         const div = document.createElement('div');
-        div.className = 'news-pepper bg-gray-800/70 backdrop-blur-sm border border-gray-600 p-4 rounded-2xl text-sm';
+        div.className = 'news-pepper bg-gray-800/90 border border-gray-600 p-4 rounded-2xl text-sm hover:border-emerald-400';
         div.innerHTML = `
-          <a href="${item.URL}" target="_blank" rel="noopener"
-             class="block hover:text-emerald-300 transition-colors">
+          <a href="${item.URL}" target="_blank" rel="noopener" class="block hover:text-emerald-300">
             ${item.Title}
           </a>
         `;
