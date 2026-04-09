@@ -27,9 +27,9 @@
   <div class="max-w-screen-2xl mx-auto p-6">
     <h2 class="text-4xl font-bold mb-8">Full Product Database</h2>
     
-    <!-- OBVIOUS TEST BANNER -->
-    <div class="bg-yellow-400 text-black text-center py-3 font-bold text-lg mb-6 rounded-xl">
-      TINY NOTES TEST MODE — fixed width: 130
+    <!-- VERSION BANNER - change the number each time we update -->
+    <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium mb-6 rounded-xl">
+      v0422c — Notes width: 180px
     </div>
 
     <div id="product-table" class="bg-gray-800 p-4 rounded-xl"></div>
@@ -38,7 +38,7 @@
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 TINY NOTES TEST MODE - fixed width 130");
+      console.log("🚀 v0422c — Notes width: 180px");
 
       const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
       const productNameColumn = "Product";
@@ -89,8 +89,8 @@
             field: "Notes", 
             headerFilter: true,
             formatter: "textarea",
-            width: 130,      // FIXED PIXEL WIDTH — TINY TEST
-            minWidth: 100
+            width: 180,      // ← This is the width we're testing now
+            minWidth: 120
           },
           { title: "URL", field: "URL", visible: false }
         ],
