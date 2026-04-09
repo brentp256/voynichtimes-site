@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           field: "Notes", 
           headerFilter: true,
           formatter: "textarea",
-          widthGrow: 1.5                  // tighter Notes
+          widthGrow: 1.5                 // tight Notes
         },
         { title: "URL", field: "URL", visible: false }
       ],
