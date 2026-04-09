@@ -59,13 +59,13 @@
 
   <!-- Tiny version indicator -->
   <div class="fixed bottom-4 right-4 text-[10px] text-gray-600 bg-gray-900/70 px-2 py-px rounded">
-    v0423r
+    v0423t
   </div>
 
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423r — Full news page with images & summaries");
+      console.log("🚀 v0423t — Full news page with reliable newest-first sorting");
 
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
       const summarizerUrl = "https://shvoynich-news-summarizer.brentp256.workers.dev";
@@ -73,10 +73,24 @@
       const data = await loadCSV(newsCSV);
       const container = document.getElementById('news-container');
 
-      // Sort newest first
-      data.sort((a, b) => new Date(b.Date) - new Date(a.Date));
+      // === ROBUST CUSTOM DATE SORTER (same one used on database page) ===
+      const dateSorter = function(a, b) {
+        const parseDate = (val) => {
+          if (!val) return 0;
+          const parts = String(val).split('/');
+          if (parts.length === 3) {
+            return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
+          }
+          return new Date(val).getTime();
+        };
+        return parseDate(b) - parseDate(a);   // newest first
+      };
 
-      data.forEach(item => {
+      // Apply the reliable sort BEFORE we build any cards
+      data.sort(dateSorter);
+
+      // Build each card (now guaranteed newest first)
+      for (const item of data) {
         const date = item.Date || '';
         const title = item.Title || 'Untitled';
         const url = item.URL || '#';
@@ -84,47 +98,43 @@
         let excerpt = '';
         let image = '';
 
-        // Try to fetch image + summary (safe — won't break the whole page)
-        (async () => {
-          try {
-            const res = await fetch(`${summarizerUrl}?url=${encodeURIComponent(url)}`);
-            const json = await res.json();
-            if (json.excerpt && !json.excerpt.includes("No summary") && !json.excerpt.includes("Could not load")) {
-              excerpt = json.excerpt;
-            }
-            if (json.image) image = json.image;
-          } catch (e) {
-            console.log("Summary fetch skipped for:", title);
+        try {
+          const res = await fetch(`${summarizerUrl}?url=${encodeURIComponent(url)}`);
+          const json = await res.json();
+          if (json.excerpt && !json.excerpt.includes("No summary") && !json.excerpt.includes("Could not load")) {
+            excerpt = json.excerpt;
           }
+          if (json.image) image = json.image;
+        } catch (e) {
+          console.log("Summary/image skipped for:", title);
+        }
 
-          // Build the card AFTER fetch completes
-          const div = document.createElement('div');
-          div.className = 'news-item bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500 flex gap-6';
-          div.innerHTML = `
-            ${image 
-              ? `<img src="${image}" class="article-image" alt="">` 
-              : `<div class="placeholder">📜</div>`}
-            <div class="flex-1">
-              <div class="flex justify-between items-start">
-                <a href="${url}" target="_blank" rel="noopener"
-                   class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors flex-1">
-                  ${title}
-                </a>
-                <div class="text-emerald-400 font-mono text-sm ml-6 shrink-0">${date}</div>
-              </div>
-              ${excerpt ? `<p class="text-gray-400 mt-4 text-base leading-relaxed">${excerpt}</p>` : ''}
-              
-              <div class="mt-6 flex justify-end">
-                <a href="${url}" target="_blank" rel="noopener"
-                   class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-1">
-                  Read full article →
-                </a>
-              </div>
+        const div = document.createElement('div');
+        div.className = 'news-item bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500 flex gap-6';
+        div.innerHTML = `
+          ${image 
+            ? `<img src="${image}" class="article-image" alt="">` 
+            : `<div class="placeholder">📜</div>`}
+          <div class="flex-1">
+            <div class="flex justify-between items-start">
+              <a href="${url}" target="_blank" rel="noopener"
+                 class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors flex-1">
+                ${title}
+              </a>
+              <div class="text-emerald-400 font-mono text-sm ml-6 shrink-0">${date}</div>
             </div>
-          `;
-          container.appendChild(div);
-        })();
-      });
+            ${excerpt ? `<p class="text-gray-400 mt-4 text-base leading-relaxed">${excerpt}</p>` : ''}
+            
+            <div class="mt-6 flex justify-end">
+              <a href="${url}" target="_blank" rel="noopener"
+                 class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-1">
+                Read full article →
+              </a>
+            </div>
+          </div>
+        `;
+        container.appendChild(div);
+      }
     });
   </script>
 </body>
