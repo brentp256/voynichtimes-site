@@ -59,13 +59,13 @@
 
   <!-- Tiny version indicator -->
   <div class="fixed bottom-4 right-4 text-[10px] text-gray-600 bg-gray-900/70 px-2 py-px rounded">
-    v0423t
+    v0423u
   </div>
 
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423t — Full news page with reliable newest-first sorting");
+      console.log("🚀 v0423u — Full news page with images, summaries & guaranteed newest-first sorting");
 
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
       const summarizerUrl = "https://shvoynich-news-summarizer.brentp256.workers.dev";
@@ -73,23 +73,10 @@
       const data = await loadCSV(newsCSV);
       const container = document.getElementById('news-container');
 
-      // === ROBUST CUSTOM DATE SORTER (same one used on database page) ===
-      const dateSorter = function(a, b) {
-        const parseDate = (val) => {
-          if (!val) return 0;
-          const parts = String(val).split('/');
-          if (parts.length === 3) {
-            return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
-          }
-          return new Date(val).getTime();
-        };
-        return parseDate(b) - parseDate(a);   // newest first
-      };
+      // SIMPLE & PROVEN newest-first sort (this one worked perfectly in the minimal version)
+      data.sort((a, b) => new Date(b.Date) - new Date(a.Date));
 
-      // Apply the reliable sort BEFORE we build any cards
-      data.sort(dateSorter);
-
-      // Build each card (now guaranteed newest first)
+      // Build cards (newest on top)
       for (const item of data) {
         const date = item.Date || '';
         const title = item.Title || 'Untitled';
