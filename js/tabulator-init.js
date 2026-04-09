@@ -1,16 +1,32 @@
 // =============================================
-// FULL DATABASE ONLY - BLUE LINKS + FILTERS + DATE SORTING
+// FULL DATABASE ONLY - ROBUST DATE SORTING + FILTERS + BLUE LINKS
 // =============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log("🚀 Tabulator ready - Amazon links + filters + date sorting");
+  console.log("🚀 Tabulator ready - Amazon links + filters + robust date sorting");
 
+  // ==================== YOUR REAL DATA ====================
   const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
   const productNameColumn = "Product";
+  // =======================================================
 
   const data = await loadCSV(productsCSV);
 
-  // ==================== FULL DATABASE PAGE ONLY ====================
+  // Custom date sorter for MM/DD/YYYY format
+  const dateSorter = function(a, b, aRow, bRow, column, dir, sorterParams) {
+    const parseDate = (val) => {
+      if (!val) return 0;
+      const parts = String(val).split('/');
+      if (parts.length === 3) {
+        // MM/DD/YYYY → new Date(year, month-1, day)
+        return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
+      }
+      return new Date(val).getTime();
+    };
+    return parseDate(a) - parseDate(b);
+  };
+
+  // ==================== FULL DATABASE PAGE ====================
   if (document.getElementById('product-table')) {
     new Tabulator("#product-table", {
       data: data,
@@ -37,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           headerFilter: true
         },
         { title: "Category", field: "Category", headerFilter: true },
-        { title: "Date", field: "Date", sorter: "date", sorterParams: { format: "MM/DD/YYYY" }, headerFilter: true },
+        { title: "Date", field: "Date", sorter: dateSorter, headerFilter: true },
         { title: "Notes", field: "Notes", headerFilter: true },
         { title: "URL", field: "URL", visible: false }
       ],
