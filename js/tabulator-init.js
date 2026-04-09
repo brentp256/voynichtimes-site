@@ -1,5 +1,5 @@
 // =============================================
-// FULL TABLE WITH CLICKABLE AMAZON LINKS + ALL COLUMNS
+// FULL TABLE WITH OBVIOUS BLUE CLICKABLE LINKS
 // =============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -26,11 +26,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         {
           title: "Product",
           field: productNameColumn,
-          formatter: "link",
-          formatterParams: {
-            labelField: productNameColumn,
-            urlField: "URL",
-            target: "_blank"
+          formatter: function(cell, formatterParams) {
+            const value = cell.getValue();
+            const rowData = cell.getRow().getData();
+            const url = rowData["URL"];
+            if (url) {
+              return `<a href="${url}" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 underline hover:no-underline cursor-pointer">${value}</a>`;
+            }
+            return value;
           },
           widthGrow: 3
         },
@@ -38,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { title: "Prd#", field: "Prd#" },
         { title: "Date", field: "Date" },
         { title: "Notes", field: "Notes" },
-        { title: "URL", field: "URL", visible: false }   // hidden - we use it for links only
+        { title: "URL", field: "URL", visible: false }   // hidden
       ],
       initialSort: [{column: productNameColumn, dir: "asc"}]
     });
@@ -58,11 +61,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         {
           title: "Product",
           field: productNameColumn,
-          formatter: "link",
-          formatterParams: {
-            labelField: productNameColumn,
-            urlField: "URL",
-            target: "_blank"
+          formatter: function(cell, formatterParams) {
+            const value = cell.getValue();
+            const rowData = cell.getRow().getData();
+            const url = rowData["URL"];
+            if (url) {
+              return `<a href="${url}" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 underline hover:no-underline cursor-pointer">${value}</a>`;
+            }
+            return value;
           },
           widthGrow: 3
         },
@@ -72,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { title: "Notes", field: "Notes" },
         { title: "URL", field: "URL", visible: false }
       ],
-      initialSort: [{column: "Date", dir: "desc"}]   // newest first
+      initialSort: [{column: "Date", dir: "desc"}]
     });
   }
 });
