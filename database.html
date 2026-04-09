@@ -32,7 +32,7 @@
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 Full database loaded - Notes column tightened");
+      console.log("🚀 TINY NOTES TEST MODE - widthGrow: 0.2");
 
       const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
       const productNameColumn = "Product";
@@ -83,7 +83,7 @@
             field: "Notes", 
             headerFilter: true,
             formatter: "textarea",
-            widthGrow: 0.4          // skinnier Notes (about an inch shorter than before)
+            widthGrow: 0.2          // REAL TINY TEST MODE
           },
           { title: "URL", field: "URL", visible: false }
         ],
