@@ -10,6 +10,7 @@
     body { background-color: #111827; color: #e5e7eb; }
     .news-item { transition: all 0.2s ease; }
     .news-item:hover { background-color: #1f2937; transform: translateX(4px); }
+    .article-image { width: 120px; height: 80px; object-fit: cover; border-radius: 8px; }
   </style>
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen">
@@ -28,7 +29,7 @@
     <h2 class="text-4xl font-bold mb-8">News / Wunderkammer</h2>
     
     <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium mb-8 rounded-xl">
-      v0423j — Final polished news with summaries
+      v0423k — News with auto-images + summaries
     </div>
 
     <div id="news-container" class="space-y-8"></div>
@@ -37,7 +38,7 @@
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423j — Final polished news feed");
+      console.log("🚀 v0423k — News with images + summaries");
 
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
       const summarizerUrl = "https://shvoynich-news-summarizer.brentp256.workers.dev";
@@ -53,16 +54,18 @@
         const title = item.Title || 'Untitled';
         const url = item.URL || '#';
 
-        // Try to get summary from Worker
+        // Get summary + image from Worker
         let excerpt = '';
+        let image = '';
         try {
           const res = await fetch(`${summarizerUrl}?url=${encodeURIComponent(url)}`);
           const json = await res.json();
           if (json.excerpt && !json.excerpt.includes("No summary") && !json.excerpt.includes("Could not load")) {
             excerpt = json.excerpt;
           }
+          if (json.image) image = json.image;
         } catch (e) {
-          // Leave blank if summary fails
+          // leave blank
         }
 
         // Auto-detect category
@@ -76,28 +79,30 @@
         }
 
         const div = document.createElement('div');
-        div.className = 'news-item bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500';
+        div.className = 'news-item bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500 flex gap-6';
         div.innerHTML = `
-          <div class="flex gap-6">
-            <div class="text-emerald-400 font-mono text-sm pt-1 w-28 shrink-0">${date}</div>
-            <div class="flex-1">
+          ${image ? `<img src="${image}" class="article-image shrink-0" alt="">` : '<div class="w-[120px] h-[80px] bg-gray-700 rounded-xl shrink-0"></div>'}
+          <div class="flex-1">
+            <a href="${url}" target="_blank" rel="noopener"
+               class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors">
+              ${title}
+            </a>
+            ${excerpt ? `<p class="text-gray-400 mt-3 text-base leading-relaxed">${excerpt}</p>` : ''}
+            
+            <div class="mt-6 flex items-center justify-between">
+              ${category ? `<span class="px-3 py-1 text-xs font-medium bg-gray-700 text-emerald-300 rounded-full">${category}</span>` : ''}
               <a href="${url}" target="_blank" rel="noopener"
-                 class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors">
-                ${title}
+                 class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-1">
+                Read full article →
               </a>
-              ${excerpt ? `<p class="text-gray-400 mt-4 text-base leading-relaxed">${excerpt}</p>` : ''}
-              
-              <div class="mt-6 flex items-center justify-between">
-                ${category ? `<span class="px-3 py-1 text-xs font-medium bg-gray-700 text-emerald-300 rounded-full">${category}</span>` : ''}
-                <a href="${url}" target="_blank" rel="noopener"
-                   class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-1">
-                  Read full article →
-                </a>
-              </div>
             </div>
           </div>
         `;
         container.appendChild(div);
+      }
+
+      if (data.length === 0) {
+        container.innerHTML = `<p class="text-gray-400 text-center py-12">No news items yet.</p>`;
       }
     });
   </script>
