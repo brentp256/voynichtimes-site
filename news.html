@@ -27,82 +27,53 @@
   <div class="max-w-screen-2xl mx-auto p-6">
     <h2 class="text-4xl font-bold mb-8">News / Wunderkammer</h2>
     
-    <!-- VERSION BANNER -->
     <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium mb-8 rounded-xl">
-      v0423h — News with summaries + category tags + read links
+      v0423i — Clean debug version
     </div>
 
-    <div id="news-container" class="space-y-8"></div>
+    <div id="news-container" class="space-y-6"></div>
   </div>
 
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423h — News feed with summaries");
+      console.log("🚀 v0423i — Clean news feed started");
 
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
-      const summarizerUrl = "https://shvoynich-news-summarizer.brentp256.workers.dev";
 
-      const data = await loadCSV(newsCSV);
-      const container = document.getElementById('news-container');
+      try {
+        const data = await loadCSV(newsCSV);
+        console.log("✅ CSV loaded successfully. Total items:", data.length);
+        console.log("📋 Column names:", Object.keys(data[0] || {}));
 
-      // Sort newest first
-      data.sort((a, b) => new Date(b.Date) - new Date(a.Date));
+        const container = document.getElementById('news-container');
 
-      data.forEach(item => {
-        const date = item.Date || '';
-        const title = item.Title || 'Untitled';
-        const url = item.URL || '#';
+        // Sort newest first
+        data.sort((a, b) => new Date(b.Date) - new Date(a.Date));
 
-        // Get summary from Worker
-        let excerpt = '';
-        try {
-          const res = await fetch(`${summarizerUrl}?url=${encodeURIComponent(url)}`);
-          const json = await res.json();
-          if (json.excerpt && !json.excerpt.includes("No summary found") && !json.excerpt.includes("Could not load")) {
-            excerpt = json.excerpt;
-          }
-        } catch (e) {
-          // leave blank if Worker fails
-        }
+        data.forEach((item, index) => {
+          const date = item.Date || '';
+          const title = item.Title || 'Untitled';
+          const url = item.URL || '#';
 
-        // Auto-detect category
-        let category = '';
-        const catFields = ['Category', 'category', 'Type', 'type', 'Tag', 'tag'];
-        for (let field of catFields) {
-          if (item[field] && item[field].trim() !== '') {
-            category = item[field].trim();
-            break;
-          }
-        }
-
-        const div = document.createElement('div');
-        div.className = 'news-item bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500';
-        div.innerHTML = `
-          <div class="flex gap-6">
-            <div class="text-emerald-400 font-mono text-sm pt-1 w-28 shrink-0">${date}</div>
-            <div class="flex-1">
-              <a href="${url}" target="_blank" rel="noopener"
-                 class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors">
-                ${title}
-              </a>
-              ${excerpt ? `<p class="text-gray-400 mt-4 text-base leading-relaxed">${excerpt}</p>` : ''}
-              
-              <div class="mt-6 flex items-center justify-between">
-                ${category ? `<span class="px-3 py-1 text-xs font-medium bg-gray-700 text-emerald-300 rounded-full">${category}</span>` : ''}
-                <a href="${url}" target="_blank" rel="noopener"
-                   class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-1">
-                  Read full article →
+          const div = document.createElement('div');
+          div.className = 'news-item bg-gray-800 p-5 rounded-xl border border-gray-700';
+          div.innerHTML = `
+            <div class="flex gap-6 items-start">
+              <div class="text-emerald-400 font-mono text-sm pt-1 w-28 shrink-0">${date}</div>
+              <div class="flex-1">
+                <a href="${url}" target="_blank" rel="noopener" class="block text-xl font-semibold hover:text-emerald-300">
+                  ${title}
                 </a>
               </div>
             </div>
-          </div>
-        `;
-        container.appendChild(div);
-      });
+          `;
+          container.appendChild(div);
+        });
 
-      if (data.length === 0) {
-        container.innerHTML = `<p class="text-gray-400 text-center py-12">No news items yet.</p>`;
+      } catch (e) {
+        console.error("❌ Error loading news:", e);
+        document.getElementById('news-container').innerHTML = `<p class="text-red-400">Error loading news data. Check console (F12).</p>`;
       }
     });
   </script>
