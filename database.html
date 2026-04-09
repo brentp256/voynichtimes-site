@@ -26,13 +26,20 @@
 
   <div class="max-w-screen-2xl mx-auto p-6">
     <h2 class="text-4xl font-bold mb-8">Full Product Database</h2>
+    
+    <!-- OBVIOUS TEST BANNER -->
+    <div class="bg-yellow-400 text-black text-center py-3 font-bold text-lg mb-6 rounded-xl">
+      TINY NOTES TEST MODE — widthGrow: 0.1<br>
+      If you see this banner, the latest code is LIVE
+    </div>
+
     <div id="product-table" class="bg-gray-800 p-4 rounded-xl"></div>
   </div>
 
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 TINY NOTES TEST MODE - widthGrow: 0.2");
+      console.log("🚀 TINY NOTES TEST MODE - widthGrow: 0.1");
 
       const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
       const productNameColumn = "Product";
@@ -83,7 +90,7 @@
             field: "Notes", 
             headerFilter: true,
             formatter: "textarea",
-            widthGrow: 0.2          // REAL TINY TEST MODE
+            widthGrow: 0.1          // SUPER TINY TEST
           },
           { title: "URL", field: "URL", visible: false }
         ],
