@@ -1,26 +1,39 @@
 // =============================================
-// WIDER TABLE + 100 ITEMS DEFAULT + WRAPPED NOTES
+// TIGHTER TABLE - TEXT WRAP IN ALL COLUMNS + RELIABLE DATE SORT
 // =============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log("🚀 Tabulator ready - wider table + 100 items default");
+  console.log("🚀 Tabulator ready - text wrap everywhere + reliable date sort");
 
   const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
   const productNameColumn = "Product";
 
   const data = await loadCSV(productsCSV);
 
+  // Robust date sorter for MM/DD/YYYY
+  const dateSorter = function(a, b) {
+    const parseDate = (val) => {
+      if (!val) return 0;
+      const parts = String(val).split('/');
+      if (parts.length === 3) {
+        return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
+      }
+      return new Date(val).getTime();
+    };
+    return parseDate(a) - parseDate(b);
+  };
+
   if (document.getElementById('product-table')) {
     new Tabulator("#product-table", {
       data: data,
-      layout: "fitData",
+      layout: "fitData",                    // uses full width without forcing scroll
       pagination: "local",
-      paginationSize: 100,                    // ← now defaults to 100 rows
+      paginationSize: 100,
       paginationSizeSelector: [25, 50, 100, 250],
-      variableHeight: true,
+      variableHeight: true,                 // rows expand when text wraps
       columns: [
-        { title: "Company", field: "!Company", headerFilter: true, widthGrow: 1 },
-        { title: "Series", field: "Series", headerFilter: true, widthGrow: 1 },
+        { title: "Company", field: "!Company", headerFilter: true, formatter: "textarea", widthGrow: 1 },
+        { title: "Series", field: "Series", headerFilter: true, formatter: "textarea", widthGrow: 1 },
         {
           title: "Product",
           field: productNameColumn,
@@ -36,18 +49,18 @@ document.addEventListener('DOMContentLoaded', async () => {
           widthGrow: 3,
           headerFilter: true
         },
-        { title: "Category", field: "Category", headerFilter: true, widthGrow: 1 },
-        { title: "Date", field: "Date", sorter: "date", sorterParams: { format: "MM/DD/YYYY" }, headerFilter: true, widthGrow: 1 },
+        { title: "Category", field: "Category", headerFilter: true, formatter: "textarea", widthGrow: 1 },
+        { title: "Date", field: "Date", sorter: dateSorter, headerFilter: true, widthGrow: 1 },
         { 
           title: "Notes", 
           field: "Notes", 
           headerFilter: true,
           formatter: "textarea",
-          widthGrow: 4
+          widthGrow: 3
         },
         { title: "URL", field: "URL", visible: false }
       ],
-      initialSort: [{column: "Date", dir: "desc"}]
+      initialSort: [{column: "Date", dir: "desc"}]   // starts with newest/upcoming
     });
   }
 });
