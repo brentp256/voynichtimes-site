@@ -1,39 +1,26 @@
 // =============================================
-// FINAL - CUSTOM DATE SORTER + TIGHT COLUMNS + FULL WRAPPING
+// FIXED PIXEL WIDTHS - TIGHTER COLUMNS + FULL WRAPPING + RELIABLE DATE SORT
 // =============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log("🚀 Tabulator ready - custom sorter + tight columns");
+  console.log("🚀 Tabulator ready - fixed pixel widths + full wrapping");
 
   const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
   const productNameColumn = "Product";
 
   const data = await loadCSV(productsCSV);
 
-  // Custom date sorter - no luxon needed
-  const dateSorter = function(a, b) {
-    const parseDate = (val) => {
-      if (!val) return 0;
-      const parts = String(val).split('/');
-      if (parts.length === 3) {
-        return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
-      }
-      return new Date(val).getTime();
-    };
-    return parseDate(a) - parseDate(b);
-  };
-
   if (document.getElementById('product-table')) {
     new Tabulator("#product-table", {
       data: data,
-      layout: "fitDataTable",
+      layout: "fitColumns",               // fills container but respects fixed widths
       pagination: "local",
       paginationSize: 100,
       paginationSizeSelector: [25, 50, 100, 250],
       variableHeight: true,
       columns: [
-        { title: "Company", field: "!Company", headerFilter: true, formatter: "textarea", widthGrow: 1 },
-        { title: "Series", field: "Series", headerFilter: true, formatter: "textarea", widthGrow: 1 },
+        { title: "Company", field: "!Company", headerFilter: true, formatter: "textarea", width: 130 },
+        { title: "Series", field: "Series", headerFilter: true, formatter: "textarea", width: 150 },
         {
           title: "Product",
           field: productNameColumn,
@@ -46,17 +33,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             return value;
           },
-          widthGrow: 1.2,
+          width: 320,                     // skinnier Product
           headerFilter: true
         },
-        { title: "Category", field: "Category", headerFilter: true, formatter: "textarea", widthGrow: 1 },
-        { title: "Date", field: "Date", sorter: dateSorter, headerFilter: true, widthGrow: 1 },
+        { title: "Category", field: "Category", headerFilter: true, formatter: "textarea", width: 130 },
+        { title: "Date", field: "Date", sorter: "date", sorterParams: { format: "MM/DD/YYYY" }, headerFilter: true, width: 110 },
         { 
           title: "Notes", 
           field: "Notes", 
           headerFilter: true,
           formatter: "textarea",
-          widthGrow: 1.2
+          width: 250                      // tighter Notes
         },
         { title: "URL", field: "URL", visible: false }
       ],
