@@ -49,7 +49,7 @@
     <h2 class="text-4xl font-bold mb-8">News / Wunderkammer</h2>
     
     <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium mb-8 rounded-xl">
-      v0423o — News with bigger images + nicer placeholder + tiny border
+      v0423o — Final safe version with images
     </div>
 
     <div id="news-container" class="space-y-8"></div>
@@ -64,7 +64,7 @@
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423o — Final polished news with images");
+      console.log("🚀 v0423o — Safe final news page");
 
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
       const summarizerUrl = "https://shvoynich-news-summarizer.brentp256.workers.dev";
@@ -72,9 +72,10 @@
       const data = await loadCSV(newsCSV);
       const container = document.getElementById('news-container');
 
+      // Sort newest first
       data.sort((a, b) => new Date(b.Date) - new Date(a.Date));
 
-      data.forEach(item => {
+      for (const item of data) {
         const date = item.Date || '';
         const title = item.Title || 'Untitled';
         const url = item.URL || '#';
@@ -115,7 +116,7 @@
           </div>
         `;
         container.appendChild(div);
-      });
+      }
     });
   </script>
 </body>
