@@ -1,5 +1,5 @@
 // =============================================
-// TIGHTEST COLUMNS + FULL WRAPPING + RELIABLE DATE SORT
+// TIGHTEST TABLE - SKINNIER PRODUCT + TIGHT NOTES + FULL WRAPPING
 // =============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             return value;
           },
-          widthGrow: 1.5,                // skinnier Product
+          widthGrow: 1.2,                // even skinnier Product
           headerFilter: true
         },
         { title: "Category", field: "Category", headerFilter: true, formatter: "textarea", widthGrow: 1 },
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           field: "Notes", 
           headerFilter: true,
           formatter: "textarea",
-          widthGrow: 1.5                 // tight Notes
+          widthGrow: 1.5                 // significantly tighter Notes
         },
         { title: "URL", field: "URL", visible: false }
       ],
