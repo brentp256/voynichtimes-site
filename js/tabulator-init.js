@@ -1,5 +1,5 @@
 // =============================================
-// FULL TABLE WITH OBVIOUS BLUE CLICKABLE LINKS
+// CLEAN TABLE WITH BLUE CLICKABLE LINKS
 // =============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         {
           title: "Product",
           field: productNameColumn,
-          formatter: function(cell, formatterParams) {
+          formatter: function(cell) {
             const value = cell.getValue();
             const rowData = cell.getRow().getData();
             const url = rowData["URL"];
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { title: "Prd#", field: "Prd#" },
         { title: "Date", field: "Date" },
         { title: "Notes", field: "Notes" },
-        { title: "URL", field: "URL", visible: false }   // hidden
+        { title: "URL", field: "URL", visible: false }   // hidden - only used for links
       ],
       initialSort: [{column: productNameColumn, dir: "asc"}]
     });
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         {
           title: "Product",
           field: productNameColumn,
-          formatter: function(cell, formatterParams) {
+          formatter: function(cell) {
             const value = cell.getValue();
             const rowData = cell.getRow().getData();
             const url = rowData["URL"];
