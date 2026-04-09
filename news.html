@@ -49,16 +49,22 @@
     <h2 class="text-4xl font-bold mb-8">News / Wunderkammer</h2>
     
     <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium mb-8 rounded-xl">
-      v0423m — Bigger images + nicer placeholder + tiny border
+      v0423n — News with images, summaries, and disclaimer
     </div>
 
     <div id="news-container" class="space-y-8"></div>
+
+    <!-- DISCLAIMER -->
+    <div class="mt-16 text-center text-xs text-gray-500 max-w-md mx-auto">
+      All links lead to their original sources. 
+      Amazon links are affiliate links that help support Voynich Times at no extra cost to you.
+    </div>
   </div>
 
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423m — Safe version with images");
+      console.log("🚀 v0423n — Final News page");
 
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
       const summarizerUrl = "https://shvoynich-news-summarizer.brentp256.workers.dev";
@@ -68,7 +74,7 @@
 
       data.sort((a, b) => new Date(b.Date) - new Date(a.Date));
 
-      for (const item of data) {
+      data.forEach(item => {
         const date = item.Date || '';
         const title = item.Title || 'Untitled';
         const url = item.URL || '#';
@@ -82,9 +88,7 @@
             excerpt = json.excerpt;
           }
           if (json.image) image = json.image;
-        } catch (e) {
-          // safe fallback
-        }
+        } catch (e) {}
 
         const div = document.createElement('div');
         div.className = 'news-item bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500 flex gap-6';
@@ -93,10 +97,13 @@
             ? `<img src="${image}" class="article-image" alt="">` 
             : `<div class="placeholder">📜</div>`}
           <div class="flex-1">
-            <a href="${url}" target="_blank" rel="noopener"
-               class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors">
-              ${title}
-            </a>
+            <div class="flex justify-between items-start">
+              <a href="${url}" target="_blank" rel="noopener"
+                 class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors flex-1">
+                ${title}
+              </a>
+              <div class="text-emerald-400 font-mono text-sm ml-6 shrink-0">${date}</div>
+            </div>
             ${excerpt ? `<p class="text-gray-400 mt-4 text-base leading-relaxed">${excerpt}</p>` : ''}
             
             <div class="mt-6 flex justify-end">
@@ -108,7 +115,7 @@
           </div>
         `;
         container.appendChild(div);
-      }
+      });
     });
   </script>
 </body>
