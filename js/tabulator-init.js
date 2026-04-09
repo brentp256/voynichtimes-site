@@ -1,9 +1,9 @@
 // =============================================
-// FULL DATABASE ONLY - DEFAULT SORT BY DATE (NEWEST FIRST)
+// WIDER TABLE + WRAPPED NOTES COLUMN
 // =============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log("🚀 Tabulator ready - Amazon links + filters + date sorting");
+  console.log("🚀 Tabulator ready - wider table + wrapped Notes");
 
   // ==================== YOUR REAL DATA ====================
   const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
@@ -12,30 +12,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const data = await loadCSV(productsCSV);
 
-  // Custom date sorter for MM/DD/YYYY format
-  const dateSorter = function(a, b, aRow, bRow, column, dir, sorterParams) {
-    const parseDate = (val) => {
-      if (!val) return 0;
-      const parts = String(val).split('/');
-      if (parts.length === 3) {
-        return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
-      }
-      return new Date(val).getTime();
-    };
-    return parseDate(a) - parseDate(b);
-  };
-
-  // ==================== FULL DATABASE PAGE ====================
   if (document.getElementById('product-table')) {
     new Tabulator("#product-table", {
       data: data,
-      layout: "fitColumns",
+      layout: "fitColumns",           // makes the table use full available width
       pagination: "local",
       paginationSize: 25,
       paginationSizeSelector: [10, 25, 50, 100],
       columns: [
-        { title: "Company", field: "!Company", headerFilter: true },
-        { title: "Series", field: "Series", headerFilter: true },
+        { title: "Company", field: "!Company", headerFilter: true, widthGrow: 1 },
+        { title: "Series", field: "Series", headerFilter: true, widthGrow: 1 },
         {
           title: "Product",
           field: productNameColumn,
@@ -48,15 +34,21 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             return value;
           },
-          widthGrow: 3,
+          widthGrow: 3,                  // gives Product more space
           headerFilter: true
         },
-        { title: "Category", field: "Category", headerFilter: true },
-        { title: "Date", field: "Date", sorter: dateSorter, headerFilter: true },
-        { title: "Notes", field: "Notes", headerFilter: true },
+        { title: "Category", field: "Category", headerFilter: true, widthGrow: 1 },
+        { title: "Date", field: "Date", sorter: "date", sorterParams: { format: "MM/DD/YYYY" }, headerFilter: true, widthGrow: 1 },
+        { 
+          title: "Notes", 
+          field: "Notes", 
+          headerFilter: true,
+          formatter: "textarea",         // ← wraps long text nicely
+          widthGrow: 3                   // gives Notes plenty of room
+        },
         { title: "URL", field: "URL", visible: false }
       ],
-      initialSort: [{column: "Date", dir: "desc"}]   // ← NEW: starts with most recent/upcoming on top
+      initialSort: [{column: "Date", dir: "desc"}]
     });
   }
 });
