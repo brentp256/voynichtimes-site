@@ -5,18 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Voynich Times - News</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://unpkg.com/tabulator-tables@6.3.0/dist/css/tabulator.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/tabulator-tables@6.3.0/dist/js/tabulator.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <style>
     body { background-color: #111827; color: #e5e7eb; }
-    .card { transition: all 0.3s; }
-    .card:hover { transform: scale(1.05); }
+    .news-item { transition: all 0.2s ease; }
+    .news-item:hover { background-color: #1f2937; transform: translateX(4px); }
   </style>
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen">
   <nav class="bg-gray-800 p-4 sticky top-0 shadow">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
+    <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
       <h1 class="text-2xl font-bold">Voynich Times</h1>
       <div class="space-x-6">
         <a href="index.html" class="hover:text-white">Home</a>
@@ -26,13 +24,61 @@
     </div>
   </nav>
 
-  <div class="max-w-6xl mx-auto p-8">
-    <h2 class="text-4xl font-bold mb-8">News</h2>
-    <div id="news-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Live news cards from Google Sheets will appear here automatically -->
+  <div class="max-w-screen-2xl mx-auto p-6">
+    <h2 class="text-4xl font-bold mb-8">News / Wunderkammer</h2>
+    
+    <!-- VERSION BANNER -->
+    <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium mb-8 rounded-xl">
+      v0423a — News feed (Drudge-style + Voynich flair)
     </div>
+
+    <div id="news-container" class="space-y-6"></div>
   </div>
 
   <script src="js/data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      console.log("🚀 v0423a — News feed loaded");
+
+      // ←←← REPLACE THIS WITH YOUR ACTUAL NEWS CSV URL ↓↓↓
+      const newsCSV = "https://docs.google.com/spreadsheets/d/e/YOUR_NEWS_CSV_URL_HERE/pub?gid=0&single=true&output=csv";
+
+      const data = await loadCSV(newsCSV);
+
+      const container = document.getElementById('news-container');
+
+      // Sort newest first
+      data.sort((a, b) => {
+        const dateA = new Date(a.Date);
+        const dateB = new Date(b.Date);
+        return dateB - dateA;
+      });
+
+      data.forEach(item => {
+        const date = item.Date || '';
+        const title = item.Title || 'Untitled';
+        const url = item.URL || '#';
+
+        const div = document.createElement('div');
+        div.className = 'news-item bg-gray-800 p-5 rounded-xl border border-gray-700 hover:border-emerald-500';
+        div.innerHTML = `
+          <div class="flex gap-6 items-start">
+            <div class="text-emerald-400 font-mono text-sm pt-1 w-28 shrink-0">${date}</div>
+            <div class="flex-1">
+              <a href="${url}" target="_blank" rel="noopener"
+                 class="block text-xl font-semibold leading-tight hover:text-emerald-300 transition-colors">
+                ${title}
+              </a>
+            </div>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+
+      if (data.length === 0) {
+        container.innerHTML = `<p class="text-gray-400 text-center py-12">No news items yet. Add rows to your Google Sheet!</p>`;
+      }
+    });
+  </script>
 </body>
 </html>
