@@ -1,9 +1,9 @@
 // =============================================
-// CLEAN TABLE WITH BLUE CLICKABLE LINKS
+// CLEAN TABLE - NO PRD# ON FULL DATABASE + LIVE FILTERS
 // =============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log("🚀 Tabulator ready - Amazon links enabled");
+  console.log("🚀 Tabulator ready - Amazon links + filters enabled");
 
   // ==================== YOUR REAL DATA ====================
   const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const data = await loadCSV(productsCSV);
 
-  // ==================== FULL DATABASE PAGE ====================
+  // ==================== FULL DATABASE PAGE (no Prd#, with filters) ====================
   if (document.getElementById('product-table')) {
     new Tabulator("#product-table", {
       data: data,
@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       paginationSize: 25,
       paginationSizeSelector: [10, 25, 50, 100],
       columns: [
-        { title: "Company", field: "!Company" },
-        { title: "Series", field: "Series" },
+        { title: "Company", field: "!Company", headerFilter: true },
+        { title: "Series", field: "Series", headerFilter: true },
         {
           title: "Product",
           field: productNameColumn,
@@ -35,19 +35,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             return value;
           },
-          widthGrow: 3
+          widthGrow: 3,
+          headerFilter: true
         },
-        { title: "Category", field: "Category" },
-        { title: "Prd#", field: "Prd#" },
-        { title: "Date", field: "Date" },
-        { title: "Notes", field: "Notes" },
-        { title: "URL", field: "URL", visible: false }   // hidden - only used for links
+        { title: "Category", field: "Category", headerFilter: true },
+        { title: "Date", field: "Date", headerFilter: true },
+        { title: "Notes", field: "Notes", headerFilter: true },
+        { title: "URL", field: "URL", visible: false }
       ],
       initialSort: [{column: productNameColumn, dir: "asc"}]
     });
   }
 
-  // ==================== RECENT & UPCOMING PAGE ====================
+  // ==================== RECENT & UPCOMING PAGE (keeps Prd#, with filters) ====================
   if (document.getElementById('releases-table')) {
     new Tabulator("#releases-table", {
       data: data,
@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       paginationSize: 25,
       paginationSizeSelector: [10, 25, 50, 100],
       columns: [
-        { title: "Company", field: "!Company" },
-        { title: "Series", field: "Series" },
+        { title: "Company", field: "!Company", headerFilter: true },
+        { title: "Series", field: "Series", headerFilter: true },
         {
           title: "Product",
           field: productNameColumn,
@@ -70,12 +70,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             return value;
           },
-          widthGrow: 3
+          widthGrow: 3,
+          headerFilter: true
         },
-        { title: "Category", field: "Category" },
+        { title: "Category", field: "Category", headerFilter: true },
         { title: "Prd#", field: "Prd#" },
-        { title: "Date", field: "Date" },
-        { title: "Notes", field: "Notes" },
+        { title: "Date", field: "Date", headerFilter: true },
+        { title: "Notes", field: "Notes", headerFilter: true },
         { title: "URL", field: "URL", visible: false }
       ],
       initialSort: [{column: "Date", dir: "desc"}]
