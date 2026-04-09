@@ -1,9 +1,9 @@
 // =============================================
-// FULL DATABASE ONLY - ROBUST DATE SORTING + FILTERS + BLUE LINKS
+// FULL DATABASE ONLY - DEFAULT SORT BY DATE (NEWEST FIRST)
 // =============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log("🚀 Tabulator ready - Amazon links + filters + robust date sorting");
+  console.log("🚀 Tabulator ready - Amazon links + filters + date sorting");
 
   // ==================== YOUR REAL DATA ====================
   const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (!val) return 0;
       const parts = String(val).split('/');
       if (parts.length === 3) {
-        // MM/DD/YYYY → new Date(year, month-1, day)
         return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
       }
       return new Date(val).getTime();
@@ -57,7 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { title: "Notes", field: "Notes", headerFilter: true },
         { title: "URL", field: "URL", visible: false }
       ],
-      initialSort: [{column: productNameColumn, dir: "asc"}]
+      initialSort: [{column: "Date", dir: "desc"}]   // ← NEW: starts with most recent/upcoming on top
     });
   }
 });
