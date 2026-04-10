@@ -57,14 +57,14 @@
   </div>
   <!-- Tiny version indicator -->
   <div class="fixed bottom-4 right-4 text-[10px] text-gray-600 bg-gray-900/70 px-2 py-px rounded">
-    v0423al
+    v0423al-9
   </div>
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
       const data = await loadCSV(newsCSV);
-      const recent = data.sort((a, b) => new Date(b.Date) - new Date(a.Date)).slice(0, 5);
+      const recent = data.sort((a, b) => new Date(b.Date) - new Date(a.Date)).slice(0, 9);
       const container = document.getElementById('news-pepper');
       recent.forEach(item => {
         const div = document.createElement('div');
