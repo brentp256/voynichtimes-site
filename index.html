@@ -16,7 +16,7 @@
     }
     .news-card {
       transition: all 0.3s ease;
-      padding: 14px 20px;
+      padding: 12px 18px;
     }
     .news-card:hover {
       transform: scale(1.03) translateY(-3px);
@@ -42,17 +42,18 @@
       Bringing mysterious puzzly news to you!
     </p>
 
-    <!-- Centered image (strong centering) -->
-    <div class="flex justify-center mt-16 mb-12">
-      <img src="voynich-home-art.jpg" 
-           alt="Voynich-inspired Art Nouveau illustration"
-           class="central-image mx-auto">
-    </div>
+    <!-- Centered image + news on right -->
+    <div class="flex justify-center items-start gap-16 mt-16 flex-wrap">
+      <div>
+        <img src="voynich-home-art.jpg" 
+             alt="Voynich-inspired Art Nouveau illustration"
+             class="central-image">
+      </div>
 
-    <!-- Single column on the right: Latest News -->
-    <div class="max-w-2xl mx-auto">
-      <h3 class="text-xl font-semibold mb-6 text-emerald-300 text-left">Latest News</h3>
-      <div id="recent-news" class="space-y-4"></div>
+      <div class="max-w-xs text-left">
+        <h3 class="text-xl font-semibold mb-6 text-emerald-300">Latest News</h3>
+        <div id="recent-news" class="space-y-4"></div>
+      </div>
     </div>
 
     <!-- Patreon -->
@@ -73,7 +74,7 @@
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423ak — Single column on right with centered image");
+      console.log("🚀 v0423ak — Centered image + right-side news");
 
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
 
