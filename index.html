@@ -16,7 +16,7 @@
     }
     .side-card {
       transition: all 0.3s ease;
-      padding: 14px 18px;   /* tighter */
+      padding: 12px 16px;   /* tighter cards */
     }
     .side-card:hover {
       transform: scale(1.03) translateY(-3px);
@@ -49,16 +49,16 @@
            class="central-image">
     </div>
 
-    <!-- Two-column layout -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+    <!-- Two-column layout — side-by-side on tablets and larger -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
       
-      <!-- LEFT: New Products -->
+      <!-- LEFT: 10 Newest Products -->
       <div>
         <h3 class="text-xl font-semibold mb-6 text-emerald-300">New Products</h3>
         <div id="recent-products" class="space-y-3"></div>
       </div>
 
-      <!-- RIGHT: Latest News -->
+      <!-- RIGHT: 10 Newest News -->
       <div>
         <h3 class="text-xl font-semibold mb-6 text-emerald-300">Latest News</h3>
         <div id="recent-news" class="space-y-3"></div>
@@ -77,13 +77,13 @@
 
   <!-- Tiny version indicator -->
   <div class="fixed bottom-4 right-4 text-[10px] text-gray-600 bg-gray-900/70 px-2 py-px rounded">
-    v0423z
+    v0423aa
   </div>
 
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423z — Compact home page with newest-first sorting");
+      console.log("🚀 v0423aa — Compact home page, 10 newest items per side");
 
       const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
@@ -101,8 +101,8 @@
         return parseDate(b) - parseDate(a);   // newest first
       };
 
-      // LEFT: 8 newest products
-      const recentProducts = [...products].sort(dateSorter).slice(0, 8);
+      // LEFT: 10 newest products
+      const recentProducts = [...products].sort(dateSorter).slice(0, 10);
       const prodContainer = document.getElementById('recent-products');
       recentProducts.forEach(item => {
         const name = item.Product || 'Untitled Product';
@@ -117,8 +117,8 @@
         prodContainer.appendChild(div);
       });
 
-      // RIGHT: 8 newest news
-      const recentNews = [...newsData].sort(dateSorter).slice(0, 8);
+      // RIGHT: 10 newest news
+      const recentNews = [...newsData].sort(dateSorter).slice(0, 10);
       const newsContainer = document.getElementById('recent-news');
       recentNews.forEach(item => {
         const title = item.Title || 'Untitled';
