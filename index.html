@@ -16,10 +16,11 @@
     }
     .side-card {
       transition: all 0.3s ease;
+      padding: 14px 18px;   /* tighter */
     }
     .side-card:hover {
-      transform: scale(1.05) translateY(-4px);
-      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2);
+      transform: scale(1.03) translateY(-3px);
+      box-shadow: 0 15px 20px -5px rgb(0 0 0 / 0.2);
     }
   </style>
 </head>
@@ -48,19 +49,19 @@
            class="central-image">
     </div>
 
-    <!-- Two-column layout (side-by-side on tablets and larger) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+    <!-- Two-column layout -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
       
-      <!-- LEFT: 8 Most Recent Products -->
+      <!-- LEFT: New Products -->
       <div>
         <h3 class="text-xl font-semibold mb-6 text-emerald-300">New Products</h3>
-        <div id="recent-products" class="space-y-4"></div>
+        <div id="recent-products" class="space-y-3"></div>
       </div>
 
-      <!-- RIGHT: 8 Most Recent News -->
+      <!-- RIGHT: Latest News -->
       <div>
         <h3 class="text-xl font-semibold mb-6 text-emerald-300">Latest News</h3>
-        <div id="recent-news" class="space-y-4"></div>
+        <div id="recent-news" class="space-y-3"></div>
       </div>
     </div>
 
@@ -76,13 +77,13 @@
 
   <!-- Tiny version indicator -->
   <div class="fixed bottom-4 right-4 text-[10px] text-gray-600 bg-gray-900/70 px-2 py-px rounded">
-    v0423y
+    v0423z
   </div>
 
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423y — Home page with 8 newest items per side");
+      console.log("🚀 v0423z — Compact home page with newest-first sorting");
 
       const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
@@ -90,7 +91,6 @@
       const products = await loadCSV(productsCSV);
       const newsData = await loadCSV(newsCSV);
 
-      // Reliable newest-first date sorter
       const dateSorter = (a, b) => {
         const parseDate = (val) => {
           if (!val) return 0;
@@ -108,25 +108,25 @@
         const name = item.Product || 'Untitled Product';
         const url = item.URL || '#';
         const div = document.createElement('div');
-        div.className = 'side-card bg-gray-800 p-5 rounded-2xl border border-gray-600 hover:border-emerald-400';
+        div.className = 'side-card bg-gray-800 p-4 rounded-2xl border border-gray-600 hover:border-emerald-400 text-base';
         div.innerHTML = `
-          <a href="${url}" target="_blank" rel="noopener" class="block text-lg font-medium hover:text-emerald-300">
+          <a href="${url}" target="_blank" rel="noopener" class="block font-medium hover:text-emerald-300">
             New Product: ${name}
           </a>
         `;
         prodContainer.appendChild(div);
       });
 
-      // RIGHT: 8 newest news stories
+      // RIGHT: 8 newest news
       const recentNews = [...newsData].sort(dateSorter).slice(0, 8);
       const newsContainer = document.getElementById('recent-news');
       recentNews.forEach(item => {
         const title = item.Title || 'Untitled';
         const url = item.URL || '#';
         const div = document.createElement('div');
-        div.className = 'side-card bg-gray-800 p-5 rounded-2xl border border-gray-600 hover:border-emerald-400';
+        div.className = 'side-card bg-gray-800 p-4 rounded-2xl border border-gray-600 hover:border-emerald-400 text-base';
         div.innerHTML = `
-          <a href="${url}" target="_blank" rel="noopener" class="block text-lg font-medium hover:text-emerald-300">
+          <a href="${url}" target="_blank" rel="noopener" class="block font-medium hover:text-emerald-300">
             ${title}
           </a>
         `;
