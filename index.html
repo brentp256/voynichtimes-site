@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Voynich Times</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js?v=0423af"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js?v=0423ag"></script>
   <style>
     body { background-color: #111827; color: #e5e7eb; }
     .central-image {
@@ -16,8 +16,9 @@
     }
     .side-card {
       transition: all 0.3s ease;
-      padding: 9px 14px;   /* much narrower */
+      padding: 10px 14px;
       font-size: 1.0rem;
+      background-color: #0f766e;   /* bright teal so it's impossible to miss */
     }
     .side-card:hover {
       transform: scale(1.03) translateY(-3px);
@@ -37,9 +38,9 @@
     </div>
   </nav>
 
-  <!-- BRIGHT RED TEST BANNER -->
+  <!-- VERY OBVIOUS RED TEST BANNER -->
   <div class="bg-red-600 text-white text-center py-3 text-sm font-bold">
-    TEST v0423af — SIDE-BY-SIDE + NARROW CARDS + NEWEST FIRST
+    TEST v0423ag — SIDE-BY-SIDE + NARROW TEAL CARDS + NEWEST FIRST
   </div>
 
   <div class="max-w-screen-2xl mx-auto p-8 text-center">
@@ -55,16 +56,16 @@
            class="central-image">
     </div>
 
-    <!-- FORCED two-column layout -->
+    <!-- Forced two-column layout -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
       
-      <!-- LEFT: 10 newest products -->
+      <!-- LEFT: 10 Newest Products -->
       <div>
         <h3 class="text-xl font-semibold mb-6 text-emerald-300">New Products</h3>
         <div id="recent-products" class="space-y-3"></div>
       </div>
 
-      <!-- RIGHT: 10 newest news -->
+      <!-- RIGHT: 10 Newest News -->
       <div>
         <h3 class="text-xl font-semibold mb-6 text-emerald-300">Latest News</h3>
         <div id="recent-news" class="space-y-3"></div>
@@ -83,13 +84,13 @@
 
   <!-- Tiny version indicator -->
   <div class="fixed bottom-4 right-4 text-[10px] text-gray-600 bg-gray-900/70 px-2 py-px rounded">
-    v0423af
+    v0423ag
   </div>
 
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423af — Forced narrow side-by-side layout");
+      console.log("🚀 v0423ag — Forced narrow side-by-side with newest-first sorting");
 
       const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
