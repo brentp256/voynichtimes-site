@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Voynich Times</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js?v=0423aj"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js?v=0423aj-simple"></script>
   <style>
     body { background-color: #111827; color: #e5e7eb; }
     .central-image {
@@ -16,7 +16,7 @@
     }
     .news-card {
       transition: all 0.3s ease;
-      padding: 12px 18px;
+      padding: 14px 20px;
     }
     .news-card:hover {
       transform: scale(1.03) translateY(-3px);
@@ -35,11 +35,6 @@
       </div>
     </div>
   </nav>
-
-  <!-- BRIGHT RED TEST BANNER -->
-  <div class="bg-red-600 text-white text-center py-3 text-sm font-bold">
-    TEST v0423aj — SINGLE COLUMN ON RIGHT (newest first)
-  </div>
 
   <div class="max-w-screen-2xl mx-auto p-8 text-center">
     <h1 class="text-6xl font-bold leading-none mb-4">The Voynich Times</h1>
@@ -72,39 +67,28 @@
 
   <!-- Tiny version indicator -->
   <div class="fixed bottom-4 right-4 text-[10px] text-gray-600 bg-gray-900/70 px-2 py-px rounded">
-    v0423aj
+    v0423aj-simple
   </div>
 
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423aj — Single column on right");
+      console.log("🚀 v0423aj-simple — Single column on right only");
 
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
 
-      const newsData = await loadCSV(newsCSV);
+      const data = await loadCSV(newsCSV);
 
-      const dateSorter = (a, b) => {
-        const parseDate = (val) => {
-          if (!val) return 0;
-          const parts = String(val).split('/');
-          if (parts.length === 3) return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
-          return new Date(val).getTime();
-        };
-        return parseDate(b) - parseDate(a);
-      };
+      const dateSorter = (a, b) => new Date(b.Date) - new Date(a.Date);
+      const recent = [...data].sort(dateSorter).slice(0, 10);
 
-      const recentNews = [...newsData].sort(dateSorter).slice(0, 10);
       const container = document.getElementById('recent-news');
-
-      recentNews.forEach(item => {
-        const title = item.Title || 'Untitled';
-        const url = item.URL || '#';
+      recent.forEach(item => {
         const div = document.createElement('div');
-        div.className = 'news-card bg-gray-800 p-5 rounded-2xl border border-gray-600 hover:border-emerald-400';
+        div.className = 'news-card bg-gray-800 rounded-2xl border border-gray-600';
         div.innerHTML = `
-          <a href="${url}" target="_blank" rel="noopener" class="block text-lg font-medium hover:text-emerald-300">
-            ${title}
+          <a href="${item.URL}" target="_blank" rel="noopener" class="block text-lg font-medium hover:text-emerald-300">
+            ${item.Title}
           </a>
         `;
         container.appendChild(div);
