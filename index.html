@@ -37,9 +37,9 @@
     </div>
   </nav>
 
-  <!-- OBVIOUS TEST BANNER so we can confirm the new version is live -->
-  <div class="bg-yellow-400 text-black text-center py-2 text-sm font-bold">
-    TEST v0423ae — Side-by-side layout with tighter cards (newest first)
+  <!-- OBVIOUS RED TEST BANNER -->
+  <div class="bg-red-500 text-white text-center py-3 text-sm font-bold">
+    TEST v0423ae — SIDE-BY-SIDE LAYOUT (newest first) — RED BANNER MEANS NEW CODE IS LIVE
   </div>
 
   <div class="max-w-screen-2xl mx-auto p-8 text-center">
@@ -55,8 +55,8 @@
            class="central-image">
     </div>
 
-    <!-- Two-column layout — side-by-side on most screens -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+    <!-- FORCED two-column layout -->
+    <div class="grid grid-cols-2 gap-8 max-w-6xl mx-auto">
       
       <!-- LEFT: 10 Newest Products -->
       <div>
@@ -89,7 +89,7 @@
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423ae — Tight side-by-side home page with newest-first sorting");
+      console.log("🚀 v0423ae — Forced side-by-side with newest-first sorting");
 
       const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
