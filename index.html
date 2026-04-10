@@ -16,8 +16,8 @@
     }
     .side-card {
       transition: all 0.3s ease;
-      padding: 12px 16px;
-      font-size: 1.05rem;
+      padding: 11px 16px;   /* much tighter */
+      font-size: 1.02rem;
     }
     .side-card:hover {
       transform: scale(1.03) translateY(-3px);
@@ -50,8 +50,8 @@
            class="central-image">
     </div>
 
-    <!-- Two-column layout — side-by-side on most screens -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-6xl mx-auto">
+    <!-- Two-column layout — side-by-side on tablets and larger -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
       
       <!-- LEFT: 10 Newest Products -->
       <div>
@@ -78,13 +78,13 @@
 
   <!-- Tiny version indicator -->
   <div class="fixed bottom-4 right-4 text-[10px] text-gray-600 bg-gray-900/70 px-2 py-px rounded">
-    v0423ab
+    v0423ac
   </div>
 
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423ab — Tight side-by-side home page with 10 newest items");
+      console.log("🚀 v0423ac — Tight side-by-side home page with newest-first sorting");
 
       const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
@@ -99,7 +99,7 @@
           if (parts.length === 3) return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
           return new Date(val).getTime();
         };
-        return parseDate(b) - parseDate(a);
+        return parseDate(b) - parseDate(a);   // newest first
       };
 
       // LEFT: 10 newest products
