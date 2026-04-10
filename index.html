@@ -16,7 +16,7 @@
     }
     .side-card {
       transition: all 0.3s ease;
-      padding: 10px 14px;     /* much tighter */
+      padding: 10px 14px;
       font-size: 1.0rem;
     }
     .side-card:hover {
@@ -37,6 +37,11 @@
     </div>
   </nav>
 
+  <!-- OBVIOUS TEST BANNER so we can confirm the new version is live -->
+  <div class="bg-yellow-400 text-black text-center py-2 text-sm font-bold">
+    TEST v0423ae — Side-by-side layout with tighter cards (newest first)
+  </div>
+
   <div class="max-w-screen-2xl mx-auto p-8 text-center">
     <h1 class="text-6xl font-bold leading-none mb-4">The Voynich Times</h1>
     <p class="text-2xl text-gray-300 max-w-xl mx-auto">
@@ -44,13 +49,13 @@
     </p>
 
     <!-- Centered Voynich image -->
-    <div class="flex justify-center mt-16 mb-12">
+    <div class="flex justify-center mt-12 mb-12">
       <img src="voynich-home-art.jpg" 
            alt="Voynich-inspired Art Nouveau illustration"
            class="central-image">
     </div>
 
-    <!-- Two-column layout — side-by-side on tablets and larger -->
+    <!-- Two-column layout — side-by-side on most screens -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
       
       <!-- LEFT: 10 Newest Products -->
@@ -78,13 +83,13 @@
 
   <!-- Tiny version indicator -->
   <div class="fixed bottom-4 right-4 text-[10px] text-gray-600 bg-gray-900/70 px-2 py-px rounded">
-    v0423ad
+    v0423ae
   </div>
 
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423ad — Tight side-by-side home page with newest-first sorting");
+      console.log("🚀 v0423ae — Tight side-by-side home page with newest-first sorting");
 
       const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
@@ -99,7 +104,7 @@
           if (parts.length === 3) return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
           return new Date(val).getTime();
         };
-        return parseDate(b) - parseDate(a);   // newest first
+        return parseDate(b) - parseDate(a);
       };
 
       // LEFT: 10 newest products
