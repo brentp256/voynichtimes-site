@@ -9,7 +9,7 @@
   <style>
     body { background-color: #111827; color: #e5e7eb; overflow-x: hidden; }
     
-    /* Full-screen looping Voynich video */
+    /* Voynich video background */
     #background-video {
       position: fixed;
       top: 0;
@@ -21,7 +21,6 @@
       filter: brightness(0.75) contrast(1.05);
     }
 
-    /* Dark overlay so text is readable */
     .overlay {
       position: fixed;
       top: 0;
@@ -40,12 +39,27 @@
       display: inline-block;
     }
 
+    /* News cards (right side) */
     .news-pepper {
       transition: all 0.3s ease;
+      background: rgba(31, 41, 55, 0.9);
+      border: 1px solid #4b5563;
     }
     .news-pepper:hover {
       transform: scale(1.05) translateY(-4px);
-      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2);
+      border-color: #10b981;
+    }
+
+    /* Product cards (left side) - different color */
+    .product-card {
+      transition: all 0.3s ease;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid #34d399;
+    }
+    .product-card:hover {
+      transform: scale(1.05) translateY(-4px);
+      background: rgba(16, 185, 129, 0.25);
+      border-color: #10b981;
     }
   </style>
 </head>
@@ -69,14 +83,26 @@
   </nav>
 
   <div class="max-w-screen-2xl mx-auto p-8 text-center relative z-10">
-    <!-- Title with black box -->
+    <!-- Centered title -->
     <div class="title-box mx-auto mb-12">
       <h1 class="text-6xl font-bold leading-none text-white">The Voynich Times</h1>
       <p class="text-2xl text-emerald-200 mt-3">Bringing mysterious puzzly news to you!</p>
     </div>
 
-    <div class="flex justify-center items-start gap-16 mt-8 flex-wrap">
-      <div id="news-pepper" class="max-w-xs space-y-5 text-left"></div>
+    <!-- Two columns: Products (left) + News (right) -->
+    <div class="flex justify-center items-start gap-8 mt-8 flex-wrap max-w-6xl mx-auto">
+      
+      <!-- LEFT: Recent Products -->
+      <div class="max-w-xs flex-1">
+        <h3 class="text-xl font-semibold mb-6 text-emerald-300 text-left">New Products</h3>
+        <div id="recent-products" class="space-y-5 text-left"></div>
+      </div>
+
+      <!-- RIGHT: Latest News -->
+      <div class="max-w-xs flex-1">
+        <h3 class="text-xl font-semibold mb-6 text-emerald-300 text-left">Latest News</h3>
+        <div id="recent-news" class="space-y-5 text-left"></div>
+      </div>
     </div>
 
     <!-- Patreon -->
@@ -91,27 +117,52 @@
 
   <!-- Tiny version indicator -->
   <div class="fixed bottom-4 right-4 text-[10px] text-gray-400 bg-black/70 px-2 py-px rounded z-50">
-    v0423bg-video
+    v0423-two-column
   </div>
 
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423bg-video — Voynich manuscript flipping background");
+      console.log("🚀 v0423-two-column — Products left + News right");
 
+      const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
-      const data = await loadCSV(newsCSV);
-      const recent = data.sort((a, b) => new Date(b.Date) - new Date(a.Date)).slice(0, 9);
-      const container = document.getElementById('news-pepper');
-      recent.forEach(item => {
+
+      const products = await loadCSV(productsCSV);
+      const newsData = await loadCSV(newsCSV);
+
+      const dateSorter = (a, b) => new Date(b.Date) - new Date(a.Date);
+
+      // LEFT: Recent Products (9 newest)
+      const recentProducts = [...products].sort(dateSorter).slice(0, 9);
+      const prodContainer = document.getElementById('recent-products');
+      recentProducts.forEach(item => {
+        const name = item.Product || 'Untitled';
+        const url = item.URL || '#';
         const div = document.createElement('div');
-        div.className = 'news-pepper bg-gray-800/90 border border-gray-600 p-4 rounded-2xl text-sm hover:border-emerald-400';
+        div.className = 'product-card p-4 rounded-2xl text-sm';
         div.innerHTML = `
-          <a href="${item.URL}" target="_blank" rel="noopener" class="block hover:text-emerald-300">
-            ${item.Title}
+          <a href="${url}" target="_blank" rel="noopener" class="block font-medium hover:text-emerald-300">
+            ${name}
           </a>
         `;
-        container.appendChild(div);
+        prodContainer.appendChild(div);
+      });
+
+      // RIGHT: Latest News (9 newest)
+      const recentNews = [...newsData].sort(dateSorter).slice(0, 9);
+      const newsContainer = document.getElementById('recent-news');
+      recentNews.forEach(item => {
+        const title = item.Title || 'Untitled';
+        const url = item.URL || '#';
+        const div = document.createElement('div');
+        div.className = 'news-pepper p-4 rounded-2xl text-sm';
+        div.innerHTML = `
+          <a href="${url}" target="_blank" rel="noopener" class="block hover:text-emerald-300">
+            ${title}
+          </a>
+        `;
+        newsContainer.appendChild(div);
       });
     });
   </script>
