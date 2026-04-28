@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Full Product Database - The Voynich Times</title>
+  <title>The Voynich Times - Full Database</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/tabulator-tables@6.3.0/dist/css/tabulator.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/tabulator-tables@6.3.0/dist/js/tabulator.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <style>
-    body { background-color: #111827; color: #e5e7eb; overflow-x: hidden; }
-   
+    body { background-color: #111827; color: #e5e7eb; }
+    
     #background-video {
       position: fixed;
       top: 0;
@@ -28,41 +30,18 @@
       background: rgba(0, 0, 0, 0.68);
       z-index: -1;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: rgba(31, 41, 55, 0.95);
-    }
-    th, td {
-      padding: 12px 16px;
-      text-align: left;
-      border-bottom: 1px solid #4b5563;
-    }
-    th {
-      background: rgba(16, 185, 129, 0.2);
-      color: #10b981;
-      cursor: pointer;
-    }
-    tr:hover {
-      background: rgba(16, 185, 129, 0.15);
-    }
   </style>
   <link rel="canonical" href="https://voynichtimes.com/database.html" />
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen">
-  <!-- Video deferred until data loads -->
-  <video id="background-video" 
-         loop 
-         muted 
-         playsinline 
-         poster="voynich-home-art.jpg"
-         preload="none">
+  <!-- Video background (deferred) -->
+  <video id="background-video" loop muted playsinline poster="voynich-home-art.jpg" preload="none">
     <source src="voynich-flip.webm" type="video/webm">
     <source src="voynich-flip.mp4" type="video/mp4">
   </video>
   <div class="overlay"></div>
 
-  <!-- Clean header -->
+  <!-- Clean modern nav -->
   <nav class="bg-gray-800/90 backdrop-blur-md p-4 sticky top-0 shadow z-50">
     <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
       <a href="index.html" class="text-2xl font-bold hover:text-emerald-400 transition-colors">The Voynich Times</a>
@@ -76,21 +55,9 @@
     </div>
   </nav>
 
-  <div class="max-w-screen-2xl mx-auto p-8">
-    <h1 class="text-4xl font-bold mb-8">Full Product Database</h1>
-    <table id="database-table">
-      <thead>
-        <tr>
-          <th>Company</th>
-          <th>Series</th>
-          <th>Product</th>
-          <th>Category</th>
-          <th>Date</th>
-          <th>Notes</th>
-        </tr>
-      </thead>
-      <tbody id="database-body"></tbody>
-    </table>
+  <div class="max-w-screen-2xl mx-auto p-6">
+    <h2 class="text-4xl font-bold mb-8">Full Product Database</h2>
+    <div id="product-table" class="bg-gray-800 p-4 rounded-xl"></div>
   </div>
 
   <!-- Amazon disclaimer at bottom -->
@@ -98,32 +65,70 @@
     All links lead to their original sources. Amazon links are affiliate links that help support The Voynich Times at no extra cost to you.
   </div>
 
-  <!-- Version -->
-  <div class="fixed bottom-4 right-4 text-[10px] text-gray-400 bg-black/70 px-2 py-px rounded z-50">
-    v0423-dates
+  <!-- Version indicator -->
+  <div class="fixed bottom-4 right-4 text-[10px] text-gray-600 bg-gray-900/70 px-2 py-px rounded">
+    v0423o
   </div>
 
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
+      console.log("🚀 v0423o — Database page");
       const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
-      const products = await loadCSV(productsCSV);
-      const tbody = document.getElementById('database-body');
-
-      products.forEach(item => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${item.Company || ''}</td>
-          <td>${item.Series || ''}</td>
-          <td><a href="${item.URL || '#'}" target="_blank" rel="noopener" class="hover:text-emerald-300">${item.Product || 'Untitled'}</a></td>
-          <td>${item.Category || ''}</td>
-          <td>${item.Date || ''}</td>
-          <td>${item.Notes || ''}</td>
-        `;
-        tbody.appendChild(row);
+      const productNameColumn = "Product";
+      const data = await loadCSV(productsCSV);
+      const dateSorter = function(a, b) {
+        const parseDate = (val) => {
+          if (!val) return 0;
+          const parts = String(val).split('/');
+          if (parts.length === 3) {
+            return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
+          }
+          return new Date(val).getTime();
+        };
+        return parseDate(a) - parseDate(b);
+      };
+      new Tabulator("#product-table", {
+        data: data,
+        layout: "fitDataTable",
+        pagination: "local",
+        paginationSize: 100,
+        paginationSizeSelector: [25, 50, 100, 250],
+        variableHeight: true,
+        columns: [
+          { title: "Company", field: "!Company", headerFilter: true, formatter: "textarea", widthGrow: 1 },
+          { title: "Series", field: "Series", headerFilter: true, formatter: "textarea", widthGrow: 1 },
+          {
+            title: "Product",
+            field: productNameColumn,
+            formatter: function(cell) {
+              const value = cell.getValue();
+              const rowData = cell.getRow().getData();
+              const url = rowData["URL"];
+              if (url) {
+                return `<a href="${url}" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 underline hover:no-underline cursor-pointer">${value}</a>`;
+              }
+              return value;
+            },
+            widthGrow: 1.2,
+            headerFilter: true
+          },
+          { title: "Category", field: "Category", headerFilter: true, formatter: "textarea", widthGrow: 1 },
+          { title: "Date", field: "Date", sorter: dateSorter, headerFilter: true, widthGrow: 1 },
+          {
+            title: "Notes",
+            field: "Notes",
+            headerFilter: true,
+            formatter: "textarea",
+            width: 280,
+            minWidth: 120
+          },
+          { title: "URL", field: "URL", visible: false }
+        ],
+        initialSort: [{column: "Date", dir: "desc"}]
       });
 
-      // Start video after data loads
+      // Start video after table loads
       const video = document.getElementById('background-video');
       if (video) video.play();
     });
