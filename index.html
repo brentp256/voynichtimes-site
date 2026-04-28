@@ -9,7 +9,6 @@
   <style>
     body { background-color: #111827; color: #e5e7eb; overflow-x: hidden; }
    
-    /* Voynich video background */
     #background-video {
       position: fixed;
       top: 0;
@@ -36,7 +35,6 @@
       box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6);
       display: inline-block;
     }
-    /* News cards */
     .news-pepper {
       transition: all 0.3s ease;
       background: rgba(31, 41, 55, 0.9);
@@ -46,7 +44,6 @@
       transform: scale(1.05) translateY(-4px);
       border-color: #10b981;
     }
-    /* Product cards */
     .product-card {
       transition: all 0.3s ease;
       background: rgba(16, 185, 129, 0.15);
@@ -57,7 +54,6 @@
       background: rgba(16, 185, 129, 0.25);
       border-color: #10b981;
     }
-    /* Tiny italic dates */
     .card-date {
       font-size: 0.75rem;
       font-style: italic;
@@ -69,14 +65,12 @@
   <link rel="canonical" href="https://voynichtimes.com/" />
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen">
-  <!-- Voynich manuscript video background -->
   <video id="background-video" autoplay loop muted playsinline>
     <source src="voynich-flip.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   <div class="overlay"></div>
 
-  <!-- NAV -->
   <nav class="bg-gray-800/90 backdrop-blur-md p-4 sticky top-0 shadow z-50">
     <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
       <a href="index.html" class="text-2xl font-bold hover:text-emerald-400 transition-colors">The Voynich Times</a>
@@ -97,28 +91,23 @@
   </nav>
 
   <div class="max-w-screen-2xl mx-auto p-8 text-center relative z-10">
-    <!-- Centered title -->
     <div class="title-box mx-auto mb-12">
       <h1 class="text-6xl font-bold leading-none text-white">The Voynich Times</h1>
       <p class="text-2xl text-emerald-200 mt-3">Bringing mysterious puzzly news to you!</p>
     </div>
 
-    <!-- Two columns -->
     <div class="flex justify-center items-start gap-8 mt-8 flex-wrap max-w-6xl mx-auto">
-      <!-- LEFT: Recent Products -->
       <div class="max-w-xs flex-1">
         <h3 class="text-xl font-semibold mb-6 text-emerald-300 text-left">New Products</h3>
         <div id="recent-products" class="space-y-5 text-left"></div>
       </div>
       
-      <!-- RIGHT: Latest News -->
       <div class="max-w-xs flex-1">
         <h3 class="text-xl font-semibold mb-6 text-emerald-300 text-left">Latest News</h3>
         <div id="recent-news" class="space-y-5 text-left"></div>
       </div>
     </div>
 
-    <!-- Patreon -->
     <div class="mt-20">
       <a href="https://patreon.com/Brentp256" target="_blank"
          class="inline-flex items-center gap-3 bg-emerald-700 hover:bg-emerald-600 px-10 py-5 rounded-3xl text-xl font-medium transition-colors">
@@ -128,7 +117,6 @@
     </div>
   </div>
 
-  <!-- Tiny version indicator -->
   <div class="fixed bottom-4 right-4 text-[10px] text-gray-400 bg-black/70 px-2 py-px rounded z-50">
     v0423-dates
   </div>
@@ -136,14 +124,12 @@
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423-dates — Products + News with italic dates");
       const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
       const products = await loadCSV(productsCSV);
       const newsData = await loadCSV(newsCSV);
       const dateSorter = (a, b) => new Date(b.Date) - new Date(a.Date);
       
-      // LEFT: Recent Products
       const recentProducts = [...products].sort(dateSorter).slice(0, 9);
       const prodContainer = document.getElementById('recent-products');
       recentProducts.forEach(item => {
@@ -161,7 +147,6 @@
         prodContainer.appendChild(div);
       });
       
-      // RIGHT: Latest News
       const recentNews = [...newsData].sort(dateSorter).slice(0, 9);
       const newsContainer = document.getElementById('recent-news');
       recentNews.forEach(item => {
