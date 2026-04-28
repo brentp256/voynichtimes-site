@@ -23,18 +23,47 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- Wunderkammer section -->
+  <!-- Wunderkammer Section -->
   <url>
     <loc>https://voynichtimes.com/wunderkammer/</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.95</priority>
   </url>
 
   <url>
-    <loc>https://voynichtimes.com/wunderkammer/wunderkammer-2026-04-11.html</loc>
+    <loc>https://voynichtimes.com/wunderkammer/archive/</loc>
     <lastmod>2026-04-28</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Individual Wunderkammer editions (real files from your repo) -->
+  <url>
+    <loc>https://voynichtimes.com/wunderkammer/archive/wunderkammer-2026-04-08.html</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://voynichtimes.com/wunderkammer/archive/wunderkammer-2026-04-09.html</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://voynichtimes.com/wunderkammer/archive/wunderkammer-2026-04-10.html</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://voynichtimes.com/wunderkammer/archive/wunderkammer-2026-04-11.html</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
