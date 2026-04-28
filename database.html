@@ -3,99 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Voynich Times - Full Database</title>
+  <title>Full Product Database - The Voynich Times</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://unpkg.com/tabulator-tables@6.3.0/dist/css/tabulator.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/tabulator-tables@6.3.0/dist/js/tabulator.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <style>
-    body { background-color: #111827; color: #e5e7eb; }
+    body { background-color: #111827; color: #e5e7eb; overflow-x: hidden; }
+    #background-video {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: -2; filter: brightness(0.75) contrast(1.05);
+    }
+    .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.68); z-index: -1; }
+    .product-card {
+      transition: all 0.3s ease;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid #34d399;
+      border-radius: 16px;
+    }
+    .product-card:hover {
+      transform: scale(1.03) translateY(-2px);
+      border-color: #10b981;
+    }
+    .card-date { font-size: 0.75rem; font-style: italic; color: #9ca3af; margin-top: 4px; }
   </style>
-  <link rel="canonical" href="https://voynichtimes.com/database" />
+  <link rel="canonical" href="https://voynichtimes.com/database.html" />
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen">
-  <nav class="bg-gray-800 p-4 sticky top-0 shadow">
+  <video id="background-video" loop muted playsinline poster="voynich-home-art.jpg" preload="none">
+    <source src="voynich-flip.webm" type="video/webm">
+    <source src="voynich-flip.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+
+  <nav class="bg-gray-800/90 backdrop-blur-md p-4 sticky top-0 shadow z-50">
     <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">The Voynich Times</h1>
-      <div class="space-x-6">
-        <a href="index.html" class="hover:text-white">Home</a>
-        <a href="news.html" class="hover:text-white">News</a>
-        <a href="database.html" class="hover:text-white">Full Database</a>
+      <a href="index.html" class="text-2xl font-bold hover:text-emerald-400 transition-colors">The Voynich Times</a>
+      <div class="hidden md:flex items-center space-x-8 text-sm">
+        <a href="index.html" class="text-gray-300 hover:text-white">Home</a>
+        <a href="news.html" class="text-gray-300 hover:text-white">News</a>
+        <a href="database.html" class="text-gray-300 hover:text-white">Full Database</a>
+        <a href="/wunderkammer/" class="text-gray-300 hover:text-white">Wunderkammer</a>
       </div>
     </div>
   </nav>
 
-  <div class="max-w-screen-2xl mx-auto p-6">
-    <h2 class="text-4xl font-bold mb-8">Full Product Database</h2>
-    <div id="product-table" class="bg-gray-800 p-4 rounded-xl"></div>
+  <div class="max-w-screen-2xl mx-auto p-8">
+    <h1 class="text-4xl font-bold mb-8">Full Product Database</h1>
+    <div id="database-container" class="space-y-4"></div>
   </div>
 
-  <!-- Tiny version indicator -->
-  <div class="fixed bottom-4 right-4 text-[10px] text-gray-600 bg-gray-900/70 px-2 py-px rounded">
-    v0423o
+  <!-- Disclaimer at bottom -->
+  <div class="max-w-screen-2xl mx-auto px-8 py-12 text-center text-gray-400 text-sm border-t border-gray-700">
+    All links lead to their original sources. Amazon links are affiliate links that help support The Voynich Times at no extra cost to you.
+  </div>
+
+  <!-- Version -->
+  <div class="fixed bottom-4 right-4 text-[10px] text-gray-400 bg-black/70 px-2 py-px rounded z-50">
+    v0423-dates
   </div>
 
   <script src="js/data.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423o — Database page");
-
       const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
-      const productNameColumn = "Product";
+      const products = await loadCSV(productsCSV);
+      const container = document.getElementById('database-container');
 
-      const data = await loadCSV(productsCSV);
-
-      const dateSorter = function(a, b) {
-        const parseDate = (val) => {
-          if (!val) return 0;
-          const parts = String(val).split('/');
-          if (parts.length === 3) {
-            return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
-          }
-          return new Date(val).getTime();
-        };
-        return parseDate(a) - parseDate(b);
-      };
-
-      new Tabulator("#product-table", {
-        data: data,
-        layout: "fitDataTable",
-        pagination: "local",
-        paginationSize: 100,
-        paginationSizeSelector: [25, 50, 100, 250],
-        variableHeight: true,
-        columns: [
-          { title: "Company", field: "!Company", headerFilter: true, formatter: "textarea", widthGrow: 1 },
-          { title: "Series", field: "Series", headerFilter: true, formatter: "textarea", widthGrow: 1 },
-          {
-            title: "Product",
-            field: productNameColumn,
-            formatter: function(cell) {
-              const value = cell.getValue();
-              const rowData = cell.getRow().getData();
-              const url = rowData["URL"];
-              if (url) {
-                return `<a href="${url}" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 underline hover:no-underline cursor-pointer">${value}</a>`;
-              }
-              return value;
-            },
-            widthGrow: 1.2,
-            headerFilter: true
-          },
-          { title: "Category", field: "Category", headerFilter: true, formatter: "textarea", widthGrow: 1 },
-          { title: "Date", field: "Date", sorter: dateSorter, headerFilter: true, widthGrow: 1 },
-          { 
-            title: "Notes", 
-            field: "Notes", 
-            headerFilter: true,
-            formatter: "textarea",
-            width: 280,
-            minWidth: 120
-          },
-          { title: "URL", field: "URL", visible: false }
-        ],
-        initialSort: [{column: "Date", dir: "desc"}]
+      products.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'product-card p-6';
+        div.innerHTML = `
+          <div class="flex justify-between items-start">
+            <div>
+              <a href="${item.URL || '#'}" target="_blank" rel="noopener" class="block font-medium hover:text-emerald-300 text-lg">
+                ${item.Product || 'Untitled'}
+              </a>
+              <div class="text-emerald-300 text-sm">${item.Company || ''} • ${item.Series || ''}</div>
+            </div>
+            <div class="text-right">
+              <div class="card-date">${item.Date || ''}</div>
+              <div class="text-xs text-gray-400 mt-1">${item.Category || ''}</div>
+            </div>
+          </div>
+        `;
+        container.appendChild(div);
       });
+
+      const video = document.getElementById('background-video');
+      if (video) video.play();
     });
   </script>
 </body>
