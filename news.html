@@ -28,40 +28,29 @@
       background: rgba(0, 0, 0, 0.68);
       z-index: -1;
     }
-    .title-box {
-      background: rgba(0, 0, 0, 0.88);
-      padding: 24px 64px;
-      border-radius: 20px;
-      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6);
-      display: inline-block;
-    }
-    .news-pepper {
+    .news-card {
       transition: all 0.3s ease;
-      background: rgba(31, 41, 55, 0.9);
+      background: rgba(31, 41, 55, 0.95);
       border: 1px solid #4b5563;
       border-radius: 16px;
+      overflow: hidden;
     }
-    .news-pepper:hover {
-      transform: scale(1.05) translateY(-4px);
+    .news-card:hover {
+      transform: scale(1.02) translateY(-2px);
       border-color: #10b981;
-    }
-    .card-date {
-      font-size: 0.75rem;
-      font-style: italic;
-      color: #9ca3af;
-      margin-top: 6px;
-      opacity: 0.85;
     }
   </style>
   <link rel="canonical" href="https://voynichtimes.com/news.html" />
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen">
+  <!-- Deferred video background -->
   <video id="background-video" loop muted playsinline poster="voynich-home-art.jpg" preload="none">
     <source src="voynich-flip.webm" type="video/webm">
     <source src="voynich-flip.mp4" type="video/mp4">
   </video>
   <div class="overlay"></div>
 
+  <!-- Clean modern nav -->
   <nav class="bg-gray-800/90 backdrop-blur-md p-4 sticky top-0 shadow z-50">
     <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
       <a href="index.html" class="text-2xl font-bold hover:text-emerald-400 transition-colors">The Voynich Times</a>
@@ -72,28 +61,20 @@
         <a href="database.html" class="text-gray-300 hover:text-white transition-colors">Full Database</a>
         <a href="/wunderkammer/" class="text-gray-300 hover:text-white transition-colors">Wunderkammer</a>
       </div>
-      
-      <button class="md:hidden text-gray-300 hover:text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
     </div>
   </nav>
 
-  <div class="max-w-screen-2xl mx-auto p-8 text-center relative z-10">
-    <div class="title-box mx-auto mb-12">
-      <h1 class="text-6xl font-bold leading-none text-white">The Voynich Times</h1>
-      <p class="text-2xl text-emerald-200 mt-3">The Self-Proclaimed Leader in Mystery Puzzle News!</p>
-    </div>
-
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8">News</h2>
-      <p class="text-lg text-gray-400 mb-12">All links lead to their original sources. Amazon links are affiliate links that help support The Voynich Times at no extra cost to you.</p>
-      <div id="news-container" class="space-y-6 text-left"></div>
-    </div>
+  <div class="max-w-screen-2xl mx-auto p-8">
+    <h1 class="text-4xl font-bold mb-8">News</h1>
+    <div id="news-container" class="space-y-6"></div>
   </div>
 
+  <!-- Amazon disclaimer at bottom -->
+  <div class="max-w-screen-2xl mx-auto px-8 py-12 text-center text-gray-400 text-sm border-t border-gray-700">
+    All links lead to their original sources. Amazon links are affiliate links that help support The Voynich Times at no extra cost to you.
+  </div>
+
+  <!-- Version indicator -->
   <div class="fixed bottom-4 right-4 text-[10px] text-gray-400 bg-black/70 px-2 py-px rounded z-50">
     v0423-dates
   </div>
@@ -110,16 +91,26 @@
 
       recentNews.forEach(item => {
         const div = document.createElement('div');
-        div.className = 'news-pepper p-6 rounded-2xl text-sm';
+        div.className = 'news-card p-6 flex gap-6';
         div.innerHTML = `
-          <a href="${item.URL || '#'}" target="_blank" rel="noopener" class="block hover:text-emerald-300 text-lg font-medium">
-            ${item.Title || 'Untitled'}
-          </a>
-          <div class="card-date">(${item.Date || ''})</div>
+          ${item.Image ? `<img src="${item.Image}" alt="" class="w-24 h-24 object-cover rounded-xl flex-shrink-0">` : ''}
+          <div class="flex-1">
+            <a href="${item.URL || '#'}" target="_blank" rel="noopener" class="block hover:text-emerald-300 text-xl font-medium">
+              ${item.Title || 'Untitled'}
+            </a>
+            <p class="text-gray-300 mt-2 line-clamp-3">${item.Description || ''}</p>
+            <div class="flex justify-between items-end mt-4">
+              <div class="card-date">(${item.Date || ''})</div>
+              <a href="${item.URL || '#'}" target="_blank" rel="noopener" class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-1">
+                Read full article →
+              </a>
+            </div>
+          </div>
         `;
         container.appendChild(div);
       });
 
+      // Start video after data loads
       const video = document.getElementById('background-video');
       if (video) video.play();
     });
