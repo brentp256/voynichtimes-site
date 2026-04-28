@@ -8,7 +8,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <style>
     body { background-color: #111827; color: #e5e7eb; overflow-x: hidden; }
-    
+   
     /* Voynich video background */
     #background-video {
       position: fixed;
@@ -20,7 +20,6 @@
       z-index: -2;
       filter: brightness(0.75) contrast(1.05);
     }
-
     .overlay {
       position: fixed;
       top: 0;
@@ -30,7 +29,6 @@
       background: rgba(0, 0, 0, 0.68);
       z-index: -1;
     }
-
     .title-box {
       background: rgba(0, 0, 0, 0.88);
       padding: 24px 64px;
@@ -38,7 +36,6 @@
       box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6);
       display: inline-block;
     }
-
     /* News cards */
     .news-pepper {
       transition: all 0.3s ease;
@@ -49,7 +46,6 @@
       transform: scale(1.05) translateY(-4px);
       border-color: #10b981;
     }
-
     /* Product cards */
     .product-card {
       transition: all 0.3s ease;
@@ -61,7 +57,6 @@
       background: rgba(16, 185, 129, 0.25);
       border-color: #10b981;
     }
-
     /* Tiny italic dates */
     .card-date {
       font-size: 0.75rem;
@@ -81,15 +76,24 @@
   </video>
   <div class="overlay"></div>
 
+  <!-- NAV -->
   <nav class="bg-gray-800/90 backdrop-blur-md p-4 sticky top-0 shadow z-50">
     <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">The Voynich Times</h1>
-      <div class="space-x-6">
-    <a href="index.html" class="hover:text-white">Home</a>
-    <a href="news.html" class="hover:text-white">News</a>
-    <a href="database.html" class="hover:text-white">Full Database</a>
-    <a href="/wunderkammer/" class="hover:text-white">Wunderkammer</a>
-</div>
+      <a href="index.html" class="text-2xl font-bold hover:text-emerald-400 transition-colors">The Voynich Times</a>
+      
+      <div class="hidden md:flex items-center space-x-8 text-sm">
+        <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+        <a href="news.html" class="text-gray-300 hover:text-white transition-colors">News</a>
+        <a href="database.html" class="text-gray-300 hover:text-white transition-colors">Full Database</a>
+        <a href="/wunderkammer/" class="text-gray-300 hover:text-white transition-colors">Wunderkammer</a>
+      </div>
+      
+      <!-- Mobile menu button -->
+      <button class="md:hidden text-gray-300 hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
   </nav>
 
@@ -102,13 +106,12 @@
 
     <!-- Two columns -->
     <div class="flex justify-center items-start gap-8 mt-8 flex-wrap max-w-6xl mx-auto">
-      
       <!-- LEFT: Recent Products -->
       <div class="max-w-xs flex-1">
         <h3 class="text-xl font-semibold mb-6 text-emerald-300 text-left">New Products</h3>
         <div id="recent-products" class="space-y-5 text-left"></div>
       </div>
-
+      
       <!-- RIGHT: Latest News -->
       <div class="max-w-xs flex-1">
         <h3 class="text-xl font-semibold mb-6 text-emerald-300 text-left">Latest News</h3>
@@ -135,15 +138,12 @@
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
       console.log("🚀 v0423-dates — Products + News with italic dates");
-
       const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
-
       const products = await loadCSV(productsCSV);
       const newsData = await loadCSV(newsCSV);
-
       const dateSorter = (a, b) => new Date(b.Date) - new Date(a.Date);
-
+      
       // LEFT: Recent Products
       const recentProducts = [...products].sort(dateSorter).slice(0, 9);
       const prodContainer = document.getElementById('recent-products');
@@ -161,7 +161,7 @@
         `;
         prodContainer.appendChild(div);
       });
-
+      
       // RIGHT: Latest News
       const recentNews = [...newsData].sort(dateSorter).slice(0, 9);
       const newsContainer = document.getElementById('recent-news');
