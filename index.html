@@ -35,24 +35,8 @@
       box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6);
       display: inline-block;
     }
-    .news-pepper {
+    .news-pepper, .product-card {
       transition: all 0.3s ease;
-      background: rgba(31, 41, 55, 0.9);
-      border: 1px solid #4b5563;
-    }
-    .news-pepper:hover {
-      transform: scale(1.05) translateY(-4px);
-      border-color: #10b981;
-    }
-    .product-card {
-      transition: all 0.3s ease;
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid #34d399;
-    }
-    .product-card:hover {
-      transform: scale(1.05) translateY(-4px);
-      background: rgba(16, 185, 129, 0.25);
-      border-color: #10b981;
     }
     .card-date {
       font-size: 0.75rem;
@@ -65,9 +49,8 @@
   <link rel="canonical" href="https://voynichtimes.com/" />
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen">
-  <!-- Optimized Voynich manuscript video background -->
+  <!-- Video is deferred until data loads -->
   <video id="background-video" 
-         autoplay 
          loop 
          muted 
          playsinline 
@@ -75,7 +58,6 @@
          preload="none">
     <source src="voynich-flip.webm" type="video/webm">
     <source src="voynich-flip.mp4" type="video/mp4">
-    Your browser does not support the video tag.
   </video>
   <div class="overlay"></div>
 
@@ -101,7 +83,7 @@
   <div class="max-w-screen-2xl mx-auto p-8 text-center relative z-10">
     <div class="title-box mx-auto mb-12">
       <h1 class="text-6xl font-bold leading-none text-white">The Voynich Times</h1>
-      <p class="text-2xl text-emerald-200 mt-3">The Self-Proclaimed Leader of Mystery Puzzle News!</p>
+      <p class="text-2xl text-emerald-200 mt-3">The Self-Proclaimed Leader in Mystery Puzzle News!</p>
     </div>
 
     <div class="flex justify-center items-start gap-8 mt-8 flex-wrap max-w-6xl mx-auto">
@@ -134,43 +116,44 @@
     document.addEventListener('DOMContentLoaded', async () => {
       const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
       const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
+      
       const products = await loadCSV(productsCSV);
       const newsData = await loadCSV(newsCSV);
-      const dateSorter = (a, b) => new Date(b.Date) - new Date(a.Date);
       
+      const dateSorter = (a, b) => new Date(b.Date) - new Date(a.Date);
+
+      // Render products and news
       const recentProducts = [...products].sort(dateSorter).slice(0, 9);
       const prodContainer = document.getElementById('recent-products');
       recentProducts.forEach(item => {
-        const name = item.Product || 'Untitled';
-        const url = item.URL || '#';
-        const date = item.Date || '';
         const div = document.createElement('div');
         div.className = 'product-card p-4 rounded-2xl text-sm';
         div.innerHTML = `
-          <a href="${url}" target="_blank" rel="noopener" class="block font-medium hover:text-emerald-300">
-            ${name}
+          <a href="${item.URL || '#'}" target="_blank" rel="noopener" class="block font-medium hover:text-emerald-300">
+            ${item.Product || 'Untitled'}
           </a>
-          <div class="card-date">(${date})</div>
+          <div class="card-date">(${item.Date || ''})</div>
         `;
         prodContainer.appendChild(div);
       });
-      
+
       const recentNews = [...newsData].sort(dateSorter).slice(0, 9);
       const newsContainer = document.getElementById('recent-news');
       recentNews.forEach(item => {
-        const title = item.Title || 'Untitled';
-        const url = item.URL || '#';
-        const date = item.Date || '';
         const div = document.createElement('div');
         div.className = 'news-pepper p-4 rounded-2xl text-sm';
         div.innerHTML = `
-          <a href="${url}" target="_blank" rel="noopener" class="block hover:text-emerald-300">
-            ${title}
+          <a href="${item.URL || '#'}" target="_blank" rel="noopener" class="block hover:text-emerald-300">
+            ${item.Title || 'Untitled'}
           </a>
-          <div class="card-date">(${date})</div>
+          <div class="card-date">(${item.Date || ''})</div>
         `;
         newsContainer.appendChild(div);
       });
+
+      // Start video ONLY after data is loaded
+      const video = document.getElementById('background-video');
+      if (video) video.play();
     });
   </script>
 </body>
