@@ -35,8 +35,27 @@
       box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6);
       display: inline-block;
     }
-    .news-pepper, .product-card {
+    /* Card styling - restored */
+    .news-pepper {
       transition: all 0.3s ease;
+      background: rgba(31, 41, 55, 0.9);
+      border: 1px solid #4b5563;
+      border-radius: 16px;
+    }
+    .news-pepper:hover {
+      transform: scale(1.05) translateY(-4px);
+      border-color: #10b981;
+    }
+    .product-card {
+      transition: all 0.3s ease;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid #34d399;
+      border-radius: 16px;
+    }
+    .product-card:hover {
+      transform: scale(1.05) translateY(-4px);
+      background: rgba(16, 185, 129, 0.25);
+      border-color: #10b981;
     }
     .card-date {
       font-size: 0.75rem;
@@ -49,7 +68,7 @@
   <link rel="canonical" href="https://voynichtimes.com/" />
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen">
-  <!-- Video is deferred until data loads -->
+  <!-- Video deferred until data loads -->
   <video id="background-video" 
          loop 
          muted 
@@ -122,7 +141,6 @@
       
       const dateSorter = (a, b) => new Date(b.Date) - new Date(a.Date);
 
-      // Render products and news
       const recentProducts = [...products].sort(dateSorter).slice(0, 9);
       const prodContainer = document.getElementById('recent-products');
       recentProducts.forEach(item => {
@@ -151,7 +169,7 @@
         newsContainer.appendChild(div);
       });
 
-      // Start video ONLY after data is loaded
+      // Start video after data loads
       const video = document.getElementById('background-video');
       if (video) video.play();
     });
