@@ -1,0 +1,8 @@
+# The Voynich Times - robots.txt
+# Allow all crawlers full access
+
+User-agent: *
+Allow: /
+
+# Optional but recommended: point Google to your sitemap (we'll create this next if you don't have one)
+Sitemap: https://voynichtimes.com/sitemap.xml
