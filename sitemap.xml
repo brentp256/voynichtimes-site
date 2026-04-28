@@ -8,7 +8,22 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Wunderkammer (main page + daily editions) -->
+  <!-- Main static pages -->
+  <url>
+    <loc>https://voynichtimes.com/news.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://voynichtimes.com/database.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Wunderkammer section -->
   <url>
     <loc>https://voynichtimes.com/wunderkammer/</loc>
     <lastmod>2026-04-28</lastmod>
@@ -16,65 +31,8 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- Main sections -->
   <url>
-    <loc>https://voynichtimes.com/calendar</loc>
-    <lastmod>2026-04-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://voynichtimes.com/reviews</loc>
-    <lastmod>2026-04-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://voynichtimes.com/database</loc>
-    <lastmod>2026-04-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://voynichtimes.com/treasure-hunts</loc>
-    <lastmod>2026-04-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://voynichtimes.com/minute-mysteries</loc>
-    <lastmod>2026-04-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://voynichtimes.com/puzzle-books</loc>
-    <lastmod>2026-04-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://voynichtimes.com/new-products</loc>
-    <lastmod>2026-04-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://voynichtimes.com/product-list</loc>
-    <lastmod>2026-04-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://voynichtimes.com/upcoming-releases</loc>
+    <loc>https://voynichtimes.com/wunderkammer/wunderkammer-2026-04-11.html</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
