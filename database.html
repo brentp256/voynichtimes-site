@@ -4,148 +4,98 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Voynich Times - Full Database</title>
+  
   <!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFDQCDM28S"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MFDQCDM28S');
-</script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://unpkg.com/tabulator-tables@6.3.0/dist/css/tabulator.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/tabulator-tables@6.3.0/dist/js/tabulator.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-  <style>
-    body { background-color: #111827; color: #e5e7eb; }
-    
-    #background-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -2;
-      filter: brightness(0.75) contrast(1.05);
-    }
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.68);
-      z-index: -1;
-    }
-  </style>
-  <link rel="canonical" href="https://voynichtimes.com/database.html" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MFDQCDM28S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MFDQCDM28S');
+  </script>
 </head>
-<body class="bg-gray-900 text-gray-100 min-h-screen">
- <!-- Optimized background video -->
-<video id="background-video" 
-       loop 
-       muted 
-       playsinline 
-       preload="none" 
-       poster="voynich-home-art.jpg" 
-       style="position:fixed; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-2; filter:brightness(0.75) contrast(1.05);">
-  <source src="voynich-flip.webm" type="video/webm">
-  <source src="voynich-flip.mp4" type="video/mp4">
-</video>
-  <div class="overlay"></div>
+<body class="bg-gray-900 text-gray-100 min-h-screen overflow-x-hidden">
+  
+  <!-- Static background image -->
+  <div id="background-image" 
+       style="position:fixed; top:0; left:0; width:100%; height:100%; 
+              background-image: url('voynich-home-art.jpg'); 
+              background-size: cover; background-position: center; 
+              z-index:-2; filter:brightness(0.75) contrast(1.05);">
+  </div>
+  
+  <div class="overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.68); z-index:-1;"></div>
 
-  <!-- Clean modern nav -->
-  <nav class="bg-gray-800/90 backdrop-blur-md p-4 sticky top-0 shadow z-50">
+  <!-- Navigation -->
+  <nav class="bg-gray-800 p-4 sticky top-0 shadow z-50">
     <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-bold hover:text-emerald-400 transition-colors">The Voynich Times</a>
-      
-      <div class="hidden md:flex items-center space-x-8 text-sm">
-        <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
-        <a href="news.html" class="text-gray-300 hover:text-white transition-colors">News</a>
-        <a href="database.html" class="text-gray-300 hover:text-white transition-colors">Full Database</a>
-        <a href="/wunderkammer/" class="text-gray-300 hover:text-white transition-colors">Wunderkammer</a>
+      <h1 class="text-2xl font-bold">The Voynich Times</h1>
+      <div class="space-x-6">
+        <a href="index.html" class="hover:text-white">Home</a>
+        <a href="news.html" class="hover:text-white">News</a>
+        <a href="database.html" class="hover:text-white">Full Database</a>
       </div>
     </div>
   </nav>
 
-  <div class="max-w-screen-2xl mx-auto p-6">
+  <div class="max-w-screen-2xl mx-auto p-6 pt-12">
     <h2 class="text-4xl font-bold mb-8">Full Product Database</h2>
     <div id="product-table" class="bg-gray-800 p-4 rounded-xl"></div>
   </div>
 
-  <!-- Amazon disclaimer at bottom -->
-  <div class="max-w-screen-2xl mx-auto px-8 py-12 text-center text-gray-400 text-sm border-t border-gray-700">
-    All links lead to their original sources. Amazon links are affiliate links that help support The Voynich Times at no extra cost to you.
-  </div>
+  <!-- Amazon disclaimer footer -->
+  <footer class="mt-auto py-8 text-center text-sm text-gray-400 border-t border-gray-700">
+    <div class="max-w-screen-2xl mx-auto px-6">
+      <p>As an Amazon Associate I earn from qualifying purchases.</p>
+      <p class="mt-2 text-xs">v0428 — Updated April 28, 2026</p>
+    </div>
+  </footer>
 
-  <!-- Version indicator -->
-  <div class="fixed bottom-4 right-4 text-[10px] text-gray-600 bg-gray-900/70 px-2 py-px rounded">
-    v0423o
-  </div>
+  <!-- Tabulator + PapaParse -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/tabulator-tables@6.3.0/dist/css/tabulator.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/tabulator-tables@6.3.0/dist/js/tabulator.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
-  <script src="js/data.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423o — Database page");
-      const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
-      const productNameColumn = "Product";
-      const data = await loadCSV(productsCSV);
-      const dateSorter = function(a, b) {
-        const parseDate = (val) => {
-          if (!val) return 0;
-          const parts = String(val).split('/');
-          if (parts.length === 3) {
-            return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
-          }
-          return new Date(val).getTime();
-        };
-        return parseDate(a) - parseDate(b);
-      };
+    const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
+
+    async function loadCSV(url) {
+      const cacheBuster = `&t=${Date.now()}`;
+      const response = await fetch(url + cacheBuster);
+      const text = await response.text();
+      return Papa.parse(text, { header: true, skipEmptyLines: true }).data;
+    }
+
+    async function init() {
+      const products = await loadCSV(productsCSV);
+
+      const dateSorter = (a, b) => new Date(b.Date) - new Date(a.Date);
+
       new Tabulator("#product-table", {
-        data: data,
-        layout: "fitDataTable",
+        data: products,
+        layout: "fitColumns",
         pagination: "local",
-        paginationSize: 100,
-        paginationSizeSelector: [25, 50, 100, 250],
-        variableHeight: true,
+        paginationSize: 25,
+        paginationSizeSelector: [25, 50, 100],
         columns: [
-          { title: "Company", field: "!Company", headerFilter: true, formatter: "textarea", widthGrow: 1 },
-          { title: "Series", field: "Series", headerFilter: true, formatter: "textarea", widthGrow: 1 },
-          {
-            title: "Product",
-            field: productNameColumn,
+          { title: "Company", field: "Company", headerFilter: true, widthGrow: 1 },
+          { title: "Series", field: "Series", headerFilter: true, widthGrow: 1 },
+          { title: "Product", field: "Product", headerFilter: true, widthGrow: 1.5,
             formatter: function(cell) {
-              const value = cell.getValue();
-              const rowData = cell.getRow().getData();
-              const url = rowData["URL"];
-              if (url) {
-                return `<a href="${url}" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 underline hover:no-underline cursor-pointer">${value}</a>`;
-              }
-              return value;
-            },
-            widthGrow: 1.2,
-            headerFilter: true
+              const url = cell.getRow().getData().URL;
+              return url ? `<a href="${url}" target="_blank" class="text-blue-400 hover:text-blue-300">${cell.getValue()}</a>` : cell.getValue();
+            }
           },
-          { title: "Category", field: "Category", headerFilter: true, formatter: "textarea", widthGrow: 1 },
+          { title: "Category", field: "Category", headerFilter: true, widthGrow: 1 },
           { title: "Date", field: "Date", sorter: dateSorter, headerFilter: true, widthGrow: 1 },
-          {
-            title: "Notes",
-            field: "Notes",
-            headerFilter: true,
-            formatter: "textarea",
-            width: 280,
-            minWidth: 120
-          },
-          { title: "URL", field: "URL", visible: false }
+          { title: "Notes", field: "Notes", headerFilter: true, widthGrow: 1.5 }
         ],
         initialSort: [{column: "Date", dir: "desc"}]
       });
+    }
 
-      // Start video after table loads
-      const video = document.getElementById('background-video');
-      if (video) video.play();
-    });
+    window.onload = init;
   </script>
 </body>
 </html>
