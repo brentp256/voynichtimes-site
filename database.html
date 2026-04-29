@@ -19,13 +19,15 @@
   <style>
     body { background-color: #111827; color: #e5e7eb; }
     
-    #background-video {
+    #background-image {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      background-image: url('voynich-home-art.jpg');
+      background-size: cover;
+      background-position: center;
       z-index: -2;
       filter: brightness(0.75) contrast(1.05);
     }
@@ -42,17 +44,9 @@
   <link rel="canonical" href="https://voynichtimes.com/database.html" />
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen">
- <!-- Optimized background video -->
-<video id="background-video" 
-       loop 
-       muted 
-       playsinline 
-       preload="none" 
-       poster="voynich-home-art.jpg" 
-       style="position:fixed; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-2; filter:brightness(0.75) contrast(1.05);">
-  <source src="voynich-flip.webm" type="video/webm">
-  <source src="voynich-flip.mp4" type="video/mp4">
-</video>
+  
+  <!-- Static background image -->
+  <div id="background-image"></div>
   <div class="overlay"></div>
 
   <!-- Clean modern nav -->
@@ -141,10 +135,6 @@
         ],
         initialSort: [{column: "Date", dir: "desc"}]
       });
-
-      // Start video after table loads
-      const video = document.getElementById('background-video');
-      if (video) video.play();
     });
   </script>
 </body>
