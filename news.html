@@ -4,165 +4,104 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Voynich Times - News</title>
+  
   <!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFDQCDM28S"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MFDQCDM28S');
-</script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-  <style>
-    body { background-color: #111827; color: #e5e7eb; overflow-x: hidden; }
-    #background-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -2;
-      filter: brightness(0.75) contrast(1.05);
-    }
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.68);
-      z-index: -1;
-    }
-    .news-item { transition: all 0.2s ease; }
-    .news-item:hover { background-color: #1f2937; transform: translateX(4px); }
-    .article-image {
-      width: 145px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 10px;
-      border: 2px solid #334155;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    }
-    .placeholder {
-      width: 145px;
-      height: 100px;
-      background: linear-gradient(135deg, #1e2937, #334155);
-      border-radius: 10px;
-      border: 2px solid #334155;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #64748b;
-      font-size: 32px;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    }
-  </style>
-  <link rel="canonical" href="https://voynichtimes.com/news.html" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MFDQCDM28S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MFDQCDM28S');
+  </script>
 </head>
-<body class="bg-gray-900 text-gray-100 min-h-screen">
- <!-- Optimized background video -->
-<video id="background-video" 
-       loop 
-       muted 
-       playsinline 
-       preload="none" 
-       poster="voynich-home-art.jpg" 
-       style="position:fixed; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-2; filter:brightness(0.75) contrast(1.05);">
-  <source src="voynich-flip.webm" type="video/webm">
-  <source src="voynich-flip.mp4" type="video/mp4">
-</video>
-  <div class="overlay"></div>
+<body class="bg-gray-900 text-gray-100 min-h-screen overflow-x-hidden">
+  
+  <!-- Static background image -->
+  <div id="background-image" 
+       style="position:fixed; top:0; left:0; width:100%; height:100%; 
+              background-image: url('voynich-home-art.jpg'); 
+              background-size: cover; background-position: center; 
+              z-index:-2; filter:brightness(0.75) contrast(1.05);">
+  </div>
+  
+  <div class="overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.68); z-index:-1;"></div>
 
-  <!-- Clean modern nav -->
-  <nav class="bg-gray-800/90 backdrop-blur-md p-4 sticky top-0 shadow z-50">
+  <!-- Navigation -->
+  <nav class="bg-gray-800 p-4 sticky top-0 shadow z-50">
     <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-bold hover:text-emerald-400 transition-colors">The Voynich Times</a>
-      
-      <div class="hidden md:flex items-center space-x-8 text-sm">
-        <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
-        <a href="news.html" class="text-gray-300 hover:text-white transition-colors">News</a>
-        <a href="database.html" class="text-gray-300 hover:text-white transition-colors">Full Database</a>
-        <a href="/wunderkammer/" class="text-gray-300 hover:text-white transition-colors">Wunderkammer</a>
+      <h1 class="text-2xl font-bold">The Voynich Times</h1>
+      <div class="space-x-6">
+        <a href="index.html" class="hover:text-white">Home</a>
+        <a href="news.html" class="hover:text-white">News</a>
+        <a href="database.html" class="hover:text-white">Full Database</a>
       </div>
     </div>
   </nav>
 
-  <div class="max-w-screen-2xl mx-auto p-6">
-    <h2 class="text-4xl font-bold mb-8">News</h2>
-    <div id="news-container" class="space-y-8"></div>
-
-    <!-- Disclaimer at bottom -->
-    <div class="mt-16 text-center text-xs text-gray-500 max-w-md mx-auto">
-      All links lead to their original sources.<br>
-      Amazon links are affiliate links that help support The Voynich Times at no extra cost to you.
+  <div class="max-w-screen-2xl mx-auto p-6 pt-12">
+    <div class="title-box mx-auto text-center">
+      <h1 class="text-5xl font-bold tracking-tight">Latest News</h1>
     </div>
+
+    <div id="news-container" class="space-y-6 mt-12"></div>
   </div>
 
-  <!-- Version indicator -->
-  <div class="fixed bottom-4 right-4 text-[10px] text-gray-600 bg-gray-900/70 px-2 py-px rounded">
-    v0423u
-  </div>
+  <!-- Amazon disclaimer footer -->
+  <footer class="mt-auto py-8 text-center text-sm text-gray-400 border-t border-gray-700">
+    <div class="max-w-screen-2xl mx-auto px-6">
+      <p>As an Amazon Associate I earn from qualifying purchases.</p>
+      <p class="mt-2 text-xs">v0428 — Updated April 28, 2026</p>
+    </div>
+  </footer>
 
-  <script src="js/data.js"></script>
+  <!-- Scripts at bottom -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  
   <script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      console.log("🚀 v0423u — Full news page with images, summaries & guaranteed newest-first sorting");
-      const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
-      const summarizerUrl = "https://shvoynich-news-summarizer.brentp256.workers.dev";
-      const data = await loadCSV(newsCSV);
-      const container = document.getElementById('news-container');
-      
-      data.sort((a, b) => new Date(b.Date) - new Date(a.Date));
+    tailwind.config = { content: ["./**/*.html"] };
 
-      for (const item of data) {
-        const date = item.Date || '';
-        const title = item.Title || 'Untitled';
-        const url = item.URL || '#';
-        let excerpt = '';
-        let image = '';
-        try {
-          const res = await fetch(`${summarizerUrl}?url=${encodeURIComponent(url)}`);
-          const json = await res.json();
-          if (json.excerpt && !json.excerpt.includes("No summary") && !json.excerpt.includes("Could not load")) {
-            excerpt = json.excerpt;
-          }
-          if (json.image) image = json.image;
-        } catch (e) {
-          console.log("Summary/image skipped for:", title);
-        }
+    const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
+
+    async function loadCSV(url) {
+      const cacheBuster = `&t=${Date.now()}`;
+      const response = await fetch(url + cacheBuster);
+      const text = await response.text();
+      return Papa.parse(text, { header: true, skipEmptyLines: true }).data;
+    }
+
+    const dateSorter = (a, b) => new Date(b.Date) - new Date(a.Date);
+
+    async function init() {
+      const newsData = await loadCSV(newsCSV);
+      const sortedNews = [...newsData].sort(dateSorter);
+
+      const container = document.getElementById('news-container');
+      sortedNews.forEach(item => {
         const div = document.createElement('div');
         div.className = 'news-item bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500 flex gap-6';
         div.innerHTML = `
-          ${image
-            ? `<img src="${image}" class="article-image" alt="">`
-            : `<div class="placeholder">📜</div>`}
+          ${item.Image ? `<img src="${item.Image}" class="article-image w-36 h-36 object-cover rounded-xl flex-shrink-0" alt="">` : `<div class="placeholder w-36 h-36 bg-gray-700 rounded-xl flex items-center justify-center text-4xl flex-shrink-0">📜</div>`}
           <div class="flex-1">
             <div class="flex justify-between items-start">
-              <a href="${url}" target="_blank" rel="noopener"
-                 class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors flex-1">
-                ${title}
+              <a href="${item.URL}" target="_blank" rel="noopener" class="block text-2xl font-semibold leading-tight hover:text-emerald-300 flex-1">
+                ${item.Title}
               </a>
-              <div class="text-emerald-400 font-mono text-sm ml-6 shrink-0">${date}</div>
+              <div class="text-emerald-400 font-mono text-sm ml-6 shrink-0">${item.Date}</div>
             </div>
-            ${excerpt ? `<p class="text-gray-400 mt-4 text-base leading-relaxed">${excerpt}</p>` : ''}
-           
+            ${item.Description ? `<p class="text-gray-400 mt-4 text-base leading-relaxed">${item.Description}</p>` : ''}
             <div class="mt-6 flex justify-end">
-              <a href="${url}" target="_blank" rel="noopener"
-                 class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-1">
+              <a href="${item.URL}" target="_blank" rel="noopener" class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-1">
                 Read full article →
               </a>
             </div>
           </div>
         `;
         container.appendChild(div);
-      }
+      });
+    }
 
-      // Start video after data loads
-      const video = document.getElementById('background-video');
-      if (video) video.play();
-    });
+    window.onload = init;
   </script>
 </body>
 </html>
