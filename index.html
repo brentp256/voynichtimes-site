@@ -3,147 +3,184 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The Self-Proclaimed Leader in Mystery Puzzle News! Latest Voynich manuscript updates, escape room puzzles, cipher challenges, and strange artifact discoveries.">
   <title>The Voynich Times</title>
-  
   <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MFDQCDM28S"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-MFDQCDM28S');
-  </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFDQCDM28S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MFDQCDM28S');
+</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <style>
+    body { background-color: #111827; color: #e5e7eb; overflow-x: hidden; }
+   
+    #background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      filter: brightness(0.75) contrast(1.05);
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.68);
+      z-index: -1;
+    }
+    .title-box {
+      background: rgba(0, 0, 0, 0.88);
+      padding: 24px 64px;
+      border-radius: 20px;
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6);
+      display: inline-block;
+    }
+    /* Card styling - restored */
+    .news-pepper {
+      transition: all 0.3s ease;
+      background: rgba(31, 41, 55, 0.9);
+      border: 1px solid #4b5563;
+      border-radius: 16px;
+    }
+    .news-pepper:hover {
+      transform: scale(1.05) translateY(-4px);
+      border-color: #10b981;
+    }
+    .product-card {
+      transition: all 0.3s ease;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid #34d399;
+      border-radius: 16px;
+    }
+    .product-card:hover {
+      transform: scale(1.05) translateY(-4px);
+      background: rgba(16, 185, 129, 0.25);
+      border-color: #10b981;
+    }
+    .card-date {
+      font-size: 0.75rem;
+      font-style: italic;
+      color: #9ca3af;
+      margin-top: 6px;
+      opacity: 0.85;
+    }
+  </style>
+  <link rel="canonical" href="https://voynichtimes.com/" />
 </head>
-<body class="bg-gray-900 text-gray-100 min-h-screen overflow-x-hidden">
-  
-  <!-- Optimized background video -->
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+  <!-- Video deferred until data loads -->
   <video id="background-video" 
          loop 
          muted 
          playsinline 
-         preload="none" 
          poster="voynich-home-art.jpg"
-         style="position:fixed; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-2; filter:brightness(0.75) contrast(1.05);">
+         preload="none">
     <source src="voynich-flip.webm" type="video/webm">
     <source src="voynich-flip.mp4" type="video/mp4">
   </video>
-  
-  <div class="overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.68); z-index:-1;"></div>
+  <div class="overlay"></div>
 
-  <!-- Navigation -->
-  <nav class="bg-gray-800 p-4 sticky top-0 shadow z-50">
+  <nav class="bg-gray-800/90 backdrop-blur-md p-4 sticky top-0 shadow z-50">
     <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">The Voynich Times</h1>
-      <div class="space-x-6">
-        <a href="index.html" class="hover:text-white">Home</a>
-        <a href="news.html" class="hover:text-white">News</a>
-        <a href="database.html" class="hover:text-white">Full Database</a>
+      <a href="index.html" class="text-2xl font-bold hover:text-emerald-400 transition-colors">The Voynich Times</a>
+      
+      <div class="hidden md:flex items-center space-x-8 text-sm">
+        <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+        <a href="news.html" class="text-gray-300 hover:text-white transition-colors">News</a>
+        <a href="database.html" class="text-gray-300 hover:text-white transition-colors">Full Database</a>
+        <a href="/wunderkammer/" class="text-gray-300 hover:text-white transition-colors">Wunderkammer</a>
       </div>
+      
+      <button class="md:hidden text-gray-300 hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
   </nav>
 
-  <div class="max-w-screen-2xl mx-auto p-6 pt-12">
-    <div class="title-box mx-auto text-center">
-      <h1 class="text-5xl font-bold tracking-tight">The Voynich Times</h1>
-      <p class="text-xl mt-2 text-emerald-300">The Self-Proclaimed Leader in Mystery Puzzle News!</p>
+  <div class="max-w-screen-2xl mx-auto p-8 text-center relative z-10">
+    <div class="title-box mx-auto mb-12">
+      <h1 class="text-6xl font-bold leading-none text-white">The Voynich Times</h1>
+      <p class="text-2xl text-emerald-200 mt-3">The Self-Proclaimed Leader in Mystery Puzzle News!</p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-16">
-      <!-- Recent Products -->
-      <div>
-        <h2 class="text-2xl font-semibold mb-4 flex items-center gap-2">
-          <span>🧪</span> Recent Products
-        </h2>
-        <div id="recent-products" class="space-y-3"></div>
+    <div class="flex justify-center items-start gap-8 mt-8 flex-wrap max-w-6xl mx-auto">
+      <div class="max-w-xs flex-1">
+        <h3 class="text-xl font-semibold mb-6 text-emerald-300 text-left">New Products</h3>
+        <div id="recent-products" class="space-y-5 text-left"></div>
       </div>
+      
+      <div class="max-w-xs flex-1">
+        <h3 class="text-xl font-semibold mb-6 text-emerald-300 text-left">Latest News</h3>
+        <div id="recent-news" class="space-y-5 text-left"></div>
+      </div>
+    </div>
 
-      <!-- Latest News -->
-      <div>
-        <h2 class="text-2xl font-semibold mb-4 flex items-center gap-2">
-          <span>📰</span> Latest News
-        </h2>
-        <div id="recent-news" class="space-y-3"></div>
-      </div>
+    <div class="mt-20">
+      <a href="https://patreon.com/Brentp256" target="_blank"
+         class="inline-flex items-center gap-3 bg-emerald-700 hover:bg-emerald-600 px-10 py-5 rounded-3xl text-xl font-medium transition-colors">
+        Support The Voynich Times!
+        <span class="text-3xl">❤️</span>
+      </a>
     </div>
   </div>
 
-  <!-- Amazon disclaimer footer -->
-  <footer class="mt-auto py-8 text-center text-sm text-gray-400 border-t border-gray-700">
-    <div class="max-w-screen-2xl mx-auto px-6">
-      <p>As an Amazon Associate I earn from qualifying purchases.</p>
-      <p class="mt-2 text-xs">v0428 — Updated April 28, 2026</p>
-    </div>
-  </footer>
+  <div class="fixed bottom-4 right-4 text-[10px] text-gray-400 bg-black/70 px-2 py-px rounded z-50">
+    v0423-dates
+  </div>
 
-  <!-- Scripts at bottom for best performance -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-  
+  <script src="js/data.js"></script>
   <script>
-    // Tailwind script initialization
-    tailwind.config = { content: ["./**/*.html"] };
+    document.addEventListener('DOMContentLoaded', async () => {
+      const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
+      const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
+      
+      const products = await loadCSV(productsCSV);
+      const newsData = await loadCSV(newsCSV);
+      
+      const dateSorter = (a, b) => new Date(b.Date) - new Date(a.Date);
 
-    // Auto-play video after page loads
-    const video = document.getElementById('background-video');
-    if (video) {
-      video.play().catch(() => {});
-    }
+      const recentProducts = [...products].sort(dateSorter).slice(0, 9);
+      const prodContainer = document.getElementById('recent-products');
+      recentProducts.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'product-card p-4 rounded-2xl text-sm';
+        div.innerHTML = `
+          <a href="${item.URL || '#'}" target="_blank" rel="noopener" class="block font-medium hover:text-emerald-300">
+            ${item.Product || 'Untitled'}
+          </a>
+          <div class="card-date">(${item.Date || ''})</div>
+        `;
+        prodContainer.appendChild(div);
+      });
 
-    // === YOUR EXACT GOOGLE SHEETS URLs ===
-    const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
-    const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
+      const recentNews = [...newsData].sort(dateSorter).slice(0, 9);
+      const newsContainer = document.getElementById('recent-news');
+      recentNews.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'news-pepper p-4 rounded-2xl text-sm';
+        div.innerHTML = `
+          <a href="${item.URL || '#'}" target="_blank" rel="noopener" class="block hover:text-emerald-300">
+            ${item.Title || 'Untitled'}
+          </a>
+          <div class="card-date">(${item.Date || ''})</div>
+        `;
+        newsContainer.appendChild(div);
+      });
 
-    async function loadCSV(url) {
-      const response = await fetch(url);
-      const text = await response.text();
-      return Papa.parse(text, { header: true, skipEmptyLines: true }).data;
-    }
-
-    async function init() {
-      try {
-        const [products, newsData] = await Promise.all([
-          loadCSV(productsCSV),
-          loadCSV(newsCSV)
-        ]);
-
-        const dateSorter = (a, b) => new Date(b.Date) - new Date(a.Date);
-
-        // Recent Products
-        const recentProducts = [...products].sort(dateSorter).slice(0, 9);
-        const prodContainer = document.getElementById('recent-products');
-        recentProducts.forEach(item => {
-          const div = document.createElement('div');
-          div.className = 'product-card p-4 rounded-2xl text-sm';
-          div.innerHTML = `
-            <a href="${item.URL || '#'}" target="_blank" rel="noopener" class="block font-medium hover:text-emerald-300">
-              ${item.Product || 'Untitled'}
-            </a>
-            <div class="card-date">(${item.Date || ''})</div>
-          `;
-          prodContainer.appendChild(div);
-        });
-
-        // Latest News
-        const recentNews = [...newsData].sort(dateSorter).slice(0, 9);
-        const newsContainer = document.getElementById('recent-news');
-        recentNews.forEach(item => {
-          const div = document.createElement('div');
-          div.className = 'news-pepper p-4 rounded-2xl text-sm';
-          div.innerHTML = `
-            <a href="${item.URL || '#'}" target="_blank" rel="noopener" class="block hover:text-emerald-300">
-              ${item.Title || 'Untitled'}
-            </a>
-            <div class="card-date">(${item.Date || ''})</div>
-          `;
-          newsContainer.appendChild(div);
-        });
-      } catch (e) {
-        console.error("Failed to load Google Sheets data:", e);
-      }
-    }
-
-    window.onload = init;
+      // Start video after data loads
+      const video = document.getElementById('background-video');
+      if (video) video.play();
+    });
   </script>
 </body>
 </html>
