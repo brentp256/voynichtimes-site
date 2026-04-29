@@ -35,6 +35,7 @@
         <a href="index.html" class="hover:text-white">Home</a>
         <a href="news.html" class="hover:text-white">News</a>
         <a href="database.html" class="hover:text-white">Full Database</a>
+        <a href="wunderkammer.html" class="hover:text-white">Wunderkammer</a>
       </div>
     </div>
   </nav>
@@ -114,12 +115,23 @@
     const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
 
     async function loadCSV(url) {
-      // Cache-busting so new spreadsheet updates appear immediately
       const cacheBuster = `&t=${Date.now()}`;
       const response = await fetch(url + cacheBuster);
       const text = await response.text();
       return Papa.parse(text, { header: true, skipEmptyLines: true }).data;
     }
+
+    // Robust date sorter (handles MM/DD/YYYY reliably)
+    const dateSorter = (a, b) => {
+      const parseDate = (str) => {
+        if (!str) return new Date(0);
+        const [month, day, year] = str.split('/').map(Number);
+        return new Date(year, month - 1, day);
+      };
+      const dateA = parseDate(a.Date);
+      const dateB = parseDate(b.Date);
+      return dateB - dateA;
+    };
 
     async function init() {
       try {
@@ -127,8 +139,6 @@
           loadCSV(productsCSV),
           loadCSV(newsCSV)
         ]);
-
-        const dateSorter = (a, b) => new Date(b.Date) - new Date(a.Date);
 
         // Recent Products - newest first
         const recentProducts = [...products].sort(dateSorter).slice(0, 9);
