@@ -17,7 +17,7 @@
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen overflow-x-hidden">
   
-  <!-- Static background image (fast loading) -->
+  <!-- Static background image -->
   <div id="background-image" 
        style="position:fixed; top:0; left:0; width:100%; height:100%; 
               background-image: url('voynich-home-art.jpg'); 
@@ -35,7 +35,6 @@
         <a href="index.html" class="hover:text-white">Home</a>
         <a href="news.html" class="hover:text-white">News</a>
         <a href="database.html" class="hover:text-white">Full Database</a>
-        <a href="wunderkammer.html" class="hover:text-white">Wunderkammer</a>
       </div>
     </div>
   </nav>
@@ -121,16 +120,22 @@
       return Papa.parse(text, { header: true, skipEmptyLines: true }).data;
     }
 
-    // Robust date sorter (handles MM/DD/YYYY reliably)
+    // More robust date sorter (handles MM/DD/YYYY and other common formats)
     const dateSorter = (a, b) => {
       const parseDate = (str) => {
         if (!str) return new Date(0);
-        const [month, day, year] = str.split('/').map(Number);
-        return new Date(year, month - 1, day);
+        // Try MM/DD/YYYY first
+        let date = new Date(str);
+        if (!isNaN(date.getTime())) return date;
+        // Fallback: split MM/DD/YYYY
+        const parts = str.split('/');
+        if (parts.length === 3) {
+          const [month, day, year] = parts.map(Number);
+          return new Date(year, month - 1, day);
+        }
+        return new Date(0);
       };
-      const dateA = parseDate(a.Date);
-      const dateB = parseDate(b.Date);
-      return dateB - dateA;
+      return parseDate(b.Date) - parseDate(a.Date);
     };
 
     async function init() {
@@ -140,8 +145,8 @@
           loadCSV(newsCSV)
         ]);
 
-        // Recent Products - newest first
-        const recentProducts = [...products].sort(dateSorter).slice(0, 9);
+        // Recent Products - newest first, now 18 items
+        const recentProducts = [...products].sort(dateSorter).slice(0, 18);
         const prodContainer = document.getElementById('recent-products');
         recentProducts.forEach(item => {
           const div = document.createElement('div');
@@ -155,8 +160,8 @@
           prodContainer.appendChild(div);
         });
 
-        // Latest News - newest first
-        const recentNews = [...newsData].sort(dateSorter).slice(0, 9);
+        // Latest News - newest first, now 18 items
+        const recentNews = [...newsData].sort(dateSorter).slice(0, 18);
         const newsContainer = document.getElementById('recent-news');
         recentNews.forEach(item => {
           const div = document.createElement('div');
