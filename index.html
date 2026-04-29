@@ -76,7 +76,7 @@
     </div>
   </footer>
 
-  <!-- Scripts moved to bottom for better performance -->
+  <!-- Scripts at bottom for best performance -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   
@@ -84,15 +84,15 @@
     // Tailwind script initialization
     tailwind.config = { content: ["./**/*.html"] };
 
-    // Video auto-play after page load
+    // Auto-play video after page loads
     const video = document.getElementById('background-video');
     if (video) {
-      video.play().catch(() => {}); // Silent fail if autoplay is blocked
+      video.play().catch(() => {});
     }
 
-    // Load Google Sheets data
-    const productsURL = "https://docs.google.com/spreadsheets/d/e/2PACX-.../pub?gid=2126428328&single=true&output=csv";
-    const newsURL = "https://docs.google.com/spreadsheets/d/e/2PACX-.../pub?gid=1558648992&single=true&output=csv";
+    // === YOUR EXACT GOOGLE SHEETS URLs ===
+    const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=2126428328&single=true&output=csv";
+    const newsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQvQIPJY_NAtPe1A9GUQkf5d1Jw6HoH79OMcTQMB20MtnlUv3DfRa_-Q_7nGTNt-gxnpQSCPuD5ZU7S/pub?gid=1558648992&single=true&output=csv";
 
     async function loadCSV(url) {
       const response = await fetch(url);
@@ -101,42 +101,46 @@
     }
 
     async function init() {
-      const [products, newsData] = await Promise.all([
-        loadCSV(productsURL),
-        loadCSV(newsURL)
-      ]);
+      try {
+        const [products, newsData] = await Promise.all([
+          loadCSV(productsCSV),
+          loadCSV(newsCSV)
+        ]);
 
-      const dateSorter = (a, b) => new Date(b.Date) - new Date(a.Date);
+        const dateSorter = (a, b) => new Date(b.Date) - new Date(a.Date);
 
-      // Recent Products
-      const recentProducts = [...products].sort(dateSorter).slice(0, 9);
-      const prodContainer = document.getElementById('recent-products');
-      recentProducts.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'product-card p-4 rounded-2xl text-sm';
-        div.innerHTML = `
-          <a href="${item.URL || '#'}" target="_blank" rel="noopener" class="block font-medium hover:text-emerald-300">
-            ${item.Product || 'Untitled'}
-          </a>
-          <div class="card-date">(${item.Date || ''})</div>
-        `;
-        prodContainer.appendChild(div);
-      });
+        // Recent Products
+        const recentProducts = [...products].sort(dateSorter).slice(0, 9);
+        const prodContainer = document.getElementById('recent-products');
+        recentProducts.forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'product-card p-4 rounded-2xl text-sm';
+          div.innerHTML = `
+            <a href="${item.URL || '#'}" target="_blank" rel="noopener" class="block font-medium hover:text-emerald-300">
+              ${item.Product || 'Untitled'}
+            </a>
+            <div class="card-date">(${item.Date || ''})</div>
+          `;
+          prodContainer.appendChild(div);
+        });
 
-      // Latest News
-      const recentNews = [...newsData].sort(dateSorter).slice(0, 9);
-      const newsContainer = document.getElementById('recent-news');
-      recentNews.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'news-pepper p-4 rounded-2xl text-sm';
-        div.innerHTML = `
-          <a href="${item.URL || '#'}" target="_blank" rel="noopener" class="block hover:text-emerald-300">
-            ${item.Title || 'Untitled'}
-          </a>
-          <div class="card-date">(${item.Date || ''})</div>
-        `;
-        newsContainer.appendChild(div);
-      });
+        // Latest News
+        const recentNews = [...newsData].sort(dateSorter).slice(0, 9);
+        const newsContainer = document.getElementById('recent-news');
+        recentNews.forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'news-pepper p-4 rounded-2xl text-sm';
+          div.innerHTML = `
+            <a href="${item.URL || '#'}" target="_blank" rel="noopener" class="block hover:text-emerald-300">
+              ${item.Title || 'Untitled'}
+            </a>
+            <div class="card-date">(${item.Date || ''})</div>
+          `;
+          newsContainer.appendChild(div);
+        });
+      } catch (e) {
+        console.error("Failed to load Google Sheets data:", e);
+      }
     }
 
     window.onload = init;
