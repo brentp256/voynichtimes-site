@@ -1,1 +1,3 @@
 /go/angela-justice https://www.amazon.com/dp/B0CV1Y3S9N?tag=voynich03-20 301
+# Keep the static rule above this placeholder. Static rules are matched first.
+/go/:asin https://www.amazon.com/dp/:asin?tag=voynich03-20 301
