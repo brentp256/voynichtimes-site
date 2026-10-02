@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Great Canadian Treasure Hunt: 217 gold coins hidden across Canada by The Northern Miner. Grand prize, regional prizes, clues, and how to join.">
+  <title>The Great Canadian Treasure Hunt | The Voynich Times</title>
+  <!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFDQCDM28S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MFDQCDM28S');
+</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #111827; color: #e5e7eb; overflow-x: hidden; }
+    #background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('/voynich-home-art.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+      filter: brightness(0.75) contrast(1.05);
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      
+      
+      
+      background: rgba(0, 0, 0, 0.72);
+      z-index: -1;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-figure { margin: 2rem 0; }
+    .article-figure img { display: block; max-width: 100%; height: auto; border-radius: 0.75rem; }
+    .article-figure figcaption { margin-top: 0.5rem; color: #9ca3af; font-size: 0.9rem; line-height: 1.4; }
+    
+    .article-body a { color: #6ee7b7; }
+    .article-body a:hover { color: #a7f3d0; }
+    .article-body ol { list-style: decimal; padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+    .article-body ul { list-style: disc; padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+    .article-body ul ul { list-style: circle; margin: 0.35rem 0 0.75rem; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1rem;
+      color: #f9fafb;
+    }
+    .article-body h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 2rem 0 0.75rem;
+      color: #ecfdf5;
+    }
+    .article-quote {
+      border-left: 4px solid #34d399;
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      background: rgba(16, 185, 129, 0.08);
+      border-radius: 0 0.75rem 0.75rem 0;
+      font-style: italic;
+      color: #d1fae5;
+    }
+    .content-note {
+      background: rgba(31, 41, 55, 0.9);
+      border: 1px solid #4b5563;
+      border-radius: 1rem;
+      padding: 1rem 1.25rem;
+      margin: 1.75rem 0;
+      color: #9ca3af;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .timeline {
+      list-style: none;
+      padding-left: 0;
+      margin: 1.5rem 0 2rem;
+    }
+    .timeline li {
+      margin-bottom: 0;
+      padding: 0.65rem 0 0.65rem 1.1rem;
+      border-left: 2px solid #34d399;
+      line-height: 1.55;
+    }
+    .feature-layout {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .article-card {
+      background: rgba(31, 41, 55, 0.8);
+      border: 1px solid #374151;
+      border-radius: 1rem;
+      padding: 2rem;
+      color: #e5e7eb;
+      font-size: 1.125rem;
+      line-height: 1.625;
+    }
+    .shop-panel {
+      background: rgba(17, 24, 39, 0.92);
+      border: 1px solid #065f46;
+      border-radius: 1rem;
+      padding: 1.25rem 1.15rem 1.15rem;
+      box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.12), 0 16px 40px rgba(0, 0, 0, 0.35);
+    }
+    .shop-kicker {
+      color: #34d399;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+    .shop-panel h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #f9fafb;
+      line-height: 1.3;
+      margin: 0 0 0.6rem;
+    }
+    .shop-affiliate {
+      font-size: 0.72rem;
+      line-height: 1.45;
+      color: #9ca3af;
+      margin-bottom: 0.9rem;
+    }
+    .shop-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .shop-list a {
+      display: block;
+      text-decoration: none;
+      border: 1px solid #374151;
+      background: rgba(31, 41, 55, 0.75);
+      border-radius: 0.75rem;
+      padding: 0.7rem 0.8rem;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+    .shop-list a:hover {
+      border-color: #34d399;
+      background: rgba(6, 78, 59, 0.35);
+    }
+    .shop-title {
+      display: block;
+      color: #d1fae5;
+      font-size: 0.92rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+    .shop-sub {
+      display: block;
+      margin-top: 0.2rem;
+      color: #9ca3af;
+      font-size: 0.7rem;
+      line-height: 1.4;
+    }
+    .shop-cta {
+      display: inline-block;
+      margin-top: 0.35rem;
+      color: #6ee7b7;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+    .shop-list a:hover .shop-cta { color: #a7f3d0; }
+    .shop-lead a {
+      border-color: #059669;
+      background: rgba(6, 78, 59, 0.45);
+    }
+    .shop-more {
+      margin-top: 0.85rem;
+      border-top: 1px solid #374151;
+      padding-top: 0.65rem;
+    }
+    .shop-more summary {
+      cursor: pointer;
+      color: #a7f3d0;
+      font-size: 0.78rem;
+      font-weight: 600;
+      list-style: none;
+    }
+    .shop-more summary::-webkit-details-marker { display: none; }
+    .shop-more summary::after {
+      content: " +";
+      color: #6ee7b7;
+    }
+    .shop-more[open] summary::after { content: " −"; }
+    .shop-more .shop-list { margin-top: 0.55rem; }
+    @media (min-width: 1024px) {
+      .feature-layout {
+        grid-template-columns: minmax(0, 1fr) 20.5rem;
+        grid-template-areas:
+          "intro shop"
+          "timeline shop";
+        align-items: start;
+        gap: 0 1.75rem;
+      }
+      .feature-intro { grid-area: intro; }
+      .shop-panel { grid-area: shop; }
+      .feature-timeline { grid-area: timeline; }
+      .feature-intro {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+      .feature-timeline {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-top: 0;
+        padding-top: 0;
+      }
+      .shop-panel {
+        position: sticky;
+        top: 5.5rem;
+        max-height: calc(100vh - 6.25rem);
+        overflow-y: auto;
+      }
+    }
+    @media (max-width: 767px) {
+      .article-card { padding: 1.5rem 1.25rem; }
+    }
+  </style>
+  <link rel="canonical" href="https://voynichtimes.com/features/poe-gold-bug/" />
+<link rel="icon" type="image/png" href="/images/voynich-logo-circle.png">
+<link rel="apple-touch-icon" href="/images/voynich-logo-circle.png">
+<meta property="og:image" content="https://voynichtimes.com/images/voynich-banner.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://voynichtimes.com/images/voynich-banner.jpg">
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+  <div id="background-image"></div>
+  <div class="overlay"></div>
+
+  <!-- Clean modern nav -->
+  <nav class="bg-gray-800/90 backdrop-blur-md p-4 sticky top-0 shadow z-50">
+    <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
+      <a href="/" class="flex items-center gap-3 text-2xl font-bold hover:text-emerald-400 transition-colors"><img src="/images/voynich-logo-circle.png" alt="The Voynich Times logo" class="w-10 h-10 rounded-full shrink-0">The Voynich Times</a>
+
+      <div class="hidden md:flex items-center space-x-8 text-sm">
+        <a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a>
+        <a href="/news.html" class="text-gray-300 hover:text-white transition-colors">News</a>
+        <a href="/features/" class="text-emerald-400 font-medium">Features</a>
+        <a href="/database.html" class="text-gray-300 hover:text-white transition-colors">Full Database</a>
+        <a href="/wunderkammer/" class="text-gray-300 hover:text-white transition-colors">Wunderkammer</a>
+      </div>
+    </div>
+  </nav>
+
+  <article class="max-w-6xl mx-auto p-6 flex-1 w-full">
+    <p class="text-sm mb-4">
+      <a href="/features/" class="text-emerald-400 hover:text-emerald-300">← Features</a>
+    </p>
+
+    <header class="mb-8 max-w-3xl">
+      <p class="text-emerald-400 font-mono text-sm mb-3">Treasure Hunt Profile</p>
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight">The Great Canadian Treasure Hunt</h1>
+      <p class="text-xl mt-4 text-emerald-300">217 gold coins. Six regions. One very large country.</p>
+    </header>
+
+    <div class="feature-layout">
+      <div class="article-body article-card feature-intro">
+        <p>Organized by <a href="https://www.northernminer.com/" target="_blank" rel="noopener noreferrer">The Northern Miner</a> (owned by EarthLabs Inc., TSXV: SPOT), <em>The Great Canadian Treasure Hunt</em> launched in 2025 with a simple, audacious premise: hide real gold across Canada, publish the clues, and let tens of thousands of hunters do the rest. On October 2, 2026, the hunt officially entered its second year with a brand-new regional prize — six one-ounce gold coins, valued at over $35,000 CAD, waiting somewhere in Chibougamau, Quebec.</p>
+
+        <h2>The prizes</h2>
+
+        <p>The headline number is the Grand Prize: <strong>217 one-ounce gold coins</strong>, worth well over $1.2 million CAD, minted from gold produced at Agnico Eagle's Detour Lake Mine. It remains hidden.</p>
+
+        <p>Around it sit the regional bonus prizes — six one-ounce gold coins each (roughly $35,000 CAD apiece), hidden one region at a time. As of October 2026, six prizes remain in play:</p>
+        <ul>
+          <li><strong>Chibougamau, Quebec</strong> — the new year-two prize, tied to IAMGOLD's Nelligan Complex in the Chibougamau-Chapais district</li>
+          <li><strong>Sudbury, Ontario</strong></li>
+          <li><strong>Manitoba</strong></li>
+          <li><strong>Saskatchewan</strong></li>
+          <li><strong>Val d'Or, Quebec</strong></li>
+          <li><strong>The Grand Prize</strong></li>
+        </ul>
+
+        <p>One regional prize has already been claimed: a six-coin bonus worth over $34,000 CAD was found near Nipissing Falls in Cobalt, Ontario in October 2025 by Simon Fallon and his father.</p>
+
+        <h2>How it works</h2>
+
+        <p>The hunt is built around Canada's mining story — part history lesson, part modern exploration showcase. Each regional prize comes with published clues (the Chibougamau clue is live now), and the organizers pair each release with project highlights from the surrounding mining district. The Chibougamau launch, for example, spotlights IAMGOLD's district-scale approach at the Nelligan Complex, where disparate deposits across 1,340 square kilometres have been pulled into a single land package holding over 7 million ounces of indicated and inferred gold.</p>
+
+        <p>Tens of thousands of hunters are actively searching. Clues and community updates go out through The Northern Miner's channels — <a href="https://treasure.northernminer.com/" target="_blank" rel="noopener noreferrer">treasure.northernminer.com</a> is the hub for full contest rules, FAQs, and the Chibougamau clue.</p>
+
+        <h2>The fine print</h2>
+
+        <ul>
+          <li>18+. No purchase necessary.</li>
+          <li>Open to residents of Canada only.</li>
+          <li>All prize valuations in CAD, based on spot gold prices as of January 29, 2026 — they fluctuate with the market.</li>
+        </ul>
+
+        <h2>Who's behind it</h2>
+
+        <p>The Northern Miner has covered the mining industry since 1915 and now operates alongside MINING.COM, CEO.CA, and the Canadian Mining Journal under EarthLabs Inc. The hunt's sponsor bench is a who's-who of Canadian gold: IAMGOLD Corporation, Agnico Eagle Mines Limited, Sprott Money, Kinross Gold Corporation, the World Gold Council, McEwen Inc., Alamos Gold Inc., Ernst &amp; Young LLP, and Mining Matters.</p>
+
+        <h2>Follow the hunt</h2>
+
+        <ul>
+          <li><a href="https://treasure.northernminer.com/" target="_blank" rel="noopener noreferrer">Official hunt site — clues, rules, FAQs</a></li>
+          <li><a href="https://www.youtube.com/watch?v=P9ntCnwOMk0" target="_blank" rel="noopener noreferrer">Chibougamau reveal video</a></li>
+          <li><a href="https://earthlabs.com/the-great-canadian-treasure-hunt-officially-enters-its-second-year-with-a-new-regional-prize/" target="_blank" rel="noopener noreferrer">Year-two press release (EarthLabs)</a></li>
+        </ul>
+
+        <p class="text-sm text-gray-400 mt-8">Profile last updated October 2, 2026. Prize values and hunt status change — check the official site for the latest.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- Amazon disclaimer footer -->
+  <footer class="mt-auto py-8 text-center text-sm text-gray-400 border-t border-gray-700">
+    <div class="max-w-screen-2xl mx-auto px-6">
+      <p>As an Amazon Associate I earn from qualifying purchases.</p>
+    </div>
+  </footer>
+</body>
+</html>
