@@ -26,6 +26,20 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://voynichtimes.com/images/og-cover.jpg">
 <meta name="twitter:image:alt" content="The Voynich Times, Est. 2021">
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen overflow-x-hidden">
   
@@ -54,14 +68,14 @@
 
   <div class="max-w-screen-2xl mx-auto p-6 pt-12">
     <div class="title-box mx-auto text-center">
-      <picture class="block w-full max-w-4xl mx-auto mb-4">
+      <picture class="block w-full max-w-4xl mx-auto mb-6">
         <source media="(max-width: 640px)" srcset="/images/masthead-mobile.webp" type="image/webp">
         <source media="(max-width: 640px)" srcset="/images/masthead-mobile.jpg" type="image/jpeg">
         <source srcset="/images/masthead.webp" type="image/webp">
         <img src="/images/masthead.jpg" alt="The Voynich Times, Est. 2021" class="w-full h-auto shadow-lg" width="1500" height="500">
       </picture>
-      <h1 class="text-5xl font-bold tracking-tight">The Voynich Times</h1>
-      <p class="text-xl mt-2 text-emerald-300">The Self-Proclaimed Leader in Mystery Puzzle News!</p>
+      <h1 class="visually-hidden">The Voynich Times</h1>
+      <p class="text-xl text-emerald-300">The Self-Proclaimed Leader in Mystery Puzzle News!</p>
     </div>
 
     <!-- UPDATE THIS when a new feature publishes.
