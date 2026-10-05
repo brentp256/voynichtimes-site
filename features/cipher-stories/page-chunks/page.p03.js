@@ -1,1 +1,0 @@
-window.__VT_PAGE=(window.__VT_PAGE||'')+'_stories_sample_page.p10.js"><\/script>\n  <script src="images/chunks/04_cipher_stories_sample_page.fin.js"><\/script>\n  <script>\n    document.querySelectorAll(\'img[data-vt-img]\').forEach(function(img){\n      var k=img.getAttribute(\'data-vt-img\');\n      if(window[k]) img.src=window[k];\n    });\n  <\/script>\n<\/body>\n<\/html>\n';
