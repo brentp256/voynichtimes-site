@@ -1,0 +1,1 @@
+window.__VT_IMG_04_cipher_stories_sample_page='data:image/webp;base64,'+window.__VT_IMG_04_cipher_stories_sample_page;
