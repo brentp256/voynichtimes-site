@@ -97,37 +97,38 @@
     return node;
   }
 
-  function copyText(text) {
-    if (navigator.clipboard && window.isSecureContext) {
-      return navigator.clipboard.writeText(text);
+  function copyWithCommand(text) {
+    var scrollX = window.scrollX;
+    var scrollY = window.scrollY;
+    var active = document.activeElement;
+    var area = document.createElement("textarea");
+    area.value = text;
+    area.setAttribute("readonly", "");
+    area.style.position = "fixed";
+    area.style.top = "0";
+    area.style.left = "-9999px";
+    document.body.appendChild(area);
+    area.focus();
+    area.select();
+    var ok = false;
+    try {
+      ok = document.execCommand("copy");
+    } catch (err) {
+      ok = false;
     }
-    return new Promise(function (resolve, reject) {
-      var area = document.createElement("textarea");
-      area.value = text;
-      area.setAttribute("readonly", "");
-      area.style.position = "fixed";
-      area.style.top = "0";
-      area.style.left = "-9999px";
-      document.body.appendChild(area);
-      area.focus();
-      area.select();
-      var ok = false;
-      try {
-        ok = document.execCommand("copy");
-      } catch (err) {
-        document.body.removeChild(area);
-        reject(err);
-        return;
-      }
-      document.body.removeChild(area);
-      if (ok) resolve();
-      else reject(new Error("copy failed"));
-    });
+    document.body.removeChild(area);
+    window.scrollTo(scrollX, scrollY);
+    if (active && active.focus) active.focus();
+    return ok;
   }
+
 
   function flash(button, live, message, restoreLabel, restoreTip) {
     var tip = button.querySelector(".vt-share__tip");
+    var bar = button.closest(".vt-share");
+    var heading = bar && bar.querySelector(".vt-share__label");
     if (tip) tip.textContent = message;
+    if (heading) heading.textContent = message;
     button.classList.add("is-copied");
     live.textContent = "";
     window.setTimeout(function () {
@@ -136,10 +137,11 @@
     window.clearTimeout(button._vtTimer);
     button._vtTimer = window.setTimeout(function () {
       if (tip) tip.textContent = restoreTip;
+      if (heading) heading.textContent = "Share";
       button.classList.remove("is-copied");
       button.setAttribute("aria-label", restoreLabel);
       live.textContent = "";
-    }, 2000);
+    }, 2500);
   }
 
   function makeControl(spec, links) {
@@ -202,11 +204,26 @@
       var control = makeControl(spec, links);
       if (spec.id === "copy") {
         control.addEventListener("click", function () {
-          copyText(links.url).then(function () {
+          var settled = false;
+          function succeed() {
+            if (settled) return;
+            settled = true;
             flash(control, live, "Copied!", "Copy link", "Copy link");
-          }).catch(function () {
+          }
+          function fail() {
+            if (settled) return;
+            settled = true;
             flash(control, live, "Copy failed", "Copy link", "Copy link");
-          });
+          }
+          var fallbackOk = copyWithCommand(links.url);
+          if (fallbackOk) succeed();
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(links.url).then(succeed).catch(function () {
+              if (!fallbackOk) fail();
+            });
+          } else if (!fallbackOk) {
+            fail();
+          }
         });
       }
       if (spec.id === "native") {
