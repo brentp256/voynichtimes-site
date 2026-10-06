@@ -1,0 +1,158 @@
+/* Voynich Times share bar. See js/share.js for how to add this to a new article. */
+
+.vt-share {
+  position: relative;
+  margin-top: 1.15rem;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.vt-share--end {
+  margin-top: 2.25rem;
+  margin-bottom: 0.5rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid #374151;
+}
+
+.vt-share--page {
+  margin-bottom: 2rem;
+}
+
+.vt-share--center {
+  text-align: center;
+}
+
+.vt-share__label {
+  margin: 0 0 0.55rem;
+  color: #34d399;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.vt-share__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vt-share--center .vt-share__list {
+  justify-content: center;
+}
+
+.vt-share__btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid #374151;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.92);
+  color: #6ee7b7;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.vt-share__btn:hover,
+.vt-share__btn:focus-visible {
+  border-color: #34d399;
+  background: rgba(6, 78, 59, 0.72);
+  color: #ecfdf5;
+}
+
+.vt-share__btn:focus {
+  outline: none;
+}
+
+.vt-share__btn:focus-visible {
+  outline: 2px solid #34d399;
+  outline-offset: 2px;
+}
+
+.vt-share__btn svg {
+  display: block;
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: none;
+}
+
+.vt-share__tip {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: calc(100% + 0.4rem);
+  transform: translateX(-50%);
+  padding: 0.35rem 0.5rem;
+  border: 1px solid #34d399;
+  border-radius: 0.4rem;
+  background: #064e3b;
+  color: #ecfdf5;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: none;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.vt-share__btn:hover .vt-share__tip,
+.vt-share__btn:focus-visible .vt-share__tip,
+.vt-share__btn.is-copied .vt-share__tip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.vt-share__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.vt-share__native {
+  display: none;
+}
+
+@media (max-width: 767px), (hover: none) and (pointer: coarse) {
+  .vt-share--can-native .vt-share__native {
+    display: inline-flex;
+  }
+}
+
+@media (forced-colors: active) {
+  .vt-share__btn {
+    border: 1px solid ButtonText;
+    background: ButtonFace;
+    color: ButtonText;
+  }
+
+  .vt-share__tip {
+    border: 1px solid ButtonText;
+    background: Canvas;
+    color: CanvasText;
+  }
+}
+
+@media print {
+  .vt-share {
+    display: none;
+  }
+}
