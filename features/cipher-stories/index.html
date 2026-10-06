@@ -3,80 +3,454 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Cipher Book That Died on the Vine: Cooper’s 1928 Cipher Stories | The Voynich Times</title>
   <meta name="description" content="Cooper’s 1928 Cipher Stories Puzzle Book paired short stories with ciphers you crack yourself. It sold for $1.75, then 59 cents. Why it still matters.">
+  <title>Dead on the Vine: Cooper’s 1928 Cipher Stories | The Voynich Times</title>
+  <!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFDQCDM28S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MFDQCDM28S');
+</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+
+body { background-color: #111827; color: #e5e7eb; overflow-x: hidden; }
+#background-image {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: url('/voynich-home-art.jpg');
+background-size: cover;
+background-position: center;
+z-index: -2;
+filter: brightness(0.75) contrast(1.05);
+}
+.overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.72);
+z-index: -1;
+}
+.article-body p { margin-bottom: 1.25rem; }
+.article-figure { margin: 2rem 0; }
+.article-figure img { display: block; max-width: 100%; height: auto; border-radius: 0.75rem; }
+.article-figure figcaption { margin-top: 0.5rem; color: #9ca3af; font-size: 0.9rem; line-height: 1.4; }
+.article-body a { color: #6ee7b7; }
+.article-body a:hover { color: #a7f3d0; }
+.article-body ol { list-style: decimal; padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+.article-body ul { list-style: disc; padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+.article-body ul ul { list-style: circle; margin: 0.35rem 0 0.75rem; }
+.article-body li { margin-bottom: 0.5rem; }
+.article-body h2 {
+font-size: 1.75rem;
+font-weight: 700;
+margin: 2.5rem 0 1rem;
+color: #f9fafb;
+}
+.article-body h3 {
+font-size: 1.35rem;
+font-weight: 700;
+margin: 2rem 0 0.75rem;
+color: #ecfdf5;
+}
+.article-quote {
+border-left: 4px solid #34d399;
+padding: 1rem 1.5rem;
+margin: 2rem 0;
+background: rgba(16, 185, 129, 0.08);
+border-radius: 0 0.75rem 0.75rem 0;
+font-style: italic;
+color: #d1fae5;
+}
+.content-note {
+background: rgba(31, 41, 55, 0.9);
+border: 1px solid #4b5563;
+border-radius: 1rem;
+padding: 1rem 1.25rem;
+margin: 1.75rem 0;
+color: #9ca3af;
+font-size: 0.95rem;
+line-height: 1.6;
+}
+.timeline {
+list-style: none;
+padding-left: 0;
+margin: 1.5rem 0 2rem;
+}
+.timeline li {
+margin-bottom: 0;
+padding: 0.65rem 0 0.65rem 1.1rem;
+border-left: 2px solid #34d399;
+line-height: 1.55;
+}
+.feature-layout {
+display: grid;
+gap: 1.5rem;
+}
+.article-card {
+background: rgba(31, 41, 55, 0.8);
+border: 1px solid #374151;
+border-radius: 1rem;
+padding: 2rem;
+color: #e5e7eb;
+font-size: 1.125rem;
+line-height: 1.625;
+}
+.shop-panel {
+background: rgba(17, 24, 39, 0.92);
+border: 1px solid #065f46;
+border-radius: 1rem;
+padding: 1.25rem 1.15rem 1.15rem;
+box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.12), 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+.shop-kicker {
+color: #34d399;
+font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+font-size: 0.7rem;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+margin-bottom: 0.35rem;
+}
+.shop-panel h2 {
+font-size: 1.15rem;
+font-weight: 700;
+color: #f9fafb;
+line-height: 1.3;
+margin: 0 0 0.6rem;
+}
+.shop-affiliate {
+font-size: 0.72rem;
+line-height: 1.45;
+color: #9ca3af;
+margin-bottom: 0.9rem;
+}
+.shop-list {
+list-style: none;
+padding: 0;
+margin: 0;
+display: flex;
+flex-direction: column;
+gap: 0.45rem;
+}
+.shop-list a {
+display: block;
+text-decoration: none;
+border: 1px solid #374151;
+background: rgba(31, 41, 55, 0.75);
+border-radius: 0.75rem;
+padding: 0.7rem 0.8rem;
+transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+.shop-list a:hover {
+border-color: #34d399;
+background: rgba(6, 78, 59, 0.35);
+}
+.shop-title {
+display: block;
+color: #d1fae5;
+font-size: 0.92rem;
+font-weight: 600;
+line-height: 1.35;
+}
+.shop-sub {
+display: block;
+margin-top: 0.2rem;
+color: #9ca3af;
+font-size: 0.7rem;
+line-height: 1.4;
+}
+.shop-cta {
+display: inline-block;
+margin-top: 0.35rem;
+color: #6ee7b7;
+font-size: 0.72rem;
+font-weight: 600;
+}
+.shop-list a:hover .shop-cta { color: #a7f3d0; }
+.shop-lead a {
+border-color: #059669;
+background: rgba(6, 78, 59, 0.45);
+}
+.shop-more {
+margin-top: 0.85rem;
+border-top: 1px solid #374151;
+padding-top: 0.65rem;
+}
+.shop-more summary {
+cursor: pointer;
+color: #a7f3d0;
+font-size: 0.78rem;
+font-weight: 600;
+list-style: none;
+}
+.shop-more summary::-webkit-details-marker { display: none; }
+.shop-more summary::after {
+content: " +";
+color: #6ee7b7;
+}
+.shop-more[open] summary::after { content: " −"; }
+.shop-more .shop-list { margin-top: 0.55rem; }
+@media (min-width: 1024px) {
+.feature-layout {
+grid-template-columns: minmax(0, 1fr) 20.5rem;
+grid-template-areas:
+"intro shop"
+"timeline shop";
+align-items: start;
+gap: 0 1.75rem;
+}
+.feature-intro { grid-area: intro; }
+.shop-panel { grid-area: shop; }
+.feature-timeline { grid-area: timeline; }
+.feature-intro {
+border-bottom-left-radius: 0;
+border-bottom-right-radius: 0;
+border-bottom: 0;
+padding-bottom: 0;
+}
+.feature-timeline {
+border-top-left-radius: 0;
+border-top-right-radius: 0;
+border-top: 0;
+padding-top: 0;
+}
+.shop-panel {
+position: sticky;
+top: 5.5rem;
+max-height: calc(100vh - 6.25rem);
+overflow-y: auto;
+}
+}
+@media (max-width: 767px) {
+.article-card { padding: 1.5rem 1.25rem; }
+}
+
+.article-figure picture { display: block; }
+.article-figure.figure-cover {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 767px) {
+  .article-figure.figure-cover { width: 100%; }
+}
+
+  </style>
   <link rel="canonical" href="https://voynichtimes.com/features/cipher-stories/" />
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <meta property="og:title" content="A Cipher Book That Died on the Vine: Cooper’s 1928 Cipher Stories">
-  <meta property="og:description" content="Cooper’s 1928 Cipher Stories Puzzle Book paired short stories with ciphers you crack yourself. It sold for $1.75, then 59 cents. Why it still matters.">
-  <meta property="og:image" content="https://voynichtimes.com/images/og-cover.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="444">
-  <meta property="og:image:alt" content="The Voynich Times, Est. 2021">
-  <meta property="og:url" content="https://voynichtimes.com/features/cipher-stories/">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://voynichtimes.com/images/og-cover.jpg">
-  <meta name="twitter:image:alt" content="The Voynich Times, Est. 2021">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:title" content="Dead on the Vine: Cooper’s 1928 Cipher Stories">
+<meta property="og:description" content="Cooper’s 1928 Cipher Stories Puzzle Book paired short stories with ciphers you crack yourself. It sold for $1.75, then 59 cents. Why it still matters.">
+<meta property="og:image" content="https://voynichtimes.com/images/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="444">
+<meta property="og:image:alt" content="The Voynich Times, Est. 2021">
+<meta property="og:url" content="https://voynichtimes.com/features/cipher-stories/">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dead on the Vine: Cooper’s 1928 Cipher Stories">
+<meta name="twitter:description" content="Cooper’s 1928 Cipher Stories Puzzle Book paired short stories with ciphers you crack yourself. It sold for $1.75, then 59 cents. Why it still matters.">
+<meta name="twitter:image" content="https://voynichtimes.com/images/og-cover.jpg">
+<meta name="twitter:image:alt" content="The Voynich Times, Est. 2021">
 </head>
-<body>
-  <script src="page-chunks/p00.js"></script>
-  <script src="page-chunks/p01.js"></script>
-  <script src="page-chunks/p02.js"></script>
-  <script src="page-chunks/p03.js"></script>
-  <script src="page-chunks/p04.js"></script>
-  <script src="page-chunks/p05.js"></script>
-  <script src="page-chunks/p06.js"></script>
-  <script src="page-chunks/p07.js"></script>
-  <script src="page-chunks/p08.js"></script>
-  <script src="page-chunks/p09.js"></script>
-  <script src="page-chunks/p10.js"></script>
-  <script src="page-chunks/p11.js"></script>
-  <script src="page-chunks/p12.js"></script>
-  <script src="page-chunks/p13.js"></script>
-  <script src="page-chunks/p14.js"></script>
-  <script src="page-chunks/p15.js"></script>
-  <script src="page-chunks/p16.js"></script>
-  <script src="page-chunks/p17.js"></script>
-  <script src="page-chunks/p18.js"></script>
-  <script src="page-chunks/p19.js"></script>
-  <script src="page-chunks/p20.js"></script>
-  <script src="page-chunks/p21.js"></script>
-  <script src="page-chunks/p22.js"></script>
-  <script src="page-chunks/p23.js"></script>
-  <script src="page-chunks/p24.js"></script>
-  <script src="page-chunks/p25.js"></script>
-  <script src="page-chunks/p26.js"></script>
-  <script src="page-chunks/p27.js"></script>
-  <script src="page-chunks/p28.js"></script>
-  <script src="page-chunks/p29.js"></script>
-  <script src="page-chunks/p30.js"></script>
-  <script src="page-chunks/p31.js"></script>
-  <script src="page-chunks/p32.js"></script>
-  <script src="page-chunks/p33.js"></script>
-  <script src="page-chunks/p34.js"></script>
-  <script src="page-chunks/p35.js"></script>
-  <script src="page-chunks/p36.js"></script>
-  <script src="page-chunks/p37.js"></script>
-  <script src="page-chunks/p38.js"></script>
-  <script src="page-chunks/p39.js"></script>
-  <script src="page-chunks/p40.js"></script>
-  <script src="page-chunks/p41.js"></script>
-  <script src="page-chunks/p42.js"></script>
-  <script src="page-chunks/p43.js"></script>
-  <script src="page-chunks/p44.js"></script>
-  <script src="page-chunks/p45.js"></script>
-  <script src="page-chunks/p46.js"></script>
-  <script src="page-chunks/p47.js"></script>
-  <script src="page-chunks/p48.js"></script>
-  <script src="page-chunks/p49.js"></script>
-  <script src="page-chunks/p50.js"></script>
-  <script src="page-chunks/p51.js"></script>
-  <script src="page-chunks/p52.js"></script>
-  <script src="page-chunks/p53.js"></script>
-  <script src="page-chunks/fin.js"></script>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+  <div id="background-image"></div>
+  <div class="overlay"></div>
+
+  <!-- Clean modern nav -->
+  <nav class="bg-gray-800/90 backdrop-blur-md p-4 sticky top-0 shadow z-50">
+    <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
+      <a href="/" class="flex items-center gap-3 text-2xl font-bold hover:text-emerald-400 transition-colors"><picture><source srcset="/images/logo-round.webp" type="image/webp"><img src="/images/logo-round.png" alt="The Voynich Times logo" class="w-10 h-10 rounded-full shrink-0" width="40" height="40"></picture>The Voynich Times</a>
+
+      <div class="hidden md:flex items-center space-x-8 text-sm">
+        <a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a>
+        <a href="/news.html" class="text-gray-300 hover:text-white transition-colors">News</a>
+        <a href="/features/" class="text-emerald-400 font-medium">Features</a>
+        <a href="/database.html" class="text-gray-300 hover:text-white transition-colors">Full Database</a>
+        <a href="/wunderkammer/" class="text-gray-300 hover:text-white transition-colors">Wunderkammer</a>
+      </div>
+    </div>
+  </nav>
+
+  <article class="max-w-6xl mx-auto p-6 flex-1 w-full">
+    <p class="text-sm mb-4">
+      <a href="/features/" class="text-emerald-400 hover:text-emerald-300">← Features</a>
+    </p>
+
+    <header class="mb-8 max-w-3xl">
+      <p class="text-emerald-400 font-mono text-sm mb-3">Mystery Puzzle History · Vol. 1, Part 2</p>
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight">Dead on the Vine: Cooper’s 1928 Cipher Stories</h1>
+    </header>
+
+    <div class="feature-layout">
+      <div class="article-body article-card feature-intro">
+        <p>An intriguing cover…simple and whimsical:</p>
+
+        <p>Tan boards. Black checkerboard bands. The words <strong>CIPHER STORIES PUZZLE BOOK</strong> almost falling from top to bottom. Published in 1928 by Lewis Copeland Company of New York it contains twenty-five short stories, each containing at least two cipher puzzles, in 127 illustrated pages. It looks, unnervingly, like a modern casual puzzle book that somehow arrived a century early.</p>
+
+        <figure class="article-figure figure-cover">
+          <picture>
+            <source srcset="images/03-cipher-stories-cover.webp" type="image/webp">
+            <img src="images/03-cipher-stories-cover.jpg" alt="Cipher Stories Puzzle Book cover, Lewis Copeland Co., 1928" width="800" height="1256">
+          </picture>
+          <figcaption><em>Cipher Stories Puzzle Book</em> (Lewis Copeland Co., New York, 1928).</figcaption>
+        </figure>
+
+        <p>The full subtitle is worth the price of admission itself: Cipher Stories Puzzle Book: <em>Consisting of twenty-five original short stories, dealing with life, love, liberty, and the pursuit of happiness; each story containing at least two vital cipher puzzles.</em> Pure subtitle delight!</p>
+
+        <p>We do not think it invented Mystery Puzzle Games. We do think it belongs on the family tree — as a side branch that shows how early the hobby was already trying on different clothes.</p>
+
+        <h2>What is it?</h2>
+
+        <p><em>Cipher Stories</em> is not one long casefile. It isn’t a murder mystery. It is twenty-five <em>unrelated</em> short stories that share a single puzzle style. There is no overall story or final “a-ha!” on the last page. What there is is a rhythm: read, stall, solve, finish, breathe, read, stall, solve, finish, breathe.</p>
+
+        <p>You read until the prose hits a wall – a <strong>transposition cipher</strong> that you need to crack before the story will finish making sense. Most stories give you two puzzles plus clues in the narrative. The loop is almost embarrassingly clear once you have done it once:</p>
+
+        <ul>
+          <li>Find the hint in the story.</li>
+          <li>Solve the little <strong>keyword</strong> mini-puzzle.</li>
+          <li>Fill the known letters into the main grid — laid out like a crossword.</li>
+          <li>Finish the story.</li>
+        </ul>
+
+        <h3>One example of how it works</h3>
+
+        <p>On page 32, a character named Talky orders “Sassafras tea,” somebody marvels “Genuine rye!”, and Madge works out that the strange word on the message is “[redacted–no spoilers]” It is 1928. Prohibition is the joke. The main grid is drawn as a literal barrel, with two of Wakefield’s little figures dancing on the lid.</p>
+
+        <figure class="article-figure">
+          <picture>
+            <source srcset="images/04-cipher-stories-sample-page.webp" type="image/webp">
+            <img src="images/04-cipher-stories-sample-page.jpg" alt="Page 32 of Cipher Stories with a barrel-shaped cipher grid" width="392" height="606" loading="lazy">
+          </picture>
+          <figcaption>Page 32: a Prohibition-era story that stops for a cipher grid drawn as a barrel. Illustrations by Olin Wakefield. A previous owner seems to have pencilled in the answer.</figcaption>
+        </figure>
+
+        <p>You <em>could</em> brute-force the puzzles, but that would ruin the fun. This is a casual introduction to ciphers, not a flex for expert code breakers. This book fits in a “fun zone” — enough work to feel like play, but easy by modern Mystery Puzzle Game standards. It plays best one puzzle at a time, then put it down and come back another day for another fun little puzzle.</p>
+
+        <p>Modern puzzle books often stitch 1–2 page puzzles under an overarching story or theme. <em>Cipher Stories</em> flips the arrangement: the theme is the <em>mechanic</em>. One trick, twenty-five stages…and a wee bit of fun!</p>
+      </div>
+
+      <aside class="shop-panel" aria-labelledby="shop-heading">
+        <p class="shop-kicker">Associates</p>
+        <h2 id="shop-heading">Shop the books in this feature</h2>
+        <p class="shop-affiliate">As an Amazon Associate I earn from qualifying purchases.</p>
+
+        <ol class="shop-list">
+          <li class="shop-lead">
+            <a href="https://www.amazon.com/dp/B00087DKNO?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored">
+              <span class="shop-title">Cipher Stories Puzzle Book</span>
+              <span class="shop-sub">Kenneth S. Cooper · Illus. Olin Wakefield · Used / out of print</span>
+              <span class="shop-cta">Buy on Amazon →</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://amzn.to/4yBJ5HW" target="_blank" rel="noopener noreferrer sponsored">
+              <span class="shop-title">The Gold-Bug and Other Tales</span>
+              <span class="shop-sub">Edgar Allan Poe · Related reading from Part 1</span>
+              <span class="shop-cta">Buy on Amazon →</span>
+            </a>
+          </li>
+        </ol>
+      </aside>
+
+      <div class="article-body article-card feature-timeline">
+        <h2>Personae Dramatis…</h2>
+
+        <p><strong>Text:</strong> Kenneth S. Cooper.<br>
+        <strong>Pictures:</strong> Olin Wakefield.</p>
+
+        <p>We have not found other works by either man. This appears to be their first and only book, or period pseudonyms for people who did not want this genre on a résumé, perhaps they worked in the crossword field under tight contracts? We can only speculate at this point.</p>
+
+        <p>Wakefield’s drawings are genuinely cute throughout with little figures, and well drawn, which leads to speculation he was already an artist and was working under a pseudonym.</p>
+
+        <h2>How the world (barely) noticed</h2>
+
+        <p>The first mention we have found is a full Copeland Books notice in <em>The Publishers Weekly</em> on 10 March 1928. It is a pure 1920s ad copy — “Entertains — Amuses — Thrills — Mystifies” — and it promises that “as you tussle with the puzzle you feel like Sherlock Holmes at a circus.” Why they didn’t go with this amazing near rhyme astounds us! The price was $1.75. A week later, the <em>Catalog of Copyright Entries</em> logged the book with a copyright date of 17 March 1928.</p>
+
+        <figure class="article-figure">
+          <picture>
+            <source srcset="images/05-publishers-weekly-cipher-stories.webp" type="image/webp">
+            <img src="images/05-publishers-weekly-cipher-stories.jpg" alt="Publishers Weekly advertisement for Cipher Stories, 10 March 1928" width="1200" height="925" loading="lazy">
+          </picture>
+          <figcaption>Copeland’s full-page notice in <em>The Publishers Weekly</em>, 10 March 1928, p. 955.</figcaption>
+        </figure>
+
+        <figure class="article-figure">
+          <picture>
+            <source srcset="images/06-cipher-stories-bibliography.webp" type="image/webp">
+            <img src="images/06-cipher-stories-bibliography.jpg" alt="Catalog of Copyright Entries listing for Cipher Stories Puzzle Book" width="1200" height="385" loading="lazy">
+          </picture>
+          <figcaption>The book’s entry in the <em>Catalog of Copyright Entries</em>: © 17 March 1928, 127 pages.</figcaption>
+        </figure>
+
+        <p>Nobody at Copeland seems to have counted the puzzles the same way twice. The subtitle says at least two per story. The trade ad says “over 150.” A later magazine ad says 100. Take your pick; maybe the math is itself a puzzle?</p>
+
+        <p>The price also tells the story of the success. In July 1929, a small <em>Popular Mechanics</em> ad from Copeland’s office at 119 W. 57th Street asked “HOW SMART ARE YOU?” and told readers to send for it now: “a dollar bill pays in full.” On 15 May 1930, a Baltimore <em>Evening Sun</em> department-store ad had <em>Cipher Stories Puzzle Books</em> at <strong>59 cents</strong>, books, first floor. From $1.75 to 59 cents in a little over two years. That is what a branch dying on the vine looks like in newsprint.</p>
+
+        <figure class="article-figure">
+          <picture>
+            <source srcset="images/07-cipher-stories-popular-mechanics-ad.webp" type="image/webp">
+            <img src="images/07-cipher-stories-popular-mechanics-ad.jpg" alt="Popular Mechanics ad for Cipher Stories, July 1929" width="1200" height="317" loading="lazy">
+          </picture>
+          <figcaption><em>Popular Mechanics</em>, July 1929, p. 70: “a dollar bill pays in full.”</figcaption>
+        </figure>
+
+        <figure class="article-figure">
+          <picture>
+            <source srcset="images/08-cipher-stories-evening-sun-ad.webp" type="image/webp">
+            <img src="images/08-cipher-stories-evening-sun-ad.jpg" alt="Evening Sun Baltimore department-store ad, 15 May 1930" width="229" height="308" loading="lazy">
+          </picture>
+          <figcaption><em>The Evening Sun</em> (Baltimore), 15 May 1930: 59 cents, books, first floor.</figcaption>
+        </figure>
+
+        <p>After that, the trail dies off. No articles, no chatter, no modern reprints of note. James D. Volts still listed it in his 1938 <em>Bibliography of Cryptography</em>, an attempt to catalogue every published work on codes and ciphers — which is a polite way of saying the cipher people noticed and the culture did not.</p>
+
+        <h2>Why does it belong in our Mystery Puzzle Game family tree anyway?</h2>
+
+        <ul>
+          <li><strong>Mystery</strong> — thin, but real. Stories stop on a secret the cipher holds.</li>
+          <li><strong>Puzzle</strong> — the load-bearing wall. Transposition cipher, keyword key, crossword-shaped grid, and a preface that teaches cryptography to civilians.</li>
+          <li><strong>Game</strong> — you act. You do not just watch Legrand solve it. You can leave the book on the table and come back. Not a one-session dossier binge; a casual game for when you have time. That is a modern puzzle-book posture, wearing 1928 clothes.</li>
+        </ul>
+
+        <p>What it is <em>not</em>: an influence we can trace onto Baffle, Photocrimes, or any later subscription box. It would appear not to have shaped later books…no sequels… no spiritual direct descendants that we can name…just no impact. It is a self-described “cipher stories” branch that died on the vine.</p>
+
+        <p>What it <em>is</em>: one of the earliest commercial books that puts story, puzzle, <em>and</em> mystery in one book and treats cryptography as something a reader can be taught. It pushes past the crossword books of the late 1920s without becoming a scored detective-problem book.</p>
+
+        <p>Poe, in 1843, gave readers a cipher they <em>could</em> solve. Carr, in 1926, asked them to solve before next month’s answer. Cooper and Wakefield bottled that impulse into the popular crossword craze of the era, a book you could pick up when the crossword page felt thin. The 1928 puzzle market was already thick with trivia and crossword collections. Someone tried narrative plus cipher as a casual product. It didn’t take at the time.</p>
+
+        <p>We like it anyway. The mechanic is honest. The drawings are charming. Somebody, at some point, sat down with a pencil and filled in the barrel, and the other pages, and learned a thing or two, and probably laughed a few times…</p>
+
+        <h2>Sources</h2>
+        <ol>
+          <li>Cooper, K. S., &amp; Wakefield, O. (1928). <em>Cipher stories puzzle book: Consisting of twenty-five original short stories, dealing with life, love, liberty, and the pursuit of happiness; each story containing at least two vital cipher puzzles.</em> New York: Lewis Copeland Co.</li>
+          <li><em>The Publishers Weekly</em>, 10 March 1928, p. 955 (Copeland Books advertisement).</li>
+          <li><em>Catalog of Copyright Entries</em>, Part 1, Books, 1928 (entry A 1069376, © 17 Mar 1928).</li>
+          <li><em>Popular Mechanics</em>, July 1929, vol. 52 no. 1, p. 70 (advertisement).</li>
+          <li><em>The Evening Sun</em> (Baltimore), 15 May 1930 (advertisement).</li>
+          <li>Volts, J. D. (1938). <em>Bibliography of cryptography: a catalog of books pertaining to the science of codes and cyphers.</em> Cincinnati.</li>
+        </ol>
+
+        <p>Related: <a href="/features/poe-gold-bug/">Mystery Puzzle Games and Their Origin From… Poe?</a> (Vol. 1, Part 1).</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- Amazon disclaimer footer -->
+  <footer class="mt-auto py-8 text-center text-sm text-gray-400 border-t border-gray-700">
+    <div class="max-w-screen-2xl mx-auto px-6">
+      <p>As an Amazon Associate I earn from qualifying purchases.</p>
+    </div>
+  </footer>
 </body>
 </html>
