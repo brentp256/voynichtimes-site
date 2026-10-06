@@ -14,11 +14,32 @@
     gtag('js', new Date());
     gtag('config', 'G-MFDQCDM28S');
   </script>
-<link rel="icon" type="image/png" href="/images/voynich-logo-circle.png">
-<link rel="apple-touch-icon" href="/images/voynich-logo-circle.png">
-<meta property="og:image" content="https://voynichtimes.com/images/voynich-banner.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:image" content="https://voynichtimes.com/images/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="444">
+<meta property="og:image:alt" content="The Voynich Times, Est. 2021">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://voynichtimes.com/images/voynich-banner.jpg">
+<meta name="twitter:image" content="https://voynichtimes.com/images/og-cover.jpg">
+<meta name="twitter:image:alt" content="The Voynich Times, Est. 2021">
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen overflow-x-hidden">
   
@@ -35,7 +56,7 @@
   <!-- Navigation -->
   <nav class="bg-gray-800 p-4 sticky top-0 shadow z-50">
     <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
-      <a href="/" class="flex items-center gap-3"><img src="/images/voynich-logo-circle.png" alt="The Voynich Times logo" class="w-10 h-10 rounded-full shrink-0"><span class="text-2xl font-bold">The Voynich Times</span></a>
+      <a href="/" class="flex items-center gap-3"><picture><source srcset="/images/logo-round.webp" type="image/webp"><img src="/images/logo-round.png" alt="The Voynich Times logo" class="w-10 h-10 rounded-full shrink-0" width="40" height="40"></picture><span class="text-2xl font-bold">The Voynich Times</span></a>
       <div class="space-x-6">
         <a href="index.html" class="hover:text-white">Home</a>
         <a href="news.html" class="hover:text-white">News</a>
@@ -47,21 +68,26 @@
 
   <div class="max-w-screen-2xl mx-auto p-6 pt-12">
     <div class="title-box mx-auto text-center">
-      <img src="/images/voynich-logo-circle.png" alt="The Voynich Times logo" class="w-24 h-24 rounded-full mx-auto mb-4 shadow-lg">
-      <h1 class="text-5xl font-bold tracking-tight">The Voynich Times</h1>
-      <p class="text-xl mt-2 text-emerald-300">The Self-Proclaimed Leader in Mystery Puzzle News!</p>
+      <picture class="block w-full max-w-4xl mx-auto mb-6">
+        <source media="(max-width: 640px)" srcset="/images/masthead-mobile.webp" type="image/webp">
+        <source media="(max-width: 640px)" srcset="/images/masthead-mobile.jpg" type="image/jpeg">
+        <source srcset="/images/masthead.webp" type="image/webp">
+        <img src="/images/masthead.jpg" alt="The Voynich Times, Est. 2021" class="w-full h-auto shadow-lg" width="1500" height="500">
+      </picture>
+      <h1 class="visually-hidden">The Voynich Times</h1>
+      <p class="text-xl text-emerald-300">The Self-Proclaimed Leader in Mystery Puzzle News!</p>
     </div>
 
     <!-- UPDATE THIS when a new feature publishes.
-         title: Mystery Puzzle Games and Their Origin From… Poe?
-         url:   /features/poe-gold-bug/
-         tease: Or, what was the first Mystery Puzzle Game?
+         title: Dead on the Vine: Cooper’s 1928 Cipher Stories
+         url:   /features/cipher-stories/
+         tease: Cooper’s 1928 Cipher Stories Puzzle Book
     -->
     <aside class="mt-8 rounded-lg border border-emerald-500 bg-emerald-900/25 px-4 py-2.5">
       <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
         <p class="text-emerald-400 font-mono text-xs uppercase tracking-wide shrink-0">Latest Feature</p>
-        <a href="/features/poe-gold-bug/" title="Or, what was the first Mystery Puzzle Game?" class="flex-1 min-w-0 text-xl md:text-2xl font-semibold leading-snug hover:text-emerald-300 transition-colors">
-          Mystery Puzzle Games and Their Origin From… Poe?
+        <a href="/features/cipher-stories/" title="Cooper’s 1928 Cipher Stories Puzzle Book" class="flex-1 min-w-0 text-xl md:text-2xl font-semibold leading-snug hover:text-emerald-300 transition-colors">
+          Dead on the Vine: Cooper’s 1928 Cipher Stories
         </a>
         <a href="/features/" class="shrink-0 inline-flex items-center self-start sm:self-center text-sm px-3 py-1.5 bg-emerald-900/60 hover:bg-emerald-800 border border-emerald-500 rounded-lg text-emerald-300 hover:text-emerald-200 transition-colors whitespace-nowrap">
           All features →
@@ -207,4 +233,4 @@
   </script>
 </body>
 </html>
-<!-- rebuild 20261003020200 -->
+<!-- rebuild 20261005132000 -->

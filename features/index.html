@@ -41,11 +41,18 @@
     .feature-card:hover { background-color: #1f2937; transform: translateX(4px); }
   </style>
   <link rel="canonical" href="https://voynichtimes.com/features/" />
-<link rel="icon" type="image/png" href="/images/voynich-logo-circle.png">
-<link rel="apple-touch-icon" href="/images/voynich-logo-circle.png">
-<meta property="og:image" content="https://voynichtimes.com/images/voynich-banner.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:image" content="https://voynichtimes.com/images/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="444">
+<meta property="og:image:alt" content="The Voynich Times, Est. 2021">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://voynichtimes.com/images/voynich-banner.jpg">
+<meta name="twitter:image" content="https://voynichtimes.com/images/og-cover.jpg">
+<meta name="twitter:image:alt" content="The Voynich Times, Est. 2021">
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
   <div id="background-image"></div>
@@ -54,7 +61,7 @@
   <!-- Clean modern nav -->
   <nav class="bg-gray-800/90 backdrop-blur-md p-4 sticky top-0 shadow z-50">
     <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
-      <a href="/" class="flex items-center gap-3 text-2xl font-bold hover:text-emerald-400 transition-colors"><img src="/images/voynich-logo-circle.png" alt="The Voynich Times logo" class="w-10 h-10 rounded-full shrink-0">The Voynich Times</a>
+      <a href="/" class="flex items-center gap-3 text-2xl font-bold hover:text-emerald-400 transition-colors"><picture><source srcset="/images/logo-round.webp" type="image/webp"><img src="/images/logo-round.png" alt="The Voynich Times logo" class="w-10 h-10 rounded-full shrink-0" width="40" height="40"></picture>The Voynich Times</a>
 
       <div class="hidden md:flex items-center space-x-8 text-sm">
         <a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a>
@@ -71,6 +78,20 @@
     <p class="text-emerald-300 text-lg mb-10">Long-form essays on mystery puzzles, ciphers, and the games that ask you to do something besides turn the page.</p>
 
     <div class="space-y-6">
+      <article class="feature-card bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500">
+        <p class="text-emerald-400 font-mono text-sm mb-2">Mystery Puzzle History · Vol. 1, Part 2 · October 5, 2026</p>
+        <a href="/features/cipher-stories/" class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors">
+          Dead on the Vine: Cooper’s 1928 Cipher Stories
+        </a>
+        <p class="text-gray-400 mt-4 text-base leading-relaxed">
+          Cooper’s 1928 <em>Cipher Stories Puzzle Book</em> paired short stories with ciphers you crack yourself. It sold for $1.75, then 59 cents. Why it still belongs on the Mystery Puzzle Game family tree.
+        </p>
+        <div class="mt-6 flex justify-end">
+          <a href="/features/cipher-stories/" class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-1">
+            Read feature →
+          </a>
+        </div>
+      </article>
       <article class="feature-card bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500">
         <p class="text-emerald-400 font-mono text-sm mb-2">Treasure Hunt Profile · October 2, 2026</p>
         <a href="/features/great-canadian-treasure-hunt/" class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors">
