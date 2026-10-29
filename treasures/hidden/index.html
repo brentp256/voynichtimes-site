@@ -39,6 +39,29 @@
     }
     .feature-card { transition: all 0.2s ease; }
     .feature-card:hover { background-color: #1f2937; transform: translateX(4px); }
+    .timeline { position: relative; }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      bottom: 8px;
+      left: 11px;
+      width: 2px;
+      background: linear-gradient(to bottom, #374151, #065f46, #374151);
+    }
+    .timeline-entry { position: relative; padding-left: 3rem; }
+    .timeline-entry::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 14px;
+      width: 16px;
+      height: 16px;
+      border-radius: 9999px;
+      background: #111827;
+      border: 3px solid #34d399;
+      z-index: 1;
+    }
   </style>
   <link rel="canonical" href="https://voynichtimes.com/treasures/hidden/" />
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -79,26 +102,36 @@
   <div class="max-w-4xl mx-auto p-6 flex-1 w-full">
     <h2 class="text-4xl font-bold mb-3">Treasures: Hidden</h2>
     <p class="text-emerald-300 text-lg mb-6">Authored hunts: someone hid something and meant for you to find it. These are the games with a designer, a prize, and a solution — the hunts The Voynich Times tracks, covers, and in one famous case, works in full.</p>
-    <p class="font-mono text-sm text-gray-400 mb-10">STATUSES — ACTIVE · SOLVED · COLD</p>
-    <div class="space-y-6">
-      <article class="feature-card bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500">
-        <p class="text-emerald-400 font-mono text-sm mb-2">The Flagship · Status: SOLVED (3 of 12) — nine casques remain</p>
-        <a href="/chicago-casque-dossier/" class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors">The Secret — Byron Preiss, 1982</a>
-        <p class="text-gray-400 mt-4 text-base leading-relaxed">Twelve ceramic casques buried in North American parks, each keyed to a painting and a verse. Three have been found — Chicago (1983), Cleveland (2004), Boston (2019). Our Chicago page works the most famous solve in the hobby step by step, with the full dossier.</p>
-        <div class="mt-6 flex justify-end"><a href="/chicago-casque-dossier/" class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-1">Work the Chicago solve →</a></div>
-      </article>
-      <article class="feature-card bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500">
-        <p class="text-emerald-400 font-mono text-sm mb-2">Status: ACTIVE</p>
-        <a href="/features/great-canadian-treasure-hunt/" class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors">The Great Canadian Treasure Hunt</a>
-        <p class="text-gray-400 mt-4 text-base leading-relaxed">217 gold coins hidden across Canada by The Northern Miner — a Grand Prize, six regional prizes, and a hunt built to be joined.</p>
-        <div class="mt-6 flex justify-end"><a href="/features/great-canadian-treasure-hunt/" class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-1">Read the profile →</a></div>
-      </article>
-      <article class="feature-card bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500">
-        <p class="text-emerald-400 font-mono text-sm mb-2">Status: ACTIVE</p>
-        <a href="/news.html" class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors">Stack&rsquo;s Bowers Treasure Hunt 2026</a>
-        <p class="text-gray-400 mt-4 text-base leading-relaxed">A live authored hunt covered as it develops in the Times&rsquo; news columns — clues, milestones, and the state of the search.</p>
-        <div class="mt-6 flex justify-end"><a href="/news.html" class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-1">Follow it in News →</a></div>
-      </article>
+    <p class="font-mono text-sm text-gray-400 mb-4">STATUSES — ACTIVE · SOLVED · COLD</p>
+    <p class="text-gray-400 mb-10">The hunts run oldest first, down the line.</p>
+    <div class="timeline space-y-10">
+      <section class="timeline-entry">
+        <p class="text-3xl font-bold text-emerald-300 mb-3">1982</p>
+        <article class="feature-card bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500">
+          <p class="text-emerald-400 font-mono text-sm mb-2">Status: SOLVED (3 of 12) — nine casques remain</p>
+          <a href="https://voynichtimes.com/treasures/the-secret/" class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors">The Secret — Byron Preiss</a>
+          <p class="text-gray-400 mt-4 text-base leading-relaxed">Twelve ceramic casques buried in North American parks, each keyed to a painting and a verse. Three have been found — Chicago (1983), Cleveland (2004), Boston (2019). The hub tells the whole story of the book and the hunt; beneath it, our Chicago page works the most famous solve in the hobby step by step, with the full dossier.</p>
+          <div class="mt-6 flex justify-end"><a href="https://voynichtimes.com/treasures/the-secret/" class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-1">Read the whole story →</a></div>
+        </article>
+      </section>
+      <section class="timeline-entry">
+        <p class="text-3xl font-bold text-emerald-300 mb-3">2025</p>
+        <article class="feature-card bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500">
+          <p class="text-emerald-400 font-mono text-sm mb-2">Status: ACTIVE</p>
+          <a href="/features/great-canadian-treasure-hunt/" class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors">The Great Canadian Treasure Hunt</a>
+          <p class="text-gray-400 mt-4 text-base leading-relaxed">217 gold coins hidden across Canada by The Northern Miner — a Grand Prize, six regional prizes, and a hunt built to be joined.</p>
+          <div class="mt-6 flex justify-end"><a href="/features/great-canadian-treasure-hunt/" class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-1">Read the profile →</a></div>
+        </article>
+      </section>
+      <section class="timeline-entry">
+        <p class="text-3xl font-bold text-emerald-300 mb-3">2026</p>
+        <article class="feature-card bg-gray-800 p-6 rounded-2xl border border-gray-700 hover:border-emerald-500">
+          <p class="text-emerald-400 font-mono text-sm mb-2">Status: ACTIVE</p>
+          <a href="/news.html" class="block text-2xl font-semibold leading-tight hover:text-emerald-300 transition-colors">Stack&rsquo;s Bowers Treasure Hunt 2026</a>
+          <p class="text-gray-400 mt-4 text-base leading-relaxed">A live authored hunt covered as it develops in the Times&rsquo; news columns — clues, milestones, and the state of the search.</p>
+          <div class="mt-6 flex justify-end"><a href="/news.html" class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-1">Follow it in News →</a></div>
+        </article>
+      </section>
     </div>
     <p class="text-gray-400 mt-10">Theory pages are published only for hunts the editor is not personally playing. His own live hunts get news coverage — and a solve diary when they close.</p>
   </div>
