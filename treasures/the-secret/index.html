@@ -27,9 +27,24 @@ h1,h2,h3{font-family:"Newsreader",Georgia,serif;line-height:1.02;margin:0}
 h2{font-size:clamp(1.9rem,4vw,3rem);letter-spacing:-.02em}
 h3{font-size:1.35rem}
 .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-.topnav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.sticky-head{position:sticky;top:0;z-index:30}
+.site-nav{background:#1f2937;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+.site-nav-inner{max-width:1440px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:8px 26px;flex-wrap:wrap}
+.site-brand{font-family:"Newsreader",Georgia,serif;font-size:1.32rem;font-weight:800;letter-spacing:-.01em;color:#f3f4f6;text-decoration:none;white-space:nowrap;line-height:1.1}
+.site-brand:hover{color:#34d399}
+.site-links{display:flex;flex-wrap:wrap;gap:2px 18px;align-items:center}
+.site-links a{color:#d1d5db;text-decoration:none;font-size:.86rem;font-weight:500;padding:5px 1px;white-space:nowrap}
+.site-links a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.site-links a[aria-current="page"]{color:#34d399;font-weight:700}
+.topnav{background:color-mix(in srgb,var(--bg) 90%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .topnav .wrap{display:flex;gap:8px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
 .topnav a{white-space:nowrap;text-decoration:none;color:var(--ink);font-size:.82rem;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+section[id]{scroll-margin-top:148px}
+@media (max-width:640px){section[id]{scroll-margin-top:172px}.site-nav-inner{gap:4px 18px}.site-links{gap:0 14px}}
+.foot-nav{display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:12px}
+.foot-nav a{font-size:.84rem;text-decoration:none}
+.foot-nav a:hover{text-decoration:underline}
+.foot-nav a[aria-current="page"]{color:var(--ink)}
 .crumbs{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:20px}
 .crumbs a{color:var(--emerald);text-decoration:none}
 .crumbs a:hover{text-decoration:underline}
@@ -118,7 +133,23 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
 </style>
 </head>
 <body>
-<nav class="topnav" aria-label="Page sections">
+<div class="sticky-head">
+<nav class="site-nav" aria-label="Voynich Times site">
+  <div class="site-nav-inner">
+    <a class="site-brand" href="https://voynichtimes.com/">The Voynich Times</a>
+    <div class="site-links">
+      <a href="https://voynichtimes.com/">Home</a>
+      <a href="https://voynichtimes.com/news.html">News</a>
+      <a href="https://voynichtimes.com/features/">Features</a>
+      <a href="https://voynichtimes.com/treasures/lost-and-found/">Treasures: Lost &amp; Found</a>
+      <a href="https://voynichtimes.com/treasures/hidden/">Treasures: Hidden</a>
+      <a href="https://voynichtimes.com/collector/">The Collector</a>
+      <a href="https://voynichtimes.com/database.html">Full Database</a>
+      <a href="https://voynichtimes.com/wunderkammer/">Wunderkammer</a>
+    </div>
+  </div>
+</nav>
+<nav class="topnav" aria-label="On this page">
   <div class="wrap">
     <a href="#book">The Book</a>
     <a href="#burials">The Burials</a>
@@ -134,8 +165,9 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
     <a href="#credits">Credits</a>
   </div>
 </nav>
+</div>
 <main class="wrap">
-  <p class="crumbs"><a href="https://voynichtimes.com">Voynich Times</a><span class="sep">·</span><a href="https://voynichtimes.com/treasures/hidden/">Treasures</a><span class="sep">·</span>The Secret</p>
+  <p class="crumbs"><a href="https://voynichtimes.com">Voynich Times</a><span class="sep">·</span><a href="https://voynichtimes.com/treasures/hidden/">Treasures: Hidden</a><span class="sep">·</span>The Secret</p>
 
   <header class="hero">
     <div class="hero-grid">
@@ -146,7 +178,7 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
       <div>
         <div class="eyebrow">Byron Preiss · 1982 · Twelve casques, twelve cities, three found</div>
         <h1>The Secret — <em>A Treasure Hunt</em></h1>
-        <p class="lede">We at the Voynich Times keep a shelf of hunts that never ended, and this is the one that started the shelf. In 1982 Byron Preiss published a book of twelve paintings and twelve verses, having first traveled North America burying twelve ceramic casques in twelve cities — each holding a key, each key good for a birthstone waiting in a New York safe deposit box. Three have been found: 1983, 2004, and 2019. Nine are still in the ground (two of them now thought to sit under later construction, which complicates the digging). This page is the whole story of the book — how it was made, how it was nearly forgotten, and how a message board, a podcast, and a television show dragged it back into the light. The finds get pages of their own, because a story this good should be told one casque at a time.</p>
+        <p class="lede">We keep a whole shelf of hunts that never ended here at the Voynich Times, and this is the one that started the shelf. Back in 1982 Byron Preiss went around North America burying twelve ceramic casques in twelve cities, and then he published the only map he ever intended to give anybody — a book, <em>The Secret: A Treasure Hunt</em>, with twelve paintings and twelve verses in it. Work a painting and a verse together right and they walk you to a casque. Inside the casque sits a ceramic key, and the key gets you a birthstone that Preiss kept waiting in a safe deposit box in New York. Three of them have come out of the ground: Chicago in 1983, Cleveland in 2004, and Boston in 2019 (Boston gets an asterisk, and we will get to the asterisk). The other nine are still down there — well, nine minus the two everybody figures are sitting under somebody's later construction project now, which is a whole separate headache. What follows is the whole run of it as we have it documented. How Preiss and his friends put the book together. The years when you could barely convince anybody a casque was real. And then the message board and the podcast and the TV cameras showing up and hauling the thing back into the light. The finds each get a page of their own, too. A story this good deserves to be told one casque at a time.</p>
         <div class="meta-row">
           <span class="pill gem">◆ Found: 3 of 12</span>
           <span class="pill">12 casques · 12 cities</span>
@@ -173,10 +205,10 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
       <h2>The Book</h2>
     </div>
     <div class="prose">
-      <p>The Secret was a passion project built by friends. Sean Kelly and Ted Mann, National Lampoon staffers Preiss contracted, wrote the book's text; John Jude Palencar painted the twelve paintings at its heart; John Pierard and Overton Loyd supplied black-and-white illustrations; JoEllen Trilling built mixed-media sculptures of the book's creatures — and made the casques themselves, hand-painting every ceramic box; Ben Asen, a childhood friend of Preiss, photographed the sculptures in settings across North America; Alex Jay also contributed. The work took about a year, and John Michaels, the hunt's historian, calls the result 'an immense work of passion by its creator and his friends.' It was not a commercial smash. It became something better: a forty-year obsession.</p>
-      <p>The puzzle's structure is simple to say and brutal to solve. Pair one painting with one verse, read the pair correctly, and it walks you to a burial site. Every painting carries its casque's birthstone, the corresponding birth flower, a month, and an immigrant people — because around the hunt Preiss built a fable: the Fair Folk, mythical migrants who came to America and hid the precious stones they brought with them. Each painting stands for one of those peoples, and for one real immigrant story.</p>
-      <p>The prize worked like this. Each casque — a hand-painted ceramic box, six to eight inches tall, sealed inside a quarter-inch Plexiglas case — held a ceramic key. Dig it up, return the key, and the gemstone assigned to that casque was yours. The twelve jewels themselves never traveled; Preiss kept them in a safe deposit box in New York.</p>
-      <p>And the rules were few and plain (the book gives them on page 219): no casque buried deeper than three to three and a half feet; none in a dangerous place, a cemetery, or a flower bed; none on property owned by the book's contributors or their families. Readers were invited to write in a correct solution to the author — but the book never said how to solve anything. The method was left, entirely and on purpose, to interpretation.</p>
+      <p>Preiss did not make this book alone, and he did not make it with strangers, either. He contracted Sean Kelly and Ted Mann — both of them National Lampoon staffers — to write the book's text. John Jude Palencar painted the twelve paintings the whole hunt hangs on. John Pierard and Overton Loyd supplied the black-and-white illustrations. JoEllen Trilling built mixed-media sculptures of the book's creatures, and she made the casques too, hand-painting every single ceramic box (all twelve, by hand — sit with that for a second the next time somebody calls this thing a publicity stunt). Ben Asen, a childhood friend of Preiss, photographed the sculptures in settings across North America. Alex Jay also contributed. Start to finish, the work took about a year, and John Michaels, the hunt's historian, calls the result 'an immense work of passion by its creator and his friends.' He is not wrong. The book was not a commercial smash. What it became instead was a forty-year obsession, which from where we sit is the better outcome anyway.</p>
+      <p>The setup fits in one sentence. The solving will eat your weekends. You pair one painting with one verse, and if you have read the pair right, it walks you — street by street, in the Chicago case — to the spot where a casque is buried. And every painting is carrying more than scenery. Tucked into each one you get that casque's birthstone, the corresponding birth flower, a month, and an immigrant people, because around the hunt Preiss built a fable: the Fair Folk, mythical migrants who came to America and hid the precious stones they brought with them. So each painting stands for one of those peoples. It also stands for one real immigrant story, and that double duty is a big part of why people are still picking at these pictures forty years on.</p>
+      <p>Here is how the prize end of it worked, because the mechanics matter. Each casque is a hand-painted ceramic box, six to eight inches tall, sealed inside a quarter-inch Plexiglas case, and inside the box sits a ceramic key. Dig the whole thing up, return the key, and the gemstone assigned to that casque was yours. The twelve jewels themselves never traveled anywhere — Preiss kept them in a safe deposit box in New York the whole time, which strikes us as either very sensible or very trusting of the whole arrangement, depending on how you look at it. Probably both.</p>
+      <p>The rules, which the book gives on page 219, would about fit on an index card. No casque buried deeper than three to three and a half feet. None in a dangerous place, none in a cemetery, none in a flower bed. None on property owned by the book's contributors or their families, either. Readers were invited to write in a correct solution to the author, if they thought they had one. And that is pretty much where the guidance stops — the book never said how to solve anything. The method was left, entirely and on purpose, to interpretation. Forty years of arguments about method later (and we have read a lot of those arguments), we would say the man knew exactly what he was doing.</p>
     </div>
   </section>
 
@@ -184,7 +216,7 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
     <div class="sec-head">
       <div class="eyebrow">Section 2 · Twelve cities</div>
       <h2>The Burials</h2>
-      <p>Sometime in 1980–81 — the record gives both years, and we carry the conflict rather than tidy it — Preiss traveled the continent and buried the twelve himself. The pairings below are the record as it stands: the three finds are documented fact; the nine unfound pairings are the searching community's accepted consensus, and are labeled as such.</p>
+      <p>Preiss traveled the continent and buried all twelve himself, sometime in 1980–81. We would love to hand you one clean year for that. The record gives both years, so both years is what you get — we carry the conflict rather than tidy it away. The pairings below are the record as it stands. The three finds are documented fact. The nine unfound pairings are the searching community's accepted consensus, built up over years of close reading and very probably right — but consensus is what they are, and the table labels them as such. We are not dressing a consensus up as a find.</p>
     </div>
     <table>
       <thead><tr><th>Painting / Verse</th><th>City</th><th>Status</th></tr></thead>
@@ -204,7 +236,7 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
       </tbody>
     </table>
     <div class="prose" style="margin-top:18px">
-      <p>A minority theory in print ties St. Louis to the hunt (a 2019 Post-Dispatch feature, linking Image 9 and Verse 7). It is recorded here because it exists; it does not move the consensus list.</p>
+      <p>One more thing belongs here so nobody trips over it later. A minority theory in print ties St. Louis to the hunt — a 2019 Post-Dispatch feature, linking Image 9 and Verse 7. It is recorded here because it exists, and because pretending it doesn't would be its own kind of sloppy. It does not move the consensus list above. It hasn't moved us, either.</p>
     </div>
   </section>
 
@@ -214,9 +246,9 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
       <h2>The Eighties</h2>
     </div>
     <div class="prose">
-      <p>Preiss promoted the book the way publishers did then — interviews, newspaper write-ups in Chicago and St. Louis, a piece in a 1980s issue of Heavy Metal Magazine (the issue itself has never been located; if you have it, we want to hear from you). The Chicago Tribune's Tempo section ran a write-up that a teenager named Rob Wrobel read while shopping for a birthday present for his friend Dave. That paragraph of newspaper is, indirectly, why the first casque came out of the ground.</p>
-      <p>Hunters wrote back. In one interview Preiss claimed to have received over 700 letters from different hunters — his own figure, never independently counted, and carried here as his. And a St. Louis Post-Dispatch item of October 25, 1982 reportedly said that, should Preiss die, the solutions had been entrusted to a friend. As the tale goes — and it is a tale, repeated by the hunt's own historian with a shrug — nobody knows if it ever happened. It became the seed of the 'lost solutions' mystery that hangs over the hunt still.</p>
-      <p>Then Chicago happened (next section), and almost nobody outside Chicago heard about it. The find made the local news and the Tribune, and the word, in Michaels' account, simply did not spread. For years, most searchers could not even confirm that any casque was real.</p>
+      <p>Preiss promoted the book the way publishers did then — interviews, newspaper write-ups in Chicago and St. Louis, a piece in a 1980s issue of Heavy Metal Magazine. That issue itself has never been located (if you have it in a box somewhere, we genuinely want to hear from you — that is not a figure of speech). The write-up that ended up mattering most was a quieter one. The Chicago Tribune's Tempo section ran a piece on the book, and a teenager named Rob Wrobel read it while shopping for a birthday present for his friend Dave. That paragraph of newspaper is, indirectly, why the first casque came out of the ground — a kid, a present he hadn't bought yet, and a newspaper section he happened to pick up. History is embarrassing that way sometimes.</p>
+      <p>Hunters wrote back, and in numbers — at least if you take Preiss's word for it. In one interview he claimed to have received over 700 letters from different hunters. That figure is his own, never independently counted, and it is carried here as his, labeled as his. Then there is the other item, the one that has been raising eyebrows for forty years. A St. Louis Post-Dispatch item of October 25, 1982 reportedly said that, should Preiss die, the solutions had been entrusted to a friend. Did it ever happen? Nobody knows. As the tale goes — and it is a tale, repeated by the hunt's own historian with a shrug — nobody knows if it ever happened at all. But that one item is where the 'lost solutions' mystery grows out of, and the mystery hangs over the hunt still.</p>
+      <p>Then Chicago happened (next section — hold on), and almost nobody outside Chicago heard about it. The find made the local news and the Tribune, and the word, in Michaels' account, simply did not spread. Sit with what that meant for everybody who came after. For years, most searchers could not even confirm that any casque was real. They were hunting treasure that might, for all they could prove, have been a story a publisher told to sell books. (It wasn't. But they couldn't prove it wasn't, and there's a difference.)</p>
     </div>
   </section>
 
@@ -224,7 +256,7 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
     <div class="sec-head">
       <div class="eyebrow">Section 4 · Three finds</div>
       <h2>The Finds</h2>
-      <p>Three casques in forty years. Each one gets a dossier of its own; Chicago's is finished and linked below, Cleveland's and Boston's are in preparation.</p>
+      <p>Three. In forty years. That is the whole count so far, and each one gets a dossier of its own — Chicago's is finished and linked below, Cleveland's and Boston's are in preparation, and no, we are not rushing them out half-checked just to complete the set.</p>
     </div>
     <div class="finds">
       <article class="find-card">
@@ -235,7 +267,7 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
           </div>
           <span class="tag">Image 5 / Verse 12 · Emerald</span>
         </div>
-        <p>Three Chicago teenagers — Eric Gasiorowski, Rob Wrobel, and David James — read the painting and Verse 12 as walking directions and dug the first casque out of a Grant Park grove in 1983, with the author's own help at the end: a photograph of the burial spot sent back to them, and a phone call in which Preiss chuckled and told them to recount the trees, adjusting for any that were missing. Who exactly stood at the final hole is still argued, and both accounts are carried, unreconciled, on the dossier page.</p>
+        <p>Three Chicago teenagers — Eric Gasiorowski, Rob Wrobel, and David James — read the painting and Verse 12 as walking directions and dug the first casque out of a Grant Park grove in 1983. They got the author's own help at the very end, and we love this part: a photograph of the burial spot sent back to them, and a phone call in which Preiss chuckled and told them to recount the trees, adjusting for any that were missing. Who exactly stood at the final hole is still argued — by people who were there, no less — and both accounts are carried, unreconciled, on the dossier page. We are not settling a fight between eyewitnesses from our desk.</p>
         <a class="btn solid" href="https://voynichtimes.com/chicago-casque-dossier/">Read the Chicago dossier ↗</a>
       </article>
       <article class="find-card">
@@ -246,7 +278,7 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
           </div>
           <span class="tag">Image 4 / Verse 4 · Aquamarine</span>
         </div>
-        <p>Twenty-one years later, two New Jersey attorneys, Brian Zinn and Andy Abrams, solved the second casque from a message-board thread: a forum member searched the verse's names — Socrates, Pindar, Apelles — and found them chiseled on a Cleveland garden wall. The pair drove all night, counted the verse's stones the wrong way for five hours, and found the box within moments of turning around and counting with a back to the wall. Their probe smashed the casque into a hundred pieces (Zinn keeps them in his office). One conflict rides with this find: Wikipedia records that they were awarded the aquamarine; the community record says Preiss handed over the wrong jewel — the St. Augustine gem — by mistake. Both readings stand in our research file.</p>
+        <p>Twenty-one years later, two New Jersey attorneys, Brian Zinn and Andy Abrams, solved the second casque — and they did it off a message-board thread, of all things. A forum member searched the verse's names — Socrates, Pindar, Apelles — and found them chiseled on a Cleveland garden wall. The pair drove all night to get there, counted the verse's stones the wrong way for five hours, and then found the box within moments of turning around and counting with a back to the wall. Moments. After five hours. Their probe smashed the casque into a hundred pieces (Zinn keeps them in his office). One conflict rides with this find, and we carry it openly: Wikipedia records that they were awarded the aquamarine; the community record says Preiss handed over the wrong jewel — the St. Augustine gem — by mistake. Both readings stand in our research file, and both stay there until something better than either turns up.</p>
         <p class="find-note">Full dossier in preparation.</p>
       </article>
       <article class="find-card disputed-card">
@@ -257,7 +289,7 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
           </div>
           <span class="tag disputed">Image 11 / Verse 3 · Peridot · Recovered — Disputed</span>
         </div>
-        <p>Game designer Jason Krupat and his family concluded the Boston casque lay under home plate at Puopolo Field in Langone Park — ground then being torn up for renovation. Construction workers unearthed Plexiglas and ceramic; Krupat, alerted by the foreman, found the ceramic key in the spoil, traveled to New York, and redeemed it for a peridot on October 22, 2019, before cameras. That is the claimants' account, and the redemption is documented. The other layer stands beside it and will not be flattened: the Quest4Treasure wiki's skeptics note that no shard or key photograph was ever released publicly, that no detail of Image 11 has ever been matched to Langone Park, and that the claim the Preiss estate confirmed the find is unsourced where it appears. We carry Boston as recovered and disputed — never as settled.</p>
+        <p>The claimants' account first, stated straight, because it deserves that before anybody starts picking at it. Game designer Jason Krupat and his family concluded the Boston casque lay under home plate at Puopolo Field in Langone Park — ground then being torn up for renovation. Construction workers unearthed Plexiglas and ceramic; Krupat, alerted by the foreman, found the ceramic key in the spoil, traveled to New York, and redeemed it for a peridot on October 22, 2019, before cameras. That is the claimants' account, and the redemption is documented. Now the other layer, which stands beside it on this page and will not be flattened to make the story neater: the Quest4Treasure wiki's skeptics note that no shard or key photograph was ever released publicly, that no detail of Image 11 has ever been matched to Langone Park, and that the claim the Preiss estate confirmed the find is unsourced where it appears. We carry Boston as recovered and disputed — never as settled. If that ever changes, this page changes with it. Not before.</p>
         <p class="find-note">Full dossier in preparation.</p>
       </article>
     </div>
@@ -269,8 +301,8 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
       <h2>The Quiet Years</h2>
     </div>
     <div class="prose">
-      <p>Through the 1990s the hunt survived mostly offline and in obscurity, a rumor in the back of a book most people couldn't find. There was no way for a searcher in one city to know what a searcher in another had learned — or whether the whole thing had been real at all.</p>
-      <p>Byron Preiss died on July 9, 2005, in an automobile accident on Long Island, aged fifty-two, on his way to temple. He left no record of the casques' exact locations that anyone has produced since, and the possibility stands open that some of the nine will never be recovered for exactly that reason. His widow, Sandi, told the hunt's historian of its secrets: 'It's the only thing Byron has kept from me.' The following year his publishing company's property — The Secret among more than 2,500 contracts and works — was sold out of bankruptcy to Brick Tower Press.</p>
+      <p>Through the 1990s the hunt basically went dark. It survived mostly offline and in obscurity, a rumor in the back of a book most people couldn't find. Think about what searching even meant under those conditions. There was no way for a searcher in one city to know what a searcher in another had learned — or whether the whole thing had been real at all. So the puzzles sat there, and the casques sat there, and mostly the world got on with its decade.</p>
+      <p>Byron Preiss died on July 9, 2005, in an automobile accident on Long Island, aged fifty-two, on his way to temple. He left no record of the casques' exact locations that anyone has produced since, and the possibility stands open — we say it plainly, because it is the plain truth of this hunt — that some of the nine will never be recovered for exactly that reason. His widow, Sandi, told the hunt's historian of its secrets: 'It's the only thing Byron has kept from me.' The following year his publishing company's property was sold out of bankruptcy to Brick Tower Press — The Secret in there among more than 2,500 contracts and works, one line in a very long list, which is not how anybody in 1982 pictured it ending up.</p>
     </div>
   </section>
 
@@ -280,8 +312,8 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
       <h2>The Community</h2>
     </div>
     <div class="prose">
-      <p>The hunt's second life began on a message board. In 2003–04, searchers gathered on the Quest4Treasure forum, where the scattered knowledge finally pooled: the news that a casque really had been found in Chicago in 1983 circulated widely there for the first time, one member posted the original Tribune article, another spotted latitude and longitude hidden in the paintings, and the consensus city list on this page was built thread by thread. Eric Gasiorowski surfaced on tweleve.org in 2006; Rob Wrobel appeared on the forum in 2008 under the handle 'tenbythirteen' — a name anyone who has read the Chicago dossier will recognize.</p>
-      <p>The Quest4Treasure wiki became the working archive — a page per painting and verse, the rules, finder write-ups, site photographs, and a standing skeptics' brief on Boston. The 12treasures operation carried the voices: Shhh — The Secret Podcast, from 2017, walked the twelve sites one a month on first-hand interviews — Wrobel telling Chicago, Zinn and Abrams telling Cleveland, the book's own makers in other episodes. Akron journalist James Renner announced a documentary in 2013 and released The Secret of Byron Preiss in 2018. And the community cataloged the finds on Google Maps as historical markers — searchable to this day, which is a lovely thing, even if the Chicago marker's pin sits a couple of hundred metres from the documented dig spot, on the far side of the tracks. We checked.</p>
+      <p>The hunt's second life began on a message board. In 2003–04, searchers gathered on the Quest4Treasure forum, and the scattered knowledge finally pooled in one place instead of dying in somebody's desk drawer. The news that a casque really had been found in Chicago in 1983 circulated widely there for the first time — twenty years after the fact, which tells you how quiet the quiet years were. One member posted the original Tribune article. Another spotted latitude and longitude hidden in the paintings, sitting in plain sight the whole time. And the consensus city list on this page was built there, thread by thread, argument by argument. Eric Gasiorowski surfaced on tweleve.org in 2006. Rob Wrobel appeared on the forum in 2008 under the handle 'tenbythirteen' — a name anyone who has read the Chicago dossier will recognize, and no, we are not spoiling it here if you haven't.</p>
+      <p>The Quest4Treasure wiki became the working archive — a page per painting and verse, the rules, finder write-ups, site photographs, and a standing skeptics' brief on Boston that we lean on and are grateful for, even when (especially when) it makes a section harder to write. The 12treasures operation carried the voices. Shhh — The Secret Podcast, from 2017, walked the twelve sites one a month on first-hand interviews — Wrobel telling Chicago, Zinn and Abrams telling Cleveland, the book's own makers in other episodes, which still faintly amazes us. Akron journalist James Renner announced a documentary in 2013 and released The Secret of Byron Preiss in 2018. And the community cataloged the finds on Google Maps as historical markers, searchable to this day, which is a lovely thing — even if the Chicago marker's pin sits a couple of hundred metres from the documented dig spot, on the far side of the tracks. We checked. Somebody had to.</p>
     </div>
   </section>
 
@@ -291,8 +323,8 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
       <h2>Television</h2>
     </div>
     <div class="prose">
-      <p>On January 17, 2018, Expedition Unknown devoted an episode — 'The Secret,' Season 4, Episode 4 — to the book. Josh Gates walked Grant Park with Wrobel and Gasiorowski, who showed him the casque; hunted Milwaukee's Lake Park verse with James Renner until a thunderstorm stopped the dig; met Preiss's daughters in New York and followed the immigration story at the book's heart; and sat with Palencar in Cleveland, who allowed that even he could not figure the puzzles out.</p>
-      <p>The show returned with 'Cracking The Secret' (October 2, 2019) and closed its season with 'The Secret Solved' (October 30, 2019), built around the Boston recovery. The documented effect of television on this hunt is not ratings but recruitment: the 2018 episode is what pulled the Krupat children in, and the children pulled in their father, and the cameras were there for the third recovery. The first two finds predate the series by decades. The third one, whatever else is disputed about it, happened because a family was watching.</p>
+      <p>On January 17, 2018, Expedition Unknown devoted an episode — 'The Secret,' Season 4, Episode 4 — to the book. Josh Gates walked Grant Park with Wrobel and Gasiorowski, who showed him the casque. He hunted Milwaukee's Lake Park verse with James Renner until a thunderstorm stopped the dig. He met Preiss's daughters in New York and followed the immigration story at the book's heart. And he sat with Palencar in Cleveland, who allowed that even he could not figure the puzzles out. The painter. Of the paintings. We find that oddly comforting, and we suspect every stuck hunter who ever lived finds it comforting too.</p>
+      <p>The show returned with 'Cracking The Secret' (October 2, 2019) and closed its season with 'The Secret Solved' (October 30, 2019), built around the Boston recovery. And here is the documented effect of television on this hunt — not ratings, recruitment. The 2018 episode is what pulled the Krupat children in, and the children pulled in their father, and the cameras were there for the third recovery. The first two finds predate the series by decades. The third one, whatever else is disputed about it, happened because a family was watching. There is something in that we think Preiss, of all people, would have appreciated: the book kept finding new readers through whatever door was open. Print in 1982. A message board in 2003. Television in 2018.</p>
     </div>
   </section>
 
@@ -302,9 +334,9 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
       <h2>The Hunt Today</h2>
     </div>
     <div class="prose">
-      <p>Nine casques remain buried — or remain wherever time has put them. The community's assessments are sobering and are labeled as assessments: Charleston's is thought almost certainly destroyed by monument construction in 2007, New Orleans' probably lost under construction from 1983 itself, and post-Katrina New Orleans and a heavily renovated New York make two more of the nine desperately hard. None of that is a finding. All of it is why the remaining solves run against a clock that isn't the hunters'.</p>
-      <p>Are the prizes still good? The documented trail says the family honors the hunt: Wikipedia records that the estate assumed responsibility for the terms after Preiss's death; around 2013 Sandi indicated the game was still on and the gems still in play; and in 2019 the family did receive a finder in New York and a gemstone changed hands for a key — the strongest evidence being the act itself. The formal arrangements behind that willingness have never been published, and we say so rather than guess.</p>
-      <p>The book itself was reissued in 2014 (an ibooks edition; the hunt's historian dates the Brick Tower re-release to 2015, and the discrepancy rides in our file). Hunters warn that the reissue's dark, blurry reproductions are hard to hunt from, which has only raised the standing of the 1982 original. And the Japanese edition, which carried verse hints added for translation, had a second life of its own — the 12treasures team hired a translator to recover those hints for English-speaking hunters. A book that would not stay buried, in editions or in fact.</p>
+      <p>Nine casques remain buried — or remain wherever time has put them, which is not always the same thing. The community's assessments on a few of them are sobering, and they are labeled as assessments here because an assessment is not a finding: Charleston's is thought almost certainly destroyed by monument construction in 2007, New Orleans' probably lost under construction from 1983 itself, and post-Katrina New Orleans and a heavily renovated New York make two more of the nine desperately hard. None of that is a finding. All of it is why the remaining solves run against a clock that isn't the hunters' — it belongs to backhoes and renovation schedules, and those do not care about anybody's solve.</p>
+      <p>Are the prizes still good? People ask us like we can just say yes, so here is the documented trail, walked in order instead of waved at. Wikipedia records that the estate assumed responsibility for the terms after Preiss's death. Around 2013 Sandi indicated the game was still on and the gems still in play. And in 2019 the family did receive a finder in New York, and a gemstone changed hands for a key — the strongest evidence on the pile, to our eye, being the act itself. The formal arrangements behind that willingness have never been published. So we say the trail says the family honors the hunt, and we do not guess past it.</p>
+      <p>The book itself was reissued in 2014 (an ibooks edition; the hunt's historian dates the Brick Tower re-release to 2015, and the discrepancy rides in our file — we are not ironing anybody's dates flat). Hunters warn that the reissue's dark, blurry reproductions are hard to hunt from, which has only raised the standing of the 1982 original. And the Japanese edition, which carried verse hints added for translation, had a second life of its own — the 12treasures team hired a translator to recover those hints for English-speaking hunters, back across the language line the other way. A book that would not stay buried, in editions or in fact. At this point we would expect nothing less from it.</p>
     </div>
   </section>
 
@@ -334,7 +366,7 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
     <div class="sec-head">
       <div class="eyebrow">Footnotes</div>
       <h2>Sources</h2>
-      <p>Every factual claim on this page traces to a numbered source in the Voynich Times book-history research file (documented 2026-10-28), where each claim is graded verified, lead, or disputed. Where sources conflict — the burial year, the Cleveland gem, the Boston recovery, the 2014/2015 reissue — both readings are carried and the conflict is named, not smoothed over.</p>
+      <p>Every factual claim on this page traces to a numbered source in the Voynich Times book-history research file (documented 2026-10-28), where each claim is graded verified, lead, or disputed. Where sources conflict — the burial year, the Cleveland gem, the Boston recovery, the 2014/2015 reissue — both readings are carried and the conflict is named, not smoothed over. If that makes a paragraph longer, the paragraph is longer. That's the deal.</p>
     </div>
     <ol class="sources">
       <li><b>[1]</b> Wikipedia — "The Secret (treasure hunt)". <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/The_Secret_(treasure_hunt)">Wikipedia ↗</a></li>
@@ -357,7 +389,7 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
     <div class="support-grid">
       <div class="support-card">
         <h3>Get the book</h3>
-        <p><em>The Secret: A Treasure Hunt</em> by Byron Preiss (1982). Every solve starts with the book. The 1982 original is out of print; a paperback reissue is in circulation, and used copies of the original turn up regularly.</p>
+        <p><em>The Secret: A Treasure Hunt</em> by Byron Preiss (1982). Every solve starts with the book. The 1982 original is out of print; a paperback reissue is in circulation, and used copies of the original turn up regularly — they do, we watch them go by, and the good ones do not sit around long.</p>
         <div class="social-row">
           <a class="btn solid" target="_blank" rel="noopener sponsored" href="https://www.amazon.com/s?k=The+Secret+A+Treasure+Hunt+Byron+Preiss&amp;tag=voynich03-20">Paperback reissue on Amazon ↗</a>
           <a class="btn" target="_blank" rel="noopener sponsored" href="https://www.amazon.com/s?k=The+Secret+A+Treasure+Hunt+Byron+Preiss&amp;tag=voynich03-20">Used copies of the 1982 original ↗</a>
@@ -366,7 +398,7 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
       </div>
       <div class="support-card">
         <h3>Support the research</h3>
-        <p>We cover the Voynich manuscript, mystery, puzzle, and treasure hunts. The channels below carry the latest as it lands; the research itself can be backed directly (Patreon included) through the site, which is how dossiers like this one get made.</p>
+        <p>We cover the Voynich manuscript, mystery, puzzle, and treasure hunts — that's the beat, and this page is standing on it. The channels below carry the latest as it lands. The research itself can be backed directly (Patreon included) through the site, which is how dossiers like this one get made. No mysterious benefactor. Just readers.</p>
         <div class="social-row">
           <a class="btn solid" target="_blank" rel="noopener" href="https://voynichtimes.com">voynichtimes.com ↗</a>
           <a class="btn" target="_blank" rel="noopener" href="https://www.instagram.com/thevoynichtimes">Instagram ↗</a>
@@ -386,13 +418,13 @@ footer.page{margin-top:56px;border-top:1px solid var(--line);padding:22px 0 40px
     <div class="credits-grid">
       <div class="credit">
         <p><b>The book:</b> The Secret: A Treasure Hunt by Byron Preiss (Byron Preiss Visual Publications / Bantam, 1982). Contributors: Sean Kelly, John Pierard, Byron Preiss, Ben Asen, John Jude Palencar, Ted Mann, JoEllen Trilling, and Overton Loyd; Alex Jay also contributed.</p>
-        <p><b>The documentation:</b> this page stands on forty years of other people's work — Eric Gasiorowski's first-person finder write-up, the Quest4Treasure wiki community and its maintainers, John Michaels and Jenny Kile at Mysterious Writings, the 12treasures podcasts, and the finders who kept the casques and the stories.</p>
+        <p><b>The documentation:</b> this page stands on forty years of other people's work, and we want that on the record — Eric Gasiorowski's first-person finder write-up, the Quest4Treasure wiki community and its maintainers, John Michaels and Jenny Kile at Mysterious Writings, the 12treasures podcasts, and the finders who kept the casques and the stories. If we got it right, it's because they wrote it down. If we got something wrong, that's ours.</p>
         <p>Compiled for Brent A. Price / <a target="_blank" rel="noopener" href="https://voynichtimes.com">Voynich Times</a> (voynichtimes.com), from the hunt workspace book-history file, documented 2026-10-28.</p>
       </div>
     </div>
   </section>
 
-  <footer class="page">The Secret — A Treasure Hunt · Byron Preiss, 1982 · Twelve casques, twelve cities, three found — 1983, 2004, 2019. Cover of the 1982 edition (Byron Preiss Visual Publications / Bantam). Compiled for Brent A. Price / <a target="_blank" rel="noopener" href="https://voynichtimes.com">Voynich Times</a>. As an Amazon Associate, Voynich Times earns from qualifying purchases.</footer>
+  <footer class="page"><nav class="foot-nav" aria-label="Voynich Times site"><a href="https://voynichtimes.com/">Home</a><a href="https://voynichtimes.com/news.html">News</a><a href="https://voynichtimes.com/features/">Features</a><a href="https://voynichtimes.com/treasures/lost-and-found/">Treasures: Lost &amp; Found</a><a href="https://voynichtimes.com/treasures/hidden/">Treasures: Hidden</a><a href="https://voynichtimes.com/collector/">The Collector</a><a href="https://voynichtimes.com/database.html">Full Database</a><a href="https://voynichtimes.com/wunderkammer/">Wunderkammer</a></nav>The Secret — A Treasure Hunt · Byron Preiss, 1982 · Twelve casques, twelve cities, three found — 1983, 2004, 2019. Cover of the 1982 edition (Byron Preiss Visual Publications / Bantam). Compiled for Brent A. Price / <a target="_blank" rel="noopener" href="https://voynichtimes.com">Voynich Times</a>. As an Amazon Associate, Voynich Times earns from qualifying purchases.</footer>
 </main>
 </body>
 </html>
