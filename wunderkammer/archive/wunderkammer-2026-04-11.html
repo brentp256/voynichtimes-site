@@ -27,6 +27,61 @@
     <link rel="canonical" href="https://voynichtimes.com/wunderkammer/archive/wunderkammer-2026-04-11.html">
     <link rel="stylesheet" href="/css/share.css">
     <script src="/js/share.js" defer></script>
+<!-- voynich-pulse -->
+<script>
+(function(){try{
+var K="vt_pulse_sid",s=sessionStorage.getItem(K);
+if(!s){s="v"+Math.random().toString(36).slice(2,10)+Date.now().toString(36);sessionStorage.setItem(K,s);}
+var CK="vt_curator",ct=null;
+try{
+  var hm=(location.hash||"").match(/#curator-([A-Za-z0-9_-]+)/);
+  if(hm){try{localStorage.setItem(CK,hm[1]);}catch(_){}}
+  if(hm){try{history.replaceState(null,"",location.pathname+location.search);}catch(_){}}
+  ct=localStorage.getItem(CK);
+}catch(_){}
+var src="direct";
+try{
+  src=sessionStorage.getItem("vt_src")||"";
+  if(!src){
+    var rh="";try{rh=new URL(document.referrer||"").hostname.toLowerCase();}catch(_){}
+    if(!rh)src="direct";
+    else if(rh.indexOf("google.")!==-1)src="google";
+    else if(rh.indexOf("threads.")!==-1)src="threads";
+    else if(rh.indexOf("facebook.")!==-1||rh.indexOf("fb.")!==-1)src="facebook";
+    else src="other";
+    try{sessionStorage.setItem("vt_src",src);}catch(_){}
+  }
+}catch(_){}
+var ret=false;
+try{ret=!!localStorage.getItem("vt_seen");if(!ret)localStorage.setItem("vt_seen","1");}catch(_){}
+var pages=1;
+try{pages=(parseInt(sessionStorage.getItem("vt_pages")||"0",10)||0)+1;sessionStorage.setItem("vt_pages",String(pages));}catch(_){}
+var U="https://pulse.voynichtimes.com/ping";
+function ping(bye){
+  try{
+    fetch(U,{method:"POST",headers:{"Content-Type":"text/plain"},
+      body:JSON.stringify(bye?{sid:s,bye:true}:(function(){var d={sid:s,path:location.pathname,host:location.hostname,src:src,ret:ret,pages:pages};if(ct)d.curator=ct;return d;})()),
+      keepalive:true,mode:"cors"}).catch(function(){});
+  }catch(e){}
+}
+ping(false);
+setInterval(function(){ping(false);},15000);
+window.addEventListener("pagehide",function(){ping(true);});
+document.addEventListener("click",function(e){
+  try{
+    var a=e.target&&e.target.closest?e.target.closest("a[href]"):null;
+    if(!a)return;
+    var u;try{u=new URL(a.href);}catch(_){return;}
+    var h=u.hostname.toLowerCase(),n=null;
+    if(h.indexOf("patreon.")!==-1)n="patreon";
+    else if(h.indexOf("amazon.")!==-1||h==="amzn.to"||h==="amzn.com"||h.slice(-8)===".amzn.to")n="amazon";
+    if(!n)return;
+    if(typeof gtag==="function"){try{gtag("event","affiliate_click",{network:n,source_path:location.pathname});}catch(_){}}
+    fetch("https://pulse.voynichtimes.com/click",{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify({network:n,path:location.pathname}),keepalive:true,mode:"cors"}).catch(function(){});
+  }catch(_){}
+},true);
+}catch(e){}})();
+</script>
 </head>
 <body class="bg-stone-950 text-stone-200">
 
