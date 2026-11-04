@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="In 1928, Wren and McKay's Baffle Book turned crime stories into evidence you solve yourself: thirty baffles, upside-down answers, radio contests, and a score to beat — 42.62%.">
+  <title>A Baffle Book Doth Make Sherlocks of Us All | The Voynich Times</title>
+  <!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFDQCDM28S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MFDQCDM28S');
+</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+
+body { background-color: #111827; color: #e5e7eb; overflow-x: hidden; }
+#background-image {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: url('/voynich-home-art.jpg');
+background-size: cover;
+background-position: center;
+z-index: -2;
+filter: brightness(0.75) contrast(1.05);
+}
+.overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.72);
+z-index: -1;
+}
+.article-body p { margin-bottom: 1.25rem; }
+.article-figure { margin: 2rem 0; }
+.article-figure img { display: block; max-width: 100%; height: auto; border-radius: 0.75rem; }
+.article-figure figcaption { margin-top: 0.5rem; color: #9ca3af; font-size: 0.9rem; line-height: 1.4; }
+.article-body a { color: #6ee7b7; }
+.article-body a:hover { color: #a7f3d0; }
+.article-body ol { list-style: decimal; padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+.article-body ul { list-style: disc; padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+.article-body ul ul { list-style: circle; margin: 0.35rem 0 0.75rem; }
+.article-body li { margin-bottom: 0.5rem; }
+.article-body h2 {
+font-size: 1.75rem;
+font-weight: 700;
+margin: 2.5rem 0 1rem;
+color: #f9fafb;
+}
+.article-body h3 {
+font-size: 1.35rem;
+font-weight: 700;
+margin: 2rem 0 0.75rem;
+color: #ecfdf5;
+}
+.article-quote {
+border-left: 4px solid #34d399;
+padding: 1rem 1.5rem;
+margin: 2rem 0;
+background: rgba(16, 185, 129, 0.08);
+border-radius: 0 0.75rem 0.75rem 0;
+font-style: italic;
+color: #d1fae5;
+}
+.content-note {
+background: rgba(31, 41, 55, 0.9);
+border: 1px solid #4b5563;
+border-radius: 1rem;
+padding: 1rem 1.25rem;
+margin: 1.75rem 0;
+color: #9ca3af;
+font-size: 0.95rem;
+line-height: 1.6;
+}
+.timeline {
+list-style: none;
+padding-left: 0;
+margin: 1.5rem 0 2rem;
+}
+.timeline li {
+margin-bottom: 0;
+padding: 0.65rem 0 0.65rem 1.1rem;
+border-left: 2px solid #34d399;
+line-height: 1.55;
+}
+.timeline li.here {
+background: rgba(16, 185, 129, 0.10);
+border-left: 4px solid #34d399;
+border-radius: 0 0.5rem 0.5rem 0;
+}
+.you-are-here {
+color: #34d399;
+font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+font-size: 0.75rem;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+margin-left: 0.5rem;
+}
+.feature-layout {
+display: grid;
+gap: 1.5rem;
+}
+.article-card {
+background: rgba(31, 41, 55, 0.8);
+border: 1px solid #374151;
+border-radius: 1rem;
+padding: 2rem;
+color: #e5e7eb;
+font-size: 1.125rem;
+line-height: 1.625;
+}
+.shop-panel {
+background: rgba(17, 24, 39, 0.92);
+border: 1px solid #065f46;
+border-radius: 1rem;
+padding: 1.25rem 1.15rem 1.15rem;
+box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.12), 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+.shop-kicker {
+color: #34d399;
+font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+font-size: 0.7rem;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+margin-bottom: 0.35rem;
+}
+.shop-panel h2 {
+font-size: 1.15rem;
+font-weight: 700;
+color: #f9fafb;
+line-height: 1.3;
+margin: 0 0 0.6rem;
+}
+.shop-affiliate {
+font-size: 0.72rem;
+line-height: 1.45;
+color: #9ca3af;
+margin-bottom: 0.9rem;
+}
+.shop-list {
+list-style: none;
+padding: 0;
+margin: 0;
+display: flex;
+flex-direction: column;
+gap: 0.45rem;
+}
+.shop-list a {
+display: block;
+text-decoration: none;
+border: 1px solid #374151;
+background: rgba(31, 41, 55, 0.75);
+border-radius: 0.75rem;
+padding: 0.7rem 0.8rem;
+transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+.shop-list a:hover {
+border-color: #34d399;
+background: rgba(6, 78, 59, 0.35);
+}
+.shop-title {
+display: block;
+color: #d1fae5;
+font-size: 0.92rem;
+font-weight: 600;
+line-height: 1.35;
+}
+.shop-sub {
+display: block;
+margin-top: 0.2rem;
+color: #9ca3af;
+font-size: 0.7rem;
+line-height: 1.4;
+}
+.shop-cta {
+display: inline-block;
+margin-top: 0.35rem;
+color: #6ee7b7;
+font-size: 0.72rem;
+font-weight: 600;
+}
+.shop-list a:hover .shop-cta { color: #a7f3d0; }
+.shop-lead a {
+border-color: #059669;
+background: rgba(6, 78, 59, 0.45);
+}
+.shop-more {
+margin-top: 0.85rem;
+border-top: 1px solid #374151;
+padding-top: 0.65rem;
+}
+.shop-more summary {
+cursor: pointer;
+color: #a7f3d0;
+font-size: 0.78rem;
+font-weight: 600;
+list-style: none;
+}
+.shop-more summary::-webkit-details-marker { display: none; }
+.shop-more summary::after {
+content: " +";
+color: #6ee7b7;
+}
+.shop-more[open] summary::after { content: " −"; }
+.shop-more .shop-list { margin-top: 0.55rem; }
+@media (min-width: 1024px) {
+.feature-layout {
+grid-template-columns: minmax(0, 1fr) 20.5rem;
+grid-template-areas:
+"intro shop"
+"timeline shop";
+align-items: start;
+gap: 0 1.75rem;
+}
+.feature-intro { grid-area: intro; }
+.shop-panel { grid-area: shop; }
+.feature-timeline { grid-area: timeline; }
+.feature-intro {
+border-bottom-left-radius: 0;
+border-bottom-right-radius: 0;
+border-bottom: 0;
+padding-bottom: 0;
+}
+.feature-timeline {
+border-top-left-radius: 0;
+border-top-right-radius: 0;
+border-top: 0;
+padding-top: 0;
+}
+.shop-panel {
+position: sticky;
+top: 5.5rem;
+max-height: calc(100vh - 6.25rem);
+overflow-y: auto;
+}
+}
+@media (max-width: 767px) {
+.article-card { padding: 1.5rem 1.25rem; }
+}
+
+.article-figure picture { display: block; }
+.article-figure.figure-cover {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 767px) {
+  .article-figure.figure-cover { width: 100%; }
+}
+
+  </style>
+  <link rel="canonical" href="https://voynichtimes.com/features/baffle-books/" />
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:title" content="A Baffle Book Doth Make Sherlocks of Us All">
+<meta property="og:description" content="In 1928, Wren and McKay's Baffle Book turned crime stories into evidence you solve yourself: thirty baffles, upside-down answers, radio contests, and a score to beat — 42.62%.">
+<meta property="og:image" content="https://voynichtimes.com/images/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="444">
+<meta property="og:image:alt" content="The Voynich Times, Est. 2021">
+<meta property="og:url" content="https://voynichtimes.com/features/baffle-books/">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Baffle Book Doth Make Sherlocks of Us All">
+<meta name="twitter:description" content="In 1928, Wren and McKay's Baffle Book turned crime stories into evidence you solve yourself: thirty baffles, upside-down answers, radio contests, and a score to beat — 42.62%.">
+<meta name="twitter:image" content="https://voynichtimes.com/images/og-cover.jpg">
+<meta name="twitter:image:alt" content="The Voynich Times, Est. 2021">
+  <link rel="stylesheet" href="/css/share.css">
+  <script src="/js/share.js" defer></script>
+<!-- voynich-pulse -->
+<script>
+(function(){try{
+var K="vt_pulse_sid",s=sessionStorage.getItem(K);
+if(!s){s="v"+Math.random().toString(36).slice(2,10)+Date.now().toString(36);sessionStorage.setItem(K,s);}
+var CK="vt_curator",ct=null;
+try{
+  var hm=(location.hash||"").match(/#curator-([A-Za-z0-9_-]+)/);
+  if(hm){try{localStorage.setItem(CK,hm[1]);}catch(_){}}
+  if(hm){try{history.replaceState(null,"",location.pathname+location.search);}catch(_){}}
+  ct=localStorage.getItem(CK);
+}catch(_){}
+var src="direct";
+try{
+  src=sessionStorage.getItem("vt_src")||"";
+  if(!src){
+    var rh="";try{rh=new URL(document.referrer||"").hostname.toLowerCase();}catch(_){}
+    if(!rh)src="direct";
+    else if(rh.indexOf("google.")!==-1)src="google";
+    else if(rh.indexOf("threads.")!==-1)src="threads";
+    else if(rh.indexOf("facebook.")!==-1||rh.indexOf("fb.")!==-1)src="facebook";
+    else src="other";
+    try{sessionStorage.setItem("vt_src",src);}catch(_){}
+  }
+}catch(_){}
+var ret=false;
+try{ret=!!localStorage.getItem("vt_seen");if(!ret)localStorage.setItem("vt_seen","1");}catch(_){}
+var pages=1;
+try{pages=(parseInt(sessionStorage.getItem("vt_pages")||"0",10)||0)+1;sessionStorage.setItem("vt_pages",String(pages));}catch(_){}
+var U="https://pulse.voynichtimes.com/ping";
+function ping(bye){
+  try{
+    fetch(U,{method:"POST",headers:{"Content-Type":"text/plain"},
+      body:JSON.stringify(bye?{sid:s,bye:true}:(function(){var d={sid:s,path:location.pathname,host:location.hostname,src:src,ret:ret,pages:pages};if(ct)d.curator=ct;return d;})()),
+      keepalive:true,mode:"cors"}).catch(function(){});
+  }catch(e){}
+}
+ping(false);
+setInterval(function(){ping(false);},15000);
+window.addEventListener("pagehide",function(){ping(true);});
+document.addEventListener("click",function(e){
+  try{
+    var a=e.target&&e.target.closest?e.target.closest("a[href]"):null;
+    if(!a)return;
+    var u;try{u=new URL(a.href);}catch(_){return;}
+    var h=u.hostname.toLowerCase(),n=null;
+    if(h.indexOf("patreon.")!==-1)n="patreon";
+    else if(h.indexOf("amazon.")!==-1||h==="amzn.to"||h==="amzn.com"||h.slice(-8)===".amzn.to")n="amazon";
+    if(!n)return;
+    if(typeof gtag==="function"){try{gtag("event","affiliate_click",{network:n,source_path:location.pathname});}catch(_){}}
+    fetch("https://pulse.voynichtimes.com/click",{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify({network:n,path:location.pathname}),keepalive:true,mode:"cors"}).catch(function(){});
+  }catch(_){}
+},true);
+}catch(e){}})();
+</script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+  <div id="background-image"></div>
+  <div class="overlay"></div>
+
+  <!-- Clean modern nav -->
+  <nav class="bg-gray-800/90 backdrop-blur-md p-4 sticky top-0 shadow z-50">
+    <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
+      <a href="/" class="flex items-center gap-3 text-2xl font-bold hover:text-emerald-400 transition-colors"><picture><source srcset="/images/logo-round.webp" type="image/webp"><img src="/images/logo-round.png" alt="The Voynich Times logo" class="w-10 h-10 rounded-full shrink-0" width="40" height="40"></picture>The Voynich Times</a>
+
+      <div class="hidden md:flex items-center space-x-8 text-sm">
+        <a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a>
+        <a href="/news.html" class="text-gray-300 hover:text-white transition-colors">News</a>
+        <a href="/features/" class="text-emerald-400 font-medium">Features</a>
+        <a href="/treasures/lost-and-found/" class="text-gray-300 hover:text-white transition-colors">Treasures: Lost &amp; Found</a>
+        <a href="/treasures/hidden/" class="text-gray-300 hover:text-white transition-colors">Treasures: Hidden</a>
+        <a href="/collector/" class="text-gray-300 hover:text-white transition-colors">The Collector</a>
+        <a href="/database.html" class="text-gray-300 hover:text-white transition-colors">Full Database</a>
+        <a href="/wunderkammer/" class="text-gray-300 hover:text-white transition-colors">Wunderkammer</a>
+      </div>
+    </div>
+  </nav>
+
+  <article class="max-w-6xl mx-auto p-6 flex-1 w-full">
+    <p class="text-sm mb-4">
+      <a href="/features/" class="text-emerald-400 hover:text-emerald-300">← Features</a>
+    </p>
+
+    <header class="mb-8 max-w-3xl">
+      <p class="text-emerald-400 font-mono text-sm mb-3">Mystery Puzzle History · November 1928 · The Early Golden Age</p>
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight">A Baffle Book Doth Make Sherlocks of Us All</h1>
+      <div class="vt-share" data-vt-share></div>
+    </header>
+
+    <div class="feature-layout">
+      <div class="article-body article-card feature-intro">
+        <figure class="article-figure figure-cover">
+          <img src="images/hero-second-baffle-cover.jpg" alt="The Second Baffle Book cover, Crime Club, 1929" width="637" height="1096">
+          <figcaption><em>The Second Baffle Book</em> (The Crime Club, New York, 1929).</figcaption>
+        </figure>
+
+        <p>On 24 November 1928, a full page in <em>The Publishers Weekly</em> shouted across the top: "THE NEW DETECTIVE STORY GAME MAY CATCH YOU NEXT!" Underneath, a little silhouetted detective points at each paragraph in turn. "It's spreading like buckshot!" it says. "Cross Word Puzzles and <em>Ask Me Another</em> took months — but THE BAFFLE BOOK of detective story games has gone over the top in two weeks!" And at the bottom, the last line is printed upside down: <em>The answers are printed upside down.</em></p>
+
+        <figure class="article-figure">
+          <img src="images/publishers-weekly-ad-1928-11-24.jpg" alt="Publishers Weekly full-page advertisement for The Baffle Book, 24 November 1928" width="570" height="905" loading="lazy">
+          <figcaption>Doubleday, Doran's full page in <em>The Publishers Weekly</em>, 24 November 1928, p. 1903. The last line is printed upside down.</figcaption>
+        </figure>
+
+        <p>"Detective Story Game." That is the first time we have found the book trade using a name that sounds this much like our hobby. The Baffle Book even keeps score!</p>
+
+        <p><em>The Baffle Book</em> came out of New York parties. By its own account, the authors made the game up "to amuse studio gatherings in New York last winter," where it went by names like "Clues" or "Baffling Mysteries." It was popular enough to become a book.</p>
+
+        <p>The Crime Club, the mystery imprint of Doubleday, Doran &amp; Company, published it in the autumn of 1928: 280 pages, thirty mysteries, $1.90 (the trade ad rounded it to two dollars). The authors were Lassiter Wren and Randle McKay. Both are pen names. McKay was Richard Wilmer Rowan (born in Philadelphia in 1894, died 1964). Rowan wrote about spies for a living. The baffles are full of fingerprints, handwriting specimens and observation tests. His <em>Spy and Counter-Spy</em>, a history of modern espionage, came out from Viking in 1928, the same year as <em>The Baffle Book</em>. Wren's modern publisher names him as John T. Colter, and says little else is known about him. We have looked, and outside that one line the man leaves no trace we can find.</p>
+
+        <p>Their ad copy called Wren and McKay the originators of the "Detective Problem Form." We disagree. They were among the first — and perhaps the first to formalize it as such — but Poe gave readers a cipher in 1843, Carr asked readers to solve before the answer in 1926, and Cipher Stories beat Baffle to the shops by months.</p>
+
+        <h2>What is a baffle, anyway?</h2>
+
+        <p>A baffle is a short crime story you are meant to solve. The baffle provides the evidence, and you get to try to solve it before you turn to the answers. It is a mystery delivered as evidence, not just as prose. For example, you are given a floor plan, footprints, a torn note in two fragments, a map with the zones of suspicion ringed in dots. Or, early in the first book, a full plate of fingerprints: <em>The Evidence on the Japanned Box</em>, the thief's print set above the prints of seven named suspects (Mrs. Hay's, Mr. Hay's, Judson's, Colonel Blue's, and the rest). You are being handed the case the way the police got it.</p>
+
+        <figure class="article-figure">
+          <img src="images/baffle-p021-fingerprint-japanned-box.jpg" alt="Fingerprint plate from The Baffle Book, page 21: The Evidence on the Japanned Box" width="1692" height="2431" loading="lazy">
+          <figcaption>"The Evidence on the Japanned Box," <em>The Baffle Book</em> (1928), p. 21: the thief's print above the prints of seven suspects.</figcaption>
+        </figure>
+
+        <p>The book promises to play fair. Every clue you need is on the page, and if the police establish a fact, it is a fact. At the end of each case you are given several questions to answer. Each question is worth a set amount of points. Then you turn the book upside down to read the answers in the back (printed this way so that you don't see an answer by accident).</p>
+
+        <p>You can play alone, against a friend, or at a party. The book prints rules for two teams, and recommends that each team buy its own copy.</p>
+      </div>
+
+      <aside class="shop-panel" aria-labelledby="shop-heading">
+        <p class="shop-kicker">Associates</p>
+        <h2 id="shop-heading">Shop the books in this feature</h2>
+        <p class="shop-affiliate">As an Amazon Associate I earn from qualifying purchases.</p>
+
+        <ol class="shop-list">
+          <li class="shop-lead">
+            <a href="https://www.amazon.com/dp/1613167415?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored">
+              <span class="shop-title">The Baffle Book</span>
+              <span class="shop-sub">Lassiter Wren &amp; Randle McKay · Intro. G. T. Karber · American Mystery Classics paperback, 2026 · All 30 cases</span>
+              <span class="shop-cta">Buy on Amazon →</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.amazon.com/dp/1613168748?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored">
+              <span class="shop-title">The Second Baffle Book</span>
+              <span class="shop-sub">Wren &amp; McKay · Intro. Will Shortz · American Mystery Classics paperback · Preorder, out 2 March 2027</span>
+              <span class="shop-cta">Preorder on Amazon →</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.amazon.com/dp/B000PWRTJ8?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored">
+              <span class="shop-title">The Third Baffle Book</span>
+              <span class="shop-sub">Wren &amp; McKay · Used / out of print</span>
+              <span class="shop-cta">Buy on Amazon →</span>
+            </a>
+          </li>
+        </ol>
+      </aside>
+
+      <div class="article-body article-card feature-timeline">
+        <h2>The craze</h2>
+
+        <p>The baffles did not stay bound in their book. Within weeks of publication, they were everywhere a 1928 puzzle could go.</p>
+
+        <p>That October, WGN Radio began "Baffle Contests" at 8:30 in the evening: a mystery read on the air, and the first five listeners to mail in the right answer won a copy of the book. By 5 November, <em>The Brooklyn Citizen</em> was advertising a radio Baffle Contest of its own.</p>
+
+        <p>The <em>Morning Post</em> in Camden ran what reads like a personal review: "I was stumped on the first one." The same wording turns up in other papers, so it was almost certainly Doubleday's ad copy. In Baltimore, <em>The Evening Sun</em> promised "BE YOUR OWN DETECTIVE": a new mystery every weekday, all five answers on Saturday, "a splendid one for the family circle." <em>The Montclair Times</em> wondered if it was a craze.</p>
+
+        <figure class="article-figure">
+          <img src="images/evening-sun-teaser.jpg" alt="Evening Sun teaser for the Baffle serial, November 1928: Be Your Own Detective" width="681" height="457" loading="lazy">
+          <figcaption><em>The Evening Sun</em> (Baltimore) teases its weekday Baffle serial, November 1928: "Be Your Own Detective."</figcaption>
+        </figure>
+
+        <p>And Doubleday's syndicate bragged to <em>Editor &amp; Publisher</em> that Baffle had "swept into immediate popularity less than ten days after publication." The <em>New York Evening World</em> ran "Problems from the Baffle Book" daily. London and Boston had picked it up, Berlin was "about to start it," translations into six languages were "under way," "Baffle Parties have become popular," and the second book was already in preparation. "Baffles are with us to stay."</p>
+
+        <p>While some of that is true, some of it was just hype. We can find no foreign-language edition of the Baffle Book in any catalogue, and no record of the Berlin run. The six translations seem to have never happened. London did pick it up, two years later (see below). The rest of it was real. Newspapers ran the baffles as a serial. Radio stations ran contests. People played them at parties.</p>
+
+        <h2>The London edition</h2>
+
+        <p>Two years later, Heinemann published it in London in 1930 as <em>The Baffle Book: A Parlour Game of Mystery and Detection</em>, anglicised by F. Tennyson Jesse (novelist, true-crime writer, great-niece of Tennyson). Jesse cut it to twenty-eight problems and introduced it this way: "The Baffle Book is not a collection of short stories. It is a parlour game, and a very good game, too." She made no claim that it originated anything, just that it was a very good game.</p>
+
+        <h2>1929</h2>
+
+        <p>In March, <em>The Haverfordian</em>, Haverford College's student magazine, put out a Grand Guignol issue. It included a Carr problem, and the editors explained themselves first. "Believing that the average reader is at least one-eighth amateur-detective," they pointed out that "now that such things as 'The Baffle Book' have become the rage, and murder-games are a popular indoor sport," they had run a similar game back in 1926, and "will not, therefore, be accused of imitating a fad."</p>
+
+        <p>This provides us strong evidence that many people were well aware of the Baffle Books.</p>
+
+        <p>In May, <em>Photoplay</em> toured Pickfair, the home of Douglas Fairbanks and Mary Pickford, and listed the books on their shelves. <em>The Baffle Book</em> was one of them. By July, <em>The Publishers Weekly</em> was grouping the coming second Baffle with new game books on anagrams, bridge and crosswords: game books were their own category now. From September 1929, &ldquo;Baffles&rdquo; ran as a regular feature in the pulp <em>Clues Detective Stories</em>, the answers printed in later issues. It ran into January 1930, came back that December, and ran into January 1931. The magazine ran it as a contest and printed the winners&rsquo; names in May 1930. A reader in Maywood, Illinois, wrote in that first December: &ldquo;I like the Baffles. They are very interesting to read.&rdquo;</p>
+
+        <p><em>The Second Baffle Book</em> came out on 18 October 1929, and reviews followed within days. The <em>Cincinnati Enquirer</em> found it "quite as interesting and as cleverly prepared as was the first," and passed along the news that "the compilers promise soon to issue a third volume."</p>
+
+        <h2>The books that came after</h2>
+
+        <p>The scholar Maurizio Ascari, writing in <em>Studies in Crime Writing</em> in 2023, traces a line from 1936 to the fingerprint plate in <em>The Baffle Book</em>, and from there to <em>Cluedo</em>. In 1936, Dennis Wheatley's <em>Murder Off Miami</em> and the dossier games that followed took the casefile of clues (telegrams, photographs, physical evidence) and, in his words, went "a step further than <em>The Baffle Book</em>." In 1937 Parker Brothers published <em>The Jury Box</em>, which seated the players as jurors over six casefiles.</p>
+
+        <p>When American Mystery Classics reissued <em>The Baffle Book</em> in March 2026, the introduction came from G. T. Karber (the creator of <em>Murdle</em>). A caution about editions: the Godine reprints of 2006 and 2008, which kept these books reachable for years, are selections of fifteen puzzles each. The 2026 edition is the one that restores all thirty baffles.</p>
+
+        <h2>After the Crime Club</h2>
+
+        <p>The third volume came out as promised: <em>The Third Baffle Book</em> arrived in time for Christmas 1930, at one dollar (about half the price of the first). The Crime Club line stops there, but the pair didn't. In March 1933, Wren and McKay published once more, from a new house: <em>The Mystery Puzzle Book</em> (Thomas Y. Crowell), with a foreword by S. S. Van Dine. <em>The Saturday Review</em> graded it "Good," and noted that amateur handwriting experts would have the most fun with it. After that we find nothing more from them.</p>
+
+        <p>In 1931–32 the Mystery League (a cheap imprint sold at cigar stores and drugstores for a quarter) ran three promotional "Baffle Cases" in the backs of its novels, original mysteries by Wren and McKay, solutions mailed in for a prize awarded in gold. A copy of <em>Murder in the French Room</em> (1931) carries Case #2, "The Crime at Laurel Lodge," under both their names. Only the first case's solution was ever printed; for Cases #2 and #3 the results were mailed privately to entrants, and the imprint folded around 1933. So the last baffles may have been answered by people whose letters no longer exist. If you own one of those mailed solutions, we would love to hear from you.</p>
+
+        <p>When the 1928 copyright came up for renewal in 1955, Rowan renewed it himself, under the title <em>The Baffle Book of Crimes to Solve</em>. Wren did not appear in the renewal at all. His one other book was <em>Masterstrokes of Crime Detection</em>, a solo true-crime collection from 1929.</p>
+
+        <h2>Can you beat 42.62%?</h2>
+
+        <p>So, nearly a century on, can you still play it? We did. We worked through the first book the slow way: five or six hours spread over many days, two or three baffles at a sitting, pencil, score sheet, book turned upside down at the back like everyone in 1928.</p>
+
+        <p>Our final score was 42.62%, and we were rather proud of it. Some cases are harder now than they were then, because they lean on things every reader in 1928 would have known. The slogan in the ad was right, though. A Baffle Book doth make Sherlocks of us all.</p>
+
+        <p>One person, at least, thinks 42.62% is beatable. A mystery-loving parent saw the book over our shoulder, was hooked at once — and wants to beat our score.</p>
+
+        <h2>The Early Golden Age</h2>
+
+        <p>This feature belongs to our Mystery Puzzle History series. The full timeline, from Poe in 1843 to the Photocrimes of the 1940s, lives on the <a href="/features/mystery-puzzle-history/">series overview page</a>.</p>
+
+                <h2>Sources</h2>
+        <ol>
+          <li>Wren, L., &amp; McKay, R. (1928). <em>The Baffle Book.</em> New York: The Crime Club / Doubleday, Doran &amp; Co. Also: <em>The Second Baffle Book</em> (1929); <em>The Third Baffle Book</em> (1930); <em>The Mystery Puzzle Book</em> (New York: Thomas Y. Crowell, 1933).</li>
+          <li><em>The Publishers Weekly</em>, 24 November 1928, p. 1903 (Doubleday, Doran full-page advertisement).</li>
+          <li><em>Editor &amp; Publisher</em>, 27 October 1928 (Doubleday syndicate article on the Baffle serial and contests).</li>
+          <li><em>The Evening Sun</em> (Baltimore), November 1928 ("Be Your Own Detective" weekday serial and teaser).</li>
+          <li><em>The Brooklyn Citizen</em>, 5 November 1928 (radio Baffle Contest advertisement).</li>
+          <li><em>Morning Post</em> (Camden, N.J.), 1928; <em>The Montclair Times</em>, 1928 (newspaper notices).</li>
+          <li><em>The Haverfordian</em>, March 1929 (Grand Guignol issue, editors' note).</li>
+        <li>FictionMags Index, contents lists for <em>Clues</em> and <em>Clues Detective Stories</em>, 1929&ndash;1931 (the &ldquo;Baffles&rdquo; installments, answers, and contest winners), and the Second December 1929 issue, Internet Archive.</li>
+          <li><em>Photoplay</em>, May 1929 (Pickfair bookshelf tour).</li>
+          <li><em>The Cincinnati Enquirer</em>, 20 October 1929 (review of <em>The Second Baffle Book</em>).</li>
+          <li>Wren, L., &amp; McKay, R. (1930). <em>The Baffle Book: A Parlour Game of Mystery and Detection.</em> Ed. F. Tennyson Jesse. London: William Heinemann.</li>
+          <li><em>The Saturday Review</em>, "Guide to Detective Fiction," 20 May 1933 (notice of <em>The Mystery Puzzle Book</em>).</li>
+          <li>U.S. <em>Catalog of Copyright Entries</em>, Renewals: <em>The Baffle Book</em>, renewal R159453 (1955), Richard Wilmer Rowan.</li>
+          <li>Hubin, A. J. <em>Crime Fiction IV</em> (McKay identified as Richard Wilmer Rowan, 1894–1964).</li>
+          <li>Guide to the Richard Wilmer Rowan Papers, 1910–1987 (MC 95), University of New Hampshire Library.</li>
+          <li>Edwards, M. (2017). <em>The Story of Classic Crime in 100 Books.</em> London: British Library. (British edition and Jesse introduction.)</li>
+          <li>Ascari, M. (2023). "The Murder Game: De-Realization and the Uncanny in Golden Age Detective Fiction." <em>Studies in Crime Writing</em>, Issue 4, pp. 1–11.</li>
+          <li>Between the Covers (ABAA), catalogue description of <em>Murder in the French Room</em> (Mystery League #21, 1931), carrying Baffle Case #2, "The Crime at Laurel Lodge."</li>
+          <li>Karber, G. T. (2026). "An Almost Forgotten Classic: How <em>The Baffle Book</em> Influenced Modern Mysteries." <em>CrimeReads</em>, March 2026; and his introduction to the American Mystery Classics edition (2026).</li>
+        </ol>
+
+        <div class="content-note">
+          <p style="margin-bottom:0.5rem;"><strong>Credits.</strong> Researched and compiled for Brent A. Price, <em>The Voynich Times</em>. Play-through and score by Brent A. Price.</p>
+          <p style="margin-bottom:0;"><strong>Images.</strong> <em>The Second Baffle Book</em> cover and the 1928 advertisements are scans from Brent's collection (2021). The fingerprint plate is from <em>The Baffle Book</em> (1928), page images via HathiTrust / Internet Archive. The 1928 and 1929 Baffle Books are in the U.S. public domain.</p>
+        </div>
+
+        <p>Related: <a href="/features/poe-gold-bug/">Mystery Puzzle Games and Their Origin From… Poe?</a> (1843) · <a href="/features/cipher-stories/">Dead on the Vine: Cooper's 1928 Cipher Stories</a> (February 1928).</p>
+      </div>
+    </div>
+    <div class="vt-share vt-share--end" data-vt-share></div>
+  </article>
+
+  <!-- Amazon disclaimer footer -->
+  <footer class="mt-auto py-8 text-center text-sm text-gray-400 border-t border-gray-700">
+    <div class="max-w-screen-2xl mx-auto px-6">
+      <p>As an Amazon Associate I earn from qualifying purchases.</p>
+    </div>
+  </footer>
+</body>
+</html>

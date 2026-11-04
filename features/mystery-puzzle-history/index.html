@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Voynich Times' Mystery Puzzle History series: the timeline of the hobby's earliest era, The Early Golden Age, from Poe's Gold-Bug in 1843 to the Photocrimes of the 1940s.">
+  <title>Mystery Puzzle History: The Early Golden Age | The Voynich Times</title>
+  <!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFDQCDM28S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MFDQCDM28S');
+</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+
+body { background-color: #111827; color: #e5e7eb; overflow-x: hidden; }
+#background-image {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: url('/voynich-home-art.jpg');
+background-size: cover;
+background-position: center;
+z-index: -2;
+filter: brightness(0.75) contrast(1.05);
+}
+.overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.72);
+z-index: -1;
+}
+.article-body p { margin-bottom: 1.25rem; }
+.article-figure { margin: 2rem 0; }
+.article-figure img { display: block; max-width: 100%; height: auto; border-radius: 0.75rem; }
+.article-figure figcaption { margin-top: 0.5rem; color: #9ca3af; font-size: 0.9rem; line-height: 1.4; }
+.article-body a { color: #6ee7b7; }
+.article-body a:hover { color: #a7f3d0; }
+.article-body ol { list-style: decimal; padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+.article-body ul { list-style: disc; padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+.article-body ul ul { list-style: circle; margin: 0.35rem 0 0.75rem; }
+.article-body li { margin-bottom: 0.5rem; }
+.article-body h2 {
+font-size: 1.75rem;
+font-weight: 700;
+margin: 2.5rem 0 1rem;
+color: #f9fafb;
+}
+.article-body h3 {
+font-size: 1.35rem;
+font-weight: 700;
+margin: 2rem 0 0.75rem;
+color: #ecfdf5;
+}
+.article-quote {
+border-left: 4px solid #34d399;
+padding: 1rem 1.5rem;
+margin: 2rem 0;
+background: rgba(16, 185, 129, 0.08);
+border-radius: 0 0.75rem 0.75rem 0;
+font-style: italic;
+color: #d1fae5;
+}
+.content-note {
+background: rgba(31, 41, 55, 0.9);
+border: 1px solid #4b5563;
+border-radius: 1rem;
+padding: 1rem 1.25rem;
+margin: 1.75rem 0;
+color: #9ca3af;
+font-size: 0.95rem;
+line-height: 1.6;
+}
+.timeline {
+list-style: none;
+padding-left: 0;
+margin: 1.5rem 0 2rem;
+}
+.timeline li {
+margin-bottom: 0;
+padding: 0.65rem 0 0.65rem 1.1rem;
+border-left: 2px solid #34d399;
+line-height: 1.55;
+}
+.timeline li.here {
+background: rgba(16, 185, 129, 0.10);
+border-left: 4px solid #34d399;
+border-radius: 0 0.5rem 0.5rem 0;
+}
+.you-are-here {
+color: #34d399;
+font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+font-size: 0.75rem;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+margin-left: 0.5rem;
+}
+.feature-layout {
+display: grid;
+gap: 1.5rem;
+}
+.article-card {
+background: rgba(31, 41, 55, 0.8);
+border: 1px solid #374151;
+border-radius: 1rem;
+padding: 2rem;
+color: #e5e7eb;
+font-size: 1.125rem;
+line-height: 1.625;
+}
+.shop-panel {
+background: rgba(17, 24, 39, 0.92);
+border: 1px solid #065f46;
+border-radius: 1rem;
+padding: 1.25rem 1.15rem 1.15rem;
+box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.12), 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+.shop-kicker {
+color: #34d399;
+font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+font-size: 0.7rem;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+margin-bottom: 0.35rem;
+}
+.shop-panel h2 {
+font-size: 1.15rem;
+font-weight: 700;
+color: #f9fafb;
+line-height: 1.3;
+margin: 0 0 0.6rem;
+}
+.shop-affiliate {
+font-size: 0.72rem;
+line-height: 1.45;
+color: #9ca3af;
+margin-bottom: 0.9rem;
+}
+.shop-list {
+list-style: none;
+padding: 0;
+margin: 0;
+display: flex;
+flex-direction: column;
+gap: 0.45rem;
+}
+.shop-list a {
+display: block;
+text-decoration: none;
+border: 1px solid #374151;
+background: rgba(31, 41, 55, 0.75);
+border-radius: 0.75rem;
+padding: 0.7rem 0.8rem;
+transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+.shop-list a:hover {
+border-color: #34d399;
+background: rgba(6, 78, 59, 0.35);
+}
+.shop-title {
+display: block;
+color: #d1fae5;
+font-size: 0.92rem;
+font-weight: 600;
+line-height: 1.35;
+}
+.shop-sub {
+display: block;
+margin-top: 0.2rem;
+color: #9ca3af;
+font-size: 0.7rem;
+line-height: 1.4;
+}
+.shop-cta {
+display: inline-block;
+margin-top: 0.35rem;
+color: #6ee7b7;
+font-size: 0.72rem;
+font-weight: 600;
+}
+.shop-list a:hover .shop-cta { color: #a7f3d0; }
+.shop-lead a {
+border-color: #059669;
+background: rgba(6, 78, 59, 0.45);
+}
+.shop-more {
+margin-top: 0.85rem;
+border-top: 1px solid #374151;
+padding-top: 0.65rem;
+}
+.shop-more summary {
+cursor: pointer;
+color: #a7f3d0;
+font-size: 0.78rem;
+font-weight: 600;
+list-style: none;
+}
+.shop-more summary::-webkit-details-marker { display: none; }
+.shop-more summary::after {
+content: " +";
+color: #6ee7b7;
+}
+.shop-more[open] summary::after { content: " −"; }
+.shop-more .shop-list { margin-top: 0.55rem; }
+@media (min-width: 1024px) {
+.feature-layout {
+grid-template-columns: minmax(0, 1fr) 20.5rem;
+grid-template-areas:
+"intro shop"
+"timeline shop";
+align-items: start;
+gap: 0 1.75rem;
+}
+.feature-intro { grid-area: intro; }
+.shop-panel { grid-area: shop; }
+.feature-timeline { grid-area: timeline; }
+.feature-intro {
+border-bottom-left-radius: 0;
+border-bottom-right-radius: 0;
+border-bottom: 0;
+padding-bottom: 0;
+}
+.feature-timeline {
+border-top-left-radius: 0;
+border-top-right-radius: 0;
+border-top: 0;
+padding-top: 0;
+}
+.shop-panel {
+position: sticky;
+top: 5.5rem;
+max-height: calc(100vh - 6.25rem);
+overflow-y: auto;
+}
+}
+@media (max-width: 767px) {
+.article-card { padding: 1.5rem 1.25rem; }
+}
+
+.article-figure picture { display: block; }
+.article-figure.figure-cover {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 767px) {
+  .article-figure.figure-cover { width: 100%; }
+}
+
+  </style>
+  <link rel="canonical" href="https://voynichtimes.com/features/mystery-puzzle-history/" />
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:title" content="Mystery Puzzle History: The Early Golden Age">
+<meta property="og:description" content="The Voynich Times' Mystery Puzzle History series: the timeline of the hobby's earliest era, The Early Golden Age, from Poe's Gold-Bug in 1843 to the Photocrimes of the 1940s.">
+<meta property="og:image" content="https://voynichtimes.com/images/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="444">
+<meta property="og:image:alt" content="The Voynich Times, Est. 2021">
+<meta property="og:url" content="https://voynichtimes.com/features/mystery-puzzle-history/">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mystery Puzzle History: The Early Golden Age">
+<meta name="twitter:description" content="The Voynich Times' Mystery Puzzle History series: the timeline of the hobby's earliest era, The Early Golden Age, from Poe's Gold-Bug in 1843 to the Photocrimes of the 1940s.">
+<meta name="twitter:image" content="https://voynichtimes.com/images/og-cover.jpg">
+<meta name="twitter:image:alt" content="The Voynich Times, Est. 2021">
+  <link rel="stylesheet" href="/css/share.css">
+  <script src="/js/share.js" defer></script>
+<!-- voynich-pulse -->
+<script>
+(function(){try{
+var K="vt_pulse_sid",s=sessionStorage.getItem(K);
+if(!s){s="v"+Math.random().toString(36).slice(2,10)+Date.now().toString(36);sessionStorage.setItem(K,s);}
+var CK="vt_curator",ct=null;
+try{
+  var hm=(location.hash||"").match(/#curator-([A-Za-z0-9_-]+)/);
+  if(hm){try{localStorage.setItem(CK,hm[1]);}catch(_){}}
+  if(hm){try{history.replaceState(null,"",location.pathname+location.search);}catch(_){}}
+  ct=localStorage.getItem(CK);
+}catch(_){}
+var src="direct";
+try{
+  src=sessionStorage.getItem("vt_src")||"";
+  if(!src){
+    var rh="";try{rh=new URL(document.referrer||"").hostname.toLowerCase();}catch(_){}
+    if(!rh)src="direct";
+    else if(rh.indexOf("google.")!==-1)src="google";
+    else if(rh.indexOf("threads.")!==-1)src="threads";
+    else if(rh.indexOf("facebook.")!==-1||rh.indexOf("fb.")!==-1)src="facebook";
+    else src="other";
+    try{sessionStorage.setItem("vt_src",src);}catch(_){}
+  }
+}catch(_){}
+var ret=false;
+try{ret=!!localStorage.getItem("vt_seen");if(!ret)localStorage.setItem("vt_seen","1");}catch(_){}
+var pages=1;
+try{pages=(parseInt(sessionStorage.getItem("vt_pages")||"0",10)||0)+1;sessionStorage.setItem("vt_pages",String(pages));}catch(_){}
+var U="https://pulse.voynichtimes.com/ping";
+function ping(bye){
+  try{
+    fetch(U,{method:"POST",headers:{"Content-Type":"text/plain"},
+      body:JSON.stringify(bye?{sid:s,bye:true}:(function(){var d={sid:s,path:location.pathname,host:location.hostname,src:src,ret:ret,pages:pages};if(ct)d.curator=ct;return d;})()),
+      keepalive:true,mode:"cors"}).catch(function(){});
+  }catch(e){}
+}
+ping(false);
+setInterval(function(){ping(false);},15000);
+window.addEventListener("pagehide",function(){ping(true);});
+document.addEventListener("click",function(e){
+  try{
+    var a=e.target&&e.target.closest?e.target.closest("a[href]"):null;
+    if(!a)return;
+    var u;try{u=new URL(a.href);}catch(_){return;}
+    var h=u.hostname.toLowerCase(),n=null;
+    if(h.indexOf("patreon.")!==-1)n="patreon";
+    else if(h.indexOf("amazon.")!==-1||h==="amzn.to"||h==="amzn.com"||h.slice(-8)===".amzn.to")n="amazon";
+    if(!n)return;
+    if(typeof gtag==="function"){try{gtag("event","affiliate_click",{network:n,source_path:location.pathname});}catch(_){}}
+    fetch("https://pulse.voynichtimes.com/click",{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify({network:n,path:location.pathname}),keepalive:true,mode:"cors"}).catch(function(){});
+  }catch(_){}
+},true);
+}catch(e){}})();
+</script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+  <div id="background-image"></div>
+  <div class="overlay"></div>
+
+
+  <!-- Clean modern nav -->
+  <nav class="bg-gray-800/90 backdrop-blur-md p-4 sticky top-0 shadow z-50">
+    <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
+      <a href="/" class="flex items-center gap-3 text-2xl font-bold hover:text-emerald-400 transition-colors"><picture><source srcset="/images/logo-round.webp" type="image/webp"><img src="/images/logo-round.png" alt="The Voynich Times logo" class="w-10 h-10 rounded-full shrink-0" width="40" height="40"></picture>The Voynich Times</a>
+
+      <div class="hidden md:flex items-center space-x-8 text-sm">
+        <a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a>
+        <a href="/news.html" class="text-gray-300 hover:text-white transition-colors">News</a>
+        <a href="/features/" class="text-emerald-400 font-medium">Features</a>
+        <a href="/treasures/lost-and-found/" class="text-gray-300 hover:text-white transition-colors">Treasures: Lost &amp; Found</a>
+        <a href="/treasures/hidden/" class="text-gray-300 hover:text-white transition-colors">Treasures: Hidden</a>
+        <a href="/collector/" class="text-gray-300 hover:text-white transition-colors">The Collector</a>
+        <a href="/database.html" class="text-gray-300 hover:text-white transition-colors">Full Database</a>
+        <a href="/wunderkammer/" class="text-gray-300 hover:text-white transition-colors">Wunderkammer</a>
+      </div>
+    </div>
+  </nav>
+
+  <article class="max-w-6xl mx-auto p-6 flex-1 w-full">
+    <p class="text-sm mb-4">
+      <a href="/features/" class="text-emerald-400 hover:text-emerald-300">← Features</a>
+    </p>
+
+    <header class="mb-8 max-w-3xl">
+      <p class="text-emerald-400 font-mono text-sm mb-3">Mystery Puzzle History · Series Overview</p>
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight">The Early Golden Age</h1>
+      <div class="vt-share" data-vt-share></div>
+    </header>
+
+    <div class="article-body article-card">
+      <p>Our Mystery Puzzle History series traces where the hobby came from. It covers the earliest era, which we call The Early Golden Age: many of these works are not fully realised Mystery Puzzle Games, but they are the steps toward them.</p>
+
+      <h2>The articles, in time order</h2>
+      <ul>
+        <li><strong>1843</strong> — <a href="/features/poe-gold-bug/">Mystery Puzzle Games and Their Origin From… Poe?</a></li>
+        <li><strong>February 1928</strong> — <a href="/features/cipher-stories/">Dead on the Vine: Cooper's 1928 Cipher Stories</a></li>
+        <li><strong>November 1928</strong> — <a href="/features/baffle-books/">A Baffle Book Doth Make Sherlocks of Us All</a></li>
+      </ul>
+
+      <h2>Timeline</h2>
+      <ol class="timeline">
+        <li><strong>1843</strong> — <a href="/features/poe-gold-bug/"><em>The Gold-Bug</em></a> (cipher in a story)</li>
+        <li><strong>1881</strong> — <em>The Cryptogram</em>, book 2 of <em>Eight Hundred Leagues on the Amazon</em> by Jules Verne (descendant of <em>The Gold-Bug</em>)</li>
+        <li><strong>1907</strong> (June 30) — <em>New York Tribune</em> detective puzzle (Possibly the first…)</li>
+        <li><strong>1926</strong> — <em>The Haverfordian</em> publishes John Dickson Carr's <em>The Shadow of the Goat</em>, a short story that lets the reader try to solve the mystery before the next month's answer (We argue it is the first Mystery Puzzle Game)</li>
+        <li><strong>1928</strong> — February 28: <a href="/features/cipher-stories/"><em>Cipher Stories Puzzle Book</em></a> — twenty-five original short stories, each containing at least two vital cipher puzzles</li>
+        <li><strong>1928</strong> — November: <a href="/features/baffle-books/"><em>The Baffle Book</em></a> published (Wren, McKay)</li>
+        <li><strong>1929</strong> — October: <a href="/features/baffle-books/"><em>The 2nd Baffle Book</em></a> published (Wren, McKay)</li>
+        <li><strong>1930</strong> — November 21: <a href="/features/baffle-books/"><em>The Third Baffle Book</em></a> published (Wren, McKay)</li>
+        <li><strong>1932</strong> — September 7: <em>Minute Mysteries</em> published (Austin Ripley; also known as Detectograms) — 71 mysteries</li>
+        <li><strong>1933</strong> — March: <a href="/features/baffle-books/"><em>The Mystery Puzzle Book</em></a> published (Wren, McKay)</li>
+        <li><strong>1934</strong> — November: Edward Powys Mathers, <em>The Torquemada Puzzle Book</em> (part later reprinted as <em>Cain's Jawbone</em>)</li>
+        <li><strong>1935</strong> — Photocrimes published in Britain in <em>Weekly Illustrated</em></li>
+        <li><strong>1936</strong> — July 23: <em>Murder Off Miami</em> published in Britain (later reprinted in the U.S. as Crimefile No. 1)</li>
+        <li><strong>1936</strong> — September 1: Crimefile No. 1: <em>File on Bolitho Blane</em> (also known as <em>Murder Off Miami</em>)</li>
+        <li><strong>1936</strong> — September 20: Photocrimes in the <em>Des Moines Register</em> — the earliest U.S. example we have discovered so far</li>
+        <li><strong>1936</strong> — November 30: first <em>Photocrimes</em> book collection</li>
+        <li><strong>1936</strong> — <em>The Marceau Case</em> (dossier novel)</li>
+        <li><strong>1936</strong> — <em>X. Jones of Scotland Yard</em> (dossier novel)</li>
+        <li><strong>1937</strong> — <em>Photocrimes</em> puzzle-book edition under the same title (distinct from the 1936 collection; a 1944 edition may be a reprint)</li>
+        <li><strong>1937</strong> — May 1: Crimefile No. 2: <em>File on Rufus Ray</em></li>
+        <li><strong>1937</strong> — August 1: <em>File on Robert Prentice</em> (originally the British <em>Who Killed Robert Prentice?</em>)</li>
+        <li><strong>1937</strong> — November 1: Crimefile No. 3: <em>File on Fenton and Farr</em></li>
+        <li><strong>1938</strong> — January 1: Crimefile No. 4: <em>File on Claudia Cragge</em></li>
+        <li><strong>1938</strong> — January 1: <em>The Malinsay Massacre</em></li>
+        <li><strong>1938</strong> — <em>Look</em> magazine Photocrimes (22 cases)</li>
+        <li><strong>1939</strong> — July 1: <em>Herewith the Clues</em></li>
+        <li><strong>1940s</strong> — Photocrimes in the <em>Des Moines Register</em>, using work from David Nowinson (creator of "You Solve the Crime") and Harold Ripley (creator of Minute Mysteries)</li>
+      </ol>
+    </div>
+    <div class="vt-share vt-share--end" data-vt-share></div>
+  </article>
+
+  <!-- Amazon disclaimer footer -->
+  <footer class="mt-auto py-8 text-center text-sm text-gray-400 border-t border-gray-700">
+    <div class="max-w-screen-2xl mx-auto px-6">
+      <p>As an Amazon Associate I earn from qualifying purchases.</p>
+    </div>
+  </footer>
+</body>
+</html>
