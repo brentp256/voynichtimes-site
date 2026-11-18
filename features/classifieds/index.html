@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="The Classifieds: the Voynich Times sweepstakes pages — verified giveaway listings, sorted and sifted, with the sponsors' record kept in print.">
+  <title>The Classifieds | The Voynich Times</title>
+  <!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFDQCDM28S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MFDQCDM28S');
+</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #111827; color: #e5e7eb; overflow-x: hidden; }
+    #background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('/voynich-home-art.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+      filter: brightness(0.75) contrast(1.05);
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.72);
+      z-index: -1;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-figure { margin: 2rem 0; }
+    .article-figure img { display: block; max-width: 100%; height: auto; border-radius: 0.75rem; }
+    .article-figure figcaption { color: #9ca3af; font-size: 0.9rem; margin-top: 0.5rem; text-align: center; }
+  
+    .paper { background: #f4edd8; color: #1c1811; font-family: Georgia, 'Times New Roman', serif;
+             box-shadow: 0 10px 40px rgba(0,0,0,0.55); }
+    .paper .rule-double { border-top: 4px double #1c1811; }
+    .paper .rule-heavy { border-top: 3px solid #1c1811; }
+    .paper .rule-light { border-top: 1px solid #1c1811; }
+    .colhead { border-top: 3px solid #1c1811; border-bottom: 4px double #1c1811;
+               letter-spacing: 0.14em; }
+    .ad { border-top: 1px solid #6f6449; font-size: 0.86rem; line-height: 1.5; }
+    .ad h4 { font-size: 1.02rem; line-height: 1.25; }
+    .agate { font-size: 0.78rem; letter-spacing: 0.04em; }
+    .stamp { color: #9c1f1f; border: 2px solid #9c1f1f; border-radius: 3px;
+             padding: 0 0.35rem; font-weight: 700; letter-spacing: 0.08em;
+             font-size: 0.72rem; display: inline-block; transform: rotate(-2deg); }
+    .paper select, .paper input { background: #fbf7ea; border: 1px solid #1c1811; color: #1c1811;
+             border-radius: 2px; padding: 0.35rem 0.5rem; font-family: Georgia, serif; font-size: 0.9rem; }
+    .paper a { color: #7c1616; text-decoration: underline; }
+    .paper table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .paper th { text-align: left; border-bottom: 3px double #1c1811; padding: 0.4rem 0.5rem; letter-spacing: 0.06em; }
+    .paper td { border-bottom: 1px solid #a2936d; padding: 0.4rem 0.5rem; vertical-align: top; }
+    .btn-ink { background: #1c1811; color: #f4edd8 !important; text-decoration: none !important;
+               padding: 0.3rem 0.7rem; font-size: 0.82rem; letter-spacing: 0.05em; display: inline-block; }
+  </style>
+<!-- voynich-pulse -->
+<script>
+(function(){try{
+var K="vt_pulse_sid",s=sessionStorage.getItem(K);
+if(!s){s="v"+Math.random().toString(36).slice(2,10)+Date.now().toString(36);sessionStorage.setItem(K,s);}
+var CK="vt_curator",ct=null;
+try{
+  var hm=(location.hash||"").match(/#curator-([A-Za-z0-9_-]+)/);
+  if(hm){try{localStorage.setItem(CK,hm[1]);}catch(_){}}
+  if(hm){try{history.replaceState(null,"",location.pathname+location.search);}catch(_){}}
+  ct=localStorage.getItem(CK);
+}catch(_){}
+var src="direct";
+try{
+  src=sessionStorage.getItem("vt_src")||"";
+  if(!src){
+    var rh="";try{rh=new URL(document.referrer||"").hostname.toLowerCase();}catch(_){}
+    if(!rh)src="direct";
+    else if(rh.indexOf("google.")!==-1)src="google";
+    else if(rh.indexOf("threads.")!==-1)src="threads";
+    else if(rh.indexOf("facebook.")!==-1||rh.indexOf("fb.")!==-1)src="facebook";
+    else src="other";
+    try{sessionStorage.setItem("vt_src",src);}catch(_){}
+  }
+}catch(_){}
+var ret=false;
+try{ret=!!localStorage.getItem("vt_seen");if(!ret)localStorage.setItem("vt_seen","1");}catch(_){}
+var pages=1;
+try{pages=(parseInt(sessionStorage.getItem("vt_pages")||"0",10)||0)+1;sessionStorage.setItem("vt_pages",String(pages));}catch(_){}
+var U="https://pulse.voynichtimes.com/ping";
+function ping(bye){
+  try{
+    fetch(U,{method:"POST",headers:{"Content-Type":"text/plain"},
+      body:JSON.stringify(bye?{sid:s,bye:true}:(function(){var d={sid:s,path:location.pathname,host:location.hostname,src:src,ret:ret,pages:pages};if(ct)d.curator=ct;return d;})()),
+      keepalive:true,mode:"cors"}).catch(function(){});
+  }catch(e){}
+}
+ping(false);
+setInterval(function(){ping(false);},15000);
+window.addEventListener("pagehide",function(){ping(true);});
+document.addEventListener("click",function(e){
+  try{
+    var a=e.target&&e.target.closest?e.target.closest("a[href]"):null;
+    if(!a)return;
+    var u;try{u=new URL(a.href);}catch(_){return;}
+    var h=u.hostname.toLowerCase(),n=null;
+    if(h.indexOf("patreon.")!==-1)n="patreon";
+    else if(h.indexOf("amazon.")!==-1||h==="amzn.to"||h==="amzn.com"||h.slice(-8)===".amzn.to")n="amazon";
+    if(!n)return;
+    if(typeof gtag==="function"){try{gtag("event","affiliate_click",{network:n,source_path:location.pathname});}catch(_){}}
+    fetch("https://pulse.voynichtimes.com/click",{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify({network:n,path:location.pathname}),keepalive:true,mode:"cors"}).catch(function(){});
+  }catch(_){}
+},true);
+}catch(e){}})();
+</script>
+</head>
+<body>
+  <div id="background-image"></div>
+  <div class="overlay"></div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+    <p class="mb-6"><a href="/features/" class="text-red-400 hover:text-red-300 text-sm">← All Features</a></p>
+
+    <div class="paper p-5 sm:p-8">
+      <div class="text-center">
+        <p class="agate uppercase">The Voynich Times</p>
+        <h1 class="text-5xl sm:text-6xl font-bold tracking-tight my-2" style="font-variant: small-caps;">The Classifieds</h1>
+        <p class="italic">Sweepstakes &amp; giveaways — every listing read against its official rules before it appears here.</p>
+      </div>
+      <div class="rule-heavy mt-4"></div>
+      <div class="flex flex-wrap justify-between gap-2 py-2 agate uppercase">
+        <span id="dateline">—</span>
+        <span>Sweepstakes Desk · Verified Listings</span>
+        <span>Price: Your Time</span>
+      </div>
+      <div class="rule-double"></div>
+
+      <div id="market" class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center py-5"></div>
+      <div class="rule-light"></div>
+
+      <div class="py-4">
+        <p class="agate uppercase mb-2"><strong>Index to this page</strong> — sort &amp; sift the listings</p>
+        <div class="flex flex-wrap gap-2 items-center">
+          <input id="f-q" type="search" placeholder="Search the ads…" class="flex-1 min-w-[180px]">
+          <select id="f-type"><option value="">All prize types</option></select>
+          <select id="f-freq">
+            <option value="">Any frequency</option><option>Single</option><option>Daily</option>
+            <option>Weekly</option><option>Monthly</option><option>Other</option><option>See rules</option>
+          </select>
+          <select id="f-state"><option value="">All states</option></select>
+          <select id="f-min">
+            <option value="0">Any value</option><option value="100">$100 &amp; up</option>
+            <option value="1000">$1,000 &amp; up</option><option value="10000">$10,000 &amp; up</option>
+            <option value="100000">$100,000 &amp; up</option>
+          </select>
+          <select id="f-sort">
+            <option value="ends">Closing soonest</option><option value="arv">Highest value</option>
+            <option value="verified">Recently verified</option>
+          </select>
+        </div>
+        <p id="f-count" class="agate mt-2"></p>
+      </div>
+      <div class="rule-light"></div>
+
+      <div id="listings"></div>
+
+      <h2 class="colhead text-xl sm:text-2xl font-bold uppercase py-2 mt-10">Winners, As Published</h2>
+      <div id="winners" class="py-3"></div>
+
+      <h2 class="colhead text-xl sm:text-2xl font-bold uppercase py-2 mt-8">The Sponsors, On The Record</h2>
+      <p class="py-3 text-[0.95rem]">What the official rules say — and what they don't. A sponsor earns a <strong>Yes</strong> only when its own rules state the full prize count, or its winners are published where entrants can find them. A dash means the desk has not been able to establish it either way; the desk does not guess.</p>
+      <div id="sponsors" class="overflow-x-auto pb-2"></div>
+
+      <div class="rule-heavy mt-8"></div>
+      <p class="py-4 text-[0.92rem]">Every listing in The Classifieds is read against its official rules by the Voynich Times Sweepstakes Desk before it appears — prize, value, deadline, eligibility, and entry frequency as the rules state them, not as the promotion advertises them. Listings are pulled when they close. No listing here is an endorsement of the sponsor, and no sponsor pays to appear. Deadlines are the sponsors' own; enter at the official entry page, and read the rules there before you do.</p>
+      <div class="rule-double"></div>
+      <p class="agate text-center py-3 uppercase">The Classifieds · A commercial page of The Voynich Times, quarantined by design since the first newspapers</p>
+    </div>
+  </div>
+
+  <footer class="mt-auto py-8 text-center text-sm text-gray-400 border-t border-gray-700">
+    <div class="max-w-screen-2xl mx-auto px-6">
+      <p>The Classifieds is a section of <a href="/" class="text-red-400 hover:text-red-300">The Voynich Times</a>.</p>
+    </div>
+  </footer>
+
+<script type="application/json" id="cls-data">{"generated":"2026-11-18","listings":[{"arv":10000,"cash":false,"eligibility":"21+, Region Two (Illinois eligible)","ends":"2026-12-31","entry_url":"","frequency":"Single","id":"coppola-holiday-party","prize":"20 × $500 e-gift cards","prizes_stated":true,"rules_url":"","sponsor":"Coppola Diamond Collection","states":null,"title":"Coppola Diamond Collection Holiday Party","type":"Gift Cards","verified":"2026-11-18","winners_posted":null},{"arv":1000000,"cash":true,"eligibility":"Microsoft Rewards members; free entry route available","ends":"2027-01-15","entry_url":"","frequency":"Other","id":"microsoft-rewards-prize-drop","prize":"$1,000,000 grand prize (prize pool $2,000,000 incl. Mercedes-Benz cars and other prizes)","prizes_stated":true,"rules_url":"","sponsor":"Microsoft Rewards","states":"US","title":"Microsoft Rewards Prize Drop","type":"Cash","verified":"2026-11-18","winners_posted":null},{"arv":32200,"cash":false,"eligibility":"Illinois / Mariano's eligible","ends":"2026-12-31","entry_url":"","frequency":"See rules","id":"dr-pepper-kroger-holiday","prize":"14 × $2,300 Kroger gift cards","prizes_stated":true,"rules_url":"","sponsor":"Dr Pepper / Kroger","states":null,"title":"Dr Pepper Kroger Holiday","type":"Gift Cards","verified":"2026-11-18","winners_posted":null},{"arv":720,"cash":false,"eligibility":"US, 18+","ends":"2026-11-20","entry_url":"","frequency":"Single","id":"wedderspoon-winter-wellness","prize":"KitchenAid stand mixer + 2 jars Manuka honey + candle + towel","prizes_stated":true,"rules_url":"","sponsor":"Wedderspoon","states":"US","title":"Wedderspoon Winter Wellness","type":"Merchandise","verified":"2026-11-18","winners_posted":null},{"arv":16000,"cash":true,"eligibility":"21+","ends":"2026-12-31","entry_url":"","frequency":"Daily","id":"big-sipz-16k","prize":"$16,000 cash per monthly period (no alcohol in the prize)","prizes_stated":true,"rules_url":"","sponsor":"Big Sipz","states":"US","title":"Big Sipz $16k Giveaway","type":"Cash","verified":"2026-11-18","winners_posted":null},{"arv":5000,"cash":false,"eligibility":"50 US/DC, 18+","ends":"2026-12-04","entry_url":"","frequency":"Single","id":"ford-truck-tour","prize":"$5,000 in Home Depot gift cards","prizes_stated":true,"rules_url":"","sponsor":"Ford","states":"US","title":"Ford Truck Tour","type":"Gift Cards","verified":"2026-11-18","winners_posted":null},{"arv":60000,"cash":false,"eligibility":"50 US/DC, 18+, valid driver's license","ends":"2026-11-30","entry_url":"","frequency":"Single","id":"ford-bronco-wild-fund","prize":"2026 Bronco Big Bend (up to $50,000 incl. fees/tax) + $10,000 check","prizes_stated":true,"rules_url":"","sponsor":"Ford","states":"US","title":"Ford Bronco Wild Fund","type":"Vehicles","verified":"2026-11-18","winners_posted":null},{"arv":63925,"cash":false,"eligibility":"50 US/DC, 21+, valid driver's license","ends":"2026-11-22","entry_url":"https://www.lpga.com/ford-tee-to-trail-sweepstakes","frequency":"Single","id":"ford-tee-to-trail","prize":"2026 Ford Bronco Badlands + golf trip for winner and 3 guests","prizes_stated":true,"rules_url":"","sponsor":"Ford / LPGA","states":"US","title":"Ford Tee-to-Trail","type":"Vehicles","verified":"2026-11-18","winners_posted":null}],"note":"SEED DATA for the staged design build — the Sweepstakes desk's own verified listings from its 2026-11-18 entry pass. Replaced by the desk's feed before any deploy. Entry/rules URLs are included only where the desk's record carries one; prize counts marked prizes_stated=true only where the desk verified the count from the official rules.","winners":[]}</script>
+<script>
+(function(){
+  var DATA = JSON.parse(document.getElementById('cls-data').textContent);
+  var L = DATA.listings || [], W = DATA.winners || [];
+  var TYPE_ORDER = ['Cash','Vehicles','Gift Cards','Travel','Merchandise','Other'];
+  var STATES = ['AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'];
+  var money = function(n){ return '$' + Number(n||0).toLocaleString('en-US'); };
+  var today = new Date(); today.setHours(0,0,0,0);
+  var dparse = function(s){ var p = s.split('-'); return new Date(+p[0], +p[1]-1, +p[2]); };
+  var dfmt = function(s){ return dparse(s).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}); };
+  var days = function(s){ return Math.round((dparse(s) - today) / 86400000); };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+
+  document.getElementById('dateline').textContent =
+    today.toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric', year:'numeric'});
+
+  // ---- market strip
+  var open = L.filter(function(x){ return days(x.ends) >= 0; });
+  var total = open.reduce(function(a,x){ return a + (x.arv||0); }, 0);
+  var cash = open.filter(function(x){ return x.cash; }).reduce(function(a,x){ return a + (x.arv||0); }, 0);
+  var closing = open.filter(function(x){ return days(x.ends) <= 7; });
+  var closingVal = closing.reduce(function(a,x){ return a + (x.arv||0); }, 0);
+  var cell = function(big, small){ return '<div><p class="text-2xl sm:text-3xl font-bold">' + big + '</p><p class="agate uppercase mt-1">' + small + '</p></div>'; };
+  document.getElementById('market').innerHTML =
+    cell(money(total), 'Total value on the table') +
+    cell(money(cash), 'Of it, cash') +
+    cell(closing.length + ' drawings · ' + money(closingVal), 'Closing within 7 days') +
+    cell(open.length + ' listings', 'Open &amp; verified');
+
+  // ---- filter controls
+  var fType = document.getElementById('f-type'), fState = document.getElementById('f-state');
+  TYPE_ORDER.concat(L.map(function(x){ return x.type; })).filter(function(v,i,a){ return a.indexOf(v) === i; })
+    .forEach(function(t){ var o = document.createElement('option'); o.value = t; o.textContent = t; fType.appendChild(o); });
+  STATES.forEach(function(s){ var o = document.createElement('option'); o.value = s; o.textContent = s; fState.appendChild(o); });
+
+  function stateOk(x, st){
+    if (!st) return true;
+    if (x.states === 'US') return true;
+    if (Array.isArray(x.states)) return x.states.indexOf(st) !== -1;
+    return false; // eligibility not state-mapped in the record — shown under "All states" only
+  }
+  function adHtml(x){
+    var d = days(x.ends);
+    var stamp = d < 0 ? '<span class="stamp">Closed</span>'
+              : d <= 7 ? '<span class="stamp">Closes in ' + d + (d === 1 ? ' day' : ' days') + '</span>' : '';
+    var links = [];
+    if (x.entry_url) links.push('<a class="btn-ink" href="' + esc(x.entry_url) + '" target="_blank" rel="noopener">Enter at the official page</a>');
+    if (x.rules_url) links.push('<a href="' + esc(x.rules_url) + '" target="_blank" rel="noopener">Official rules</a>');
+    return '<div class="ad py-3 break-inside-avoid">' +
+      '<h4 class="font-bold">' + esc(x.title) + '</h4>' +
+      '<p><em>' + esc(x.sponsor) + '</em> offers <strong>' + esc(x.prize) + '</strong>' +
+      (x.arv ? ' — value ' + money(x.arv) + '.' : '.') + '</p>' +
+      '<p class="agate uppercase mt-1">Ends ' + dfmt(x.ends) + ' · Enter: ' + esc(x.frequency) + ' · ' + esc(x.eligibility) + '</p>' +
+      '<p class="agate mt-1">Verified ' + dfmt(x.verified) + ' ' + stamp + '</p>' +
+      (links.length ? '<p class="mt-2">' + links.join(' &nbsp; ') + '</p>' : '') + '</div>';
+  }
+  function render(){
+    var q = document.getElementById('f-q').value.toLowerCase(),
+        ty = fType.value, fr = document.getElementById('f-freq').value,
+        st = fState.value, min = +document.getElementById('f-min').value,
+        sort = document.getElementById('f-sort').value;
+    var rows = L.filter(function(x){
+      return (!q || (x.title + ' ' + x.sponsor + ' ' + x.prize + ' ' + x.type).toLowerCase().indexOf(q) !== -1)
+        && (!ty || x.type === ty) && (!fr || x.frequency === fr)
+        && stateOk(x, st) && (x.arv || 0) >= min;
+    });
+    rows.sort(function(a,b){
+      if (sort === 'arv') return (b.arv||0) - (a.arv||0);
+      if (sort === 'verified') return a.verified < b.verified ? 1 : -1;
+      return a.ends < b.ends ? -1 : 1;
+    });
+    var html = '', shownTypes = {};
+    rows.forEach(function(x){ shownTypes[x.type] = true; });
+    TYPE_ORDER.concat(Object.keys(shownTypes)).filter(function(v,i,a){ return a.indexOf(v) === i; }).forEach(function(t){
+      var group = rows.filter(function(x){ return x.type === t; });
+      if (!group.length) return;
+      html += '<h3 class="colhead text-lg sm:text-xl font-bold uppercase py-2 mt-6">' + esc(t) + '</h3>' +
+              '<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-x-8">' + group.map(adHtml).join('') + '</div>';
+    });
+    document.getElementById('listings').innerHTML =
+      html || '<p class="py-6 italic">No listings match. Loosen the sift — or the desk has pulled everything that did.</p>';
+    document.getElementById('f-count').textContent =
+      'Showing ' + rows.length + ' of ' + L.length + ' verified listings.';
+  }
+  ['f-q','f-type','f-freq','f-state','f-min','f-sort'].forEach(function(id){
+    document.getElementById(id).addEventListener('input', render);
+    document.getElementById(id).addEventListener('change', render);
+  });
+  render();
+
+  // ---- winners
+  document.getElementById('winners').innerHTML = W.length
+    ? '<div class="grid md:grid-cols-2 gap-x-8">' + W.map(function(w){
+        return '<div class="ad py-3"><h4 class="font-bold">' + esc(w.name) + (w.location ? ' — ' + esc(w.location) : '') + '</h4>' +
+               '<p>Won <strong>' + esc(w.prize) + '</strong> from <em>' + esc(w.sponsor) + '</em>' +
+               (w.date ? ', published ' + dfmt(w.date) : '') + '.</p></div>';
+      }).join('') + '</div>'
+    : '<p class="italic">No sponsor in the current listings has published its winners yet. When one does, the names run here — that is the point of the column. The table below keeps the score in the meantime.</p>';
+
+  // ---- sponsor transparency
+  var bySponsor = {};
+  L.forEach(function(x){ (bySponsor[x.sponsor] = bySponsor[x.sponsor] || []).push(x); });
+  var verdict = function(list, key){
+    if (list.some(function(x){ return x[key] === false; })) return 'No';
+    if (list.every(function(x){ return x[key] === true; })) return 'Yes';
+    return '—';
+  };
+  var srows = Object.keys(bySponsor).sort().map(function(s){
+    var list = bySponsor[s];
+    var tot = list.reduce(function(a,x){ return a + (x.arv||0); }, 0);
+    return '<tr><td><strong>' + esc(s) + '</strong></td><td>' + list.length + '</td><td>' + money(tot) +
+           '</td><td>' + verdict(list, 'prizes_stated') + '</td><td>' + verdict(list, 'winners_posted') + '</td></tr>';
+  }).join('');
+  document.getElementById('sponsors').innerHTML =
+    '<table><thead><tr><th>Sponsor</th><th>Listings</th><th>Value on the table</th><th>Rules state full prize count</th><th>Winners published</th></tr></thead><tbody>' + srows + '</tbody></table>';
+})();
+</script>
+</body>
+</html>
