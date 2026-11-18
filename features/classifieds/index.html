@@ -134,7 +134,7 @@ document.addEventListener("click",function(e){
       <div class="text-center">
         <p class="agate uppercase">The Voynich Times</p>
         <h1 class="text-5xl sm:text-6xl font-bold tracking-tight my-2" style="font-variant: small-caps;">The Classifieds</h1>
-        <p class="italic">Sweepstakes &amp; giveaways — every listing read against its official rules before it appears here.</p>
+        <p class="italic">Sweepstakes and giveaways. Each one checked before it runs.</p>
       </div>
       <div class="rule-heavy mt-4"></div>
       <div class="flex flex-wrap justify-between gap-2 py-2 agate uppercase">
@@ -177,11 +177,11 @@ document.addEventListener("click",function(e){
       <div id="winners" class="py-3"></div>
 
       <h2 class="colhead text-xl sm:text-2xl font-bold uppercase py-2 mt-8">The Sponsors, On The Record</h2>
-      <p class="py-3 text-[0.95rem]">What the official rules say — and what they don't. A sponsor earns a <strong>Yes</strong> only when its own rules state the full prize count, or its winners are published where entrants can find them. A dash means the desk has not been able to establish it either way; the desk does not guess.</p>
+      <p class="py-3 text-[0.95rem]">What the official rules say, and what they don't. A sponsor earns a <strong>Yes</strong> only when its own rules state the full prize count, or its winners are published where entrants can find them. A dash means the desk has not been able to establish it either way; the desk does not guess.</p>
       <div id="sponsors" class="overflow-x-auto pb-2"></div>
 
       <div class="rule-heavy mt-8"></div>
-      <p class="py-4 text-[0.92rem]">Every listing in The Classifieds is read against its official rules by the Voynich Times Sweepstakes Desk before it appears — prize, value, deadline, eligibility, and entry frequency as the rules state them, not as the promotion advertises them. Listings are pulled when they close. No listing here is an endorsement of the sponsor, and no sponsor pays to appear. Deadlines are the sponsors' own; enter at the official entry page, and read the rules there before you do.</p>
+      <p class="py-4 text-[0.92rem]">Every listing here is checked by the Voynich Times Sweepstakes Desk before it appears: sponsor, prize, value, deadline, and entry route, taken from the sponsor's own pages. Where the official rules could be found, the desk read them; where they could not, the listing says what is known and no more. Listings come down when they close. No listing is an endorsement of the sponsor, and no sponsor pays to appear. Deadlines are the sponsors' own. Enter at the official entry page, and read the rules there before you do.</p>
       <div class="rule-double"></div>
       <p class="agate text-center py-3 uppercase">The Classifieds · A commercial page of The Voynich Times, quarantined by design since the first newspapers</p>
     </div>
@@ -275,7 +275,7 @@ document.addEventListener("click",function(e){
               '<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-x-8">' + group.map(adHtml).join('') + '</div>';
     });
     document.getElementById('listings').innerHTML =
-      html || '<p class="py-6 italic">No listings match. Loosen the sift — or the desk has pulled everything that did.</p>';
+      html || '<p class="py-6 italic">No listings match. Loosen the sift, or the desk has pulled everything that did.</p>';
     document.getElementById('f-count').textContent =
       'Showing ' + rows.length + ' of ' + L.length + ' verified listings.';
   }
@@ -292,7 +292,7 @@ document.addEventListener("click",function(e){
                '<p>Won <strong>' + esc(w.prize) + '</strong> from <em>' + esc(w.sponsor) + '</em>' +
                (w.date ? ', published ' + dfmt(w.date) : '') + '.</p></div>';
       }).join('') + '</div>'
-    : '<p class="italic">No sponsor in the current listings has published its winners yet. When one does, the names run here — that is the point of the column. The table below keeps the score in the meantime.</p>';
+    : '<p class="italic">No sponsor in the current listings has published its winners yet. When one does, the names run here. That is the point of the column. The table below keeps the score in the meantime.</p>';
 
   // ---- sponsor transparency
   var bySponsor = {};
