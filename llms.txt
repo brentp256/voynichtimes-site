@@ -1,0 +1,22 @@
+# The Voynich Times
+
+> The Voynich Times covers the Voynich manuscript, uncracked ciphers, real treasure hunts like The Secret, and the mystery-puzzle hobby — news, features, and a daily cabinet of curiosities.
+
+## Start here
+
+- [The Voynich Times](https://voynichtimes.com/): The front page — the latest stories and the daily cabinet of curiosities.
+- [News](https://voynichtimes.com/news): News coverage of the Voynich manuscript, ciphers, treasure hunts, and the puzzle hobby.
+
+## The catalog
+
+- [Full Product Database](https://voynichtimes.com/database.html): A searchable catalog of mystery and puzzle games — subscription boxes, play-at-home escape games, puzzle books, puzzle boxes, and more — with company, series, and release details for each entry.
+
+## Features
+
+- [Baffle Books](https://voynichtimes.com/features/baffle-books/): The Baffle Books puzzle series, title by title.
+- [Cipher Stories](https://voynichtimes.com/features/cipher-stories/): Stories from the history of ciphers and the people who made and broke them.
+- [Crowdfunding Watch](https://voynichtimes.com/features/crowdfunding-watch-2026-10-02/): Puzzle and mystery projects raising money, watched as they run.
+- [The Great Canadian Treasure Hunt](https://voynichtimes.com/features/great-canadian-treasure-hunt/): Coverage of the Great Canadian Treasure Hunt.
+- [Kooba Cola Museum](https://voynichtimes.com/features/kooba-cola-museum/): A museum for a soda that barely existed — the catalog, gallery, and story of Kooba Cola (1940–41).
+- [Mystery & Puzzle History](https://voynichtimes.com/features/mystery-puzzle-history/): The history of mystery games and puzzles.
+- [Poe and The Gold-Bug](https://voynichtimes.com/features/poe-gold-bug/): Edgar Allan Poe, "The Gold-Bug," and the cipher tale that started a genre.

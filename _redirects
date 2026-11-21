@@ -1,2 +1,7 @@
 # Branded short links (affiliate + campaign). 301s preserve query strings (the Amazon tag).
 /go/angela-justice https://www.amazon.com/dp/B0CV1Y3S9N?tag=voynich03-20 301
+
+# Real 404s (Metrics Backstage Audit #2, approved 2026-11-20): static
+# assets match before redirect rules, so every real page keeps
+# serving; anything else gets the 404 page with a true 404 status.
+/* /404.html 404
