@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Twelve Christmas picks from The Voynich Times: escape-room and puzzle advent calendars, and murder mysteries that hand the solving to the reader. Every listing is a fair one — soft ratings and single-use formats stated where they belong.">
+  <title>The 12 Days of Voynichmas | The Voynich Times</title>
+  <!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFDQCDM28S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MFDQCDM28S');
+</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+
+body { background-color: #111827; color: #e5e7eb; overflow-x: hidden; }
+#background-image {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: url('/voynich-home-art.jpg');
+background-size: cover;
+background-position: center;
+z-index: -2;
+filter: brightness(0.75) contrast(1.05);
+}
+.overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.72);
+z-index: -1;
+}
+.article-body p { margin-bottom: 1.25rem; }
+.article-figure { margin: 2rem 0; }
+.article-figure img { display: block; max-width: 100%; height: auto; border-radius: 0.75rem; }
+.article-figure figcaption { margin-top: 0.5rem; color: #9ca3af; font-size: 0.9rem; line-height: 1.4; }
+.article-body a { color: #6ee7b7; }
+.article-body a:hover { color: #a7f3d0; }
+.article-body ol { list-style: decimal; padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+.article-body ul { list-style: disc; padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+.article-body ul ul { list-style: circle; margin: 0.35rem 0 0.75rem; }
+.article-body li { margin-bottom: 0.5rem; }
+.article-body h2 {
+font-size: 1.75rem;
+font-weight: 700;
+margin: 2.5rem 0 1rem;
+color: #f9fafb;
+}
+.article-body h3 {
+font-size: 1.35rem;
+font-weight: 700;
+margin: 2rem 0 0.75rem;
+color: #ecfdf5;
+}
+.article-quote {
+border-left: 4px solid #34d399;
+padding: 1rem 1.5rem;
+margin: 2rem 0;
+background: rgba(16, 185, 129, 0.08);
+border-radius: 0 0.75rem 0.75rem 0;
+font-style: italic;
+color: #d1fae5;
+}
+.content-note {
+background: rgba(31, 41, 55, 0.9);
+border: 1px solid #4b5563;
+border-radius: 1rem;
+padding: 1rem 1.25rem;
+margin: 1.75rem 0;
+color: #9ca3af;
+font-size: 0.95rem;
+line-height: 1.6;
+}
+.timeline {
+list-style: none;
+padding-left: 0;
+margin: 1.5rem 0 2rem;
+}
+.timeline li {
+margin-bottom: 0;
+padding: 0.65rem 0 0.65rem 1.1rem;
+border-left: 2px solid #34d399;
+line-height: 1.55;
+}
+.timeline li.here {
+background: rgba(16, 185, 129, 0.10);
+border-left: 4px solid #34d399;
+border-radius: 0 0.5rem 0.5rem 0;
+}
+.you-are-here {
+color: #34d399;
+font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+font-size: 0.75rem;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+margin-left: 0.5rem;
+}
+
+.pickmaker { color: #9ca3af; font-size: 0.95rem; margin-top: -0.5rem; }
+.buyline a { color: #34d399; font-weight: 600; text-decoration: none; border: 1px solid #065f46; border-radius: 0.75rem; padding: 0.55rem 0.9rem; display: inline-block; background: rgba(6, 78, 59, 0.25); }
+.buyline a:hover { color: #a7f3d0; border-color: #34d399; }
+.feature-layout {
+display: grid;
+gap: 1.5rem;
+}
+.article-card {
+background: rgba(31, 41, 55, 0.8);
+border: 1px solid #374151;
+border-radius: 1rem;
+padding: 2rem;
+color: #e5e7eb;
+font-size: 1.125rem;
+line-height: 1.625;
+}
+.shop-panel {
+background: rgba(17, 24, 39, 0.92);
+border: 1px solid #065f46;
+border-radius: 1rem;
+padding: 1.25rem 1.15rem 1.15rem;
+box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.12), 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+.shop-kicker {
+color: #34d399;
+font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+font-size: 0.7rem;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+margin-bottom: 0.35rem;
+}
+.shop-panel h2 {
+font-size: 1.15rem;
+font-weight: 700;
+color: #f9fafb;
+line-height: 1.3;
+margin: 0 0 0.6rem;
+}
+.shop-affiliate {
+font-size: 0.72rem;
+line-height: 1.45;
+color: #9ca3af;
+margin-bottom: 0.9rem;
+}
+.shop-list {
+list-style: none;
+padding: 0;
+margin: 0;
+display: flex;
+flex-direction: column;
+gap: 0.45rem;
+}
+.shop-list a {
+display: block;
+text-decoration: none;
+border: 1px solid #374151;
+background: rgba(31, 41, 55, 0.75);
+border-radius: 0.75rem;
+padding: 0.7rem 0.8rem;
+transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+.shop-list a:hover {
+border-color: #34d399;
+background: rgba(6, 78, 59, 0.35);
+}
+.shop-title {
+display: block;
+color: #d1fae5;
+font-size: 0.92rem;
+font-weight: 600;
+line-height: 1.35;
+}
+.shop-sub {
+display: block;
+margin-top: 0.2rem;
+color: #9ca3af;
+font-size: 0.7rem;
+line-height: 1.4;
+}
+.shop-cta {
+display: inline-block;
+margin-top: 0.35rem;
+color: #6ee7b7;
+font-size: 0.72rem;
+font-weight: 600;
+}
+.shop-list a:hover .shop-cta { color: #a7f3d0; }
+.shop-lead a {
+border-color: #059669;
+background: rgba(6, 78, 59, 0.45);
+}
+.shop-more {
+margin-top: 0.85rem;
+border-top: 1px solid #374151;
+padding-top: 0.65rem;
+}
+.shop-more summary {
+cursor: pointer;
+color: #a7f3d0;
+font-size: 0.78rem;
+font-weight: 600;
+list-style: none;
+}
+.shop-more summary::-webkit-details-marker { display: none; }
+.shop-more summary::after {
+content: " +";
+color: #6ee7b7;
+}
+.shop-more[open] summary::after { content: " −"; }
+.shop-more .shop-list { margin-top: 0.55rem; }
+@media (min-width: 1024px) {
+.feature-layout {
+grid-template-columns: minmax(0, 1fr) 20.5rem;
+grid-template-areas:
+"intro shop"
+"timeline shop";
+align-items: start;
+gap: 0 1.75rem;
+}
+.feature-intro { grid-area: intro; }
+.shop-panel { grid-area: shop; }
+.feature-timeline { grid-area: timeline; }
+.feature-intro {
+border-bottom-left-radius: 0;
+border-bottom-right-radius: 0;
+border-bottom: 0;
+padding-bottom: 0;
+}
+.feature-timeline {
+border-top-left-radius: 0;
+border-top-right-radius: 0;
+border-top: 0;
+padding-top: 0;
+}
+.shop-panel {
+position: sticky;
+top: 5.5rem;
+max-height: calc(100vh - 6.25rem);
+overflow-y: auto;
+}
+}
+@media (max-width: 767px) {
+.article-card { padding: 1.5rem 1.25rem; }
+}
+
+.article-figure picture { display: block; }
+.article-figure.figure-cover {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 767px) {
+  .article-figure.figure-cover { width: 100%; }
+}
+
+  </style>
+  <link rel="canonical" href="https://voynichtimes.com/features/12-days-of-voynichmas/" />
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:title" content="The 12 Days of Voynichmas">
+<meta property="og:description" content="Twelve Christmas picks from The Voynich Times: escape-room and puzzle advent calendars, and murder mysteries that hand the solving to the reader. Every listing is a fair one — soft ratings and single-use formats stated where they belong.">
+<meta property="og:image" content="https://voynichtimes.com/images/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="444">
+<meta property="og:image:alt" content="The Voynich Times, Est. 2021">
+<meta property="og:url" content="https://voynichtimes.com/features/12-days-of-voynichmas/">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Baffle Book Doth Make Sherlocks of Us All">
+<meta name="twitter:description" content="In 1928, Wren and McKay's Baffle Book turned crime stories into evidence you solve yourself: thirty baffles, upside-down answers, radio contests, and a score to beat — 42.62%.">
+<meta name="twitter:image" content="https://voynichtimes.com/images/og-cover.jpg">
+<meta name="twitter:image:alt" content="The Voynich Times, Est. 2021">
+  <link rel="stylesheet" href="/css/share.css">
+  <script src="/js/share.js" defer></script>
+<!-- voynich-pulse -->
+<script>
+(function(){try{
+var K="vt_pulse_sid",s=sessionStorage.getItem(K);
+if(!s){s="v"+Math.random().toString(36).slice(2,10)+Date.now().toString(36);sessionStorage.setItem(K,s);}
+var CK="vt_curator",ct=null;
+try{
+  var hm=(location.hash||"").match(/#curator-([A-Za-z0-9_-]+)/);
+  if(hm){try{localStorage.setItem(CK,hm[1]);}catch(_){}}
+  if(hm){try{history.replaceState(null,"",location.pathname+location.search);}catch(_){}}
+  ct=localStorage.getItem(CK);
+}catch(_){}
+var src="direct";
+try{
+  src=sessionStorage.getItem("vt_src")||"";
+  if(!src){
+    var rh="";try{rh=new URL(document.referrer||"").hostname.toLowerCase();}catch(_){}
+    if(!rh)src="direct";
+    else if(rh.indexOf("google.")!==-1)src="google";
+    else if(rh.indexOf("threads.")!==-1)src="threads";
+    else if(rh.indexOf("facebook.")!==-1||rh.indexOf("fb.")!==-1)src="facebook";
+    else src="other";
+    try{sessionStorage.setItem("vt_src",src);}catch(_){}
+  }
+}catch(_){}
+var ret=false;
+try{ret=!!localStorage.getItem("vt_seen");if(!ret)localStorage.setItem("vt_seen","1");}catch(_){}
+var pages=1;
+try{pages=(parseInt(sessionStorage.getItem("vt_pages")||"0",10)||0)+1;sessionStorage.setItem("vt_pages",String(pages));}catch(_){}
+var U="https://pulse.voynichtimes.com/ping";
+function ping(bye){
+  try{
+    fetch(U,{method:"POST",headers:{"Content-Type":"text/plain"},
+      body:JSON.stringify(bye?{sid:s,bye:true}:(function(){var d={sid:s,path:location.pathname,host:location.hostname,src:src,ret:ret,pages:pages};if(ct)d.curator=ct;return d;})()),
+      keepalive:true,mode:"cors"}).catch(function(){});
+  }catch(e){}
+}
+ping(false);
+setInterval(function(){ping(false);},15000);
+window.addEventListener("pagehide",function(){ping(true);});
+document.addEventListener("click",function(e){
+  try{
+    var a=e.target&&e.target.closest?e.target.closest("a[href]"):null;
+    if(!a)return;
+    var u;try{u=new URL(a.href);}catch(_){return;}
+    var h=u.hostname.toLowerCase(),n=null;
+    if(h.indexOf("patreon.")!==-1)n="patreon";
+    else if(h.indexOf("amazon.")!==-1||h==="amzn.to"||h==="amzn.com"||h.slice(-8)===".amzn.to")n="amazon";
+    if(!n)return;
+    if(typeof gtag==="function"){try{gtag("event","affiliate_click",{network:n,source_path:location.pathname});}catch(_){}}
+    fetch("https://pulse.voynichtimes.com/click",{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify({network:n,path:location.pathname}),keepalive:true,mode:"cors"}).catch(function(){});
+  }catch(_){}
+},true);
+}catch(e){}})();
+</script>
+<script async src="https://www.clarity.ms/tag/zh69qnkdj1"></script></head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+  <div id="background-image"></div>
+  <div class="overlay"></div>
+
+  <!-- Clean modern nav -->
+  <nav class="bg-gray-800/90 backdrop-blur-md p-4 sticky top-0 shadow z-50">
+    <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
+      <a href="/" class="flex items-center gap-3 text-2xl font-bold hover:text-emerald-400 transition-colors"><picture><source srcset="/images/logo-round.webp" type="image/webp"><img src="/images/logo-round.png" alt="The Voynich Times logo" class="w-10 h-10 rounded-full shrink-0" width="40" height="40"></picture>The Voynich Times</a>
+
+      <div class="hidden md:flex items-center space-x-8 text-sm">
+        <a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a>
+        <a href="/news.html" class="text-gray-300 hover:text-white transition-colors">News</a>
+        <a href="/features/" class="text-emerald-400 font-medium">Features</a>
+        <a href="/treasures/lost-and-found/" class="text-gray-300 hover:text-white transition-colors">Treasures: Lost &amp; Found</a>
+        <a href="/treasures/hidden/" class="text-gray-300 hover:text-white transition-colors">Treasures: Hidden</a>
+        <a href="/collector/" class="text-gray-300 hover:text-white transition-colors">The Collector</a>
+        <a href="/database.html" class="text-gray-300 hover:text-white transition-colors">Full Database</a>
+        <a href="/wunderkammer/" class="text-gray-300 hover:text-white transition-colors">Wunderkammer</a>
+      </div>
+    </div>
+  </nav>
+
+  <article class="max-w-6xl mx-auto p-6 flex-1 w-full">
+    <p class="text-sm mb-4">
+      <a href="/features/" class="text-emerald-400 hover:text-emerald-300">← Features</a>
+    </p>
+
+    <header class="mb-8 max-w-3xl">
+      <p class="text-emerald-400 font-mono text-sm mb-3">The Voynich Times · Holiday Guide · Christmas 2026</p>
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight">The 12 Days of Voynichmas</h1>
+      <div class="vt-share" data-vt-share></div>
+    </header>
+
+    <div class="feature-layout">
+      <div class="article-body article-card feature-intro">
+        <p><strong>As an Amazon Associate I earn from qualifying purchases.</strong> Every link in this guide runs to Amazon, and the paper earns a little when a reader buys through one. That is the whole of the arrangement, stated up front.</p>
+
+        <p>Twelve picks, all Christmas, all in this paper's lane: mystery, escape, and the puzzle hunt. No plain jigsaws, however good the jigsaw. A guide from a mystery-puzzle paper should recommend things you solve. The calendars come first because a calendar bought on December 3rd is a calendar already behind. The books carry the rest of the season.</p>
+
+        <p>Every listing here is a fair listing. Where a pick has a soft rating, doors that fight back, or a format that only works once, the listing says so, in the listing. Two of the twelve were bought and played at this house, and those say that too. No prices are printed anywhere in the guide. Prices move. The link shows today's.</p>
+
+        <h2>Day One — EXIT Advent Calendar: The Missing Hollywood Star</h2>
+<p class="pickmaker">Thames &amp; Kosmos (2024)</p>
+<p>We open with the one we can vouch for in person. This calendar went through our house last December, one door a day: a Christmas movie being shot in Hollywood, a star gone missing, and 24 days of riddles between you and the premiere. It is the strongest seller of this year's EXIT calendars (3K+ bought in the past month, 4.6 stars across 623 ratings), and having played it, we get it. The set pieces give the puzzles somewhere to live.</p><p>The complication is the EXIT format itself. You cut, fold, and mark the components as you go, so the calendar plays exactly once. That is the bargain with every game in this line. This one holds up its end.</p>
+<p class="buyline"><a href="https://link.amazon/B03YLUZEW" target="_blank" rel="noopener noreferrer sponsored">Buy on Amazon →</a></p>
+<h2>Day Two — EXIT Advent Calendar: The Intergalactic Race</h2>
+<p class="pickmaker">Thames &amp; Kosmos (2025)</p>
+<p>Santa's sleigh, entered in a race across the galaxy. The newest EXIT calendar takes the same 24 doors off-planet, and 1K+ buyers picked it up in the past month.</p><p>Fair listing, so here is the whole of it. The rating sits at 4.1 stars across 371 ratings, and the complaints waiting there are about the doors (small perforated doors, and they do not always tear the way they should). We are listing it anyway. The race is a good frame and the puzzles carry it. Just know the doors fight back a little.</p>
+<p class="buyline"><a href="https://amzn.to/4cGeS2e" target="_blank" rel="noopener noreferrer sponsored">Buy on Amazon →</a></p>
+<h2>Day Three — Hidden Games: Professor Charlie's World Tour</h2>
+<p class="pickmaker">Hidden Games</p>
+<p>A puzzle advent calendar with a case to work: Professor Charlie's trip around the world, one day and one puzzle at a time. It is the English edition of a German original from 2021, and it already lives in this paper's own catalog (entry 69 in the database), which is where we first met it.</p><p>Checked this week: in stock, whatever older notes said. The format asks a little patience. One envelope a day is the design (tearing ahead is between you and your conscience).</p>
+<p class="buyline"><a href="https://amzn.to/4n1qL68" target="_blank" rel="noopener noreferrer sponsored">Buy on Amazon →</a></p>
+<h2>Day Four — Mystery Escape Room Advent Calendar: Bramblewood Cabin</h2>
+<p class="pickmaker">Falkner &amp; Riddlehaus</p>
+<p>Twenty-four secrets in a snowed-in cabin, in a book of a hundred pages and more: logic puzzles and visual puzzles, with hints given in two steps: a nudge first, the answer only if the nudge fails. It sits in our catalog too (entry 87).</p><p>Know what you are buying. This is a book, not a box of doors. The cabin is a story you read and solve your way through, which suits some houses better than cardboard does.</p>
+<p class="buyline"><a href="https://www.amazon.com/dp/B0FQC1V2XD?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored">Buy on Amazon →</a></p>
+<h2>Day Five — Merry Murdle</h2>
+<p class="pickmaker">G. T. Karber · St. Martin's Griffin</p>
+<p>Twenty-five festive murder-mystery logic puzzles. Santa is missing, Deductive Logico is on the case, and the grid does not lie. Karber's Murdle books are the modern form of the logic-grid mystery this paper has been reading about in 1928 (his introduction opens the new edition of <em>The Baffle Book</em>, in fact).</p><p>It fits a stocking, which is not nothing. A paperback, a pencil, one detective at a time. Solo work, not a party game (the person who does the crossword in ink will understand).</p>
+<p class="buyline"><a href="https://www.amazon.com/dp/1250409241?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored">Buy on Amazon →</a></p>
+<h2>Day Six — The Minute Between Alibis</h2>
+<p class="pickmaker">Eliza Northwick</p>
+<p>Every alibi has a minute in it somewhere. The minute nobody can account for is where the case hides, and Northwick hangs a Christmas murder on that minute. The title is the method: line the stories up and find the gap.</p><p>A small-press Christmas mystery, the kind the big houses have mostly stopped publishing. That is part of why it is here.</p>
+<p class="buyline"><a href="https://www.amazon.com/dp/B0HFPWJLWJ?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored">Buy on Amazon →</a></p>
+<h2>Day Seven — Clue: Secrets Under Snowfall</h2>
+<p class="pickmaker">Hasbro</p>
+<p>The second firsthand pick. We played this one too, and we will tell you the real reason it made the list: the doors hold little collectible pawns, and they are wonderful — small, weighty, worth the calendar by themselves to the kind of reader this paper has.</p><p>Fairly stated, it is Clue, so the mystery itself is family-weight, not a brain-burner. Buy it for the pawns and the daily ritual. Let the solving be the excuse.</p>
+<p class="buyline"><a href="https://amzn.to/4cRvFj3" target="_blank" rel="noopener noreferrer sponsored">Buy on Amazon →</a></p>
+<h2>Day Eight — The Midnight Choir Murders</h2>
+<p class="pickmaker">Arthur J. Clockwell</p>
+<p>Carolers, midnight, and a body. Clockwell takes the most peaceful sound of the season and puts a murder in the middle of it. A small-press puzzle mystery, from the end of the trade where Christmas mysteries you solve yourself are still being written.</p>
+<p class="buyline"><a href="https://www.amazon.com/dp/B0G2GJLG26?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored">Buy on Amazon →</a></p>
+<h2>Day Nine — The Christmas Eve Murder of 1926</h2>
+<p class="pickmaker">Harry Lezling</p>
+<p>A century back, to the golden age's own Christmas Eve. Lezling's 1926 murder is the period piece of the twelve, from the decade when the fair-play mystery was being invented in public. Some of us like our Christmas murders with a hundred years on them.</p>
+<p class="buyline"><a href="https://www.amazon.com/dp/B0HJJJZ8T6?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored">Buy on Amazon →</a></p>
+<h2>Day Ten — The Haunted Escape Room Advent Calendar</h2>
+<p class="pickmaker">Silas Holloway</p>
+<p>Now the listing we owe you the most honesty on. This haunted-house advent calendar's ratings are bad — checked this week, and bad is the word. If you want a polished, difficult, well-made solve, skip this one and spend the money on Days One through Four.</p><p>Why is it here at all? Because a haunted house at Christmas is a rare bird (the season's calendars run cozy, not creepy), and the buyer who collects haunted-house anything and forgives a rough edge exists. This one is for that buyer. Listed with its record showing.</p>
+<p class="buyline"><a href="https://amzn.to/4dgBeHF" target="_blank" rel="noopener noreferrer sponsored">Buy on Amazon →</a></p>
+<h2>Day Eleven — Time Travelers to Save Christmas</h2>
+<p class="pickmaker">Arthur J. Clockwell</p>
+<p>Clockwell's second appearance in these twelve days, and it is deliberate. When a small press carries two slots in a guide like this, that is the guide doing its job. This one is the romp of the list: time travelers, Christmas in danger, and a plot that treats the season as something worth rescuing properly.</p>
+<p class="buyline"><a href="https://www.amazon.com/dp/B0G437451S?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored">Buy on Amazon →</a></p>
+<h2>Day Twelve — The Christmas Murder Game</h2>
+<p class="pickmaker">Alexandra Benedict · Poisoned Pen Press</p>
+<p>The closer, and the reason the guide is shaped the way it is. A country-house Christmas mystery that is itself a puzzle: twelve clues and twelve keys worked across the twelve days of Christmas, anagrams of the carol's gifts hidden in the text, and twelve more mystery titles tucked away for the reader to hunt. A mystery that hands the solving to you is this guide's whole idea, in one book. It takes the last day.</p><p>The fair note, because every listing here carries one. It stands at 3.8 stars across some 3,900 ratings, a soft number for a closer. Puzzle-forward novels split their readers, and the rating shows the split. The readers on the right side of it got the book they wanted.</p>
+<p class="buyline"><a href="https://www.amazon.com/dp/9781728263038?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored">Buy on Amazon →</a></p>
+
+        <h2>Coda — if it comes back into stock…</h2>
+
+        <p>Two more calendars belong on this list and cannot be bought. Both are out of stock on Amazon as the guide goes up, checked this week. They are listed as what they are, the ones that got away, with their links left standing for readers who want to watch for a restock. The second one was this guide's original Day One, before the stock check cut it.</p>
+
+        <p><strong>EXIT: The Hunt for the Golden Book</strong> (Thames &amp; Kosmos) — the hunt-calendar of the EXIT line, gone before the season started.</p>
+        <p class="buyline"><a href="https://amzn.to/3FsPf4L" target="_blank" rel="noopener noreferrer sponsored">Watch for it on Amazon →</a></p>
+
+        <p><strong>EXIT: The Magic of Christmas</strong> (Thames &amp; Kosmos) — the 2026 Christmas calendar, out of stock on Amazon though its publisher still lists it.</p>
+        <p class="buyline"><a href="https://www.amazon.com/dp/B0GF49FZQF?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored">Watch for it on Amazon →</a></p>
+
+        <div class="content-note">
+          <p style="margin-bottom:0;"><strong>How this guide was made.</strong> Every pick was checked on Amazon the week of November 22, 2026: stock, ratings, and the link itself. Ratings are quoted as they stood at the check and will drift. Two picks (Days One and Seven) were bought and played at this house. The rest are recommended on the record shown in their listings.</p>
+        </div>
+      </div>
+
+      <aside class="shop-panel" aria-labelledby="shop-heading">
+        <p class="shop-kicker">Associates</p>
+        <h2 id="shop-heading">The twelve days, in order</h2>
+        <p class="shop-affiliate">As an Amazon Associate I earn from qualifying purchases.</p>
+
+        <ol class="shop-list">
+          <li><a href="https://link.amazon/B03YLUZEW" target="_blank" rel="noopener noreferrer sponsored"><span class="shop-title">EXIT Advent Calendar: The Missing Hollywood Star</span><span class="shop-sub">Thames &amp; Kosmos (2024)</span><span class="shop-cta">Buy on Amazon →</span></a></li>
+<li><a href="https://amzn.to/4cGeS2e" target="_blank" rel="noopener noreferrer sponsored"><span class="shop-title">EXIT Advent Calendar: The Intergalactic Race</span><span class="shop-sub">Thames &amp; Kosmos (2025)</span><span class="shop-cta">Buy on Amazon →</span></a></li>
+<li><a href="https://amzn.to/4n1qL68" target="_blank" rel="noopener noreferrer sponsored"><span class="shop-title">Hidden Games: Professor Charlie's World Tour</span><span class="shop-sub">Hidden Games</span><span class="shop-cta">Buy on Amazon →</span></a></li>
+<li><a href="https://www.amazon.com/dp/B0FQC1V2XD?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored"><span class="shop-title">Mystery Escape Room Advent Calendar: Bramblewood Cabin</span><span class="shop-sub">Falkner &amp; Riddlehaus</span><span class="shop-cta">Buy on Amazon →</span></a></li>
+<li><a href="https://www.amazon.com/dp/1250409241?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored"><span class="shop-title">Merry Murdle</span><span class="shop-sub">G. T. Karber · St. Martin's Griffin</span><span class="shop-cta">Buy on Amazon →</span></a></li>
+<li><a href="https://www.amazon.com/dp/B0HFPWJLWJ?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored"><span class="shop-title">The Minute Between Alibis</span><span class="shop-sub">Eliza Northwick</span><span class="shop-cta">Buy on Amazon →</span></a></li>
+<li><a href="https://amzn.to/4cRvFj3" target="_blank" rel="noopener noreferrer sponsored"><span class="shop-title">Clue: Secrets Under Snowfall</span><span class="shop-sub">Hasbro</span><span class="shop-cta">Buy on Amazon →</span></a></li>
+<li><a href="https://www.amazon.com/dp/B0G2GJLG26?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored"><span class="shop-title">The Midnight Choir Murders</span><span class="shop-sub">Arthur J. Clockwell</span><span class="shop-cta">Buy on Amazon →</span></a></li>
+<li><a href="https://www.amazon.com/dp/B0HJJJZ8T6?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored"><span class="shop-title">The Christmas Eve Murder of 1926</span><span class="shop-sub">Harry Lezling</span><span class="shop-cta">Buy on Amazon →</span></a></li>
+<li><a href="https://amzn.to/4dgBeHF" target="_blank" rel="noopener noreferrer sponsored"><span class="shop-title">The Haunted Escape Room Advent Calendar</span><span class="shop-sub">Silas Holloway</span><span class="shop-cta">Buy on Amazon →</span></a></li>
+<li><a href="https://www.amazon.com/dp/B0G437451S?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored"><span class="shop-title">Time Travelers to Save Christmas</span><span class="shop-sub">Arthur J. Clockwell</span><span class="shop-cta">Buy on Amazon →</span></a></li>
+<li><a href="https://www.amazon.com/dp/9781728263038?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored"><span class="shop-title">The Christmas Murder Game</span><span class="shop-sub">Alexandra Benedict · Poisoned Pen Press</span><span class="shop-cta">Buy on Amazon →</span></a></li>
+        </ol>
+
+        <p class="shop-kicker" style="margin-top:1.25rem;">Coda — out of stock</p>
+        <ol class="shop-list">
+          <li><a href="https://amzn.to/3FsPf4L" target="_blank" rel="noopener noreferrer sponsored"><span class="shop-title">EXIT: The Hunt for the Golden Book</span><span class="shop-sub">Thames &amp; Kosmos · Out of stock — watch for it</span><span class="shop-cta">See it on Amazon →</span></a></li>
+<li><a href="https://www.amazon.com/dp/B0GF49FZQF?tag=voynich03-20" target="_blank" rel="noopener noreferrer sponsored"><span class="shop-title">EXIT: The Magic of Christmas</span><span class="shop-sub">Thames &amp; Kosmos · Out of stock — watch for it</span><span class="shop-cta">See it on Amazon →</span></a></li>
+        </ol>
+      </aside>
+    </div>
+    <div class="vt-share vt-share--end" data-vt-share></div>
+  </article>
+
+  <!-- Amazon disclaimer footer -->
+  <footer class="mt-auto py-8 text-center text-sm text-gray-400 border-t border-gray-700">
+    <div class="max-w-screen-2xl mx-auto px-6">
+      <p>As an Amazon Associate I earn from qualifying purchases.</p>
+    </div>
+  </footer>
+</body>
+</html>
