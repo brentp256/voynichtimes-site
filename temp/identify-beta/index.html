@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>What have I got? — BETA test · Tangiblia</title>
+<style>
+:root{--ink:#221c14;--paper:#f6efdd;--card:#fffaf0;--amber:#b96f12;--line:#d8c9a3;--muted:#6f6152}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 Georgia,'Times New Roman',serif}
+.wrap{max-width:920px;margin:0 auto;padding:0 18px 60px}
+.beta{background:#8a1f1f;color:#fdf6e3;text-align:center;font:700 13px Arial,Helvetica,sans-serif;letter-spacing:2.5px;text-transform:uppercase;padding:9px 12px}
+.temp{background:#2f5d8a;color:#fdf6e3;text-align:center;font:12px Arial,Helvetica,sans-serif;letter-spacing:2px;text-transform:uppercase;padding:6px 12px}
+h1{font-size:34px;line-height:1.2;margin:22px 0 8px}
+h2{font-size:22px;margin:30px 0 6px}
+p{margin:0 0 12px}
+.small{font-size:15px;color:#4a4033}
+.caveats{background:var(--card);border:1px solid var(--line);border-left:5px solid #8a1f1f;padding:14px 18px;margin:18px 0}
+.caveats p{margin:0 0 8px}
+.caveats p:last-child{margin:0}
+.drop{border:2px dashed #b7a87f;border-radius:8px;background:var(--card);padding:28px 18px;text-align:center;margin:20px 0}
+.drop.over{border-color:var(--amber);background:#fdf3d8}
+.drop input{display:none}
+.drop label{display:inline-block;font:700 16px Arial,Helvetica,sans-serif;background:#3d3225;color:#f3e5bb;padding:11px 22px;border-radius:6px;cursor:pointer}
+.drop .hint{font-size:14.5px;color:var(--muted);margin-top:10px}
+#preview{display:none;margin:14px auto;max-width:340px;width:100%;border:1px solid var(--line);border-radius:6px}
+#status{font:15px Arial,Helvetica,sans-serif;color:var(--muted);text-align:center;min-height:22px}
+.results{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.card img{width:100%;height:200px;object-fit:cover;display:block;background:#efe6cc}
+.card .body{padding:12px 14px}
+.card .nm{font-size:18.5px;font-weight:700;line-height:1.3}
+.card .ln{font-size:14px;color:var(--muted)}
+.card .sc{font:700 14px Arial,Helvetica,sans-serif;color:#2c5540;margin:6px 0}
+.card a{color:var(--amber)}
+.none{background:var(--card);border:1px solid var(--line);padding:14px 18px;margin-top:18px}
+footer{margin-top:44px;border-top:3px double var(--ink);padding-top:14px;font-size:14.5px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="beta">Beta — test build</div>
+<div class="temp">Temporary preview · Not linked from the site · Do not share</div>
+<div class="wrap">
+<h1>What have I got?</h1>
+<p>Upload a photograph of a toy and this test tool compares it against the photographs Tangiblia holds, then suggests the catalog entries it most resembles. Pick a match to open its catalog page and check it against your toy.</p>
+
+<div class="caveats">
+<p><strong>This is a beta, and it behaves like one.</strong></p>
+<p>It matches only against items whose photographs we hold. This test carries <span id="scope">the action-figure photographs in the file</span> — if we hold no photograph of your toy, it cannot find it.</p>
+<p>Similar-looking figures will confuse it. A match is a suggestion to check, not a determination.</p>
+<p>Results improve as the photo file grows. Photographs are added as sellers grant permission, and every addition sharpens the next search.</p>
+<p>Your photograph never leaves your device. The matching runs here, in your browser, against fingerprints of our photographs computed beforehand. Nothing is uploaded and no outside service is called.</p>
+</div>
+
+<div class="drop" id="drop">
+<label for="file">Choose a photograph</label>
+<input type="file" id="file" accept="image/*">
+<div class="hint">…or drop one here. A straight-on shot in plain light does best.</div>
+<img id="preview" alt="Your photograph">
+</div>
+<div id="status"></div>
+<div class="results" id="results"></div>
+<div class="none" id="none" style="display:none">Nothing in the file looks close to that photograph. The likeliest reason is that we don't hold a photograph of it yet — try the <a href="https://tangiblia.com/identify/">What have I got? page</a> to narrow it by eye, or search the catalog by name.</div>
+
+<footer>Tangiblia — a catalog of recorded sales. This beta matches photographs; it does not value or authenticate anything.</footer>
+</div>
+
+<script>
+"use strict";
+let INDEX = null;
+const statusEl = document.getElementById("status");
+const resultsEl = document.getElementById("results");
+const noneEl = document.getElementById("none");
+
+fetch("index.json").then(r => r.json()).then(ix => {
+  INDEX = ix;
+  document.getElementById("scope").textContent =
+    ix.photos + " photographs of " + ix.items + " action-figure items";
+}).catch(() => { statusEl.textContent = "The fingerprint index failed to load."; });
+
+function feat(px) {
+  const grid = [];
+  for (let gy = 0; gy < 4; gy++) for (let gx = 0; gx < 4; gx++) {
+    let rs = 0, gs = 0, bs = 0, n = 0;
+    for (let y = gy * 8; y < gy * 8 + 8; y++) for (let x = gx * 8; x < gx * 8 + 8; x++) {
+      const p = px[y * 32 + x]; rs += p[0]; gs += p[1]; bs += p[2]; n++;
+    }
+    grid.push(rs / n, gs / n, bs / n);
+  }
+  const hue = new Array(12).fill(0);
+  let tot = 0;
+  const lum = [];
+  for (const p of px) {
+    const r = p[0], g = p[1], b = p[2];
+    const mx = Math.max(r, g, b), mn = Math.min(r, g, b);
+    lum.push(0.2126 * r + 0.7152 * g + 0.0722 * b);
+    if (mx > 0.05) {
+      const d = mx - mn, s = mx ? d / mx : 0;
+      if (s > 0.08 && d > 0) {
+        let h;
+        if (mx === r) h = (60 * ((g - b) / d) + 360) % 360;
+        else if (mx === g) h = 60 * ((b - r) / d) + 120;
+        else h = 60 * ((r - g) / d) + 240;
+        const w = s * mx;
+        hue[Math.floor(h / 30) % 12] += w; tot += w;
+      }
+    }
+  }
+  const hist = tot ? hue.map(x => x / tot) : hue;
+  const mean = lum.reduce((a, b) => a + b, 0) / lum.length;
+  const varr = lum.reduce((a, x) => a + (x - mean) * (x - mean), 0) / lum.length;
+  const rgbm = [0, 1, 2].map(c => px.reduce((a, p) => a + p[c], 0) / px.length);
+  return grid.concat(hist, rgbm, [Math.sqrt(varr)]);
+}
+
+function raster(img, crop) {
+  const cv = document.createElement("canvas");
+  cv.width = 32; cv.height = 32;
+  const cx = cv.getContext("2d", { willReadFrequently: true });
+  if (crop) {
+    const w = img.naturalWidth, h = img.naturalHeight;
+    const cw = Math.floor(w * 0.625), ch = Math.floor(h * 0.625);
+    cx.drawImage(img, Math.floor((w - cw) / 2), Math.floor((h - ch) / 2), cw, ch, 0, 0, 32, 32);
+  } else {
+    cx.drawImage(img, 0, 0, 32, 32);
+  }
+  const d = cx.getImageData(0, 0, 32, 32).data;
+  const px = [];
+  for (let i = 0; i < d.length; i += 4) px.push([d[i] / 255, d[i + 1] / 255, d[i + 2] / 255]);
+  return px;
+}
+
+function embed(img) {
+  const f1 = feat(raster(img, false)), f2 = feat(raster(img, true));
+  return f1.map((a, i) => (a + f2[i]) / 2);
+}
+
+function match(img) {
+  if (!INDEX) { statusEl.textContent = "The index is still loading — one moment."; return; }
+  statusEl.textContent = "Matching against " + INDEX.photos + " photographs…";
+  resultsEl.innerHTML = ""; noneEl.style.display = "none";
+  const raw = embed(img);
+  let v = raw.map((x, i) => x - INDEX.mean[i]);
+  let n = Math.sqrt(v.reduce((a, x) => a + x * x, 0)) || 1;
+  v = v.map(x => x / n);
+  const best = new Map();
+  for (const e of INDEX.entries) {
+    let s = 0;
+    for (let i = 0; i < v.length; i++) s += v[i] * e.v[i];
+    if (!best.has(e.i) || s > best.get(e.i).s) best.set(e.i, { s, e });
+  }
+  const top = [...best.values()].sort((a, b) => b.s - a.s).slice(0, 6);
+  if (!top.length || top[0].s < 0.45) {
+    statusEl.textContent = "";
+    noneEl.style.display = "block";
+    return;
+  }
+  statusEl.textContent = "Closest photographs in the file, best first. A match is a suggestion to check, not a determination.";
+  for (const { s, e } of top) {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = '<img src="https://tangiblia.com' + e.s + '" alt="">' +
+      '<div class="body"><div class="nm"></div><div class="ln"></div>' +
+      '<div class="sc">Match ' + Math.round(s * 100) + '%</div>' +
+      '<a href="' + e.u + '">Open the catalog entry</a></div>';
+    card.querySelector(".nm").textContent = e.n;
+    card.querySelector(".ln").textContent = e.l + " · " + e.i;
+    resultsEl.appendChild(card);
+  }
+}
+
+const fileEl = document.getElementById("file");
+const dropEl = document.getElementById("drop");
+const previewEl = document.getElementById("preview");
+function handle(file) {
+  if (!file || !file.type.startsWith("image/")) return;
+  const url = URL.createObjectURL(file);
+  const img = new Image();
+  img.onload = () => { previewEl.src = url; previewEl.style.display = "block"; match(img); };
+  img.src = url;
+}
+fileEl.addEventListener("change", () => handle(fileEl.files[0]));
+dropEl.addEventListener("dragover", ev => { ev.preventDefault(); dropEl.classList.add("over"); });
+dropEl.addEventListener("dragleave", () => dropEl.classList.remove("over"));
+dropEl.addEventListener("drop", ev => {
+  ev.preventDefault(); dropEl.classList.remove("over");
+  handle(ev.dataTransfer.files[0]);
+});
+</script>
+</body>
+</html>
