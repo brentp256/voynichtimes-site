@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<base href="https://tangiblia.com/">
+<meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tangiblia — a catalog of the physical stuff we collect</title>
+<meta name="description" content="A catalog of the physical stuff people collect: role-playing books, action figures, video games, and board games. Tangible memorabilia.">
+<link rel="icon" type="image/webp" href="/assets/bug.webp">
+<meta property="og:title" content="Tangiblia — a catalog of the physical stuff we collect">
+<meta property="og:description" content="A catalog of the physical stuff people collect: role-playing books, action figures, video games, and board games. Tangible memorabilia.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tangiblia.com/assets/flagship.webp">
+<style>
+:root{--ink:#221c14;--paper:#f6efdd;--card:#fffaf0;--amber:#b96f12;--line:#d8c9a3;--muted:#6f6152;--mint:#c9ecd4;--deepgreen:#1f7a4d;--oxblood:#7a2e2e;--cardblue:#2f5d8a;--plum:#5b4d9e;--boxgreen:#2e5d3f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 Georgia,'Times New Roman',serif}
+a{color:var(--amber)}
+.wrap{max-width:920px;margin:0 auto;padding:0 18px}
+.mast{text-align:center;padding:26px 16px 0}
+.mast img.bug{width:92px;height:92px;background:var(--mint);border:1.5px solid var(--deepgreen);border-radius:3px;padding:10px}
+.mast a.wm{display:block;text-decoration:none;color:inherit}
+.mast .word{font-size:52px;font-variant:small-caps;font-weight:700;letter-spacing:2px;line-height:1;margin:2px 0 4px}
+.mast .furn{display:flex;justify-content:space-between;max-width:920px;margin:10px auto 0;padding:6px 2px;border-top:2px solid var(--ink);border-bottom:1px solid var(--ink);font:12px Arial,Helvetica,sans-serif;letter-spacing:2px;text-transform:uppercase}
+.mast.compact{text-align:left;padding:8px 16px 0}
+.mast.compact .lock{display:flex;align-items:center;justify-content:center;gap:13px;max-width:920px;margin:0 auto}
+.mast.compact img.bug{width:38px;height:38px;padding:5px}
+.mast.compact .word{font-size:32px;margin:0}
+.mast .word .wspan{font-size:.52em;font-weight:400;letter-spacing:0;white-space:nowrap}
+.mast.compact .furn{margin-top:6px;padding:3px 2px}
+.beta{background:var(--paper);color:var(--ink);border-top:1px solid var(--cardblue);border-bottom:1px solid var(--cardblue);text-align:center;font:12.5px Arial,Helvetica,sans-serif;letter-spacing:2.5px;text-transform:uppercase;padding:8px 12px}
+.beta b{color:#ffd9a0}
+nav.links{text-align:center;padding:10px 8px 12px;border-bottom:3px double var(--ink);font:14px Arial,Helvetica,sans-serif}
+nav.links a{color:var(--ink);text-decoration:none;margin:0 9px;white-space:nowrap}
+nav.links a:hover{color:var(--amber)}
+nav.links a.nbtn{display:inline-block;background:#fdf8ea;border:2px solid var(--ink);border-radius:999px;padding:5px 16px 6px;margin:2px 3px;font-weight:700;font-variant:small-caps;color:var(--ink)}nav.links a.nbtn:hover{background:#fffdf6}nav.links a.nbtn.on{background:#2f5d8a;border-color:#2f5d8a;color:#fdf8ea}.tframe{border:1px solid #0d0b09;padding:10px;background:linear-gradient(150deg,#2c261d,#221c14 60%,#171310);box-shadow:0 18px 30px -12px rgba(34,28,20,.5),0 4px 9px rgba(34,28,20,.35)}
+.tfillet{border:1px solid #c9a227;padding:3px;background:#17100b}
+.tmat{background:#f8f2df;padding:22px 22px 30px;position:relative}
+.twin{border:1px solid #221c14}
+.twin img.fph{width:100%;display:block}
+.tband{padding:11px 6px 0;text-align:center}
+.tnm{font-family:'Helvetica Neue',Helvetica,'Liberation Sans',Arial,sans-serif;font-weight:800;letter-spacing:-.2px;line-height:1.12;color:#221c14}
+.tline{font:italic 13.5px Georgia,serif;color:#4a4133;margin-top:7px}
+.tline a{color:inherit}
+.tcolo{position:absolute;left:0;right:0;bottom:7px;text-align:center;font-variant:small-caps;letter-spacing:5px;font-size:10.5px;color:#6d6353}
+.hero{padding:26px 0 4px}
+.hero img{float:right;width:300px;max-width:44%;margin:4px 0 12px 20px;background:#fff;border:1px solid var(--line)}
+h1{font-size:34px;line-height:1.2;margin:0 0 12px;font-weight:700}
+.lede{font-size:18.5px}
+p{margin:0 0 12px}
+.small{font-size:15.5px;color:#4a4033}
+h2{font-size:26px;margin:38px 0 4px;padding-bottom:4px;border-bottom:3px double var(--ink)}
+h2 .no{color:var(--amber)}
+table.ledger{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:16.5px}
+table.ledger td{padding:7px 4px;border-bottom:1px solid var(--line);vertical-align:top}
+table.ledger td.n{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:16px}
+.branch{padding:16px 0 6px;border-bottom:1px solid var(--line)}
+.branch h3{font-size:24px;margin:0 0 2px}
+.branch .status{font-style:italic;color:var(--amber);font-size:15.5px}
+.branch p{margin:6px 0}
+.building{background:var(--card);border:1px solid var(--ink);outline:3px double var(--line);outline-offset:-7px;padding:20px 24px;margin:30px 0 4px}
+.building h2{margin-top:0;border-bottom:none}
+.building ul{margin:6px 0 12px;padding-left:22px}
+.building li{margin:4px 0}
+.tl{margin:10px 0}
+.tl .ev{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}
+.tl .yr{font-weight:700;color:var(--amber)}
+.tl p{margin:0}
+.post{padding:12px 0;border-bottom:1px solid var(--line)}
+.post .d{font:12px Arial,Helvetica,sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--amber)}
+.post h3{margin:3px 0 4px;font-size:20px}
+.post p{margin:0}
+ol.standard{padding-left:22px}
+ol.standard li{margin:10px 0}
+footer{margin-top:44px;border-top:3px double var(--ink);padding:20px 0 30px;font-size:15px}
+footer .fl{display:flex;gap:16px;flex-wrap:wrap;margin:8px 0}
+footer a{font:13px Arial,Helvetica,sans-serif;font-weight:700;text-decoration:none;letter-spacing:1px;text-transform:uppercase}
+.credit{color:var(--muted);font-size:14px;font-style:italic}
+nav.links a[href="/tabletop/"]{color:var(--oxblood)}
+nav.links a[href="/action-figures/"]{color:var(--cardblue)}
+nav.links a[href="/video-games/"]{color:var(--plum)}
+nav.links a[href="/board-games/"]{color:var(--boxgreen)}
+.dateline{text-align:center;font:12.5px Arial,Helvetica,sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:12px 8px 0}
+.dateline b{color:var(--ink)}
+.searchbox{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 4px}
+.searchbox input[type=search]{flex:1;min-width:220px;font:17px Georgia,'Times New Roman',serif;padding:9px 12px;border:1px solid var(--ink);background:#fff;color:var(--ink)}
+.searchbox select{font:14px Arial,Helvetica,sans-serif;padding:9px;border:1px solid var(--ink);background:#fff;color:var(--ink)}
+.btn{font:13px Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--ink);background:var(--card);color:var(--ink);padding:9px 14px;cursor:pointer}
+.btn:hover{background:var(--paper)}
+ul.sres{list-style:none;margin:8px 0 0;padding:0}
+ul.sres li{border-bottom:1px solid var(--line);padding:6px 2px}
+ul.sres .sid{color:var(--muted);font-size:14.5px}
+
+.facets{margin:14px 0 2px}
+.frow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.frow input[type=search]{flex:1;min-width:200px;font:16px Georgia,'Times New Roman',serif;padding:8px 11px;border:1px solid var(--ink);background:#fff;color:var(--ink)}
+.frow select{font:13.5px Arial,Helvetica,sans-serif;padding:8px;border:1px solid var(--ink);background:#fff;color:var(--ink);max-width:250px}
+.fchip{font:12px Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:1px solid var(--ink);background:var(--card);color:var(--ink);padding:6px 11px;cursor:pointer}
+.fchip:hover{background:var(--paper)}
+.fchip.on{background:var(--ink);color:var(--paper)}
+.fchip .cn{font-weight:400;opacity:.75}
+.tgl{font:12.5px Arial,Helvetica,sans-serif;letter-spacing:1px;text-transform:uppercase;display:inline-flex;gap:7px;align-items:center;cursor:pointer}
+.fcount{font-size:15px;color:var(--muted);font-style:italic;margin:4px 0 0}
+.sstrip{border:1px solid var(--ink);background:var(--card);padding:10px 16px;margin:16px 0 2px;font-size:16px}
+.sstrip .k{font:11.5px Arial,Helvetica,sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-right:10px}
+.toprec{border:1px solid var(--ink);background:var(--card);padding:10px 16px;margin:16px 0 2px;font-size:16px}
+.railwrap{display:flex;gap:26px;align-items:flex-start;margin-top:4px}
+.railmain{flex:1 1 auto;min-width:0}
+.railside{flex:0 0 338px;width:338px}
+.statement{font-size:19px;line-height:1.5;margin:2px 0 6px}
+.counts{font:13px Arial,Helvetica,sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.headrow{display:flex;gap:18px;align-items:flex-start;margin:14px 0 6px}
+.spotbox{flex:0 0 300px}.spotframe{display:block;text-decoration:none;color:inherit}
+.platebox{flex:1 1 auto;background:var(--card);border:1px solid var(--ink);outline:3px double var(--line);outline-offset:-7px;padding:18px 20px}
+.adbox .adlabel{display:none}
+.adbox:has(ins[data-ad-status="filled"]) .adlabel{display:block}
+.platebox .facts{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px;width:100%}
+.fact .fv{display:block;font-size:24px;font-weight:700;line-height:1.1}
+.fact .fk{font:11.5px Arial,Helvetica,sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.adbox{flex:0 0 300px}
+@media(max-width:860px){.headrow{flex-direction:column}.spotbox,.adbox{flex:1 1 auto}}
+.railside .toprec{margin-top:0}
+.railside .aucslot{margin:14px 0 4px}
+.railphotos{margin:16px 0 4px}
+.railk{font:12px Arial,Helvetica,sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.railframe{display:block;margin:0 0 14px;text-decoration:none;color:inherit}
+.railgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:10px}
+.railthumb{display:block;text-decoration:none;color:inherit;border:1px solid #c9bfa8;background:#fbf7ec;padding:5px}
+.railthumb img{display:block;width:100%;height:104px;object-fit:cover;background:#e9e2cf}
+.railthumb .tnm{display:block;font-size:12.5px;font-weight:700;line-height:1.25;margin:5px 1px 2px}
+.railthumb .tline{display:block;font-size:11px;color:var(--muted);line-height:1.3;margin:0 1px 2px}
+.railmore{font-size:13px;color:var(--muted);margin:10px 0 0;line-height:1.45}
+.railside .feat{display:block;margin:0 0 12px}
+.railside .xdoors{display:block}
+.railside .xdoor{display:block;margin:0 0 12px}
+@media(max-width:920px){.railwrap{flex-direction:column}.railside{width:auto;flex:1 1 auto}}
+.toprec .k{font:11.5px Arial,Helvetica,sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:6px}
+.toprec .tr-row{padding:2px 0}
+.toprec .tp{font-weight:700;font-variant-numeric:tabular-nums}
+.toprec .ts{color:var(--muted);font-size:13.5px;margin-left:8px}
+.toprec a{color:var(--ink);text-decoration:none;font-weight:600}
+.toprec a:hover{text-decoration:underline}
+table.vtab tbody tr[data-href]{cursor:pointer}
+.tscroll{overflow-x:auto;margin:10px 0 4px}
+table.vtab{width:100%;border-collapse:collapse;font-size:14.5px;min-width:980px}
+table.vtab th{font:11.5px Arial,Helvetica,sans-serif;letter-spacing:1.5px;text-transform:uppercase;text-align:left;padding:8px 6px;border-bottom:2px solid var(--ink);cursor:pointer;white-space:nowrap;user-select:none}
+table.vtab th:hover{color:var(--amber)}
+table.vtab th .dir{color:var(--amber)}
+table.vtab th.n{text-align:right}
+table.vtab td{padding:6px;border-bottom:1px solid var(--line);vertical-align:top}
+table.vtab td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.vtab td .sub{display:block;font-size:12.5px;color:var(--muted);white-space:nowrap}
+table.vtab td .pr{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.vempty td{font-style:italic;color:var(--muted);padding:14px 6px}
+.label{background:var(--card);border:1px solid var(--ink);outline:3px double var(--line);outline-offset:-7px;padding:20px 24px;margin:18px 0 6px}
+.label .addr{font:13px Arial,Helvetica,sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.label h3{margin:4px 0 6px;font-size:30px;line-height:1.15}
+.label .medium{font-style:italic;color:#4a4033}
+.stamp{display:inline-block;border:1.5px solid var(--amber);color:var(--ink);font:11.5px Arial,Helvetica,sans-serif;letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;background:#fff;margin:2px 0 8px}
+.hero2{display:grid;grid-template-columns:1.05fr 1fr;gap:22px;align-items:start;margin-top:14px}
+.hero2 figure{margin:0}
+.hero2 figure img{width:100%;display:block;border:1px solid var(--ink);background:#fff}
+.hero2 figcaption{font-size:13.5px;color:var(--muted);font-style:italic;padding-top:6px;line-height:1.45}
+.owed{border:1.5px dashed var(--muted);min-height:250px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font:13px Arial,Helvetica,sans-serif;letter-spacing:2px;text-transform:uppercase;padding:24px;line-height:1.9}
+.sale{font-size:16.5px;margin:8px 0}
+.sale b{font-variant-numeric:tabular-nums}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0 4px}
+.cards2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:14px 0 4px}
+.card{background:var(--card);border:1px solid var(--line);padding:13px 15px}
+.card .k{font:11.5px Arial,Helvetica,sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--amber)}
+.card h3{margin:3px 0 4px;font-size:19.5px;line-height:1.25}
+.card p{margin:0 0 6px;font-size:15.5px}
+.card .pr{font-weight:700;font-variant-numeric:tabular-nums}
+.card .who{font-size:13.5px;color:var(--muted);font-style:italic}
+.up{color:var(--deepgreen);font-weight:700}
+.down{color:#9c2b2b;font-weight:700}
+.search{margin:14px 0 6px}
+.search input{width:100%;font:inherit;font-size:17px;padding:10px 12px;border:1px solid var(--ink);background:var(--card);color:var(--ink)}
+.sres{margin:5px 0}
+.lrow{margin:0;padding:7px 2px;border-bottom:1px solid var(--line);font-size:16px}
+.ts-kick{font:11.5px Arial,Helvetica,sans-serif;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted)}
+.ts-name{font-size:25px;font-weight:700;line-height:1.2;margin:3px 0 2px}
+.ts-name a{color:var(--ink);text-decoration:none}
+.ts-name a:hover{text-decoration:underline}
+.ts-info{font-style:italic;font-size:15px;color:var(--muted)}
+.ts-sale{font-size:18px;font-weight:700;color:var(--amber);margin-top:5px;white-space:nowrap}
+.ts-sale span{font-size:13px;font-weight:400;color:var(--muted)}
+.bcard{--trim:var(--amber);border:2px solid var(--ink);outline:6px solid var(--trim);outline-offset:-8px;background:var(--card);margin:0;display:flex;flex-direction:column}
+.bcard .topbtn{display:block;background:var(--trim);color:#fdf8ea;text-decoration:none;text-align:center;font-size:25px;font-weight:700;font-variant:small-caps;letter-spacing:1.5px;line-height:64px;height:64px;border-bottom:3px solid var(--ink);box-shadow:0 3px 0 var(--line)}
+.bcard .topbtn:hover{background:var(--ink)}
+.bcard .z-desc{height:118px;padding:16px 19px 0;overflow:hidden}
+.bcard .z-desc p{margin:0}
+.bcard .z-shelf{padding:6px 17px 0;min-height:200px;display:flex;flex-direction:column;justify-content:flex-end}
+.bcard .shelfspace{height:166px}
+.bcard .pop,.xcase .pop{width:94%;margin:0 auto;background:#fffdf6;border:1px solid var(--ink);box-shadow:7px 7px 0 #00000026;position:relative;z-index:1}
+.bcard .pop-in,.xcase .pop-in{border:1px solid var(--gilt);margin:5px;padding:9px 10px;text-align:center}
+.bcard .pop-label,.xcase .pop-label{font:700 11px Arial,Helvetica,sans-serif;letter-spacing:2.5px;text-transform:uppercase;color:var(--amber);border-bottom:1px solid var(--line);padding-bottom:5px;margin-bottom:7px}
+.bcard .pop .tframe,.xcase .pop .tframe{max-width:225px;margin:2px auto 4px}
+.bcard .board{height:10px;margin:10px -17px 0;background:#8a6d3b;border-top:2px solid var(--ink);box-shadow:0 5px 4px -2px #00000055}
+.bcard .baseband{background:#efe3c2;border-top:3px solid var(--trim);margin-top:auto;padding:9px 17px 11px;text-align:center}
+.bcard .cnt{font-style:italic;color:var(--amber);font-size:16px;margin:0;white-space:nowrap}
+.ov-band{display:grid;grid-template-columns:repeat(5,1fr);border:2px solid var(--ink);background:var(--card);margin:22px 0 6px}
+.ov-band .cell{padding:12px 8px 10px;text-align:center;border-right:1px solid var(--line)}
+.ov-band .cell:last-child{border-right:0}
+.ov-band .n{font-size:25px;font-weight:700;line-height:1.1}
+.ov-band .k{font:11px Arial,Helvetica,sans-serif;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);margin-top:3px}
+@media(max-width:760px){.ov-band{grid-template-columns:repeat(2,1fr)}.ov-band .cell{border-bottom:1px solid var(--line)}}
+.spans{border:1px solid var(--line);background:#fffdf6;padding:14px 18px 10px;margin:14px 0 4px}
+.spans .cap{font:11.5px Arial,Helvetica,sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.srow{display:flex;align-items:center;gap:10px;margin:5px 0;font-size:14.5px}
+.srow .nm{width:118px;text-align:right;font-variant:small-caps;font-weight:700}
+.srow .track{flex:1;position:relative;height:15px;background:#efe8d2;border:1px solid var(--line)}
+.srow .bar{position:absolute;top:0;bottom:0}
+.srow .yrs{width:96px;color:var(--muted);font-style:italic;font-size:13.5px}
+.wire{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);background:#fffdf6;padding:4px 16px 8px;margin:26px 0 4px}
+.wire h2{margin-top:10px}
+.exrow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 4px}
+@media(max-width:760px){.exrow{grid-template-columns:1fr}}
+.exdoor{border:1px solid var(--ink);background:var(--card);padding:13px 15px;text-decoration:none;color:var(--ink);display:block}
+.exdoor:hover{background:#fffdf6}
+.exdoor .t{font-size:19px;font-weight:700;font-variant:small-caps}
+.exdoor .d{font-size:14px;color:var(--muted);margin-top:2px}
+.tldoors{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 4px}
+@media(max-width:760px){.tldoors{grid-template-columns:1fr}}
+.tldoor{display:block;text-decoration:none;color:#fdf8ea;padding:16px;text-align:center}
+.tldoor .t{font-size:20px;font-weight:700;font-variant:small-caps;letter-spacing:1px}
+.tldoor .d{font-size:13.5px;opacity:.85;font-style:italic}
+h2.sect{font-size:17px;text-transform:uppercase;letter-spacing:2px;border-bottom:2px solid var(--ink);padding-bottom:4px;margin:34px 0 12px}
+.opening{display:grid;grid-template-columns:1fr 200px;gap:34px;margin:26px 0 0}
+.opening h1{font-size:33px;line-height:1.12;margin:0 0 10px;letter-spacing:-.01em;white-space:nowrap}
+.standfirst p.lede{font-size:19px}
+.searchrow input{width:100%}
+.aucslot{border:2px solid var(--ink);background:var(--card);padding:12px 16px 13px;margin:16px 0 4px}
+.auclab{font:11.5px Arial,Helvetica,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 3px}
+.aucmain{font-size:19px;font-weight:bold;margin:0 0 3px}
+.aucmain a{color:var(--ink)}
+.aucfacts{font-size:14.5px;color:#4a4033;margin:0}
+.rail{border-left:2px solid var(--ink);padding-left:18px;display:flex;flex-direction:column;gap:16px}
+.rail .n{font-size:27px;font-weight:700;line-height:1.05}
+.rail .l{font:11px Arial,Helvetica,sans-serif;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.rail .rname{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.4}
+.rail a.nlink{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.methodline{font-size:13.5px;color:var(--muted);margin:8px 0 0;line-height:1.45}
+.photoline.compact{display:block;border:none;outline:none;background:none;padding:0;margin:14px 0 2px;max-width:none;text-align:left}
+.photoline.compact .pl-line{font-size:13.5px}
+.rulerwrap{grid-column:1/-1;border-top:1px solid var(--line);padding-top:10px}
+.curve{grid-column:1/-1;border-top:1px solid var(--line);padding-top:10px}
+.curve .cap{font:11.5px Arial,Helvetica,sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.curve .legend{display:flex;gap:18px;font-size:13px;color:var(--muted);margin-top:6px}
+.curve .dot,.crow .dot{display:inline-block;width:10px;height:10px;border-radius:50%;vertical-align:-1px;margin-right:6px}
+table.xledger{width:100%;border-collapse:collapse;font-size:16px;background:none}
+table.xledger td{padding:7px 4px;border-bottom:1px solid var(--line);vertical-align:top}
+table.xledger td.when{font-weight:700;white-space:nowrap;width:126px}
+table.xledger td.branch{white-space:nowrap;width:158px}
+table.xledger td.price{text-align:right;font-weight:700;white-space:nowrap}
+.bdot{display:inline-block;width:.6em;height:.6em;border-radius:50%;margin-right:.45em}
+.xdoors{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 4px}
+@media(max-width:760px){.xdoors{grid-template-columns:1fr}.opening{grid-template-columns:1fr}.opening h1{white-space:normal;font-size:27px}}
+.xdoor{background:linear-gradient(180deg,#8a6b4a,#77572f);border:3px solid #4a3418;border-radius:6px 6px 0 0;padding:16px 15px 14px;color:#fdf3da;min-height:180px;display:flex;flex-direction:column;text-decoration:none;box-shadow:inset 0 0 0 3px #a4835c}
+.xdoor .num{font:700 11px Arial,Helvetica,sans-serif;letter-spacing:2.5px;opacity:.85}
+.xdoor h3{margin:7px 0 5px;font-size:21px;color:#fdf3da}
+.xdoor p{margin:0;font-size:15px;flex:1}
+.xdoor .go{font:700 13px Arial,Helvetica,sans-serif;margin-top:12px}
+.xcases{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:6px 0 4px}
+@media(max-width:760px){.xcases{grid-template-columns:1fr}}
+.xcase{border:4px solid #4a3418;background:#6d4e2c;border-radius:4px;display:flex;flex-direction:column;box-shadow:0 10px 22px rgba(42,33,24,.28)}
+.xcase .cornice{background:#4a3418;color:#f3e3b8;text-align:center;font-variant:small-caps;font-weight:700;letter-spacing:1.5px;font-size:21px;padding:9px 6px;text-decoration:none;display:block}
+.xcase .glass{margin:10px;background:#efe6cd;border:2px solid #2c1e0e;box-shadow:inset 0 0 34px rgba(120,90,40,.35);padding:14px 13px;flex:1;display:flex;flex-direction:column}
+.xcase .glass p.desc{margin:0 0 12px;font-size:15.5px}
+.xcase .shelfboard{height:10px;background:#8a6136;border-top:2px solid #5d3f1e;margin:auto -13px 0}
+.xcase .plate{background:linear-gradient(180deg,#d9b84e,#b8912f);color:#33270e;font-weight:700;font-style:italic;text-align:center;padding:7px 5px;margin:0 10px 10px;border:1px solid #7a5f16;font-size:15px}
+.xdark{background:#221c14;color:#f3ecd9;margin:38px -22px 0;padding:30px 22px}
+.xdark .inner{max-width:1016px;margin:0 auto;display:grid;grid-template-columns:330px 1fr;gap:36px;align-items:center}
+@media(max-width:760px){.xdark .inner{grid-template-columns:1fr}}
+.xdark .kick{font:700 11.5px Arial,Helvetica,sans-serif;letter-spacing:2.5px;text-transform:uppercase;color:#c9a227}
+.xdark h2{font-size:29px;margin:4px 0 8px;color:#f3ecd9;border:0}
+.xdark p{font-size:16.5px;max-width:34em}
+.xdark .sale{color:#e8ddba}
+.xdark a{color:#e8cf7a}
+.xtl{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.xtlrow{display:grid;grid-template-columns:160px 1fr;gap:12px;align-items:center;text-decoration:none;color:var(--ink)}
+.xtlrow .tname{font-weight:700;font-variant:small-caps;font-size:18px;text-align:right}
+.xtlrow .track{position:relative;height:30px;background:#e9dcbb;border:1px solid var(--line)}
+.xtlrow .fill{position:absolute;top:4px;bottom:4px;border-radius:2px}
+.xtlrow .spanlbl{position:absolute;top:5px;font-size:13.5px;color:#fdf8ea;font-weight:700;padding-left:7px}
+.door .facts{font-style:italic;color:var(--acc);margin:8px 0}
+.door .enter,.bcard .enter{display:inline-block;font:13px Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:1.5px solid var(--acc);color:var(--acc);padding:8px 14px;text-decoration:none;background:var(--paper)}
+.door .enter:hover{background:var(--acc);color:var(--paper)}
+.door .who{font-size:13.5px;color:var(--muted);font-style:italic;margin:6px 0 0}
+.label h3{font-size:30px}
+@media(max-width:760px){.door{grid-template-columns:1fr}.door .dvis{min-height:140px;border-right:none;border-bottom:1px solid var(--line)}}
+@media(max-width:760px){
+  .cards3,.cards2,.hero2{grid-template-columns:1fr}
+  .owed{min-height:160px}
+}
+@media(max-width:640px){
+  .mast{padding-top:14px}
+  .mast .word{font-size:34px}
+  .mast img.bug{width:52px;height:52px;padding:7px}
+  .mast .furn{font-size:10px;letter-spacing:1px;margin-top:6px;padding:4px 2px}
+  nav.links{font-size:13px;padding:7px 6px 9px}
+  nav.links a{margin:0 6px}
+  nav.links a.nbtn{padding:4px 11px 5px;margin:2px 2px}
+  .opening{margin-top:16px}
+  .standfirst p{margin:6px 0}
+  .standfirst p.lede{font-size:17px}
+  .search{margin-top:10px}
+  .hero img{float:none;display:block;margin:0 auto 14px;max-width:230px;width:230px}
+  h1{font-size:27px}
+  body{font-size:16px}
+}
+.fbar{display:flex;align-items:center;flex-wrap:wrap;margin:22px 0 2px;padding:9px 0;border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+.fbar .flab{font:700 11px Arial,Helvetica,sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-right:10px}
+.fpill{font:700 13.5px Arial,Helvetica,sans-serif;padding:7px 14px;border:1px solid var(--ink);border-radius:0;background:transparent;color:var(--ink);cursor:pointer;margin-right:-1px}
+.fpill .sw{display:inline-block;width:10px;height:10px;margin-right:7px;vertical-align:-1px}
+.fpill.on{background:var(--ink);color:#fdf8ea}
+.hiddenf{display:none !important}
+.xcase{transition:opacity .25s ease,filter .25s ease}
+.xcase.dimf{opacity:.32;filter:grayscale(.45)}
+.rb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+@media(max-width:1000px){.rb-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.rb-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.rb-grid{grid-template-columns:1fr}}
+.rb-box{background:#fdf8ea;border:4px solid #201c17;border-radius:3px;padding:12px 14px 14px;position:relative;overflow:hidden}
+.rb-box.var{border:1px solid var(--line);border-radius:16px}
+.rb-box .rb-code{font-size:12px;letter-spacing:.12em;color:var(--muted);font-weight:bold}
+.rb-box .rb-ttl{font-size:18px;font-weight:bold;margin:5px 0 2px;line-height:1.2}
+.rb-box .rb-ttl a{color:var(--ink);text-decoration:none}
+.rb-box .rb-ttl a:hover{text-decoration:underline}
+.rb-box .rb-mk{font-size:13px;color:var(--muted)}
+.rb-box .rb-sales{font-size:12.5px;color:var(--muted);margin-top:7px}
+.rb-band{background:var(--blue);color:#f6efdd;margin:-12px -14px 9px;padding:7px 14px 6px;font-size:11.5px;font-weight:bold;letter-spacing:.09em;text-transform:uppercase}
+.rb-band small{display:block;font-weight:normal;letter-spacing:.02em;text-transform:none;font-size:11.5px;opacity:.85;margin-top:1px}
+.rb-box.banded{border-color:#201c17}
+.rb-box.banded.var{border-color:#7d8aa0}
+.rb-box.gold{background:linear-gradient(120deg,#f6d976,#e3b93c 40%,#f9e588 55%,#d9a92e);border-color:#201c17;color:#3a2c05}
+.rb-box.gold.var{border-color:#a37f14}
+.rb-box.gold .rb-code{color:#6d5510}
+.rb-box.gold .rb-mk,.rb-box.gold .rb-sales{color:#5c470c}
+.photoline{border:2px solid var(--ink);outline:1px solid #c9a227;outline-offset:-6px;background:var(--card,#fffaf0);text-align:center;padding:20px 22px 16px;margin:22px auto 4px;max-width:640px}.photoline .pl-line{font-size:21px;font-weight:700;letter-spacing:.02em;margin:0}.photoline .pl-rule{width:54px;border-top:2px solid #c9a227;margin:10px auto 8px}.photoline .pl-sub{font:11px Arial,Helvetica,sans-serif;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin:0}.photoline.beside{margin:18px 0 6px}.sentence{font-size:20px;margin:0 0 4px}
+.feats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0 6px}
+.feat{display:block;background:#fdf8ea;border:1.5px solid var(--ink);padding:0 0 12px;text-decoration:none;color:var(--ink)}
+.feat .band{display:block;background:var(--cardblue);height:9px}
+.feat h3{margin:12px 14px 6px;font-size:19px;line-height:1.25}
+.feat p{margin:0 14px;font-size:15px;color:var(--muted);line-height:1.45}
+.lindex h2{font-size:30px;margin:0 0 4px}
+.headrule{border-top:3px double var(--ink);margin-bottom:6px}
+.irow{display:flex;align-items:baseline;gap:10px;padding:9px 2px;border-bottom:1px solid #c9bfa5}
+.irow a{font-size:19px}
+.ispan{font-style:italic;color:var(--muted);font-size:16px}
+.icount{margin-left:auto;font-weight:bold;font-size:18px;white-space:nowrap}
+.furn2 h2{font-size:24px;margin:0 0 8px}
+.spine{border-top:1px solid #c9bfa5}
+.spine div{padding:7px 2px;border-bottom:1px solid #c9bfa5;font-size:16px}
+.spine b{display:inline-block;min-width:52px}
+@media (max-width:820px){.feats{grid-template-columns:repeat(2,1fr)}}body.tmpl{background:#e9e2cd}
+.sheet{max-width:1180px;margin:26px auto 60px;background:var(--paper);box-shadow:0 2px 18px rgba(32,28,23,.25);padding-bottom:34px}
+.sheet .beta{background:var(--paper);color:var(--ink);border-top:1px solid var(--cardblue);border-bottom:1px solid var(--cardblue);font-family:Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:.22em;padding:9px 12px}
+.sheet .mast .furn{max-width:1020px}
+.sheet .wrap{max-width:1060px;padding:0 20px}
+.tfoot{margin:40px auto 0;padding:14px 2px 0;border-top:1px solid #c9bfa5;display:flex;justify-content:space-between;font-size:14px;color:var(--muted);flex-wrap:wrap;gap:8px}.ltwrap{overflow-x:auto;margin-top:6px}
+.ltable{width:100%;border-collapse:collapse;font-size:15px;min-width:760px}
+.ltable th{font:11px Arial,Helvetica,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;border-bottom:2px solid var(--ink);padding:6px 8px;cursor:pointer;white-space:nowrap;user-select:none}
+.ltable th.num{text-align:right}
+.ltable th.sasc::after{content:" \2191"}
+.ltable th.sdesc::after{content:" \2193"}
+.ltable td{padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.ltable td.num{text-align:right;font-variant-numeric:tabular-nums}
+.ltable td.c-sale{white-space:nowrap}
+.ltable td.c-title a{color:var(--ink);text-decoration:none;font-weight:600}
+.ltable td.c-title a:hover{text-decoration:underline}
+.ltable tr.var td{background:#fffdf6}
+.ltable tr.var td.c-title a{font-weight:400}
+/* gold = the rarity mark: the standing form, rendered from rarity assignments (AF holds none today, so no row paints) */
+.ltable tr.gold td{background:#f6e7bd;box-shadow:inset 0 0 0 999px transparent}
+.ltable tr.gold td:first-child{box-shadow:inset 4px 0 0 #c9a227}
+.ltable .pr{font-weight:700}
+.ltable .sub{color:var(--muted);font-size:12.5px;margin-left:5px}
+.tb-band{display:inline-block;font:10.5px Arial,Helvetica,sans-serif;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:#fdf8ea;padding:1px 6px;margin-left:8px;border-radius:2px;vertical-align:2px}
+.tb-lab{display:inline-block;font:10.5px Arial,Helvetica,sans-serif;letter-spacing:.06em;text-transform:uppercase;background:transparent;color:var(--ink);border:1px solid var(--ink);padding:0 5px;margin-left:8px;border-radius:2px;vertical-align:2px}
+.tb-photos{display:inline-block;font:10.5px Arial,Helvetica,sans-serif;letter-spacing:.06em;background:#efe6cd;color:var(--muted);padding:1px 6px;margin-left:8px;border-radius:2px;vertical-align:2px}
+.tb-vars{display:inline-block;font:10.5px Arial,Helvetica,sans-serif;letter-spacing:.06em;background:#efe6cd;color:var(--muted);padding:1px 6px;margin-left:8px;border-radius:2px;vertical-align:2px}
+#treset{font:13px Arial,Helvetica,sans-serif;padding:5px 12px;border:1px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer}.ml-head{display:flex;align-items:baseline;gap:10px;padding:9px 2px;border-bottom:1px solid var(--line)}
+.ml-exp{background:#fff;border:1px solid var(--line);width:24px;height:24px;line-height:1;cursor:pointer;color:var(--ink);flex:0 0 auto;align-self:center;padding:0}
+.ml-name{font-weight:700;font-size:18px;color:var(--ink);text-decoration:none}
+.ml-name:hover{text-decoration:underline}
+.ml-head .icount{margin-left:auto;font-weight:700;white-space:nowrap}
+.ml-body{padding:4px 0 14px}
+.ml-tools{margin:4px 0 2px}
+.ml-bar{margin:10px 0 4px}
+#mlq{flex:1;min-width:240px;font:16px Georgia,'Times New Roman',serif;padding:8px 11px;border:1px solid var(--ink);background:#fff;color:var(--ink)}
+#mlcount{font-size:14px;color:var(--muted)}
+</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-3990WDEXYE"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3990WDEXYE');</script><script>(function(){try{var K="tb-pulse-sid",s=sessionStorage.getItem(K);if(!s){s="v"+Math.random().toString(36).slice(2,10)+Date.now().toString(36);sessionStorage.setItem(K,s);}var CK="tb_curator",ct=null;try{var hm=(location.hash||"").match(/#curator-([A-Za-z0-9_-]+)/);if(hm){try{localStorage.setItem(CK,hm[1]);}catch(_){}try{history.replaceState(null,"",location.pathname+location.search);}catch(_){}}ct=localStorage.getItem(CK);}catch(_){}var src="direct";try{src=sessionStorage.getItem("tb_src")||"";if(!src){var rh="";try{rh=new URL(document.referrer||"").hostname.toLowerCase();}catch(_){}if(!rh)src="direct";else if(rh.indexOf("google.")!==-1)src="google";else if(rh.indexOf("threads.")!==-1)src="threads";else if(rh.indexOf("facebook.")!==-1||rh.indexOf("fb.")!==-1)src="facebook";else src="other";try{sessionStorage.setItem("tb_src",src);}catch(_){}}}catch(_){}var ret=false;try{ret=!!localStorage.getItem("tb_seen");if(!ret)localStorage.setItem("tb_seen","1");}catch(_){}var vid='';try{vid=localStorage.getItem('tb_vid')||'';if(!vid){vid=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():('u'+Math.random().toString(36).slice(2,10)+Date.now().toString(36)+Math.random().toString(36).slice(2,10));localStorage.setItem('tb_vid',vid);}}catch(_){}var pages=1;try{pages=(parseInt(sessionStorage.getItem("tb_pages")||"0",10)||0)+1;sessionStorage.setItem("tb_pages",String(pages));}catch(_){}var U="https://pulse.tangiblia.com/ping";function ping(bye){try{fetch(U,{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify(bye?{sid:s,bye:true}:(function(){var d={sid:s,path:location.pathname,host:location.hostname,src:src,ret:ret,pages:pages};if(ct)d.curator=ct;if(vid)d.vid=vid;return d;})()),keepalive:true,mode:"cors"}).catch(function(){});}catch(e){}}ping(false);setInterval(function(){ping(false);},15000);window.addEventListener("pagehide",function(){ping(true);});document.addEventListener("click",function(e){try{var a=e.target&&e.target.closest?e.target.closest("a[href]"):null;if(!a)return;var u;try{u=new URL(a.href);}catch(_){return;}var h=u.hostname.toLowerCase();var n=null;if(/(^|\.)ebay\./.test(h)){n="ebay";}else if(h.indexOf("amazon.")!==-1||h==="amzn.to"||h==="amzn.com"||h.slice(-8)===".amzn.to"){n="amazon";}if(!n)return;if(typeof gtag==="function"){try{gtag("event","affiliate_click",{network:n,source_path:location.pathname});}catch(_){}}fetch("https://pulse.tangiblia.com/click",{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify({sid:s,network:n,path:location.pathname}),keepalive:true,mode:"cors"}).catch(function(){});}catch(_){}},true);}catch(e){}})();</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2509037912851003" crossorigin="anonymous"></script><script async src="https://www.clarity.ms/tag/zh69i9ahg5"></script><style>.atlas{margin:8px 0 4px}.band{display:flex;align-items:flex-start;gap:12px;padding:7px 6px;cursor:pointer;border-radius:4px}.band:hover{background:rgba(120,90,40,.08)}.band.on{background:rgba(120,90,40,.13)}.band-lab{flex:0 0 128px;font-weight:700;font-variant:small-caps;letter-spacing:.5px;font-size:16px;padding-top:1px}.band-track{position:relative;flex:1;height:34px;border-bottom:1px solid #b7a87f}.band-bar{position:absolute;top:2px;height:13px;border-radius:2px;opacity:.88}.band-meta{position:absolute;top:18px;font-size:12.5px;color:#6d5f45;white-space:nowrap}.axrow{cursor:default}.axrow:hover{background:none}.axrow .band-track{height:18px}.tick{position:absolute;top:0;font-size:11px;color:#6d5f45;transform:translateX(-50%)}.tree-panel{margin:10px 0 6px}.tree-h{font-variant:small-caps;letter-spacing:.5px;font-size:19px;margin:12px 0 4px}.tree{list-style:none;margin:0;padding-left:6px}.tree .tkids{list-style:none;margin:2px 0 2px 22px;padding-left:12px;border-left:2px solid #d8cba6}.tnode{margin:3px 0}.trow{display:flex;align-items:baseline;gap:7px}.tog{border:1px solid #b7a87f;background:#efe6cd;border-radius:3px;width:19px;height:19px;line-height:1;cursor:pointer;font-size:11px;color:#4a3418}.togx{display:inline-block;width:19px}.tname{font-weight:700}.tmeta{font-size:13.5px;color:#6d5f45}.tbasis{font-size:13.5px;color:#6d5f45;margin:1px 0 2px 26px;font-style:italic}@media(max-width:760px){.band-lab{flex-basis:92px;font-size:14px}}</style>
+</head>
+<body>
+<div style="position:fixed;top:0;left:0;right:0;z-index:9999;background:#7a1f1f;color:#fff;text-align:center;font:700 13px Arial,Helvetica,sans-serif;letter-spacing:1.5px;padding:8px 6px">MOCKUP — TEMP PREVIEW · THE HOUSE MAP · NOT THE LIVE FRONT PAGE</div><div style="height:34px"></div>
+
+<div class="beta">★ $13,283,329 in verified sales · 41,979 items · 178 lines · 4 shelves. ★</div>
+<header class="mast"><img class="bug" src="/assets/bug.webp" alt="The Tangiblia box">
+<a class="wm" href="/"><div class="word">Tangiblia<sup style="font-size:20px;letter-spacing:0">™</sup></div></a>
+<div class="furn"><span style="flex:1"></span><span>Cataloging the Collectible<sup style="font-size:8px">™</sup></span><span style="flex:1;text-align:right">Est. 2026</span></div>
+</header>
+<nav class="links">
+<a class="nbtn" href="/tabletop/">Tabletop</a><a class="nbtn" href="/action-figures/">Action Figures</a><a class="nbtn" href="/video-games/">Video Games</a><a class="nbtn" href="/board-games/">Board Games</a>
+</nav>
+<div class="wrap">
+
+<section class="opening">
+<div>
+<h1>The physical stuff people collect.</h1>
+<div class="standfirst">
+<p class="lede">Tangible memorabilia.</p>
+<p class="lede">A catalog of role-playing books, action figures, video games, and board games.</p>
+<p>Our cabinets hold items from 1964 through the present—their stories and their sales.<br>Open our cabinets, dig around, and discover something!</p>
+</div>
+<div class="photoline compact"><p class="pl-line">All photos used with consent.</p></div>
+<div class="search searchrow">
+<input type="search" id="fq" placeholder="Search the cabinets — a figure, a game, a book…" autocomplete="off" aria-label="Search the cabinets">
+<div id="fresults"></div>
+</div>
+<p class="sellsnothing">Tangiblia sells nothing. The prices are recorded sales.</p>
+<p class="methodline">All sale prices are sourced. <a href="/record/">How the record works</a></p>
+<p class="methodline">Search works by name. No name for the thing in your hand? <a href="/identify/">What have I got?</a> matches it by photograph.</p>
+<script>
+(function(){
+  var q = document.getElementById('fq'), out = document.getElementById('fresults'), idx = null;
+  function esc(t){ return t.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+  function load(){ if(idx) return; fetch('/search-index.json').then(function(r){ return r.json(); }).then(function(d){ idx = d; run(); }); }
+  function run(){
+    if(!idx) return;
+    var v = q.value.trim().toLowerCase();
+    if(v.length < 2){ out.innerHTML = ''; return; }
+    var SYN = {gun: 'blaster', blaster: 'gun'};
+    var words = v.split(/\s+/), hits = [];
+    for(var i = 0; i < idx.length; i++){
+      var t = idx[i][3], ok = true;
+      for(var w = 0; w < words.length; w++){ var wd = words[w]; if(t.indexOf(wd) === -1 && !(SYN[wd] && t.indexOf(SYN[wd]) !== -1)){ ok = false; break; } }
+      if(ok){ hits.push(idx[i]); if(hits.length >= 400) break; }
+    }
+    if(!hits.length){ out.innerHTML = '<p class="small">Nothing in the cabinets matches that.</p>'; return; }
+    var html = '<p class="small">' + hits.length + ' in the cabinets:</p>';
+    for(var j = 0; j < Math.min(hits.length, 12); j++){
+      var e = hits[j];
+      html += '<p class="sres"><a href="' + e[2] + '">' + esc(e[0]) + '</a> <span class="small">\u00b7 ' + esc(e[1]) + '</span>' + (e[4] ? '<br><span class="small">' + esc(e[4]) + '</span>' : '') + '</p>';
+    }
+    if(hits.length > 12) html += '<p class="small">\u2026and ' + (hits.length - 12) + ' more \u2014 keep typing to narrow it.</p>';
+    out.innerHTML = html;
+  }
+  q.addEventListener('focus', load);
+  q.addEventListener('input', function(){ load(); run(); });
+})();
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var pills = document.querySelectorAll('.fpill');
+  function apply(f){
+    pills.forEach(function(p){ p.classList.toggle('on', p.getAttribute('data-f') === f); });
+    document.querySelectorAll('.xcase[data-branch]').forEach(function(c){
+      c.classList.toggle('dimf', f !== 'All' && c.getAttribute('data-branch') !== f);
+    });
+    document.querySelectorAll('[data-branch]:not(.xcase)').forEach(function(el){
+      el.classList.toggle('hiddenf', f !== 'All' && el.getAttribute('data-branch') !== f);
+    });
+    document.querySelectorAll('[data-rail]').forEach(function(r){
+      r.classList.toggle('hiddenf', r.getAttribute('data-rail') !== (f === 'All' ? 'All' : f));
+    });
+    document.querySelectorAll('[data-chart]').forEach(function(c){
+      c.classList.toggle('hiddenf', c.getAttribute('data-chart') !== (f === 'All' ? 'All' : f));
+    });
+    [['ledger','tr[data-branch]'], ['doors','.xdoor[data-branch]']].forEach(function(pair){
+      var any = false;
+      document.querySelectorAll(pair[1]).forEach(function(el){ if (!el.classList.contains('hiddenf')) any = true; });
+      document.querySelectorAll('[data-sect="' + pair[0] + '"]').forEach(function(el){
+        el.classList.toggle('hiddenf', !any);
+      });
+    });
+  }
+  pills.forEach(function(p){ p.addEventListener('click', function(){ apply(p.getAttribute('data-f')); }); });
+});
+</script>
+</div>
+<aside class="rail" data-rail="All"><div><div class="n"><a class="nlink" href="/video-games/nes/NES0001">$720,000</a></div><div class="l">biggest sale on record</div><div class="rname">Super Mario Bros. (NES) — Wata 9.6 A sealed · Heritage, Nov 4, 2022</div></div></aside><aside class="rail hiddenf" data-rail="Tabletop"><div><div class="n">$4,560</div><div class="l">biggest sale on record</div></div><div><div class="n">6,601</div><div class="l">items cataloged</div></div><div><div class="n">1,247</div><div class="l">sales recorded</div></div><div><div class="n">0</div><div class="l">exhibit rooms</div></div></aside><aside class="rail hiddenf" data-rail="Action Figures"><div><div class="n">$525,000</div><div class="l">biggest sale on record</div></div><div><div class="n">6,075</div><div class="l">items cataloged</div></div><div><div class="n">14,507</div><div class="l">sales recorded</div></div><div><div class="n">6</div><div class="l">exhibit rooms</div></div></aside><aside class="rail hiddenf" data-rail="Video Games"><div><div class="n"><a class="nlink" href="/video-games/nes/NES0001">$720,000</a></div><div class="l">biggest sale on record</div><div class="rname">Super Mario Bros. (NES) — Wata 9.6 A sealed · Heritage, Nov 4, 2022</div></div><div><div class="n">29,277</div><div class="l">items cataloged</div></div><div><div class="n">3,985</div><div class="l">sales recorded</div></div><div><div class="n">1</div><div class="l">exhibit rooms</div></div></aside><aside class="rail hiddenf" data-rail="Board Games"><div><div class="n">—</div><div class="l">biggest sale on record</div></div><div><div class="n">26</div><div class="l">items cataloged</div></div><div><div class="n">0</div><div class="l">sales recorded</div></div><div><div class="n">0</div><div class="l">exhibit rooms</div></div></aside>
+<h2 class="sect">The house map</h2>
+<p class="lede" style="margin-bottom:14px">Nine cabinets on one axis, 1964 to today. Open a cabinet to see its family tree — lines stand as roots unless the record carries a descent, and every descent carries its basis. Open a line to go to its home.</p>
+<div class="atlas">
+<div class="band axrow"><span class="band-lab"></span><span class="band-track"><span class="tick" style="left:9.7%">1970</span><span class="tick" style="left:25.8%">1980</span><span class="tick" style="left:41.9%">1990</span><span class="tick" style="left:58.1%">2000</span><span class="tick" style="left:74.2%">2010</span><span class="tick" style="left:90.3%">2020</span></span></div>
+<div class="band" data-cab="Action Figures" role="button" tabindex="0">
+<span class="band-lab">Action Figures</span>
+<span class="band-track"><span class="band-bar" style="left:0.0%;width:100.0%;background:var(--cardblue)"></span>
+<span class="band-meta" style="left:0.0%">1964–2026 · 5,398 items · 66 lines</span></span>
+</div><div class="band" data-cab="Video Games" role="button" tabindex="0">
+<span class="band-lab">Video Games</span>
+<span class="band-track"><span class="band-bar" style="left:12.9%;width:87.1%;background:var(--plum)"></span>
+<span class="band-meta" style="left:12.9%">1972–2026 · 29,352 items · 76 lines</span></span>
+</div><div class="band" data-cab="Tabletop" role="button" tabindex="0">
+<span class="band-lab">Tabletop</span>
+<span class="band-track"><span class="band-bar" style="left:12.9%;width:87.1%;background:var(--oxblood)"></span>
+<span class="band-meta" style="left:12.9%">1972–2026 · 6,601 items · 9 lines</span></span>
+</div><div class="band" data-cab="Board Games" role="button" tabindex="0">
+<span class="band-lab">Board Games</span>
+<span class="band-track"><span class="band-bar" style="left:3.2%;width:4.8%;background:var(--boxgreen)"></span>
+<span class="band-meta" style="left:3.2%">1966–1969 · 26 items · 1 lines</span></span>
+</div><div class="band" data-cab="Die-Cast" role="button" tabindex="0">
+<span class="band-lab">Die-Cast</span>
+<span class="band-track"><span class="band-bar" style="left:8.1%;width:1.2%;background:#8a6136"></span>
+<span class="band-meta" style="left:8.1%">1969–1969 · 22 items · 4 lines</span></span>
+</div><div class="band" data-cab="Playline Dolls" role="button" tabindex="0">
+<span class="band-lab">Playline Dolls</span>
+<span class="band-track"><span class="band-bar" style="left:3.2%;width:38.7%;background:#8a6136"></span>
+<span class="band-meta" style="left:3.2%">1966–1990 · 277 items · 11 lines</span></span>
+</div><div class="band" data-cab="Bricks" role="button" tabindex="0">
+<span class="band-lab">Bricks</span>
+<span class="band-track"><span class="band-bar" style="left:35.5%;width:4.8%;background:#8a6136"></span>
+<span class="band-meta" style="left:35.5%">1986–1989 · 38 items · 4 lines</span></span>
+</div><div class="band" data-cab="Minis" role="button" tabindex="0">
+<span class="band-lab">Minis</span>
+<span class="band-track"><span class="band-bar" style="left:1.6%;width:32.3%;background:#8a6136"></span>
+<span class="band-meta" style="left:1.6%">1965–1985 · 282 items · 4 lines</span></span>
+</div><div class="band" data-cab="Preschool" role="button" tabindex="0">
+<span class="band-lab">Preschool</span>
+<span class="band-track"><span class="band-bar" style="left:1.6%;width:40.3%;background:#8a6136"></span>
+<span class="band-meta" style="left:1.6%">1965–1990 · 58 items · 3 lines</span></span>
+</div>
+</div>
+<div id="treePanel" class="tree-panel"></div>
+<footer style="margin:34px 0 26px;padding-top:10px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)"><p>Tangiblia · Est. 2026. Some outbound links are affiliate links; they cost you nothing extra. <a href="/privacy/">Privacy policy</a> · <a href="/record/">Methodology</a></p></footer>
+</div>
+
+
+<script>
+const ATLAS = [{"cabinet": "Action Figures", "color": "var(--cardblue)", "y0": 1964, "y1": 2026, "items": 5398, "lines": [{"key": "af:gi-joe", "name": "GI Joe (original)", "maker": "Hasbro", "y0": 1964, "y1": 1976, "count": 313, "url": "/action-figures/gi-joe/", "demo": false, "parent": null, "basis": ""}, {"key": "af:johnny-west", "name": "Johnny West", "maker": "Marx", "y0": 1965, "y1": 1975, "count": 72, "url": "/action-figures/johnny-west/", "demo": false, "parent": null, "basis": ""}, {"key": "af:captain-action", "name": "Captain Action", "maker": "Ideal", "y0": 1966, "y1": 1968, "count": 37, "url": "/action-figures/captain-action/", "demo": false, "parent": "af:gi-joe", "basis": "Ideal answers Hasbro's 12-inch Joe (1964) with a 12-inch figure of its own (1966) \u2014 the same format, sold on the trunk of costumes."}, {"key": "af:gilbert", "name": "Gilbert", "maker": "A. C. Gilbert", "y0": 1966, "y1": 1966, "count": 4, "url": "/action-figures/gilbert/", "demo": false, "parent": null, "basis": ""}, {"key": "af:billy-blastoff", "name": "Billy Blastoff", "maker": "Eldon", "y0": 1969, "y1": 1969, "count": 2, "url": "/action-figures/billy-blastoff/", "demo": false, "parent": null, "basis": ""}, {"key": "af:major-matt-mason", "name": "Major Matt Mason", "maker": "Mattel", "y0": 1969, "y1": 1969, "count": 6, "url": "/action-figures/major-matt-mason/", "demo": false, "parent": null, "basis": ""}, {"key": "af:zeroids", "name": "Zeroids", "maker": "Ideal", "y0": 1969, "y1": 1969, "count": 6, "url": "/action-figures/zeroids/", "demo": false, "parent": null, "basis": ""}, {"key": "af:action-jackson", "name": "Action Jackson", "maker": "Mego", "y0": 1971, "y1": 1972, "count": 8, "url": "/action-figures/action-jackson/", "demo": false, "parent": "af:captain-action", "basis": "Mego cuts the costume-change figure down to 8 inches (1971) \u2014 the scale every Mego line after it inherits."}, {"key": "af:big-jim", "name": "Big Jim", "maker": "Mattel", "y0": 1972, "y1": 1976, "count": 7, "url": "/action-figures/big-jim/", "demo": false, "parent": null, "basis": ""}, {"key": "af:evel-knievel", "name": "Evel Knievel", "maker": "Ideal", "y0": 1972, "y1": 1977, "count": 38, "url": "/action-figures/evel-knievel/", "demo": false, "parent": null, "basis": ""}, {"key": "af:worlds-greatest-super-heroes", "name": "World's Greatest Super Heroes", "maker": "Mego", "y0": 1972, "y1": 1978, "count": 63, "url": "/action-figures/worlds-greatest-super-heroes/", "demo": false, "parent": "af:action-jackson", "basis": "Mego puts its licensed heroes on the 8-inch body Action Jackson established (1972)."}, {"key": "af:lone-ranger", "name": "The Lone Ranger", "maker": "Gabriel", "y0": 1973, "y1": 1979, "count": 11, "url": "/action-figures/lone-ranger/", "demo": false, "parent": null, "basis": ""}, {"key": "af:planet-of-the-apes", "name": "Planet of the Apes", "maker": "Mego", "y0": 1974, "y1": 1975, "count": 27, "url": "/action-figures/planet-of-the-apes/", "demo": false, "parent": "af:worlds-greatest-super-heroes", "basis": "The Mego 8-inch format extended to Planet of the Apes (1974)."}, {"key": "af:star-trek", "name": "Star Trek", "maker": "Mego", "y0": 1974, "y1": 1977, "count": 23, "url": "/action-figures/star-trek/", "demo": false, "parent": "af:worlds-greatest-super-heroes", "basis": "The Mego 8-inch format extended to Star Trek (1974) \u2014 same maker, same body, new license."}, {"key": "af:adventure-people", "name": "Adventure People", "maker": "Fisher-Price", "y0": 1975, "y1": 1983, "count": 59, "url": "/action-figures/adventure-people/", "demo": false, "parent": null, "basis": ""}, {"key": "af:six-million-dollar-man", "name": "The Six Million Dollar Man", "maker": "Kenner", "y0": 1975, "y1": 1978, "count": 29, "url": "/action-figures/six-million-dollar-man/", "demo": false, "parent": null, "basis": ""}, {"key": "af:ljn-tv-heroes", "name": "LJN TV Heroes", "maker": "LJN", "y0": 1976, "y1": 1976, "count": 24, "url": "/action-figures/ljn-tv-heroes/", "demo": false, "parent": null, "basis": ""}, {"key": "af:mego-celebrity", "name": "Mego Celebrity Figures & Dolls", "maker": "Mego", "y0": 1976, "y1": 1976, "count": 16, "url": "/action-figures/mego-celebrity/", "demo": false, "parent": "af:worlds-greatest-super-heroes", "basis": "Mego's celebrity figures (1976) ride the same 8-inch body as the heroes."}, {"key": "af:micronauts", "name": "Micronauts", "maker": "Mego", "y0": 1976, "y1": 1980, "count": 82, "url": "/action-figures/micronauts/", "demo": false, "parent": null, "basis": ""}, {"key": "af:pocket-super-heroes", "name": "Pocket Super Heroes / Comic Action", "maker": "Mego", "y0": 1976, "y1": 1980, "count": 43, "url": "/action-figures/pocket-super-heroes/", "demo": false, "parent": "af:worlds-greatest-super-heroes", "basis": "Mego shrinks its own heroes to 3\u00be inches (1979) \u2014 the WGSH line recut to the new scale."}, {"key": "af:space-1999", "name": "Space: 1999", "maker": "Mattel", "y0": 1976, "y1": 1976, "count": 10, "url": "/action-figures/space-1999/", "demo": false, "parent": null, "basis": ""}, {"key": "af:bionic-woman", "name": "The Bionic Woman", "maker": "Kenner", "y0": 1976, "y1": 1976, "count": 8, "url": "/action-figures/bionic-woman/", "demo": false, "parent": null, "basis": ""}, {"key": "af:shogun-warriors", "name": "Shogun Warriors", "maker": "Mattel", "y0": 1977, "y1": 1980, "count": 29, "url": "/action-figures/shogun-warriors/", "demo": false, "parent": null, "basis": ""}, {"key": "af:star-wars", "name": "Star Wars", "maker": "Kenner", "y0": 1977, "y1": 1985, "count": 207, "url": "/action-figures/star-wars/", "demo": true, "parent": "af:adventure-people", "basis": "Kenner builds Star Wars at 3\u00be inches (1978) \u2014 the scale Fisher-Price's Adventure People set in 1975, small enough that vehicles and playsets could sell beside the figures."}, {"key": "af:battlestar-galactica", "name": "Battlestar Galactica", "maker": "Mattel", "y0": 1978, "y1": 1979, "count": 30, "url": "/action-figures/battlestar-galactica/", "demo": false, "parent": "af:star-wars", "basis": "Mattel's 3\u00be-inch answer to Star Wars, a year on (1978) \u2014 the first follower line in the new scale."}, {"key": "af:buck-rogers", "name": "Buck Rogers", "maker": "Mego", "y0": 1979, "y1": 1980, "count": 22, "url": "/action-figures/buck-rogers/", "demo": false, "parent": "af:star-wars", "basis": "Mego takes Buck Rogers to 3\u00be inches (1979), in the scale Star Wars set."}, {"key": "af:gi-joe-real-american-hero", "name": "G.I. Joe: A Real American Hero", "maker": "Hasbro", "y0": 1982, "y1": 1994, "count": 812, "url": "/action-figures/gi-joe-real-american-hero/", "demo": false, "parent": "af:star-wars", "basis": "Hasbro relaunches its own 1964 Joe name at 3\u00be inches (1982) \u2014 the name descends from Joe, the shape from Star Wars."}, {"key": "af:masters-of-the-universe", "name": "Masters of the Universe", "maker": "Mattel", "y0": 1982, "y1": 1988, "count": 173, "url": "/action-figures/masters-of-the-universe/", "demo": false, "parent": null, "basis": ""}, {"key": "af:gobots", "name": "GoBots", "maker": "Tonka", "y0": 1983, "y1": 1987, "count": 128, "url": "/action-figures/gobots/", "demo": false, "parent": null, "basis": ""}, {"key": "af:super-powers", "name": "Super Powers", "maker": "Kenner", "y0": 1984, "y1": 1986, "count": 44, "url": "/action-figures/super-powers/", "demo": false, "parent": null, "basis": ""}, {"key": "af:transformers-g1", "name": "Transformers", "maker": "Hasbro / Takara", "y0": 1984, "y1": 1990, "count": 438, "url": "/action-figures/transformers-g1/", "demo": false, "parent": null, "basis": ""}, {"key": "af:wwf-wrestling-superstars", "name": "WWF Wrestling Superstars", "maker": "LJN", "y0": 1984, "y1": 1989, "count": 82, "url": "/action-figures/wwf-wrestling-superstars/", "demo": false, "parent": null, "basis": ""}, {"key": "af:mask", "name": "M.A.S.K.", "maker": "Kenner", "y0": 1985, "y1": 1987, "count": 62, "url": "/action-figures/mask/", "demo": false, "parent": null, "basis": ""}, {"key": "af:robotech", "name": "Robotech", "maker": "Matchbox", "y0": 1985, "y1": 1985, "count": 41, "url": "/action-figures/robotech/", "demo": false, "parent": null, "basis": ""}, {"key": "af:she-ra-princess-of-power", "name": "She-Ra: Princess of Power", "maker": "Mattel", "y0": 1985, "y1": 1987, "count": 60, "url": "/action-figures/she-ra-princess-of-power/", "demo": false, "parent": null, "basis": ""}, {"key": "af:thundercats", "name": "ThunderCats", "maker": "LJN", "y0": 1985, "y1": 1987, "count": 59, "url": "/action-figures/thundercats/", "demo": false, "parent": null, "basis": ""}, {"key": "af:centurions", "name": "Centurions", "maker": "Kenner", "y0": 1986, "y1": 1986, "count": 17, "url": "/action-figures/centurions/", "demo": false, "parent": null, "basis": ""}, {"key": "af:chuck-norris-karate-kommandos", "name": "Chuck Norris Karate Kommandos", "maker": "Kenner", "y0": 1986, "y1": 1986, "count": 11, "url": "/action-figures/chuck-norris-karate-kommandos/", "demo": false, "parent": null, "basis": ""}, {"key": "af:defenders-of-the-earth", "name": "Defenders of the Earth", "maker": "Galoob", "y0": 1986, "y1": 1986, "count": 12, "url": "/action-figures/defenders-of-the-earth/", "demo": false, "parent": null, "basis": ""}, {"key": "af:filmations-ghostbusters", "name": "Filmation's Ghostbusters", "maker": "Schaper", "y0": 1986, "y1": 1986, "count": 17, "url": "/action-figures/filmations-ghostbusters/", "demo": false, "parent": null, "basis": ""}, {"key": "af:inhumanoids", "name": "Inhumanoids", "maker": "Hasbro", "y0": 1986, "y1": 1986, "count": 15, "url": "/action-figures/inhumanoids/", "demo": false, "parent": null, "basis": ""}, {"key": "af:lazer-tag", "name": "Lazer Tag", "maker": "Worlds of Wonder", "y0": 1986, "y1": 1986, "count": 8, "url": "/action-figures/lazer-tag/", "demo": false, "parent": null, "basis": ""}, {"key": "af:mega-star", "name": "Mega Star", "maker": "Schaper", "y0": 1986, "y1": 1986, "count": 6, "url": "/action-figures/mega-star/", "demo": false, "parent": null, "basis": ""}, {"key": "af:photon", "name": "Photon", "maker": "LJN", "y0": 1986, "y1": 1986, "count": 4, "url": "/action-figures/photon/", "demo": false, "parent": null, "basis": ""}, {"key": "af:rambo", "name": "Rambo: The Force of Freedom", "maker": "Coleco", "y0": 1986, "y1": 1987, "count": 38, "url": "/action-figures/rambo/", "demo": false, "parent": null, "basis": ""}, {"key": "af:tonka-steel-monsters", "name": "Steel Monsters", "maker": "Tonka", "y0": 1986, "y1": 1986, "count": 6, "url": "/action-figures/tonka-steel-monsters/", "demo": false, "parent": null, "basis": ""}, {"key": "af:karate-kid", "name": "The Karate Kid", "maker": "Remco", "y0": 1986, "y1": 1986, "count": 22, "url": "/action-figures/karate-kid/", "demo": false, "parent": null, "basis": ""}, {"key": "af:real-ghostbusters", "name": "The Real Ghostbusters", "maker": "Kenner", "y0": 1986, "y1": 1991, "count": 95, "url": "/action-figures/real-ghostbusters/", "demo": false, "parent": null, "basis": ""}, {"key": "af:micro-machines", "name": "Micro Machines", "maker": "Galoob", "y0": 1987, "y1": 1989, "count": 24, "url": "/action-figures/micro-machines/", "demo": false, "parent": null, "basis": ""}, {"key": "af:robocop-and-the-ultra-police", "name": "RoboCop and the Ultra Police", "maker": "Kenner", "y0": 1988, "y1": 1989, "count": 20, "url": "/action-figures/robocop-and-the-ultra-police/", "demo": false, "parent": null, "basis": ""}, {"key": "af:teenage-mutant-ninja-turtles", "name": "Teenage Mutant Ninja Turtles", "maker": "Playmates", "y0": 1988, "y1": 1997, "count": 450, "url": "/action-figures/teenage-mutant-ninja-turtles/", "demo": false, "parent": null, "basis": ""}, {"key": "af:batman-dark-knight-collection", "name": "Batman: The Dark Knight Collection", "maker": "Toy Biz", "y0": 1989, "y1": 1990, "count": 20, "url": "/action-figures/batman-dark-knight-collection/", "demo": false, "parent": null, "basis": ""}, {"key": "af:beetlejuice", "name": "Beetlejuice", "maker": "Kenner", "y0": 1989, "y1": 1990, "count": 19, "url": "/action-figures/beetlejuice/", "demo": false, "parent": null, "basis": ""}, {"key": "af:computer-warriors", "name": "Computer Warriors", "maker": "Mattel", "y0": 1989, "y1": 1990, "count": 12, "url": "/action-figures/computer-warriors/", "demo": false, "parent": null, "basis": ""}, {"key": "af:megaforce", "name": "Megaforce", "maker": "Kenner", "y0": 1989, "y1": 1989, "count": 27, "url": "/action-figures/megaforce/", "demo": false, "parent": null, "basis": ""}, {"key": "af:ring-raiders", "name": "Ring Raiders", "maker": "Matchbox", "y0": 1989, "y1": 1989, "count": 5, "url": "/action-figures/ring-raiders/", "demo": false, "parent": null, "basis": ""}, {"key": "af:xpanders", "name": "Xpanders", "maker": "Galoob", "y0": 1989, "y1": 1989, "count": 4, "url": "/action-figures/xpanders/", "demo": false, "parent": null, "basis": ""}, {"key": "af:dick-tracy", "name": "Dick Tracy", "maker": "Playmates", "y0": 1990, "y1": 1990, "count": 19, "url": "/action-figures/dick-tracy/", "demo": false, "parent": null, "basis": ""}, {"key": "af:marvel-super-heroes", "name": "Marvel Super Heroes", "maker": "Toy Biz", "y0": 1990, "y1": 1994, "count": 45, "url": "/action-figures/marvel-super-heroes/", "demo": false, "parent": null, "basis": ""}, {"key": "af:wwf-hasbro", "name": "WWF (Hasbro)", "maker": "Hasbro", "y0": 1990, "y1": 1994, "count": 100, "url": "/action-figures/wwf-hasbro/", "demo": false, "parent": null, "basis": ""}, {"key": "af:gi-joe-hall-of-fame", "name": "G.I. Joe Hall of Fame", "maker": "Hasbro", "y0": 1991, "y1": 1994, "count": 72, "url": "/action-figures/gi-joe-hall-of-fame/", "demo": false, "parent": null, "basis": ""}, {"key": "af:x-men", "name": "X-Men", "maker": "Toy Biz", "y0": 1991, "y1": 1999, "count": 330, "url": "/action-figures/x-men/", "demo": false, "parent": null, "basis": ""}, {"key": "af:batman-animated", "name": "Batman: The Animated Series", "maker": "Kenner", "y0": 1992, "y1": 1997, "count": 91, "url": "/action-figures/batman-animated/", "demo": false, "parent": null, "basis": ""}, {"key": "af:jurassic-park", "name": "Jurassic Park", "maker": "Kenner", "y0": 1993, "y1": 1997, "count": 95, "url": "/action-figures/jurassic-park/", "demo": false, "parent": null, "basis": ""}, {"key": "af:spawn", "name": "Spawn", "maker": "McFarlane Toys", "y0": 1994, "y1": 2026, "count": 447, "url": "/action-figures/spawn/", "demo": false, "parent": null, "basis": ""}, {"key": "af:star-wars-power-of-the-force", "name": "Star Wars: Power of the Force 2", "maker": "Hasbro (Kenner)", "y0": 1995, "y1": 2000, "count": 292, "url": "/action-figures/star-wars-power-of-the-force/", "demo": false, "parent": "af:star-wars", "basis": "The vintage line's own last wave (1985), split in the catalog for its coins and card art."}]}, {"cabinet": "Video Games", "color": "var(--plum)", "y0": 1972, "y1": 2026, "items": 29352, "lines": [{"key": "vg:odyssey", "name": "Magnavox Odyssey", "maker": "", "y0": 1972, "y1": 1973, "count": 27, "url": "/video-games/odyssey.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:videomaster", "name": "Videomaster", "maker": "", "y0": 1974, "y1": 1979, "count": 15, "url": "/video-games/videomaster.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:zanussi", "name": "Zanussi", "maker": "", "y0": 1974, "y1": 1977, "count": 10, "url": "/video-games/zanussi.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:atari-pong", "name": "Atari Pong", "maker": "", "y0": 1975, "y1": 1977, "count": 22, "url": "/video-games/atari-pong.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:epoch-dedicated", "name": "Epoch dedicated", "maker": "", "y0": 1975, "y1": 1980, "count": 7, "url": "/video-games/epoch-dedicated.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:interton", "name": "Interton", "maker": "", "y0": 1975, "y1": 1977, "count": 9, "url": "/video-games/interton.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:odyssey-dedicated", "name": "Magnavox Odyssey (Dedicated)", "maker": "", "y0": 1975, "y1": 1978, "count": 12, "url": "/video-games/odyssey-dedicated.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:philips-tele-spiel", "name": "Philips Tele-Spiel", "maker": "", "y0": 1975, "y1": 1977, "count": 7, "url": "/video-games/philips-tele-spiel.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:apf-tv-fun", "name": "APF TV Fun", "maker": "", "y0": 1976, "y1": 1977, "count": 10, "url": "/video-games/apf-tv-fun.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:telstar", "name": "Coleco Telstar", "maker": "", "y0": 1976, "y1": 1978, "count": 14, "url": "/video-games/telstar.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:channel-f", "name": "Fairchild Channel F", "maker": "", "y0": 1976, "y1": 1981, "count": 28, "url": "/video-games/channel-f.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:unisonic", "name": "Unisonic", "maker": "", "y0": 1976, "y1": 1978, "count": 9, "url": "/video-games/unisonic.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:atari-2600", "name": "Atari 2600", "maker": "", "y0": 1977, "y1": 1990, "count": 729, "url": "/video-games/atari-2600.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:bally-astrocade", "name": "Bally Astrocade", "maker": "", "y0": 1977, "y1": 1984, "count": 35, "url": "/video-games/bally-astrocade.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:bandai-tv-jack", "name": "Bandai TV Jack", "maker": "", "y0": 1977, "y1": 1978, "count": 7, "url": "/video-games/bandai-tv-jack.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:mbo-tele-ball", "name": "MBO Tele-Ball", "maker": "", "y0": 1977, "y1": 1978, "count": 13, "url": "/video-games/mbo-tele-ball.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:color-tv-game", "name": "Nintendo Color TV-Game", "maker": "", "y0": 1977, "y1": 1980, "count": 9, "url": "/video-games/color-tv-game.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:studio-ii", "name": "RCA Studio II", "maker": "", "y0": 1977, "y1": 1978, "count": 11, "url": "/video-games/studio-ii.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:odyssey-2", "name": "Magnavox Odyssey\u00b2", "maker": "", "y0": 1978, "y1": 1984, "count": 53, "url": "/video-games/odyssey-2.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:intellivision", "name": "Mattel Intellivision", "maker": "", "y0": 1979, "y1": 1989, "count": 129, "url": "/video-games/intellivision.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:microvision", "name": "Milton Bradley Microvision", "maker": "", "y0": 1979, "y1": 1981, "count": 11, "url": "/video-games/microvision.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:arcadia-2001", "name": "Arcadia 2001", "maker": "", "y0": 1982, "y1": 1982, "count": 22, "url": "/video-games/arcadia-2001.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:atari-5200", "name": "Atari 5200", "maker": "", "y0": 1982, "y1": 1986, "count": 85, "url": "/video-games/atari-5200.html", "demo": false, "parent": "vg:atari-2600", "basis": "Atari's successor to the 2600 (1982)."}, {"key": "vg:colecovision", "name": "ColecoVision", "maker": "", "y0": 1982, "y1": 1986, "count": 159, "url": "/video-games/colecovision.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:commodore-max-c64gs", "name": "Commodore MAX / C64GS", "maker": "", "y0": 1982, "y1": 1992, "count": 47, "url": "/video-games/commodore-max-c64gs.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:vectrex", "name": "Vectrex", "maker": "", "y0": 1982, "y1": 1984, "count": 28, "url": "/video-games/vectrex.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:super-cassette-vision", "name": "Epoch Super Cassette Vision", "maker": "", "y0": 1984, "y1": 1986, "count": 30, "url": "/video-games/super-cassette-vision.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:nes", "name": "Nintendo Entertainment System", "maker": "", "y0": 1985, "y1": 1995, "count": 940, "url": "/video-games/nes.html", "demo": false, "parent": "vg:atari-2600", "basis": "The home cartridge console revived after the crash in the form Atari set \u2014 Nintendo's machine answers the 2600's cartridge living room (1985)."}, {"key": "vg:atari-7800", "name": "Atari 7800", "maker": "", "y0": 1986, "y1": 1991, "count": 58, "url": "/video-games/atari-7800.html", "demo": false, "parent": "vg:atari-5200", "basis": "Atari's successor to the 5200 (1986)."}, {"key": "vg:master-system", "name": "Sega Master System", "maker": "", "y0": 1986, "y1": 1991, "count": 126, "url": "/video-games/master-system.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:atari-lynx", "name": "Atari Lynx", "maker": "", "y0": 1989, "y1": 1999, "count": 76, "url": "/video-games/atari-lynx.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:turbografx-16", "name": "NEC TurboGrafx-16", "maker": "", "y0": 1989, "y1": 1993, "count": 94, "url": "/video-games/turbografx-16.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:turbografx-cd", "name": "NEC TurboGrafx-CD", "maker": "", "y0": 1989, "y1": 1994, "count": 45, "url": "/video-games/turbografx-cd.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:game-boy", "name": "Nintendo Game Boy", "maker": "", "y0": 1989, "y1": 2001, "count": 641, "url": "/video-games/game-boy.html", "demo": false, "parent": "vg:nes", "basis": "Nintendo takes the cartridge idea portable (1989) \u2014 the NES's younger brother, not its successor."}, {"key": "vg:genesis", "name": "Sega Genesis", "maker": "", "y0": 1989, "y1": 1998, "count": 746, "url": "/video-games/genesis.html", "demo": false, "parent": "vg:master-system", "basis": "Sega's successor to the Master System (1989)."}, {"key": "vg:amstrad-gx4000", "name": "Amstrad GX4000", "maker": "", "y0": 1990, "y1": 1991, "count": 26, "url": "/video-games/amstrad-gx4000.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:philips-cdi", "name": "Philips CD-i", "maker": "", "y0": 1990, "y1": 1999, "count": 388, "url": "/video-games/philips-cdi.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:game-gear", "name": "Sega Game Gear", "maker": "", "y0": 1990, "y1": 2001, "count": 237, "url": "/video-games/game-gear.html", "demo": false, "parent": "vg:master-system", "basis": "Sega's Master System hardware cut down to a handheld (1990)."}, {"key": "vg:neo-geo", "name": "Neo Geo", "maker": "", "y0": 1991, "y1": 2004, "count": 179, "url": "/video-games/neo-geo.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:snes", "name": "Super Nintendo", "maker": "", "y0": 1991, "y1": 1998, "count": 755, "url": "/video-games/snes.html", "demo": false, "parent": "vg:nes", "basis": "Nintendo's successor to the NES (1991)."}, {"key": "vg:sega-cd", "name": "Sega CD", "maker": "", "y0": 1992, "y1": 1995, "count": 145, "url": "/video-games/sega-cd.html", "demo": false, "parent": "vg:genesis", "basis": "The Genesis's CD-ROM add-on (1992), cataloged as its own system."}, {"key": "vg:3do", "name": "3DO", "maker": "", "y0": 1993, "y1": 1996, "count": 143, "url": "/video-games/3do.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:atari-jaguar", "name": "Atari Jaguar", "maker": "", "y0": 1993, "y1": 1998, "count": 50, "url": "/video-games/atari-jaguar.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:bandai-playdia", "name": "Bandai Playdia", "maker": "", "y0": 1994, "y1": 1996, "count": 33, "url": "/video-games/bandai-playdia.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:nec-pcfx", "name": "NEC PC-FX", "maker": "", "y0": 1994, "y1": 1998, "count": 62, "url": "/video-games/nec-pcfx.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:sega-32x", "name": "Sega 32X", "maker": "", "y0": 1994, "y1": 1996, "count": 31, "url": "/video-games/sega-32x.html", "demo": false, "parent": "vg:genesis", "basis": "The Genesis's 32-bit add-on (1994), cataloged as its own system."}, {"key": "vg:atari-jaguar-cd", "name": "Atari Jaguar CD", "maker": "", "y0": 1995, "y1": 1997, "count": 13, "url": "/video-games/atari-jaguar-cd.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:casio-loopy", "name": "Casio Loopy", "maker": "", "y0": 1995, "y1": 1997, "count": 11, "url": "/video-games/casio-loopy.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:saturn", "name": "Sega Saturn", "maker": "", "y0": 1995, "y1": 1998, "count": 297, "url": "/video-games/saturn.html", "demo": false, "parent": "vg:genesis", "basis": "Sega's successor to the Genesis (1995)."}, {"key": "vg:playstation", "name": "Sony PlayStation", "maker": "", "y0": 1995, "y1": 2004, "count": 1367, "url": "/video-games/playstation.html", "demo": false, "parent": "vg:snes", "basis": "Sony's console grows out of the Super Nintendo CD-ROM partnership Nintendo walked away from (1994)."}, {"key": "vg:apple-pippin", "name": "Apple Pippin", "maker": "", "y0": 1996, "y1": 1998, "count": 94, "url": "/video-games/apple-pippin.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:nintendo-64", "name": "Nintendo 64", "maker": "", "y0": 1996, "y1": 2002, "count": 297, "url": "/video-games/nintendo-64.html", "demo": false, "parent": "vg:snes", "basis": "Nintendo's successor to the Super Nintendo (1996)."}, {"key": "vg:tiger-gamecom", "name": "Tiger Game.com", "maker": "", "y0": 1997, "y1": 1999, "count": 22, "url": "/video-games/tiger-gamecom.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:neo-geo-pocket-color", "name": "Neo Geo Pocket Color", "maker": "", "y0": 1998, "y1": 2001, "count": 92, "url": "/video-games/neo-geo-pocket-color.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:nintendo-64dd", "name": "Nintendo 64DD", "maker": "", "y0": 1999, "y1": 2000, "count": 10, "url": "/video-games/nintendo-64dd.html", "demo": false, "parent": "vg:nintendo-64", "basis": "The Nintendo 64's disk-drive add-on (1999), cataloged as its own system."}, {"key": "vg:game-boy-color", "name": "Nintendo Game Boy Color", "maker": "", "y0": 1999, "y1": 2002, "count": 316, "url": "/video-games/game-boy-color.html", "demo": false, "parent": "vg:game-boy", "basis": "The Game Boy, in color (1998)."}, {"key": "vg:dreamcast", "name": "Sega Dreamcast", "maker": "", "y0": 1999, "y1": 2002, "count": 248, "url": "/video-games/dreamcast.html", "demo": false, "parent": "vg:saturn", "basis": "Sega's successor to the Saturn (1999)."}, {"key": "vg:wonderswan", "name": "WonderSwan", "maker": "", "y0": 1999, "y1": 2004, "count": 199, "url": "/video-games/wonderswan.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:playstation-2", "name": "PlayStation 2", "maker": "", "y0": 2000, "y1": 2013, "count": 1822, "url": "/video-games/playstation-2.html", "demo": false, "parent": "vg:playstation", "basis": "Sony's successor to the PlayStation (2000)."}, {"key": "vg:xbox", "name": "Microsoft Xbox", "maker": "", "y0": 2001, "y1": 2008, "count": 872, "url": "/video-games/xbox.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:game-boy-advance", "name": "Nintendo Game Boy Advance", "maker": "", "y0": 2001, "y1": 2008, "count": 986, "url": "/video-games/game-boy-advance.html", "demo": false, "parent": "vg:game-boy-color", "basis": "Nintendo's successor handheld (2001)."}, {"key": "vg:gamecube", "name": "Nintendo GameCube", "maker": "", "y0": 2001, "y1": 2007, "count": 554, "url": "/video-games/gamecube.html", "demo": false, "parent": "vg:nintendo-64", "basis": "Nintendo's successor to the Nintendo 64 (2001)."}, {"key": "vg:n-gage", "name": "Nokia N-Gage", "maker": "", "y0": 2003, "y1": 2006, "count": 61, "url": "/video-games/n-gage.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:nintendo-ds", "name": "Nintendo DS", "maker": "", "y0": 2004, "y1": 2015, "count": 1756, "url": "/video-games/nintendo-ds.html", "demo": false, "parent": "vg:game-boy-advance", "basis": "Nintendo's successor handheld (2004) \u2014 two screens, a new branch of the family."}, {"key": "vg:xbox-360", "name": "Microsoft Xbox 360", "maker": "", "y0": 2005, "y1": 2018, "count": 1255, "url": "/video-games/xbox-360.html", "demo": false, "parent": "vg:xbox", "basis": "Microsoft's successor to the Xbox (2005)."}, {"key": "vg:psp", "name": "Sony PSP", "maker": "", "y0": 2005, "y1": 2015, "count": 616, "url": "/video-games/psp.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:wii", "name": "Nintendo Wii", "maker": "", "y0": 2006, "y1": 2019, "count": 1270, "url": "/video-games/wii.html", "demo": false, "parent": "vg:gamecube", "basis": "Nintendo's successor to the GameCube (2006)."}, {"key": "vg:playstation-3", "name": "Sony PlayStation 3", "maker": "", "y0": 2006, "y1": 2020, "count": 1596, "url": "/video-games/playstation-3.html", "demo": false, "parent": "vg:playstation-2", "basis": "Sony's successor to the PlayStation 2 (2006)."}, {"key": "vg:nintendo-3ds", "name": "Nintendo 3DS", "maker": "", "y0": 2011, "y1": 2022, "count": 538, "url": "/video-games/nintendo-3ds.html", "demo": false, "parent": "vg:nintendo-ds", "basis": "Nintendo's successor to the DS (2011)."}, {"key": "vg:wii-u", "name": "Nintendo Wii U", "maker": "", "y0": 2012, "y1": 2020, "count": 166, "url": "/video-games/wii-u.html", "demo": false, "parent": "vg:wii", "basis": "Nintendo's successor to the Wii (2012)."}, {"key": "vg:ps-vita", "name": "PlayStation Vita", "maker": "", "y0": 2012, "y1": 2021, "count": 330, "url": "/video-games/ps-vita.html", "demo": false, "parent": null, "basis": ""}, {"key": "vg:xbox-one", "name": "Microsoft Xbox One", "maker": "", "y0": 2013, "y1": 2025, "count": 1113, "url": "/video-games/xbox-one.html", "demo": false, "parent": "vg:xbox-360", "basis": "Microsoft's successor to the Xbox 360 (2013)."}, {"key": "vg:playstation-4", "name": "Sony PlayStation 4", "maker": "", "y0": 2013, "y1": 2026, "count": 2593, "url": "/video-games/playstation-4.html", "demo": false, "parent": "vg:playstation-3", "basis": "Sony's successor to the PlayStation 3 (2013)."}, {"key": "vg:switch", "name": "Nintendo Switch", "maker": "", "y0": 2017, "y1": 2026, "count": 2437, "url": "/video-games/switch.html", "demo": false, "parent": "vg:wii-u", "basis": "Nintendo's successor to the Wii U (2017)."}, {"key": "vg:playstation-5", "name": "PlayStation 5", "maker": "", "y0": 2020, "y1": 2026, "count": 1093, "url": "/video-games/playstation-5.html", "demo": false, "parent": "vg:playstation-4", "basis": "Sony's successor to the PlayStation 4 (2020)."}, {"key": "vg:xbox-series", "name": "Xbox Series X/S", "maker": "", "y0": 2020, "y1": 2026, "count": 1015, "url": "/video-games/xbox-series.html", "demo": false, "parent": "vg:xbox-one", "basis": "Microsoft's successor to the Xbox One (2020)."}]}, {"cabinet": "Tabletop", "color": "var(--oxblood)", "y0": 1972, "y1": 2026, "items": 6601, "lines": [{"key": "tt:dungeons-and-dragons", "name": "Dungeons & Dragons", "maker": "", "y0": 1972, "y1": 2026, "count": 3201, "url": "/tabletop/dungeons-and-dragons.html", "demo": false, "parent": null, "basis": ""}, {"key": "tt:tekumel", "name": "T\u00e9kumel", "maker": "", "y0": 1975, "y1": 2024, "count": 44, "url": "/tabletop/tekumel.html", "demo": false, "parent": null, "basis": ""}, {"key": "tt:traveller", "name": "Traveller", "maker": "", "y0": 1977, "y1": 2026, "count": 620, "url": "/tabletop/traveller.html", "demo": false, "parent": null, "basis": ""}, {"key": "tt:runequest", "name": "RuneQuest", "maker": "", "y0": 1978, "y1": 2026, "count": 195, "url": "/tabletop/runequest.html", "demo": false, "parent": null, "basis": ""}, {"key": "tt:topsecret", "name": "topsecret", "maker": "", "y0": 1980, "y1": 1990, "count": 30, "url": "/tabletop/topsecret.html", "demo": false, "parent": null, "basis": ""}, {"key": "tt:call-of-cthulhu", "name": "Call of Cthulhu", "maker": "", "y0": 1981, "y1": 2026, "count": 385, "url": "/tabletop/call-of-cthulhu.html", "demo": false, "parent": null, "basis": ""}, {"key": "tt:gurps", "name": "GURPS", "maker": "", "y0": 1985, "y1": 2022, "count": 527, "url": "/tabletop/gurps.html", "demo": false, "parent": null, "basis": ""}, {"key": "tt:shadowrun", "name": "Shadowrun", "maker": "", "y0": 1989, "y1": 2026, "count": 426, "url": "/tabletop/shadowrun.html", "demo": false, "parent": null, "basis": ""}, {"key": "tt:pathfinder", "name": "Pathfinder", "maker": "", "y0": 2007, "y1": 2026, "count": 1173, "url": "/tabletop/pathfinder.html", "demo": false, "parent": null, "basis": ""}]}, {"cabinet": "Board Games", "color": "var(--boxgreen)", "y0": 1966, "y1": 1969, "items": 26, "lines": [{"key": "bg:board-games", "name": "Board Games", "maker": "", "y0": 1966, "y1": 1969, "count": 26, "url": "/board-games/", "demo": false, "parent": null, "basis": ""}]}, {"cabinet": "Die-Cast", "color": "#8a6136", "y0": 1969, "y1": 1969, "items": 22, "lines": [{"key": "af:corgi", "name": "Corgi", "maker": "Corgi Toys", "y0": 1969, "y1": 1969, "count": 8, "url": "/die-cast/corgi/", "demo": false, "parent": null, "basis": ""}, {"key": "af:hot-wheels", "name": "Hot Wheels", "maker": "Mattel", "y0": 1969, "y1": 1969, "count": 8, "url": "/die-cast/hot-wheels/", "demo": false, "parent": null, "basis": ""}, {"key": "af:johnny-lightning", "name": "Johnny Lightning", "maker": "Topper", "y0": 1969, "y1": 1969, "count": 2, "url": "/die-cast/johnny-lightning/", "demo": false, "parent": null, "basis": ""}, {"key": "af:matchbox", "name": "Matchbox", "maker": "Lesney", "y0": 1969, "y1": 1969, "count": 4, "url": "/die-cast/matchbox/", "demo": false, "parent": null, "basis": ""}]}, {"cabinet": "Playline Dolls", "color": "#8a6136", "y0": 1966, "y1": 1990, "items": 277, "lines": [{"key": "af:barbie", "name": "Barbie", "maker": "Mattel", "y0": 1966, "y1": 1969, "count": 21, "url": "/playline-dolls/barbie/", "demo": false, "parent": null, "basis": ""}, {"key": "af:holly-hobbie", "name": "Holly Hobbie", "maker": "Knickerbocker", "y0": 1976, "y1": 1976, "count": 8, "url": "/playline-dolls/holly-hobbie/", "demo": false, "parent": null, "basis": ""}, {"key": "af:sunshine-family", "name": "The Sunshine Family & Jody", "maker": "Mattel", "y0": 1976, "y1": 1976, "count": 8, "url": "/playline-dolls/sunshine-family/", "demo": false, "parent": null, "basis": ""}, {"key": "af:tuesday-taylor", "name": "Tuesday Taylor", "maker": "Ideal", "y0": 1976, "y1": 1976, "count": 7, "url": "/playline-dolls/tuesday-taylor/", "demo": false, "parent": null, "basis": ""}, {"key": "af:annie", "name": "Annie", "maker": "Knickerbocker", "y0": 1982, "y1": 1982, "count": 12, "url": "/playline-dolls/annie/", "demo": false, "parent": null, "basis": ""}, {"key": "af:dazzle", "name": "Dazzle", "maker": "Mattel", "y0": 1982, "y1": 1982, "count": 12, "url": "/playline-dolls/dazzle/", "demo": false, "parent": null, "basis": ""}, {"key": "af:glamour-gals", "name": "Glamour Gals", "maker": "Kenner", "y0": 1982, "y1": 1983, "count": 48, "url": "/playline-dolls/glamour-gals/", "demo": false, "parent": null, "basis": ""}, {"key": "af:my-little-pony", "name": "My Little Pony", "maker": "Hasbro", "y0": 1982, "y1": 1990, "count": 75, "url": "/playline-dolls/my-little-pony/", "demo": false, "parent": null, "basis": ""}, {"key": "af:strawberry-shortcake", "name": "Strawberry Shortcake", "maker": "Kenner", "y0": 1982, "y1": 1982, "count": 29, "url": "/playline-dolls/strawberry-shortcake/", "demo": false, "parent": null, "basis": ""}, {"key": "af:cabbage-patch-kids", "name": "Cabbage Patch Kids", "maker": "Coleco / Hasbro", "y0": 1986, "y1": 1990, "count": 29, "url": "/playline-dolls/cabbage-patch-kids/", "demo": false, "parent": null, "basis": ""}, {"key": "af:jem", "name": "Jem", "maker": "Hasbro", "y0": 1986, "y1": 1987, "count": 28, "url": "/playline-dolls/jem/", "demo": false, "parent": null, "basis": ""}]}, {"cabinet": "Bricks", "color": "#8a6136", "y0": 1986, "y1": 1989, "items": 38, "lines": [{"key": "af:fisher-price-construx", "name": "Construx", "maker": "Fisher-Price", "y0": 1986, "y1": 1987, "count": 9, "url": "/bricks/fisher-price-construx/", "demo": false, "parent": null, "basis": ""}, {"key": "af:legions-of-power", "name": "Legions of Power", "maker": "Tonka", "y0": 1986, "y1": 1986, "count": 16, "url": "/bricks/legions-of-power/", "demo": false, "parent": null, "basis": ""}, {"key": "af:mega-bloks", "name": "Mega Bloks", "maker": "Mega Bloks", "y0": 1989, "y1": 1989, "count": 3, "url": "/bricks/mega-bloks/", "demo": false, "parent": null, "basis": ""}, {"key": "af:tyco-super-blocks", "name": "Tyco Super Blocks", "maker": "Tyco", "y0": 1989, "y1": 1989, "count": 10, "url": "/bricks/tyco-super-blocks/", "demo": false, "parent": null, "basis": ""}]}, {"cabinet": "Minis", "color": "#8a6136", "y0": 1965, "y1": 1985, "items": 282, "lines": [{"key": "af:smurfs", "name": "The Smurfs", "maker": "Wallace Berrie", "y0": 1965, "y1": 1985, "count": 124, "url": "/minis/smurfs/", "demo": false, "parent": null, "basis": ""}, {"key": "af:marx-miniature-playsets", "name": "Marx Miniature Playsets", "maker": "Marx", "y0": 1972, "y1": 1979, "count": 19, "url": "/minis/marx-miniature-playsets/", "demo": false, "parent": null, "basis": ""}, {"key": "af:legends-of-the-west-4in", "name": "Legends of the West", "maker": "Empire Toys", "y0": 1975, "y1": 1979, "count": 29, "url": "/minis/legends-of-the-west-4in/", "demo": false, "parent": null, "basis": ""}, {"key": "af:mattel-muscle", "name": "M.U.S.C.L.E.", "maker": "Mattel", "y0": 1985, "y1": 1985, "count": 110, "url": "/minis/mattel-muscle/", "demo": false, "parent": null, "basis": ""}]}, {"cabinet": "Preschool", "color": "#8a6136", "y0": 1965, "y1": 1990, "items": 58, "lines": [{"key": "af:fisher-price-play-family", "name": "Fisher-Price Play Family", "maker": "Fisher-Price", "y0": 1965, "y1": 1976, "count": 12, "url": "/preschool/fisher-price-play-family/", "demo": false, "parent": null, "basis": ""}, {"key": "af:speak-and", "name": "Speak &\u2026 (Texas Instruments)", "maker": "Texas Instruments", "y0": 1976, "y1": 1989, "count": 39, "url": "/preschool/speak-and/", "demo": false, "parent": null, "basis": ""}, {"key": "af:playmobil", "name": "Playmobil", "maker": "Schaper", "y0": 1979, "y1": 1990, "count": 7, "url": "/preschool/playmobil/", "demo": false, "parent": null, "basis": ""}]}];
+const panel = document.getElementById('treePanel');
+function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+function renderTree(cab){
+  const a = ATLAS.find(x => x.cabinet === cab);
+  if(!a){ panel.innerHTML=''; return; }
+  const kids = {};
+  a.lines.forEach(l => { if(l.parent){ (kids[l.parent] = kids[l.parent] || []).push(l); } });
+  const byKey = {}; a.lines.forEach(l => byKey[l.key] = l);
+  function node(l, depth){
+    const ch = kids[l.key] || [];
+    const meta = [l.maker, (l.y0 ? l.y0 + (l.y1 && l.y1 !== l.y0 ? '–' + l.y1 : '') : ''), l.count.toLocaleString() + ' items'].filter(Boolean).join(' · ');
+    let h = '<li class="tnode">';
+    h += '<div class="trow">' + (ch.length ? '<button class="tog" aria-label="expand">▸</button>' : '<span class="togx"></span>');
+    h += '<a class="tname" href="' + (l.demo ? '/temp/atlas/star-wars/' : l.url) + '">' + esc(l.name) + '</a>';
+    h += '<span class="tmeta">' + esc(meta) + '</span></div>';
+    if(l.parent && byKey[l.parent]) h += '<div class="tbasis">from ' + esc(byKey[l.parent].name) + ' — ' + esc(l.basis) + '</div>';
+    if(ch.length){ h += '<ul class="tkids" hidden>' + ch.map(c => node(c, depth+1)).join('') + '</ul>'; }
+    return h + '</li>';
+  }
+  const roots = a.lines.filter(l => !l.parent || !byKey[l.parent]);
+  panel.innerHTML = '<h3 class="tree-h">' + esc(cab) + ' — the family tree</h3><ul class="tree">' + roots.map(l => node(l, 0)).join('') + '</ul>';
+  panel.querySelectorAll('.tog').forEach(b => b.addEventListener('click', () => {
+    const ul = b.closest('.tnode').querySelector(':scope > .tkids');
+    const open = ul.hidden; ul.hidden = !open; b.textContent = open ? '▾' : '▸';
+  }));
+  document.querySelectorAll('.band').forEach(b => b.classList.toggle('on', b.dataset.cab === cab));
+}
+document.querySelectorAll('.band[data-cab]').forEach(b => {
+  b.addEventListener('click', () => renderTree(b.dataset.cab));
+});
+renderTree('Action Figures');
+</script>
+</body></html>
