@@ -60,7 +60,10 @@ footer{margin-top:44px;border-top:3px double var(--ink);padding-top:14px;font-si
 </div>
 <div id="status"></div>
 <div class="results" id="results"></div>
-<div class="none" id="none" style="display:none">Nothing in the file looks close to that photograph. The likeliest reason is that we don't hold a photograph of it yet — try the <a href="https://tangiblia.com/identify/">What have I got? page</a> to narrow it by eye, or search the catalog by name.</div>
+<div class="none" id="none" style="display:none">No close match was found in the file.</div>
+<h2 id="possH" style="display:none">Possible matches — low confidence</h2>
+<p class="small" id="possNote" style="display:none">These are guesses, shown because they are the nearest the file holds. Treat them as leads to check, not answers.</p>
+<div class="results" id="possible"></div>
 
 <footer>Tangiblia — a catalog of recorded sales. This beta matches photographs; it does not value or authenticate anything.</footer>
 </div>
@@ -126,21 +129,61 @@ function colorFeat(px) {
   return grid.concat(hist, rgbm, [Math.sqrt(varr)]);
 }
 
-function raster(img, size, crop) {
+function drawRect(img, rect, size) {
   const cv = document.createElement("canvas");
   cv.width = size; cv.height = size;
   const cx = cv.getContext("2d", { willReadFrequently: true });
-  if (crop) {
-    const w = img.naturalWidth, h = img.naturalHeight;
-    const cw = Math.floor(w * 0.625), ch = Math.floor(h * 0.625);
-    cx.drawImage(img, Math.floor((w - cw) / 2), Math.floor((h - ch) / 2), cw, ch, 0, 0, size, size);
-  } else {
-    cx.drawImage(img, 0, 0, size, size);
-  }
+  cx.drawImage(img, rect.x, rect.y, rect.w, rect.h, 0, 0, size, size);
   const d = cx.getImageData(0, 0, size, size).data;
   const px = [];
   for (let i = 0; i < d.length; i += 4) px.push([d[i] / 255, d[i + 1] / 255, d[i + 2] / 255]);
   return px;
+}
+
+function segment(img) {
+  const N = 96;
+  const W = img.naturalWidth, H = img.naturalHeight;
+  const full = { x: 0, y: 0, w: W, h: H };
+  const px = drawRect(img, full, N);
+  const border = [];
+  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
+    if (x < 3 || y < 3 || x >= N - 3 || y >= N - 3) border.push(px[y * N + x]);
+  }
+  const bg = [0, 1, 2].map(c => {
+    const vals = border.map(q => q[c]).sort((a, b) => a - b);
+    return vals[Math.floor(vals.length / 2)];
+  });
+  let minx = N, miny = N, maxx = -1, maxy = -1, cnt = 0;
+  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
+    const q = px[y * N + x];
+    const d = Math.hypot(q[0] - bg[0], q[1] - bg[1], q[2] - bg[2]);
+    if (d > 0.16) {
+      cnt++;
+      if (x < minx) minx = x;
+      if (x > maxx) maxx = x;
+      if (y < miny) miny = y;
+      if (y > maxy) maxy = y;
+    }
+  }
+  if (cnt < 0.02 * N * N || maxx < 0) return { rect: full, form: 0 };
+  const bw = maxx - minx + 1, bh = maxy - miny + 1;
+  const frac = cnt / (bw * bh);
+  const form = frac >= 0.80 ? 2 : (frac <= 0.66 ? 1 : 0);
+  const mx = Math.floor(bw * 0.08), my = Math.floor(bh * 0.08);
+  minx = Math.max(0, minx - mx); miny = Math.max(0, miny - my);
+  maxx = Math.min(N - 1, maxx + mx); maxy = Math.min(N - 1, maxy + my);
+  const x0 = Math.floor(minx * W / N), y0 = Math.floor(miny * H / N);
+  const rect = { x: x0, y: y0,
+                 w: Math.floor((maxx + 1) * W / N) - x0,
+                 h: Math.floor((maxy + 1) * H / N) - y0 };
+  if (rect.w < 8 || rect.h < 8) return { rect: full, form };
+  return { rect, form };
+}
+
+function centerRect(rect) {
+  const cw = Math.floor(rect.w * 0.625), ch = Math.floor(rect.h * 0.625);
+  return { x: rect.x + Math.floor((rect.w - cw) / 2),
+           y: rect.y + Math.floor((rect.h - ch) / 2), w: cw, h: ch };
 }
 
 function shapeFeat(gray) {
@@ -163,55 +206,67 @@ function shapeFeat(gray) {
   return out;
 }
 
-function grayOf(img, crop) {
-  return raster(img, 64, crop).map(p => 0.299 * p[0] + 0.587 * p[1] + 0.114 * p[2]);
+function embedRect(img, rect) {
+  const cr = centerRect(rect);
+  const c1 = colorFeat(drawRect(img, rect, 32)), c2 = colorFeat(drawRect(img, cr, 32));
+  const cf = c1.map((a, i) => (a + c2[i]) / 2);
+  const g1 = drawRect(img, rect, 64).map(q => 0.299 * q[0] + 0.587 * q[1] + 0.114 * q[2]);
+  const g2 = drawRect(img, cr, 64).map(q => 0.299 * q[0] + 0.587 * q[1] + 0.114 * q[2]);
+  const sf1 = shapeFeat(g1), sf2 = shapeFeat(g2);
+  const sf = sf1.map((a, i) => (a + sf2[i]) / 2);
+  return l2(cf).map(x => x * 0.5).concat(l2(sf));
 }
 
-function embed(img) {
-  const c1 = colorFeat(raster(img, 32, false)), c2 = colorFeat(raster(img, 32, true));
-  const cf = c1.map((a, i) => (a + c2[i]) / 2);
-  const s1 = shapeFeat(grayOf(img, false)), s2 = shapeFeat(grayOf(img, true));
-  const sf = s1.map((a, i) => (a + s2[i]) / 2);
-  return l2(cf).map(x => x * 0.5).concat(l2(sf));
+function makeCard({ s, it }) {
+  const e = INDEX.items[it];
+  const card = document.createElement("div");
+  card.className = "card";
+  const pic = e.s
+    ? '<img src="https://tangiblia.com' + e.s + '" alt="">'
+    : '<div class="nophoto">No photograph published</div>';
+  card.innerHTML = pic +
+    '<div class="body"><div class="nm"></div><div class="ln"></div>' +
+    '<div class="sc">Match ' + Math.round(s * 100) + '%</div>' +
+    '<a href="' + e.u + '">Open the catalog entry</a></div>';
+  card.querySelector(".nm").textContent = e.n;
+  card.querySelector(".ln").textContent = e.l + " · " + e.i;
+  return card;
 }
 
 function match(img) {
   if (!INDEX) { statusEl.textContent = "The index is still loading — one moment."; return; }
-  statusEl.textContent = "Matching against " + INDEX.photos.toLocaleString() + " photographs…";
+  statusEl.textContent = "Matching…";
   resultsEl.innerHTML = ""; noneEl.style.display = "none";
-  const raw = embed(img);
+  const possEl = document.getElementById("possible");
+  possEl.innerHTML = "";
+  document.getElementById("possH").style.display = "none";
+  document.getElementById("possNote").style.display = "none";
+  const seg = segment(img);
+  const raw = embedRect(img, seg.rect);
   let v = raw.map((x, i) => x - INDEX.mean[i]);
   v = l2(v);
   const dim = INDEX.dim;
   const best = new Map();
   for (let r = 0; r < INDEX.photos; r++) {
-    let s = 0;
+    let sc = 0;
     const off = r * dim;
-    for (let i = 0; i < dim; i++) s += v[i] * ROWS[off + i];
+    for (let i = 0; i < dim; i++) sc += v[i] * ROWS[off + i];
+    if (seg.form && INDEX.forms[r] && seg.form === INDEX.forms[r]) sc += 0.05;
     const it = INDEX.photo_item[r];
-    if (!best.has(it) || s > best.get(it).s) best.set(it, { s, it });
+    if (!best.has(it) || sc > best.get(it).s) best.set(it, { s: sc, it });
   }
-  const top = [...best.values()].sort((a, b) => b.s - a.s).slice(0, 6);
-  if (!top.length || top[0].s < 0.45) {
-    statusEl.textContent = "";
-    noneEl.style.display = "block";
+  const top = [...best.values()].sort((a, b) => b.s - a.s);
+  if (top.length && top[0].s >= 0.45) {
+    statusEl.textContent = "Closest photographs in the file, best first. A match is a suggestion to check, not a determination.";
+    for (const t of top.slice(0, 6)) resultsEl.appendChild(makeCard(t));
     return;
   }
-  statusEl.textContent = "Closest photographs in the file, best first. A match is a suggestion to check, not a determination.";
-  for (const { s, it } of top) {
-    const e = INDEX.items[it];
-    const card = document.createElement("div");
-    card.className = "card";
-    const pic = e.s
-      ? '<img src="https://tangiblia.com' + e.s + '" alt="">'
-      : '<div class="nophoto">No photograph published</div>';
-    card.innerHTML = pic +
-      '<div class="body"><div class="nm"></div><div class="ln"></div>' +
-      '<div class="sc">Match ' + Math.round(s * 100) + '%</div>' +
-      '<a href="' + e.u + '">Open the catalog entry</a></div>';
-    card.querySelector(".nm").textContent = e.n;
-    card.querySelector(".ln").textContent = e.l + " · " + e.i;
-    resultsEl.appendChild(card);
+  statusEl.textContent = "";
+  noneEl.style.display = "block";
+  if (top.length && top[0].s >= 0.25) {
+    document.getElementById("possH").style.display = "block";
+    document.getElementById("possNote").style.display = "block";
+    for (const t of top.slice(0, 4)) possEl.appendChild(makeCard(t));
   }
 }
 
