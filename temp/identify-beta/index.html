@@ -84,7 +84,7 @@ fetch("index.json").then(r => r.json()).then(ix => {
     ROWS[i] = (b > 127 ? b - 256 : b) / 127;
   }
   document.getElementById("scope").textContent =
-    ix.photos.toLocaleString() + " photographs of " + ix.items.length.toLocaleString() + " catalog items";
+    (ix.src_photos || ix.photos).toLocaleString() + " photographs of " + ix.items.length.toLocaleString() + " catalog items";
 }).catch(() => { statusEl.textContent = "The fingerprint index failed to load."; });
 
 function l2(v) {
